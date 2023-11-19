@@ -93,3 +93,14 @@
     margin-left: -15rem;
   }
 }
+
+.dropdown-btn {
+    background-color: transparent;
+    font-weight: bold;
+    border: none;
+}
+
+.dropdown-container {
+    display: none;
+    padding-left: 8px;
+}
