@@ -13,5 +13,10 @@ namespace TheFaceShop.Controllers
         {
             return View();
         }
+
+        public ActionResult DonHang()
+        {
+            return View();
+        }
     }
 }

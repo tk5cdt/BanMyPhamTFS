@@ -18,8 +18,8 @@
         <div class="bg-white" id="sidebar-wrapper">
             <div class="sidebar-heading text-center py-4 primary-text fs-4 fw-bold text-uppercase border-bottom"><i class="fad fa-spa me-2" style="--fa-primary-color: #009d63; --fa-secondary-color: #009d63;"></i>The Face Shop</div>
             <div class="list-group list-group-flush my-3">
-                <a href="#" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i class="fas fa-tachometer-alt me-2"></i>Thống kê</a>
-                <a href="#" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i class="fas fa-paperclip me-2"></i>Đơn hàng</a>
+                <a href="/home/Index" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i class="fas fa-tachometer-alt me-2"></i>Thống kê</a>
+                <a href="/home/DonHang" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i class="fas fa-paperclip me-2"></i>Đơn hàng</a>
                 <button class="list-group-item list-group-item-action bg-transparent second-text fw-bold dropdown-btn">
                     <i class="fas fa-box-full"></i></i>Sản phẩm
                     <i class="fa fa-caret-down"></i>
@@ -69,11 +69,11 @@
     <!-- scripts -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
     <script>
-            var el = document.getElementById("wrapper");
-            var toggleButton = document.getElementById("menu-toggle");
+        var el = document.getElementById("wrapper");
+        var toggleButton = document.getElementById("menu-toggle");
 
-            toggleButton.onclick = function() {
-                el.classList.toggle("toggled");
+        toggleButton.onclick = function () {
+            el.classList.toggle("toggled");
         };
     </script>
     <script>
@@ -93,20 +93,20 @@
         }
     </script>
     <script>
-            // dropdown menu script
-            var dropdown = document.getElementsByClassName("dropdown-btn");
-            var i;
+        // dropdown menu script
+        var dropdown = document.getElementsByClassName("dropdown-btn");
+        var i;
 
-            for (i = 0; i < dropdown.length; i++) {
-                dropdown[i].addEventListener("click", function () {
-                    var dropdownContent = this.nextElementSibling;
-                    if (dropdownContent.style.display === "block") {
-                        dropdownContent.style.display = "none";
-                    } else {
-                        dropdownContent.style.display = "block";
-                    }
-                });
-            }
+        for (i = 0; i < dropdown.length; i++) {
+            dropdown[i].addEventListener("click", function () {
+                var dropdownContent = this.nextElementSibling;
+                if (dropdownContent.style.display === "block") {
+                    dropdownContent.style.display = "none";
+                } else {
+                    dropdownContent.style.display = "block";
+                }
+            });
+        }
     </script>
     @RenderSection("Scripts", required: false)
 </body>
