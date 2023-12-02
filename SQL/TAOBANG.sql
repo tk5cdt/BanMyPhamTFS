@@ -1,0 +1,1057 @@
+﻿use master 
+go
+ALTER database QL_THEFACESHOP set single_user with rollback immediate
+
+drop database QL_THEFACESHOP
+------------------------------------------------------------------------------------------------------------------
+
+CREATE DATABASE QL_THEFACESHOP
+GO
+
+USE QL_THEFACESHOP
+
+SET DATEFORMAT YMD
+
+------------------------------------------------------------------------------------------------------------------
+CREATE TABLE LOAI
+(
+	MALOAI		VARCHAR(10) default 'L000' NOT NULL,
+	TENLOAI		NVARCHAR(30)
+
+	CONSTRAINT	PK_LOAI PRIMARY KEY(MALOAI)
+)
+
+
+CREATE TABLE CHITIETLOAI
+(
+	MACTLOAI	VARCHAR(10) default 'CTL000' NOT NULL,
+	TENCTLOAI	NVARCHAR(30),
+	MALOAI		VARCHAR(10)
+
+	CONSTRAINT	PK_CTLOAI PRIMARY KEY(MACTLOAI)
+)
+
+CREATE TABLE CHITIETLOAISP
+(
+	MACTL_SP	VARCHAR(10)  default 'CTLSP000' NOT NULL,
+	TENCTL_SP	NVARCHAR(30),
+	MACTLOAI	VARCHAR(10),
+
+	CONSTRAINT	PK_CHITIETLOAISP PRIMARY KEY(MACTL_SP)
+)
+
+CREATE TABLE NHANVIEN
+(
+	MANV		VARCHAR(10) DEFAULT 'NV000' NOT NULL,
+	TENNV		NVARCHAR(50) UNIQUE ,
+	GIOITINH	NVARCHAR(10) CHECK (GIOITINH IN (N'Nam', N'Nữ')),
+	SDT			CHAR(10)
+
+	CONSTRAINT PK_NV PRIMARY KEY (MANV)
+)
+
+CREATE TABLE KHACHHANG
+(
+	MAKH	VARCHAR(10) DEFAULT 'KH000' NOT NULL,
+	TENKH	NVARCHAR(50) UNIQUE ,
+	SDT		CHAR(10)
+
+	CONSTRAINT PK_KH PRIMARY KEY (MAKH),
+)
+
+CREATE TABLE SANPHAM
+(
+	MASP        VARCHAR(10) NOT NULL DEFAULT 'SP000',
+	TENSP       NVARCHAR(100) UNIQUE,
+	MACTL_SP	VARCHAR(10) NOT NULL,
+	GIABAN      FLOAT DEFAULT 0,
+    GIANHAP     FLOAT DEFAULT 0,
+	MADBC		VARCHAR(10) NOT NULL,
+	MAQCDG		VARCHAR(10) NOT NULL,
+    ANHDAIDIEN  VARCHAR(100),
+	NOIDUNG		TEXT,
+	CONGDUNG	NVARCHAR(MAX),
+    TONGDANHGIA FLOAT DEFAULT 0,
+	TONKHO      INT DEFAULT 0,
+    TRANGTHAI   NVARCHAR(20) DEFAULT N'Đang bán'
+
+	CONSTRAINT PK_SANPHAM PRIMARY KEY(MASP) 
+)
+
+CREATE TABLE DANGBAOCHE
+(
+	MADBC		VARCHAR(10) NOT NULL,
+	TENDANG		NVARCHAR(50),
+
+	CONSTRAINT PK_DANGBAOCHE PRIMARY KEY(MADBC)
+)
+
+CREATE TABLE QUYCACHDONGGOI
+(
+	MAQCDG		VARCHAR(10) NOT NULL,
+	TENQCDG		NVARCHAR(50),
+
+	CONSTRAINT PK_QCDONGGOI PRIMARY KEY(MAQCDG)
+)
+
+CREATE TABLE THANHPHAN
+(
+    MASP        VARCHAR(10) NOT NULL,
+    THANHPHAN   NVARCHAR(30) NOT NULL,
+    HAMLUONG    NVARCHAR(10)
+
+    CONSTRAINT PK_THANHPHAN PRIMARY KEY(MASP, THANHPHAN) 
+)
+
+CREATE TABLE DONNHAP
+(
+	MADN        VARCHAR(10) NOT NULL DEFAULT 'DN000',
+	MANV		VARCHAR(10) NOT NULL,
+	NGAYLAP     DATE DEFAULT GETDATE(),
+	TONGTIEN    FLOAT DEFAULT 0,
+    TRANGTHAI   NVARCHAR(30) DEFAULT N'Đã đặt'
+
+	CONSTRAINT PK_DONNHAP PRIMARY KEY(MADN)
+)
+
+CREATE TABLE CTDN
+(
+	MADN        VARCHAR(10) NOT NULL,
+	MASP        VARCHAR(10) NOT NULL,
+	SOLUONG     INT DEFAULT 1,
+    THANHTIEN   FLOAT
+
+	CONSTRAINT PK_CTDN PRIMARY KEY(MADN, MASP)
+)
+
+CREATE TABLE DONGIAO
+(
+	MADG        VARCHAR(10) NOT NULL DEFAULT 'DG000',
+	NGAYLAP     DATE DEFAULT GETDATE(),
+	MAKH		VARCHAR(10) NOT NULL,
+	NGUOINHAN	VARCHAR(30) NOT NULL,
+	SDT			VARCHAR(10) NOT NULL,
+    SONHA		NVARCHAR(100) NOT NULL,
+	PHUONGXA	NVARCHAR(20) NOT NULL,
+	TRIGIA      FLOAT DEFAULT 0,
+	TRANGTHAI   NVARCHAR(30) DEFAULT N'Đang chuẩn bị'
+
+	CONSTRAINT PK_DONGIAO PRIMARY KEY(MADG)
+)
+
+CREATE TABLE CTDG
+(
+	MADG        VARCHAR(10) NOT NULL,
+	MASP        VARCHAR(10) NOT NULL,
+	SOLUONG     INT DEFAULT 1,
+	THANHTIEN   FLOAT,
+	MUCDODG     FLOAT,
+    NGAYBL      DATE,
+    BINHLUAN    NVARCHAR(500) DEFAULT NULL
+
+	CONSTRAINT PK_CTDG PRIMARY KEY(MADG,MASP)
+)
+
+CREATE TABLE GIOHANG
+(
+	MAGH        VARCHAR(10) DEFAULT 'GH000' NOT NULL,
+	MAKH        VARCHAR(10) NOT NULL
+
+	CONSTRAINT PK_GIOHANG PRIMARY KEY(MAGH)
+)
+
+CREATE TABLE CHITIETGIOHANG
+(
+	MAGH		VARCHAR(10) NOT NULL,
+	MASP		VARCHAR(10) NOT NULL,
+	SOLUONG     INT DEFAULT 1
+
+	CONSTRAINT PK_DATHANG PRIMARY KEY(MAGH,MASP)
+)
+
+CREATE TABLE HINHANHSP
+(
+	MAHA		INT IDENTITY NOT NULL,
+	MASP        VARCHAR(10),
+	HINHANH     VARCHAR(100) 
+
+	CONSTRAINT PK_ALBUM PRIMARY KEY(MAHA)
+)
+
+CREATE TABLE QUYEN
+(
+	MAQUYEN VARCHAR(50) NOT NULL,
+	TENQUYEN NVARCHAR(50)
+
+	CONSTRAINT PK_QUYEN PRIMARY KEY (MAQUYEN)
+)
+
+CREATE TABLE QUYENKHACHHANG
+(
+	MAKH VARCHAR(10) NOT NULL,
+	MAQUYEN VARCHAR(50) NOT NULL
+
+	CONSTRAINT PK_QUYENKHACHHANG PRIMARY KEY (MAKH, MAQUYEN)
+)
+
+CREATE TABLE QUYENNHANVIEN
+(
+	MANV VARCHAR(10) NOT NULL,
+	MAQUYEN VARCHAR(50) NOT NULL
+
+	CONSTRAINT PK_EMPQUYEN PRIMARY KEY (MANV, MAQUYEN)
+)
+
+CREATE TABLE CACMIEN (
+	id integer NOT NULL,
+	name nvarchar(255) NOT NULL,
+	name_en nvarchar(255) NOT NULL,
+	code_name nvarchar(255) NULL,
+	code_name_en nvarchar(255) NULL,
+	CONSTRAINT CACMIEN_pkey PRIMARY KEY (id)
+);
+
+CREATE TABLE DONVIHANHCHINH (
+	id integer NOT NULL,
+	full_name nvarchar(255) NULL,
+	full_name_en nvarchar(255) NULL,
+	short_name nvarchar(255) NULL,
+	short_name_en nvarchar(255) NULL,
+	code_name nvarchar(255) NULL,
+	code_name_en nvarchar(255) NULL,
+	CONSTRAINT DONVIHANHCHINH_pkey PRIMARY KEY (id)
+);
+
+CREATE TABLE TINHTHANH (
+	code nvarchar(20) NOT NULL,
+	name nvarchar(255) NOT NULL,
+	name_en nvarchar(255) NULL,
+	full_name nvarchar(255) NOT NULL,
+	full_name_en nvarchar(255) NULL,
+	code_name nvarchar(255) NULL,
+	administrative_unit_id integer NULL,
+	administrative_region_id integer NULL,
+	CONSTRAINT TINHTHANH_pkey PRIMARY KEY (code)
+);
+
+CREATE TABLE QUANHUYEN (
+	code nvarchar(20) NOT NULL,
+	name nvarchar(255) NOT NULL,
+	name_en nvarchar(255) NULL,
+	full_name nvarchar(255) NULL,
+	full_name_en nvarchar(255) NULL,
+	code_name nvarchar(255) NULL,
+	province_code nvarchar(20) NULL,
+	administrative_unit_id integer NULL,
+	CONSTRAINT QUANHUYEN_pkey PRIMARY KEY (code)
+);
+
+CREATE TABLE PHUONGXA (
+	code nvarchar(20) NOT NULL,
+	name nvarchar(255) NOT NULL,
+	name_en nvarchar(255) NULL,
+	full_name nvarchar(255) NULL,
+	full_name_en nvarchar(255) NULL,
+	code_name nvarchar(255) NULL,
+	district_code nvarchar(20) NULL,
+	administrative_unit_id integer NULL,
+	CONSTRAINT PHUONGXA_pkey PRIMARY KEY (code)
+);
+GO
+------------------------------------------------------------------------------------------------------------------
+ALTER TABLE CHITIETLOAI
+ADD CONSTRAINT FK_CHITIETLOAI_LOAI FOREIGN KEY(MALOAI) REFERENCES LOAI(MALOAI)
+GO
+
+ALTER TABLE CHITIETLOAISP
+ADD CONSTRAINT FK_CHITIETLOAISP_CHITIETLOAI FOREIGN KEY(MACTLOAI) REFERENCES CHITIETLOAI(MACTLOAI)
+GO
+
+ALTER TABLE SANPHAM
+ADD CONSTRAINT FK_SANPHAM_CHITIETLOAISP FOREIGN KEY(MACTL_SP) REFERENCES CHITIETLOAISP(MACTL_SP),
+	CONSTRAINT FK_SANPHAM_DANGBAOCHE FOREIGN KEY(MADBC) REFERENCES DANGBAOCHE(MADBC),
+	CONSTRAINT FK_SANPHAM_QUYCACHDONGGOI FOREIGN KEY(MAQCDG) REFERENCES QUYCACHDONGGOI(MAQCDG)
+GO
+
+
+ALTER TABLE THANHPHAN
+ADD CONSTRAINT FK_THANHPHAN_SANPHAM FOREIGN KEY(MASP) REFERENCES SANPHAM(MASP)
+GO
+
+ALTER TABLE DONNHAP
+ADD CONSTRAINT FK_DONNHAP_NHANVIEN FOREIGN KEY(MANV) REFERENCES NHANVIEN(MANV)
+GO
+
+ALTER TABLE CTDN
+ADD CONSTRAINT FK_CTDN_DONNHAP FOREIGN KEY(MADN) REFERENCES DONNHAP(MADN),
+	CONSTRAINT FK_CTDN_SANPHAM FOREIGN KEY(MASP) REFERENCES SANPHAM(MASP)
+GO
+
+ALTER TABLE DONGIAO
+ADD CONSTRAINT FK_DONGIAO_KHACHHANG FOREIGN KEY(MAKH) REFERENCES KHACHHANG(MAKH),
+	CONSTRAINT FK_DONGIAO_PHUONGXA FOREIGN KEY(PHUONGXA) REFERENCES PHUONGXA(code)
+GO
+
+ALTER TABLE CTDG
+ADD CONSTRAINT FK_CTDG_DONGIAO FOREIGN KEY(MADG) REFERENCES DONGIAO(MADG),
+	CONSTRAINT FK_CTDG_SANPHAM FOREIGN KEY(MASP) REFERENCES SANPHAM(MASP)
+GO
+
+ALTER TABLE GIOHANG
+ADD CONSTRAINT FK_GIOHANG_KHACHHANG FOREIGN KEY(MAKH) REFERENCES KHACHHANG(MAKH)
+GO
+
+ALTER TABLE CHITIETGIOHANG
+ADD CONSTRAINT FK_DATHANG_GIOHANG FOREIGN KEY(MAGH) REFERENCES GIOHANG(MAGH),
+	CONSTRAINT FK_DATHANG_SANPHAM FOREIGN KEY(MASP) REFERENCES SANPHAM(MASP)
+GO
+
+ALTER TABLE HINHANHSP
+ADD CONSTRAINT FK_HINHANHSP_SANPHAM FOREIGN KEY(MASP) REFERENCES SANPHAM(MASP)
+GO
+
+ALTER TABLE QUYENKHACHHANG
+ADD CONSTRAINT FK_QUYENKHACHHANG_KHACHHANG FOREIGN KEY(MAKH) REFERENCES KHACHHANG(MAKH),
+	CONSTRAINT FK_QUYENKHACHHANG_QUYEN FOREIGN KEY(MAQUYEN) REFERENCES QUYEN(MAQUYEN)
+GO
+
+ALTER TABLE QUYENNHANVIEN
+ADD CONSTRAINT FK_QUYENNHANVIEN_NHANVIEN FOREIGN KEY(MANV) REFERENCES NHANVIEN(MANV),
+	CONSTRAINT FK_QUYENNHANVIEN_QUYEN FOREIGN KEY(MAQUYEN) REFERENCES QUYEN(MAQUYEN)
+GO
+
+---
+ALTER TABLE TINHTHANH ADD CONSTRAINT TINHTHANH_administrative_region_id_fkey FOREIGN KEY (administrative_region_id) REFERENCES CACMIEN(id);
+ALTER TABLE TINHTHANH ADD CONSTRAINT TINHTHANH_administrative_unit_id_fkey FOREIGN KEY (administrative_unit_id) REFERENCES DONVIHANHCHINH(id);
+
+CREATE INDEX idx_TINHTHANH_region ON TINHTHANH(administrative_region_id);
+CREATE INDEX idx_TINHTHANH_unit ON TINHTHANH(administrative_unit_id);
+
+ALTER TABLE QUANHUYEN ADD CONSTRAINT QUANHUYEN_administrative_unit_id_fkey FOREIGN KEY (administrative_unit_id) REFERENCES DONVIHANHCHINH(id);
+ALTER TABLE QUANHUYEN ADD CONSTRAINT QUANHUYEN_province_code_fkey FOREIGN KEY (province_code) REFERENCES TINHTHANH(code);
+
+CREATE INDEX idx_QUANHUYEN_province ON QUANHUYEN(province_code);
+CREATE INDEX idx_QUANHUYEN_unit ON QUANHUYEN(administrative_unit_id);
+
+ALTER TABLE PHUONGXA ADD CONSTRAINT PHUONGXA_administrative_unit_id_fkey FOREIGN KEY (administrative_unit_id) REFERENCES DONVIHANHCHINH(id);
+ALTER TABLE PHUONGXA ADD CONSTRAINT PHUONGXA_district_code_fkey FOREIGN KEY (district_code) REFERENCES QUANHUYEN(code);
+
+CREATE INDEX idx_PHUONGXA_district ON PHUONGXA(district_code);
+CREATE INDEX idx_PHUONGXA_unit ON PHUONGXA(administrative_unit_id);
+GO
+
+---------------------------------
+
+CREATE PROC pc_TimMaTiepTheo
+    @table VARCHAR(20),
+    @id VARCHAR(10) OUT
+AS
+BEGIN
+    DECLARE @index INT
+    SET @index = 1
+    IF @table = 'SANPHAM'
+        BEGIN 
+        SET @id = 'SP001'
+        
+        WHILE EXISTS(SELECT MASP FROM SANPHAM WHERE MASP = @id)
+        BEGIN
+            SET @index = @index + 1
+            SET @id = 'SP' + REPLICATE('0',3 - LEN(CAST(@index AS VARCHAR))) + CAST(@index AS VARCHAR)
+        END
+    END
+
+	ELSE IF @table = 'NHANVIEN'
+        BEGIN 
+        SET @id = 'NV001'
+        
+        WHILE EXISTS(SELECT MANV FROM NHANVIEN WHERE MANV = @id)
+        BEGIN
+            SET @index = @index + 1
+            SET @id = 'NV' + REPLICATE('0',3 - LEN(CAST(@index AS VARCHAR))) + CAST(@index AS VARCHAR)
+        END
+    END
+
+	ELSE IF @table = 'KHACHHANG'
+        BEGIN 
+        SET @id = 'KH001'
+        
+        WHILE EXISTS(SELECT MAKH FROM KHACHHANG WHERE MAKH = @id)
+        BEGIN
+            SET @index = @index + 1
+            SET @id = 'KH' + REPLICATE('0',3 - LEN(CAST(@index AS VARCHAR))) + CAST(@index AS VARCHAR)
+        END
+    END
+
+	ELSE IF @table = 'GIOHANG'
+    BEGIN
+        SET @id = 'GH001'
+        
+        WHILE EXISTS(SELECT MAGH FROM GIOHANG WHERE MAGH = @id)
+        BEGIN
+            SET @index = @index + 1
+            SET @id = 'GH' + REPLICATE('0',3 - LEN(CAST(@index AS VARCHAR))) + CAST(@index AS VARCHAR)
+        END
+    END
+
+    ELSE IF @table = 'DONNHAP'
+    BEGIN
+        SET @id = 'DN001'
+        
+        WHILE EXISTS(SELECT MADN FROM DONNHAP WHERE MADN = @id)
+        BEGIN
+            SET @index = @index + 1
+            SET @id = 'DN' + REPLICATE('0',3 - LEN(CAST(@index AS VARCHAR))) + CAST(@index AS VARCHAR)
+        END
+    END
+
+    ELSE IF @table = 'DONGIAO'
+    BEGIN
+        SET @id = 'DG001'
+        
+        WHILE EXISTS(SELECT MADG FROM DONGIAO WHERE MADG = @id)
+        BEGIN
+            SET @index = @index + 1
+            SET @id = 'DG' + REPLICATE('0',3 - LEN(CAST(@index AS VARCHAR))) + CAST(@index AS VARCHAR)
+        END
+    END
+
+    ELSE IF @table = 'LOAI'
+    BEGIN
+        SET @id = 'L001'
+        
+        WHILE EXISTS(SELECT MALOAI FROM LOAI WHERE MALOAI = @id)
+        BEGIN
+            SET @index = @index + 1
+            SET @id = 'L' + REPLICATE('0',3 - LEN(CAST(@index AS VARCHAR))) + CAST(@index AS VARCHAR)
+        END
+    END
+
+    ELSE IF @table = 'CHITIETLOAI'
+    BEGIN
+        SET @id = 'CTL001'
+        
+        WHILE EXISTS(SELECT MACTLOAI FROM CHITIETLOAI WHERE MACTLOAI = @id)
+        BEGIN
+            SET @index = @index + 1
+            SET @id = 'CTL' + REPLICATE('0',3 - LEN(CAST(@index AS VARCHAR))) + CAST(@index AS VARCHAR)
+        END
+    END
+
+    ELSE IF @table = 'CHITIETLOAISP'
+    BEGIN
+        SET @id = 'CTLSP001'
+        
+        WHILE EXISTS(SELECT MACTL_SP FROM CHITIETLOAISP WHERE MACTL_SP = @id)
+        BEGIN
+            SET @index = @index + 1
+            SET @id = 'CTLSP' + REPLICATE('0',3 - LEN(CAST(@index AS VARCHAR))) + CAST(@index AS VARCHAR)
+        END
+    END
+
+END
+GO
+
+CREATE PROC sp_InsertLoai
+    @tenloai NVARCHAR(30)
+AS
+BEGIN
+    INSERT INTO LOAI(TENLOAI)
+    VALUES(@tenloai)
+END
+GO
+
+CREATE PROC sp_InsertChiTietLoai
+    @tenctloai NVARCHAR(30),
+    @maloai VARCHAR(10)
+AS
+BEGIN
+    INSERT INTO CHITIETLOAI(TENCTLOAI, MALOAI)
+    VALUES(@tenctloai, @maloai)
+END
+GO
+
+CREATE PROC sp_InsertChiTietLoaiSP
+    @tenctlsp NVARCHAR(30),
+    @mactloai VARCHAR(10)
+AS
+BEGIN
+    INSERT INTO CHITIETLOAISP(TENCTL_SP, MACTLOAI)
+    VALUES(@tenctlsp, @mactloai)
+END
+GO
+
+CREATE PROC sp_InsertNhanVien
+    @ten NVARCHAR(50),
+    @gioitinh NVARCHAR(10),
+    @sdt CHAR(10)
+AS
+BEGIN
+    INSERT INTO NHANVIEN(TENNV, GIOITINH, SDT)
+    VALUES(@ten, @gioitinh, @sdt)
+END
+GO
+
+CREATE PROC sp_InsertKhachHang
+    @ten NVARCHAR(50),
+    @sdt CHAR(10)
+AS
+BEGIN
+    INSERT INTO KHACHHANG(TENKH, SDT)
+    VALUES(@ten, @sdt)
+END
+GO
+
+CREATE PROC sp_InsertDonNhap
+    @manv VARCHAR(10),
+    @ngaylap DATE,
+    @trangthai NVARCHAR(30)
+AS
+BEGIN
+    INSERT INTO DONNHAP(MANV, NGAYLAP, TRANGTHAI)
+    VALUES(@manv, @ngaylap, @trangthai)
+END
+GO
+
+CREATE PROC sp_InsertCTDN
+    @madn VARCHAR(10),
+    @masp VARCHAR(10),
+    @soluong INT
+AS
+BEGIN
+    INSERT INTO CTDN(MADN, MASP, SOLUONG)
+    VALUES(@madn, @masp, @soluong)
+END
+GO
+
+CREATE PROC sp_InsertGioHang
+	@makh VARCHAR(10)
+AS
+BEGIN
+	INSERT INTO GIOHANG(MAKH)
+	VALUES(@makh)
+END
+GO
+
+CREATE PROC sp_InsertDonGiao
+	@ngaylap DATE,
+	@makh VARCHAR(10),
+	@nguoinhan VARCHAR(30),
+	@sdt CHAR(10),
+	@sonha NVARCHAR(100),
+	@phuongxa VARCHAR(20)
+AS
+BEGIN
+	INSERT INTO DONGIAO(MAKH, NGUOINHAN, SDT, SONHA, PHUONGXA)
+	VALUES(@makh, @nguoinhan, @sdt, @sonha, @phuongxa)
+END
+GO
+
+
+CREATE PROC sp_InsertCTDG
+	@madg VARCHAR(10),
+	@masp VARCHAR(10),
+	@soluong INT,
+	@mucdodg FLOAT,
+	@ngaybl DATE,
+	@binhluan NVARCHAR(500)
+AS
+BEGIN
+	INSERT INTO CTDG(MADG, MASP, SOLUONG, MUCDODG, NGAYBL, BINHLUAN)
+	VALUES(@madg, @masp, @soluong, @mucdodg, @ngaybl, @binhluan)
+END
+GO
+
+CREATE PROC pc_InsertSanPham
+	@tensp       NVARCHAR(100),
+	@loai        NVARCHAR(30),
+	@giaban      INT,
+    @gianhap     INT,
+	@dangbaoche  NVARCHAR(10),
+	@qcdonggoi   NVARCHAR(20),
+	@noidung	 TEXT,
+	@congdung	 NVARCHAR(MAX),
+	@tonkho		 INT
+AS 
+BEGIN
+    INSERT INTO SANPHAM(TENSP, MACTL_SP, GIABAN, GIANHAP, MADBC, MAQCDG, NOIDUNG, CONGDUNG, TONKHO)
+    VALUES(@tensp, @loai, @giaban, @gianhap, @dangbaoche, @qcdonggoi, @noidung, @congdung, @tonkho)
+END
+GO
+
+------------------
+
+CREATE TRIGGER TRG_INSERT_LOAI
+    ON LOAI
+    FOR INSERT
+AS
+BEGIN
+    DECLARE @result VARCHAR(10) 
+    EXEC pc_TimMaTiepTheo 'LOAI', @result OUT
+
+    UPDATE LOAI
+    SET MALOAI = @result
+    WHERE MALOAI IN (SELECT MALOAI FROM inserted)
+END
+GO
+
+CREATE TRIGGER TRG_INSERT_CHITIETLOAI
+    ON CHITIETLOAI
+    FOR INSERT
+AS
+BEGIN
+    DECLARE @result VARCHAR(10) 
+    EXEC pc_TimMaTiepTheo 'CHITIETLOAI', @result OUT
+
+    UPDATE CHITIETLOAI
+    SET MACTLOAI = @result
+    FROM CHITIETLOAI JOIN inserted
+    ON CHITIETLOAI.MACTLOAI = inserted.MACTLOAI
+END
+GO
+
+
+CREATE TRIGGER TRG_INSERT_CHITIETLOAISP
+    ON CHITIETLOAISP
+    FOR INSERT
+AS
+BEGIN
+    DECLARE @result VARCHAR(10) 
+    EXEC pc_TimMaTiepTheo 'CHITIETLOAISP', @result OUT
+
+    UPDATE CHITIETLOAISP
+    SET MACTL_SP = @result
+    FROM CHITIETLOAISP JOIN inserted
+    ON CHITIETLOAISP.MACTL_SP = inserted.MACTL_SP
+END
+GO
+
+CREATE TRIGGER TRG_INSERT_NHANVIEN
+    ON NHANVIEN
+    FOR INSERT
+AS
+BEGIN
+    DECLARE @result VARCHAR(10) 
+    EXEC pc_TimMaTiepTheo 'NHANVIEN', @result OUT
+
+    UPDATE NHANVIEN
+    SET MANV = @result
+    FROM NHANVIEN JOIN inserted
+    ON NHANVIEN.MANV = inserted.MANV
+END
+GO
+
+CREATE TRIGGER TRG_INSERT_KHACHHANG
+      ON KHACHHANG
+      FOR INSERT
+AS
+BEGIN
+    DECLARE @result VARCHAR(10) 
+    IF @result IS NULL
+    begin
+        EXEC pc_TimMaTiepTheo 'KHACHHANG', @result OUT
+
+        UPDATE KHACHHANG
+        SET MAKH = @result
+        FROM KHACHHANG JOIN inserted
+        ON KHACHHANG.MAKH = inserted.MAKH
+
+        INSERT INTO GIOHANG(MAKH) VALUES(@result)
+    end
+END
+GO
+
+CREATE TRIGGER TRG_INSERT_GIOHANG
+      ON GIOHANG
+      FOR INSERT
+AS
+BEGIN
+    DECLARE @result VARCHAR(10) 
+    EXEC pc_TimMaTiepTheo 'GIOHANG', @result OUT
+
+    UPDATE GIOHANG
+    SET MAGH = @result
+    FROM GIOHANG JOIN inserted
+    ON GIOHANG.MAGH = inserted.MAGH
+
+END
+GO
+
+CREATE TRIGGER TRG_INSERT_DONNHAP
+    ON DONNHAP
+    FOR INSERT
+AS
+BEGIN
+    DECLARE @result VARCHAR(10) 
+    EXEC pc_TimMaTiepTheo 'DONNHAP', @result OUT
+
+    UPDATE DONNHAP
+    SET MADN = @result
+    FROM DONNHAP JOIN inserted
+    ON DONNHAP.MADN = inserted.MADN
+
+    IF (SELECT TONGTIEN FROM inserted) != 0
+    BEGIN
+        PRINT N'This data will be imported automatically'
+        UPDATE DONNHAP
+        SET TONGTIEN = 0
+        FROM inserted
+        WHERE DONNHAP.MADN = inserted.MADN
+    END
+
+    IF(SELECT TRANGTHAI FROM inserted) = N'Đã hủy'
+    BEGIN
+        PRINT N'the addition failed!'
+        ROLLBACK TRAN
+    END
+END
+GO
+
+CREATE TRIGGER TRG_INSERT_CTDN
+    ON CTDN
+    FOR INSERT
+AS
+BEGIN
+    IF (SELECT THANHTIEN FROM inserted) != 0
+    BEGIN
+        PRINT N'This data will be imported automatically'
+    END
+
+    UPDATE CTDN
+    SET THANHTIEN = inserted.SOLUONG * GIANHAP
+    FROM CTDN C, SANPHAM S, inserted 
+    WHERE C.MADN = inserted.MADN
+    AND C.MASP = inserted.MASP
+    AND C.MASP = S.MASP
+
+    UPDATE DONNHAP
+    SET TONGTIEN = TONGTIEN + inserted.THANHTIEN
+    FROM DONNHAP P, inserted
+    WHERE P.MADN = inserted.MADN
+
+    IF(SELECT TRANGTHAI FROM inserted JOIN DONNHAP ON DONNHAP.MADN = inserted.MADN) = N'Đã nhận'
+    BEGIN
+        UPDATE SANPHAM 
+        SET TONKHO = TONKHO + inserted.SOLUONG
+        FROM SANPHAM S, inserted
+        WHERE S.MASP = inserted.MASP
+    END
+END
+GO
+
+CREATE TRIGGER TRG_INSERT_DONGIAO
+    ON DONGIAO
+    FOR INSERT
+AS
+BEGIN    
+    DECLARE @result VARCHAR(10) 
+    EXEC pc_TimMaTiepTheo 'DONGIAO', @result OUT
+
+    UPDATE DONGIAO
+    SET MADG = @result
+    FROM DONGIAO JOIN inserted
+    ON DONGIAO.MADG = inserted.MADG
+
+    IF(SELECT TRANGTHAI FROM inserted) = 'Đã hủy'
+    BEGIN
+        PRINT N'the addition failed!'
+        ROLLBACK TRAN
+    END
+
+    IF (SELECT TRIGIA FROM inserted) != 0
+    BEGIN
+        PRINT N'This data will be imported automatically'
+        UPDATE DONGIAO
+        SET TRIGIA = 0
+        FROM inserted
+        WHERE DONGIAO.MADG = inserted.MADG
+    END
+END
+GO
+
+CREATE TRIGGER TRG_INSERT_CTDG
+    ON CTDG
+    FOR INSERT
+AS
+BEGIN
+    IF(SELECT SANPHAM.TRANGTHAI FROM SANPHAM JOIN inserted ON SANPHAM.MASP = inserted.MASP) = N'Tạm ngưng'
+    BEGIN
+        PRINT N'Invalid product'
+        ROLLBACK TRAN
+    END
+
+    IF (SELECT TONKHO FROM inserted JOIN SANPHAM ON inserted.MASP = SANPHAM.MASP) < (SELECT SOLUONG FROM inserted)
+    BEGIN
+        PRINT N'Insufficient quantity of inventory exists'
+        ROLLBACK TRAN
+    END
+
+    IF (SELECT THANHTIEN FROM inserted) != 0
+    BEGIN
+        PRINT N'This data will be imported automatically'
+    END
+    
+    UPDATE CTDG
+    SET THANHTIEN = inserted.SOLUONG * GIABAN
+    FROM CTDG C, SANPHAM S, inserted
+    WHERE C.MADG = inserted.MADG
+    AND C.MASP = inserted.MASP
+    AND C.MASP = S.MASP
+
+    UPDATE DONGIAO
+    SET TRIGIA = TRIGIA + inserted.THANHTIEN
+    FROM DONGIAO P, inserted
+    WHERE P.MADG = inserted.MADG
+
+    UPDATE SANPHAM 
+    SET TONKHO = TONKHO - C.SOLUONG
+    FROM SANPHAM S JOIN CTDG C
+    ON S.MASP = C.MASP
+    JOIN inserted
+    ON C.MADG = inserted.MADG
+END
+GO
+
+CREATE TRIGGER TRG_UPDATE_DONNHAP
+    ON DONNHAP
+    FOR UPDATE
+AS
+BEGIN
+    IF EXISTS (
+        SELECT * FROM inserted JOIN deleted
+        ON inserted.TONGTIEN != deleted.TONGTIEN
+        AND inserted.TONGTIEN != (
+                SELECT SUM(THANHTIEN) FROM CTDN
+                WHERE CTDN.MADN = inserted.MADN
+        ))
+    BEGIN
+        PRINT N'This data cannot be changed'
+        ROLLBACK TRAN
+    END
+
+    IF (SELECT TRANGTHAI FROM deleted) != N'Đã đặt'
+    BEGIN
+        PRINT N'Update failed!'
+        ROLLBACK TRAN
+    END
+
+    IF(SELECT inserted.TRANGTHAI FROM deleted, inserted WHERE inserted.TRANGTHAI != deleted.TRANGTHAI) = N'Đã nhận'
+    BEGIN
+        UPDATE SANPHAM 
+        SET TONKHO = TONKHO + SOLUONG
+        FROM inserted, CTDN
+        WHERE CTDN.MADN = inserted.MADN
+        AND CTDN.MASP = SANPHAM.MASP
+    END
+END
+GO
+
+CREATE TRIGGER TRG_UPDATE_CTDN
+    ON CTDN
+    FOR UPDATE
+AS
+BEGIN
+    IF (SELECT TRANGTHAI FROM deleted JOIN DONNHAP ON DONNHAP.MADN = deleted.MADN) != N'Đã đặt'
+    BEGIN
+        PRINT N'Update failed!'
+        ROLLBACK TRAN
+    END
+
+    IF EXISTS (
+        SELECT * FROM inserted, deleted, SANPHAM
+        WHERE inserted.THANHTIEN != deleted.THANHTIEN
+        AND inserted.MASP = SANPHAM.MASP
+        AND inserted.THANHTIEN != inserted.SOLUONG * GIANHAP)
+    BEGIN
+        PRINT N'This data cannot be changed'
+        ROLLBACK TRAN
+    END
+
+    IF EXISTS (
+        SELECT * FROM inserted, deleted
+        WHERE inserted.SOLUONG != deleted.SOLUONG
+        )
+    BEGIN
+        UPDATE CTDN
+        SET THANHTIEN = inserted.SOLUONG * GIANHAP
+        FROM SANPHAM, inserted
+        WHERE CTDN.MASP = SANPHAM.MASP
+        AND CTDN.MADN = inserted.MADN
+        AND CTDN.MASP = inserted.MASP
+
+        UPDATE DONNHAP
+        SET TONGTIEN = TONGTIEN - deleted.THANHTIEN + inserted.THANHTIEN
+        FROM inserted, deleted
+    END
+END
+GO
+
+CREATE TRIGGER TRG_UPDATE_DONGIAO
+    ON  DONGIAO 
+    AFTER UPDATE
+AS
+BEGIN
+    IF EXISTS (
+            SELECT * FROM inserted JOIN deleted
+            ON inserted.TRIGIA != deleted.TRIGIA
+            AND inserted.TRIGIA != (
+                  SELECT SUM(THANHTIEN) FROM CTDG
+                  WHERE CTDG.MADG = inserted.MADG
+            ))
+    BEGIN
+            PRINT N'This data cannot be changed'
+            ROLLBACK TRAN
+    END
+
+    IF EXISTS (
+        SELECT inserted.TRANGTHAI FROM deleted JOIN inserted 
+        ON (deleted.TRANGTHAI = N'Đã hủy' AND inserted.TRANGTHAI != N'Đã hủy') 
+        OR (deleted.TRANGTHAI = N'Đã giao' AND inserted.TRANGTHAI != N'Đã giao'))
+    BEGIN
+        PRINT N'This data cannot be changed'
+        ROLLBACK TRAN
+    END
+
+    IF EXISTS (
+        SELECT inserted.TRANGTHAI FROM deleted JOIN inserted 
+        ON (deleted.TRANGTHAI != N'Đã hủy' AND inserted.TRANGTHAI = N'Đã hủy')
+        )
+    BEGIN
+        UPDATE SANPHAM 
+        SET TONKHO = TONKHO + SOLUONG
+        FROM inserted, CTDG
+        WHERE inserted.MADG = CTDG.MADG
+        AND CTDG.MASP = SANPHAM.MASP
+    END
+END
+GO
+CREATE TRIGGER TRG_UPDATE_CTDG
+    ON CTDG
+    FOR UPDATE
+AS
+BEGIN
+    IF (SELECT TRANGTHAI FROM deleted JOIN DONGIAO ON DONGIAO.MADG = deleted.MADG) != N'Đang chuẩn bị'
+    BEGIN
+        PRINT N'Update failed!'
+        ROLLBACK TRAN
+    END
+
+    IF EXISTS (
+        SELECT * FROM inserted JOIN deleted
+        ON inserted.THANHTIEN != deleted.THANHTIEN
+        JOIN SANPHAM
+        ON inserted.MASP = SANPHAM.MASP
+        AND inserted.THANHTIEN != inserted.SOLUONG * GIABAN)
+    BEGIN
+        PRINT N'This data cannot be changed'
+        ROLLBACK TRAN
+    END
+
+    IF(SELECT SANPHAM.TRANGTHAI FROM SANPHAM JOIN inserted ON SANPHAM.MASP = inserted.MASP) = N'Tạm ngưng'
+    BEGIN
+        PRINT N'Invalid product'
+        ROLLBACK TRAN
+    END
+
+    IF EXISTS (
+        SELECT * FROM inserted, deleted
+        WHERE inserted.SOLUONG != deleted.SOLUONG
+        )
+    BEGIN
+        UPDATE CTDN
+        SET THANHTIEN = SOLUONG * GIABAN
+        FROM SANPHAM
+        WHERE CTDN.MASP = SANPHAM.MASP
+
+        UPDATE SANPHAM
+        SET TONKHO = TONKHO - deleted.SOLUONG + inserted.SOLUONG
+        FROM deleted, inserted, SANPHAM
+        WHERE SANPHAM.MASP = inserted.MASP
+    END
+END
+GO
+CREATE TRIGGER TRG_DELETE_DONNHAP
+    ON DONNHAP
+    INSTEAD OF DELETE
+AS
+BEGIN
+    IF(SELECT TRANGTHAI FROM deleted) = N'Đã hủy'
+    BEGIN
+        IF EXISTS (SELECT * FROM deleted WHERE MADN IN (SELECT MADN FROM CTDN))
+        BEGIN
+            DELETE CTDN
+            WHERE MADN = (SELECT MADN FROM deleted)
+        END
+        
+        DELETE DONNHAP 
+        WHERE MADN = (SELECT MADN FROM deleted)
+    END
+    ELSE
+    BEGIN
+        ROLLBACK TRAN
+    END
+END
+GO
+CREATE TRIGGER TRG_DELETE_CTDN
+    ON CTDN
+    FOR DELETE
+AS
+BEGIN
+    IF(SELECT TRANGTHAI FROM DONNHAP, deleted WHERE DONNHAP.MADN = deleted.MADN)!= N'Đã đặt'
+    BEGIN
+        PRINT N'Deletion failed'
+        ROLLBACK TRAN
+    END
+
+    UPDATE DONNHAP
+    SET TONGTIEN = TONGTIEN - deleted.THANHTIEN
+    FROM DONNHAP JOIN deleted
+    ON DONNHAP.MADN = deleted.MADN
+END
+GO
+
+CREATE TRIGGER TRG_DELETE_DONGIAO
+    ON DONGIAO
+    INSTEAD OF DELETE
+AS
+BEGIN
+    IF(SELECT TRANGTHAI FROM deleted) = N'Đã hủy'
+    BEGIN
+        IF EXISTS (SELECT * FROM deleted WHERE MADG IN (SELECT MADG FROM CTDG))
+        BEGIN
+            DELETE CTDG
+            WHERE MADG = (SELECT MADG FROM deleted)
+        END
+        
+        DELETE DONGIAO
+        WHERE MADG = (SELECT MADG FROM deleted)
+    END
+    ELSE
+    BEGIN
+        ROLLBACK TRAN
+    END
+END
+GO
+CREATE TRIGGER TRG_DELETE_CTDG
+    ON CTDG
+    FOR DELETE
+AS
+BEGIN
+    IF(SELECT TRANGTHAI FROM DONGIAO, deleted WHERE DONGIAO.MADG = deleted.MADG)!= N'Đang chuẩn bị'
+    BEGIN
+        PRINT N'Deletion failed'
+        ROLLBACK TRAN
+    END
+
+    UPDATE DONGIAO
+    SET TRIGIA = TRIGIA - deleted.THANHTIEN
+    FROM DONGIAO JOIN deleted
+    ON DONGIAO.MADG = deleted.MADG
+
+    UPDATE SANPHAM
+    SET TONKHO = TONKHO + deleted.SOLUONG
+    FROM SANPHAM JOIN deleted
+    ON SANPHAM.MASP = deleted.MASP
+END
+GO
+
+---------------------
