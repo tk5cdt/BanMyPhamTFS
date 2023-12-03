@@ -18,6 +18,8 @@ mono_crash.*
 
 # Build results
 [Dd]ebug/
+![Dd]ebug/ckfinder.dll
+![Dd]ebug/ckfinder.pdb
 [Dd]ebugPublic/
 [Rr]elease/
 [Rr]eleases/
@@ -396,3 +398,15 @@ FodyWeavers.xsd
 
 # JetBrains Rider
 *.sln.iml
+
+
+TheFaceShop\TheFaceShop\Areas\Admin\Assets\*
+!TheFaceShop\TheFaceShop\Areas\Admin\Assets\**\
+TheFaceShop\TheFaceShop\Areas\Admin\Assets\ckfinder\bin\Debug
+!TheFaceShop\TheFaceShop\Areas\Admin\Assets\ckfinder\bin\Debug\**\
+TheFaceShop\TheFaceShop\Areas\Admin\Assets\ckfinder\bin\Release
+!TheFaceShop\TheFaceShop\Areas\Admin\Assets\ckfinder\bin\Release\**\
+TheFaceShop\TheFaceShop\Areas\Admin\Assets\ckfinder\bin\ckfinder.dll
+!TheFaceShop\TheFaceShop\Areas\Admin\Assets\ckfinder\bin\ckfinder.dll
+TheFaceShop\TheFaceShop\Areas\Admin\Assets\ckfinder\bin\ckfinder.pdb
+!TheFaceShop\TheFaceShop\Areas\Admin\Assets\ckfinder\bin\ckfinder.pdb
