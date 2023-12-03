@@ -1,3 +1,6 @@
+USE QL_THEFACESHOP
+go
+
 CREATE PROC sp_InsertLoai
     @tenloai NVARCHAR(30)
 AS

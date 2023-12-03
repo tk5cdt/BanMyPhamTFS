@@ -1,4 +1,5 @@
 USE QL_THEFACESHOP
+go
 -- insert khách hàng
 exec sp_InsertKhachHang N'Nguyễn Ngọc Mai', '0123456789'
 exec sp_InsertKhachHang N'Nguyễn Kiều Quỳnh Trang', '0397661332'
