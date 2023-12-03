@@ -13,15 +13,5 @@ namespace TheFaceShop.Areas.Admin.Controllers
         {
             return View();
         }
-
-        public ActionResult ShowProduct()
-        {
-            return View();
-        }
-
-        public ActionResult ShowProduct()
-        {
-            return View();
-        }
     }
 }

@@ -3,7 +3,6 @@ go
 ALTER database QL_THEFACESHOP set single_user with rollback immediate
 
 drop database QL_THEFACESHOP
-go
 ------------------------------------------------------------------------------------------------------------------
 
 CREATE DATABASE QL_THEFACESHOP

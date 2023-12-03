@@ -1,4 +1,4 @@
-USE QL_THEFACESHOP
+
 -- DATA for CACMIEN
 INSERT INTO CACMIEN (id,name,name_en,code_name,code_name_en) VALUES
 	 (1,N'Đông Bắc Bộ',N'Northeast',N'dong_bac_bo',N'northest'),
