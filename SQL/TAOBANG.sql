@@ -45,7 +45,8 @@ CREATE TABLE NHANVIEN
 	MANV		VARCHAR(10) DEFAULT 'NV000' NOT NULL,
 	TENNV		NVARCHAR(50) UNIQUE ,
 	GIOITINH	NVARCHAR(10) CHECK (GIOITINH IN (N'Nam', N'Nữ')),
-	SDT			CHAR(10)
+	SDT			CHAR(10) UNIQUE,
+	MATKHAU		NCHAR(20) NOT NULL,
 
 	CONSTRAINT PK_NV PRIMARY KEY (MANV)
 )
@@ -53,8 +54,8 @@ CREATE TABLE NHANVIEN
 CREATE TABLE KHACHHANG
 (
 	MAKH	VARCHAR(10) DEFAULT 'KH000' NOT NULL,
-	TENKH	NVARCHAR(50) UNIQUE ,
-	SDT		CHAR(10)
+	TENKH	NVARCHAR(50),
+	SDT		CHAR(10)    UNIQUE,
 
 	CONSTRAINT PK_KH PRIMARY KEY (MAKH),
 )
@@ -69,7 +70,7 @@ CREATE TABLE SANPHAM
 	MADBC		VARCHAR(10) NOT NULL,
 	MAQCDG		VARCHAR(10) NOT NULL,
     ANHDAIDIEN  VARCHAR(100),
-	NOIDUNG		TEXT,
+	NOIDUNG		NVARCHAR(MAX),
 	CONGDUNG	NVARCHAR(MAX),
     TONGDANHGIA FLOAT DEFAULT 0,
 	TONKHO      INT DEFAULT 0,
@@ -483,11 +484,12 @@ GO
 CREATE PROC sp_InsertNhanVien
     @ten NVARCHAR(50),
     @gioitinh NVARCHAR(10),
-    @sdt CHAR(10)
+    @sdt CHAR(10),
+	@mk nchar(20)
 AS
 BEGIN
-    INSERT INTO NHANVIEN(TENNV, GIOITINH, SDT)
-    VALUES(@ten, @gioitinh, @sdt)
+    INSERT INTO NHANVIEN(TENNV, GIOITINH, SDT, MATKHAU)
+    VALUES(@ten, @gioitinh, @sdt, @mk)
 END
 GO
 
@@ -568,7 +570,7 @@ CREATE PROC pc_InsertSanPham
     @gianhap     INT,
 	@dangbaoche  NVARCHAR(10),
 	@qcdonggoi   NVARCHAR(20),
-	@noidung	 TEXT,
+	@noidung	 NVARCHAR(MAX),
 	@congdung	 NVARCHAR(MAX),
 	@tonkho		 INT
 AS 
@@ -578,7 +580,40 @@ BEGIN
 END
 GO
 
-------------------
+------------------TRIGGER
+CREATE TRIGGER TRG_INSERT_SANPHAM
+      ON SANPHAM
+      FOR INSERT
+AS
+BEGIN
+    DECLARE @result VARCHAR(10) 
+    EXEC pc_TimMaTiepTheo 'SANPHAM', @result OUT
+
+    UPDATE SANPHAM
+    SET MASP = @result
+    FROM SANPHAM JOIN inserted
+    ON SANPHAM.MASP = inserted.MASP
+
+    IF (SELECT TONGDANHGIA FROM inserted) != 0
+      BEGIN
+            PRINT N'This data will be imported automatically'
+            UPDATE SANPHAM
+            SET TONGDANHGIA = 0
+            FROM inserted
+            WHERE SANPHAM.MASP = inserted.MASP
+      END
+
+    IF (SELECT TONKHO FROM inserted) != 0
+      BEGIN
+            PRINT N'This data will be imported automatically'
+            UPDATE SANPHAM
+            SET TONKHO = 0
+            FROM inserted
+            WHERE SANPHAM.MASP = inserted.MASP
+      END
+END
+GO
+
 
 CREATE TRIGGER TRG_INSERT_LOAI
     ON LOAI
