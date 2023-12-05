@@ -1,0 +1,74 @@
+﻿@model TheFaceShop.Models.SANPHAM
+
+@{
+    ViewBag.Title = "Sản phẩm";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="bg-white rounded p-3">
+    <div class="row">
+        <div class="col">
+            <a href="~/Admin/SanPham/ShowProduct" class="d-inline-block"><i class="far fa-list-alt" style="color: black; margin-left:10px"></i></a>
+            <a href="@Url.Action("UpdateProduct", "SanPham", new { ma = Model.MASP })" class="d-inline-block"><i class="far fa-edit" style="color: black"></i></a>
+        </div>       
+    </div>
+    <div class="row">
+        <div class="col-md-5">
+            <img src="~/HinhAnhSP/@Model.ANHDAIDIEN" width="100%" height="100%" alt="" />
+            @*<img src="https://mdbootstrap.com/img/new/avatars/8.jpg" width="100%" alt="" />*@
+        </div>
+        <div class="col-md-7">
+            <table class="table table-borderless" style="text-align:left; width: 500px">
+                <tr>
+                    <td class="col-sm-4">Tên sản phẩm: </td>
+                    <td class="col-sm-8">@Model.TENSP</td>
+                </tr>
+                <tr>
+                    <td>Giá bán:</td>
+                    <td>@Model.GIABAN</td>
+                </tr>
+                <tr>
+                    <td>Giá nhập:</td>
+                    <td>@Model.GIANHAP</td>
+                </tr>
+                <tr>
+                    <td>Loại:</td>
+                    <td>@Model.CHITIETLOAISP.CHITIETLOAI.LOAI.TENLOAI</td>
+                </tr>
+                <tr>
+                    <td>Dạng bào chế:</td>
+                    <td>@Model.DANGBAOCHE.TENDANG</td>
+                </tr>
+                <tr>
+                    <td>Quy cách đóng gói:</td>
+                    <td>@Model.QUYCACHDONGGOI.TENQCDG</td>
+                </tr>
+                <tr>
+                    <td>Thành phần:</td>
+                    <td>
+                        @foreach (var item in Model.THANHPHANs)
+                        {
+                            <p>@item.TENTP</p>
+                        }
+                    </td>
+                </tr>
+                <tr>
+                    <td>Công dụng:</td>
+                    <td>@Model.CONGDUNG</td>
+                </tr>
+                <tr>
+                    <td>Tồn kho:</td>
+                    <td>@Model.TONKHO</td>
+                </tr>
+                <tr>
+                    <td>Trạng thái:</td>
+                    <td>@Model.TRANGTHAI</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div class="row py-3">
+        <div class="col-sm-2 px-3 h5" style="font-weight: bold">Giới thiệu</div>
+        <div class="col-sm-10" style="text-align: justify; text-justify: inter-word;">@Html.Raw(@Model.NOIDUNG)</div>
+    </div>
+</div>

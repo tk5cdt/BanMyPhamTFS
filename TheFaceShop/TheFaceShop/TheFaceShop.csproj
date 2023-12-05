@@ -1082,7 +1082,7 @@
     <Content Include="Areas\Admin\Assets\ckfinder\skins\v1\skin.js" />
     <Content Include="Areas\Admin\Assets\ckfinder\skins\v1\uipanel.css" />
     <Content Include="Areas\Admin\Assets\css\style.css" />
-    <Content Include="Areas\Admin\Assets\js\image.js" />
+    <Content Include="Areas\Admin\Assets\js\sanpham.js" />
     <Content Include="Global.asax" />
     <Content Include="Models\QL_TFS.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -1219,6 +1219,9 @@
     <Content Include="Areas\Admin\Assets\ckeditor\samples\toolbarconfigurator\font\fontello.woff" />
     <Content Include="Areas\Admin\Assets\ckeditor\samples\toolbarconfigurator\lib\codemirror\LICENSE" />
     <Content Include="Areas\Admin\Assets\ckeditor\skins\moono-lisa\readme.md" />
+    <Content Include="Areas\Admin\Views\SanPham\ShowProduct.cshtml" />
+    <Content Include="Areas\Admin\Views\SanPham\XemChiTietSP.cshtml" />
+    <Content Include="Areas\Admin\Views\SanPham\UpdateProduct.cshtml" />
     <None Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -1231,6 +1234,7 @@
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Data\" />
     <Folder Include="Controllers\" />
+    <Folder Include="HinhAnhSP\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

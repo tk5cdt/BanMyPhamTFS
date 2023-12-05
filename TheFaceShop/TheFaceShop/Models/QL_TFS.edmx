@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="QL_THEFACESHOPModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="QL_THEFACESHOPModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="CACMIEN">
           <Key>
             <PropertyRef Name="id" />
@@ -223,11 +223,11 @@
         <EntityType Name="THANHPHAN">
           <Key>
             <PropertyRef Name="MASP" />
-            <PropertyRef Name="THANHPHAN" />
+            <PropertyRef Name="TENTP" />
           </Key>
           <Property Name="MASP" Type="varchar" MaxLength="10" Nullable="false" />
-          <Property Name="THANHPHAN" Type="nvarchar" MaxLength="30" Nullable="false" />
-          <Property Name="HAMLUONG" Type="nvarchar" MaxLength="10" />
+          <Property Name="TENTP" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="HAMLUONG" Type="nvarchar" MaxLength="30" />
         </EntityType>
         <EntityType Name="TINHTHANH">
           <Key>
@@ -482,18 +482,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_THANHPHAN_SANPHAM">
-          <End Role="SANPHAM" Type="Self.SANPHAM" Multiplicity="1" />
-          <End Role="THANHPHAN" Type="Self.THANHPHAN" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="SANPHAM">
-              <PropertyRef Name="MASP" />
-            </Principal>
-            <Dependent Role="THANHPHAN">
-              <PropertyRef Name="MASP" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="PHUONGXA_administrative_unit_id_fkey">
           <End Role="DONVIHANHCHINH" Type="Self.DONVIHANHCHINH" Multiplicity="0..1" />
           <End Role="PHUONGXA" Type="Self.PHUONGXA" Multiplicity="*" />
@@ -736,10 +724,6 @@
             <End Role="QUYCACHDONGGOI" EntitySet="QUYCACHDONGGOI" />
             <End Role="SANPHAM" EntitySet="SANPHAM" />
           </AssociationSet>
-          <AssociationSet Name="FK_THANHPHAN_SANPHAM" Association="Self.FK_THANHPHAN_SANPHAM">
-            <End Role="SANPHAM" EntitySet="SANPHAM" />
-            <End Role="THANHPHAN" EntitySet="THANHPHAN" />
-          </AssociationSet>
           <AssociationSet Name="PHUONGXA_administrative_unit_id_fkey" Association="Self.PHUONGXA_administrative_unit_id_fkey">
             <End Role="DONVIHANHCHINH" EntitySet="DONVIHANHCHINH" />
             <End Role="PHUONGXA" EntitySet="PHUONGXA" />
@@ -765,8 +749,7 @@
             <End Role="TINHTHANH" EntitySet="TINHTHANH" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="QL_THEFACESHOPModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -1018,12 +1001,12 @@
         <EntityType Name="THANHPHAN">
           <Key>
             <PropertyRef Name="MASP" />
-            <PropertyRef Name="THANHPHAN1" />
+            <PropertyRef Name="TENTP" />
           </Key>
           <Property Name="MASP" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="THANHPHAN1" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="HAMLUONG" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="HAMLUONG" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="SANPHAM" Relationship="Self.FK_THANHPHAN_SANPHAM" FromRole="THANHPHAN" ToRole="SANPHAM" />
+          <Property Name="TENTP" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="TINHTHANH">
           <Key>
@@ -1498,14 +1481,14 @@
             <Parameter Name="trangthai" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="sp_InsertGioHang">
-            <Parameter Name="makh" Mode="In" Type="String" />
+          <Parameter Name="makh" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="sp_InsertKhachHang">
             <Parameter Name="ten" Mode="In" Type="String" />
             <Parameter Name="sdt" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="sp_InsertLoai">
-            <Parameter Name="tenloai" Mode="In" Type="String" />
+          <Parameter Name="tenloai" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="sp_InsertNhanVien">
             <Parameter Name="ten" Mode="In" Type="String" />
@@ -1739,8 +1722,8 @@
           <EntitySetMapping Name="THANHPHANs">
             <EntityTypeMapping TypeName="QL_THEFACESHOPModel.THANHPHAN">
               <MappingFragment StoreEntitySet="THANHPHAN">
+                <ScalarProperty Name="TENTP" ColumnName="TENTP" />
                 <ScalarProperty Name="MASP" ColumnName="MASP" />
-                <ScalarProperty Name="THANHPHAN1" ColumnName="THANHPHAN" />
                 <ScalarProperty Name="HAMLUONG" ColumnName="HAMLUONG" />
               </MappingFragment>
             </EntityTypeMapping>
