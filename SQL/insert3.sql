@@ -500,7 +500,6 @@ go
 
 
 
-go
 INSERT INTO THANHPHAN( MASP, TENTP, HAMLUONG) VALUES( 'SP001', N'Dr.Belmeur Cica Peptite Ampoule, Chiết xuất rau má', N'30ml')
 INSERT INTO THANHPHAN( MASP, TENTP, HAMLUONG) VALUES( 'SP002', N'Thành phần chính của kem lót TFS là từ Cotton Seed', N'100ml')
 INSERT INTO THANHPHAN( MASP, TENTP, HAMLUONG) VALUES( 'SP003', N'Antioxidants, chiết xuất từ quả việt quất, quả nho, rau lá có màu xanh đậm, cá', N'10g')
