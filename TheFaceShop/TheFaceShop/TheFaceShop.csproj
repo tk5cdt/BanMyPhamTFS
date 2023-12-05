@@ -1,4 +1,5 @@
-﻿<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -1084,6 +1085,9 @@
     <Content Include="Areas\Admin\Assets\css\DangNhap.css" />
     <Content Include="Areas\Admin\Assets\css\style.css" />
     <Content Include="Areas\Admin\Assets\js\sanpham.js" />
+    <Content Include="Content\css\SlideShow.css" />
+    <Content Include="Content\css\view.css" />
+    <Content Include="Content\css\viewLayoutPage.css" />
     <Content Include="Global.asax" />
     <Content Include="Models\QL_TFS.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -1106,6 +1110,9 @@
     <Compile Include="Areas\Admin\Controllers\DonGiaoController.cs" />
     <Compile Include="Areas\Admin\Controllers\DonNhapController.cs" />
     <Compile Include="Areas\Admin\Controllers\SanPhamController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LoaiSanPhamController.cs" />
+    <Compile Include="Controllers\PartialController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -1229,6 +1236,11 @@
     <Content Include="Areas\Admin\Views\DonGiao\DanhSachDonGiao.cshtml" />
     <Content Include="Areas\Admin\Views\DonGiao\ChiTietDonGiao.cshtml" />
     <None Include="packages.config" />
+    <Content Include="Views\Shared\AccountLayoutPage.cshtml" />
+    <Content Include="Views\LoaiSanPham\DanhMuc.cshtml" />
+    <Content Include="Views\Partial\SanPhamNoiBat_Home.cshtml" />
+    <Content Include="Views\Partial\DanhMucLoaiSP_Home.cshtml" />
+    <Content Include="Views\Home\TrangChu.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -1239,7 +1251,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Data\" />
-    <Folder Include="Controllers\" />
     <Folder Include="HinhAnhSP\" />
   </ItemGroup>
   <ItemGroup>

@@ -1,0 +1,42 @@
+﻿@model IEnumerable<TheFaceShop.Models.SANPHAM>
+
+@{
+    int count = 0;
+    foreach (var item in Model)
+    {
+        count++;
+        if (count > 5)
+        {
+            break;
+        }
+        else
+        {
+            <div class="col d-flex align-items-stretch justify-content-center">
+                <div class="card" style="display: flex; text-align: center;">
+                    <img src="https://image.hsv-tech.io/0x1387/tfs/common/df833862-96d7-427c-909b-6e4a212e9548.webp"
+                         class="card-img-top" alt="Hollywood Sign on The Hill" />
+                    <div class="card-body ">
+                        @if (item.TENSP.Length <= 50)
+                        {
+                            <h6 class="card-title text-capitalize">@item.TENSP</h6>
+                        }
+                        else
+                        {
+                            <h6 class="card-title text-capitalize">@item.TENSP.Substring(0, 50)...</h6>
+                        }
+
+                        <p class="card-text fw-bold">
+                            @String.Format("{0:n0}", item.GIABAN)đ
+                        </p>
+                        <p class="card-text">
+                        <p><i class="fas fa-star" style="color: #000000;"></i> @item.TONGDANHGIA/5</p>
+                        </p>
+                        <div class="d-grid mx-auto mb-20">
+                            <button type="button" class="btn btn-outline-success rounded-pill">Xem chi tiết</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    }
+}
