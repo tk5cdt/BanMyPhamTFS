@@ -1,4 +1,4 @@
-﻿<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -1081,6 +1081,7 @@
     <Content Include="Areas\Admin\Assets\ckfinder\skins\v1\richcombo.css" />
     <Content Include="Areas\Admin\Assets\ckfinder\skins\v1\skin.js" />
     <Content Include="Areas\Admin\Assets\ckfinder\skins\v1\uipanel.css" />
+    <Content Include="Areas\Admin\Assets\css\DangNhap.css" />
     <Content Include="Areas\Admin\Assets\css\style.css" />
     <Content Include="Areas\Admin\Assets\js\sanpham.js" />
     <Content Include="Global.asax" />
@@ -1100,6 +1101,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\AccountController.cs" />
     <Compile Include="Areas\Admin\Controllers\AdminController.cs" />
     <Compile Include="Areas\Admin\Controllers\DonNhapController.cs" />
     <Compile Include="Areas\Admin\Controllers\SanPhamController.cs" />
@@ -1222,6 +1224,7 @@
     <Content Include="Areas\Admin\Views\SanPham\ShowProduct.cshtml" />
     <Content Include="Areas\Admin\Views\SanPham\XemChiTietSP.cshtml" />
     <Content Include="Areas\Admin\Views\SanPham\UpdateProduct.cshtml" />
+    <Content Include="Areas\Admin\Views\Account\DangNhap.cshtml" />
     <None Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
