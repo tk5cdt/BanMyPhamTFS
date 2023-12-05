@@ -179,6 +179,7 @@ INSERT INTO QUYCACHDONGGOI (MAQCDG, TENQCDG) VALUES ('QCDG006', N'Thỏi')
 INSERT INTO QUYCACHDONGGOI (MAQCDG, TENQCDG) VALUES ('QCDG007', N'Hộp')
 INSERT INTO QUYCACHDONGGOI (MAQCDG, TENQCDG) VALUES ('QCDG008', N'Cây')
 go
+
 EXEC pc_InsertSanPham N'Kem Lót Air Cotton Make Up Base The Face Shop', 'CTLSP002', 599000, 550000, 'DBC003', 'QCDG005',
 N'Công dụng của Kem Lót TFS AIR COTTON MAKE UP BASE
 Kem lót hỗ trợ khả năng chống nắng bảo vệ da, tạo 1 lớp nền bảo vệ cực mỏng, đồng thời hiệu chỉnh tông màu da giúp cho bạn sở hữu làn da sáng mịn như da em bé ngay sau khi trang điểm.
@@ -341,54 +342,147 @@ EXEC pc_InsertSanPham N'Tinh Chất Làm Sáng Da Dr.Belmeur Vita Serine Tone Sm
 N'Một trong những nguyên nhân khiến làn da sạm màu chính là ánh nắng mặt trời. Tia UV có thể xuyên sâu vào lớp tế bào da, kích thích làm tăng sắc tố melanin từ đó hình thành các hắc tố đen trên bề mặt da hay còn gọi là đốm nâu. Ngoài ra ánh nắng cũng làm độ ẩm trong da bị thất thoát, lớp màng bảo vệ da bị phá vỡ khiến da trở nên khô ráp.
 Và để bảo vệ làn da, bạn cần phải che chắn và chống nắng cho da, ngăn ngừa tia UV xâm nhập vào da. Đồng thời phải cân bằng độ ẩm giúp cân bằng và giữ vững lớp màng ẩm phản xạ lại ánh sáng giúp làn da sáng mịn và rạng rỡ.', 
 N'Dưỡng trắng, sáng da', 92
-go
---EXEC pc_InsertSanPham N'', 'CTLSP025', 169000, 160000, 'DBC005', 'QCDG008', N'', N'', 41
---EXEC pc_InsertSanPham N'', 'CTLSP026', 169000, 160000, 'DBC005', 'QCDG008', N'', N'', 120
---EXEC pc_InsertSanPham N'', 'CTLSP027', 169000, 160000, 'DBC005', 'QCDG008', N'', N'', 23
---EXEC pc_InsertSanPham N'', 'CTLSP028', 169000, 160000, 'DBC005', 'QCDG008', N'', N'', 54
---EXEC pc_InsertSanPham N'', 'CTLSP029', 169000, 160000, 'DBC005', 'QCDG008', N'', N'', 64
---EXEC pc_InsertSanPham N'', 'CTLSP030', 169000, 160000, 'DBC005', 'QCDG008', N'', N'', 34
---EXEC pc_InsertSanPham N'', 'CTLSP031', 169000, 160000, 'DBC005', 'QCDG008', N'', N'', 56
---EXEC pc_InsertSanPham N'', 'CTLSP032', 169000, 160000, 'DBC005', 'QCDG008', N'', N'', 32
---EXEC pc_InsertSanPham N'', 'CTLSP033', 169000, 160000, 'DBC005', 'QCDG008', N'', N'', 97
---EXEC pc_InsertSanPham N'', 'CTLSP034', 169000, 160000, 'DBC005', 'QCDG008', N'', N'', 56
---EXEC pc_InsertSanPham N'', 'CTLSP035', 169000, 160000, 'DBC005', 'QCDG008', N'', N'', 87
---EXEC pc_InsertSanPham N'', 'CTLSP036', 169000, 160000, 'DBC005', 'QCDG008', N'', N'', 45
---EXEC pc_InsertSanPham N'', 'CTLSP037', 169000, 160000, 'DBC005', 'QCDG008', N'', N'', 19
---EXEC pc_InsertSanPham N'', 'CTLSP038', 169000, 160000, 'DBC005', 'QCDG008', N'', N'', 56
---EXEC pc_InsertSanPham N'', 'CTLSP039', 169000, 160000, 'DBC005', 'QCDG008', N'', N'', 49
---EXEC pc_InsertSanPham N'', 'CTLSP040', 169000, 160000, 'DBC005', 'QCDG008', N'', N'', 26
---EXEC pc_InsertSanPham N'', 'CTLSP041', 169000, 160000, 'DBC005', 'QCDG008', N'', N'', 36
 
+EXEC pc_InsertSanPham N'Kem Dưỡng Mắt Chống Nhăn Dr.Belmeur Advanced Cica Eye Cream', 'CTLSP025', 899000, 860000, 'DBC003', 'QCDG005', 
+N'Thâm, bọng mắt là vấn đề mà nhiều người lao tâm khổ tứ và cách giải quyết cũng tốn khá nhiều thời gian. Kem dưỡng mắt Dr.Belmeur Advanced Cica Eye Cream có chiết xuất từ thành phần thiên nhiên cao cấp từ sáp ong, bơ hạt mỡ, rau má hỗ trợ làm mờ thâm, giúp da săn chắc, giảm nếp nhăn và vết chân chim hiệu quả. 
+Sản phẩm được Tiến sĩ Belmeur nghiên cứu và bào chế với công thức độc quyền, có kết cấu dạng kem mỏng nhẹ, thấm nhanh trên da, không gây bóng nhờn.', 
+N'Giảm quầng thâm, bọng mắt, xóa mờ nếp nhăn', 41
 
---EXEC pc_InsertSanPham N'Kem Mát Xa Làm Sáng Da The Face Shop', N'Kem lót', 599000, 550000, N'Kem', N'Hộp'
---EXEC pc_InsertSanPham N'Mặt Nạ Giấy Cung Cấp Nước THE FACE SHOP Real Nature', N'Kem lót', 429000, 380000, N'Rắn', N'Hộp 10 cái'
---EXEC pc_InsertSanPham N'Kem chống nắng đa năng TheFaceShop Natural SunEco Power LongLasting Sun CreamSPF50+', N'Kem lót', 599000, 550000, N'Kem', N'Tuýp 50g'
---EXEC pc_InsertSanPham N'Sản Phẩm Làm Sạch Da TheFaceShop Yehwadam Body Peeling', N'Kem lót', 269000, 230000, N'Gel', N'Lọ 30g'
---EXEC pc_InsertSanPham N'Tinh Chất Chống Lão Hóa Thefaceshop Energy Seed Antioxidant Hydro Serum', N'Kem lót', 599000, 550000, N'Dung dịch', N'Chai 35ml'
---EXEC pc_InsertSanPham N'Phấn Phủ Thefaceshop Oil Clear Smooth&Bright Pact Spf30 Pa++', N'Kem lót', 349000, 300000, N'Rắn', N'Hộp'
---EXEC pc_InsertSanPham N'Sữa Dưỡng Thể Hương Nước Hoa PERFUME SEED VELVET BODY MILK', N'Kem lót', 1290000, 1180000, N'Lotion', N'Chai 100ml'
---EXEC pc_InsertSanPham N'Sữa Rửa Mặt Làm Sáng Da THE FACE SHOP Rice Water Bright Cleansing Foam', N'Kem lót', 539000, 490000, N'Lotion', N'Tuýp 50g'
---EXEC pc_InsertSanPham N'Chì Chân Mày TheFaceShop Designing Eyebrow Pencil', N'Kem lót', 899000, 840000, N'Rắn', N'Hộp 1 cây'
---EXEC pc_InsertSanPham N'Sữa Dưỡng Giúp Da Săn Mịn TheFaceShop Pomegranate And Collagen Volume Lifting Emulsion', N'Kem lót', 599000, 550000, N'Lotion', N'Chai 35ml'
---EXEC pc_InsertSanPham N'Kem Dưỡng Ẩm Thuần Chay THE FACE SHOP The Therapy Vegan Moisture Blending Cream', N'Kem lót', 129000, 80000, N'Kem', N'Chai 35ml'
---EXEC pc_InsertSanPham N'Kem nâng tông tự nhiên SPF50+++', N'Kem lót', 299000, 250000, N'Kem', N'Tuýp 30g'
---EXEC pc_InsertSanPham N'Kem dưỡng ẩm tay Thuần chay Hương tự nhiên', N'Kem lót', 399000, 350000, N'Kem', N'Lọ 35ml'
---EXEC pc_InsertSanPham N'Dầu Tẩy Trang Làm Sáng Da Thefaceshop Rice Water Bright Light Facial Cleansing Oil', N'Kem lót', 389000, 340000, N'Lỏng', N'Chai 75ml'
---EXEC pc_InsertSanPham N'Tẩy Tế Bào Chết Mềm Mịn Da Hoa Gạo', N'Kem lót', 679000, 630000, N'Hổn dịch', N'Hộp 60g'
---EXEC pc_InsertSanPham N'Sản Phẩm Kem Dưỡng Da TheFaceShop Yehwadam Hwansaenggo Rejuvenating Radiance Cream', N'Kem lót', 729000, 680000, N'Kem', N'Lọ 65ml'
---EXEC pc_InsertSanPham N'Phấn Nước Hiệu Ứng Căng Bóng TheFaceShop Ink Lasting Cushion Glow SPF 35 PA++', N'Kem lót', 729000, 680000, N'Hỗn dịch', N'Hộp 30g'
---EXEC pc_InsertSanPham N'Nước Rửa Tay Làm Sáng Da Thefaceshop Rice Water Bright Light Facial Cleansing Oil', N'Kem lót', 359000, 310000, N'Gel', N'Chai 25ml'
---EXEC pc_InsertSanPham N'Kem Dưỡng Thuần Chay Chống Lão Hóa THE FACE SHOP The Therapy Vegan Blending Cream', N'Kem lót', 599000, 500000, N'Kem', N'Lọ 30g'
---EXEC pc_InsertSanPham N'Chì Kẻ Chân Mày Siêu Mảnh 1.5Mm Thefaceshop Brow Master Slim Pencil', N'Kem lót', 499000, 450000, N'Rắn', N'Hộp 1 cây'
---EXEC pc_InsertSanPham N'Sữa Dưỡng Da Chống Lão Hóa Thefaceshop Yehwadam Hwansaenggo Rejuvenating Radiance Emulsion', N'Kem lót', 699000, 650000, N'Gel', N'Lọ 100g'
---EXEC pc_InsertSanPham N'Sữa Dưỡng Sáng Trắng Da Thefaceshop Yehwadam Jeju Magnolia Pure Brightening Emulsion', N'Kem lót', 549000, 500000, N'Lotion', N'Lọ 50g'
---EXEC pc_InsertSanPham N'Má Hồng Sáng Da TheFaceShop Marble Beam Blush', N'Kem lót', 349000, 300000, N'Rắn', N'Hộp'
---EXEC pc_InsertSanPham N'Tinh Chất Dưỡng Thể Sáng Da VitaminC', N'Kem lót', 399000, 350000, N'Lỏng', N'Hộp 1 serum'
---EXEC pc_InsertSanPham N'Mặt Nạ Real Nature THE FACE SHOP', N'Kem lót', 399000, 350000, N'Gel', N'Hộp 10 cái'
---EXEC pc_InsertSanPham N'Màu Mắt Hiệu Ứng Tự Nhiên The Faceshop Mono Cube Eyeshadow (Matte)', N'Kem lót', 199000, 150000, N'Rắn', N'Hộp'
---EXEC pc_InsertSanPham N'Dưỡng ẩm làm dịu da chống lão hóa oxy hóa vitamin The Face Shop Yehwadam Artemisia Soothing', N'Kem lót', 399000, 350000, N'Kem', N'Chai 35ml'
---EXEC pc_InsertSanPham N'Tinh Chất Dưỡng Ẩm Thefaceshop', N'Kem lót', 629000, 580000, N'Gel', N'Chai 55ml'
+EXEC pc_InsertSanPham N'Kem Dưỡng Thuần Chay Chống Lão Hóa THE FACE SHOP The Therapy Vegan Blending Cream', 'CTLSP026', 1629000, 1600000, 'DBC001', 'QCDG004', 
+N'Nguyên liệu sinh thái xanh từ Thụy Sĩ như hoa nhung tuyết hữu co, cỏ xạ hương, hoa cúc. 100% công thức thuần chay được chứng nhận, Tất cả thành phần được chứng nhận EWG-safe. Không chứa 24 thành phần độc hại.', 
+N'Bổ sung độ ẩm cần thiết, cung cấp dưỡng chất', 120
+
+EXEC pc_InsertSanPham N'Bộ Dưỡng Thuần Chay Chống Lão Hóa Da THE FACE SHOP The Therapy Vegan Trial Kit', 'CTLSP027', 169000, 160000, 'DBC013', 'QCDG007', 
+N'Bộ dưỡng bao gồm 3 sản phẩm
+- Tinh chất chống lão hóa The Therapy Vegan Blending Serum 20ml x1
+- Nước cân bằng thuần chay The Therapy Vegan Blending Toner 32ml x1
+- Kem dưỡng ẩm thuần chay The Therapy Vegan Moisture Blending Cream 10ml x1', 
+N'Cải thiện nếp nhăn hiệu quả', 23
+
+EXEC pc_InsertSanPham N'Sữa Rửa Mặt Làm Sáng Da THE FACE SHOP Rice Water Bright Facial Foaming Cleanser', 'CTLSP028', 169000, 160000, 'DBC011', 'QCDG005', 
+N'Sữa Rửa Mặt Làm Sáng Da THEFACESHOP RICE WATER BRIGHT FACIAL FOAMING CLEANSER có khả năng làm sạch sâu trong lỗ chân lông, làm sạch bụi bẩn ô nhiễm trên bề mặt da. Độ ẩm được lưu giữ tối ưu sau khi rửa, giúp làn da trắng sáng và khỏe mạnh. 
+Ngoài ra, với kết cấu dạng kem mịn, dễ tạo bọt giúp tạo cảm giác trơn láng và mềm mịn sau khi rửa mặt.
+Sản phẩm sữa rửa mặt thích hợp với mọi loại da', 54
+
+EXEC pc_InsertSanPham N'Nước Tẩy Trang Dịu Nhẹ THE FACE SHOP Rice Water Bright Mild Cleansing Water', 'CTLSP029', 499000, 400000, 'DBC010', 'QCDG001', 
+N'Trung Quốc được chọn làm quốc gia thứ 3 chuyên gia công mỹ phẩm/ quần áo vì chi phí nhân công rẻ, dẫn tới chi phí đóng gói rẻ. Nhờ đó, khách hàng có cơ hội tận hưởng trọn chất lượng sản phẩm so với giá tiền. 
+Quy trình đóng gói này được THEFACESHOP kiểm soát nghiêm ngặt bởi nhãn hàng, với thành phần đến từ các quốc gia như Hàn Quốc, Trung Quốc chỉ đảm trách đóng gói sản phẩm, không quyết định thành phần, chất lượng sản phẩm này. ', 
+N'Tẩy trang', 64
+
+EXEC pc_InsertSanPham N'Tẩy Trang Mắt & Môi THE FACE SHOP Herb Day Lip&Eye Makeup Remover Waterproof', 'CTLSP030', 279000, 250000, 'DBC006', 'QCDG001', 
+N'Muốn có lớp Trang điểm thật đẹp thì phải cầu kỳ với nhiều lớp phấn son. Sau đó, Muốn có làn da sạch khỏe hoàn toàn thì phải chọn sản phẩm tẩy trang thật tốt. 
+Phải được chiết xuất từ thiên nhiên, an toàn cho cả vùng da nhạy cảm ở mắt và môi, phải tẩy sạch sâu mà không gây kích ứng. Đó chỉ có thể là Nước Tẩy Trang Mắt & Môi HERB DAY Lip&Eye Makeup Remover tại THEFACESHOP, 
+dòng sản phẩm Herb Day với các thành phần hoàn toàn từ thảo dược tự nhiên, có khả năng làm sạch và bảo vệ vùng da chung quanh mắt môi khỏe mạnh, tươi tắn sau khi phải chịu đựng với lớp makeup, son môi dày đặc mỗi ngày.
+Với các dưỡng chất từ Rau Sam, Cam thảo, hoa Oải Hương và Trà xanh…  có cơ chế làm sạch tự nhiên và an toàn cho mọi làn da, kể cả da nhạy cảm. Chúng gột sạch lớp phấn trang điểm cứng đầu, khó trôi trong nước đồng thời lấy đi bã nhờn và vi khuẩn tích tụ trên da.
+Song song đó, Nước tẩy trang Mắt & Môi HERB DAY Lip&Eye Makeup Remover cung cấp lượng lớn vitamin, khoáng chất cho vùng da sau khi làm sạch. Điều này giúp cho vùng da nhạy cảm ở mặt môi không bị kích ứng, tổn thương sau khi tẩy rửa. 
+Ngược lại, da sẽ được cấp ẩm làm mềm và tăng cường khả năng chịu đựng, phòng tránh sự chảy xệ cũng như cải thiện sắc da trắng mịn.', 
+N'Tẩy trang', 34
+
+EXEC pc_InsertSanPham N'Mặt Nạ Kỳ Trắng Sáng Da THE FACE SHOP Smart Peeling White Jewel', 'CTLSP031', 169000, 160000, 'DBC001', 'QCDG005', 
+N'Sống trong môi trường ô nhiễm, nhiều khói bụi làm da bạn thêm lão hóa nhanh, thiếu sức sống, và khả năng hấp thụ chất dinh dưỡng kém đi rất nhiều do các tế bào chết, bã nhờn tích tụ và các độc tố trên bề mặt da.
+Sở hữu một làn da trắng sáng, mịn màng luôn là mơ ước của hầu hết phái nữ. Để có được một làn da hoàn hảo, tươi trẻ thì tẩy da chết ngọc trai WHITE JEWEL PEELING chính là giải pháp mà bạn đừng quên bỏ qua bước tẩy tế bào chết.', 
+N'Tẩy tế bào chết', 56
+
+EXEC pc_InsertSanPham N'Lưới Tắm Daily Beauty Tools Wash Cloth', 'CTLSP032', 99000, 90000, 'DBC013', 'QCDG003', 
+N'Hướng dẫn sử dụng
+1. Làm ướt khăn, cho sữa tắm vào khăn và tạo bọt. Mát xa khăn khắp cơ thể.
+2. Sau khi sử dụng xong, xả sạch khăn và phơi khô.', N'dùng để làm sạch cơ thể.', 32
+
+EXEC pc_InsertSanPham N'Set 10 Mặt Nạ Giấy Cung Cấp Nước THE FACE SHOP Real Nature Aloe', 'CTLSP033', 399000, 390000, 'DBC009', 'QCDG003', 
+N'Nhiều chị em rất coi nhẹ việc dưỡng ẩm da. Đó là nguyên nhân khiến da trở nên nhạy cảm, dễ khô và hư tổn. 
+Vào thời điểm giao mùa, tiết trời chuyển giao có những biến đổi khác thường, nên làn da cũng trở nên nhạy cảm, khô và thiếu nước hơn những ngày bình thường.
+Làn da phải cân bằng độ pH, duy trì màng ẩm lipid khỏe mạnh mới đủ sức chống chọi với các tác động bên ngoài. Và đó cũng là yếu tố căn bản làm nên một làn da khỏe đẹp.', 
+N'Cấp ẩm', 97
+
+EXEC pc_InsertSanPham N'Mặt Nạ Ngủ Làm Dịu Da Belif Super Knight Clear Soothing Mask', 'CTLSP034', 830000, 760000, 'DBC009', 'QCDG003', 
+N'- Sử dụng mặt nạ sau khi rửa sạch da mặt và lau khô da với toner.
+- Sau 15-20 phút có thể dùng tay vỗ nhẹ hoặc mát-xa nhẹ nhàng để tinh chất thẩm thấu đều vào sâu bên trong.', N'Làm dịu, cấp nước', 56
+
+EXEC pc_InsertSanPham N'Mặt Nạ Tẩy Da Chết Chân Smile Foot Peeling Mask', 'CTLSP036', 222000, 160000, 'DBC009', 'QCDG003', 
+N'Trong tất cả các bộ phận của cơ thể, đôi chân là nơi thường xuyên chịu đựng sức nặng của cơ thể và tiếp xúc với nhiều môi trường gây ô nhiễm như nước bẩn, bụi bẩn, hóa chất từ sản phẩm tẩy rửa, mồ hôi… 
+Nhất là những ai phải làm việc trong môi trường nhiều khói bụi ô nhiễm như nhà máy thì bàn chân dễ nhận lấy những tổn thương. Vì thế, THEFACESHOP đã có giải pháp bảo vệ, chăm sóc làn da nơi bàn chân khỏe mạnh với 
+Mặt Nạ Tẩy Da Chết Chân Smile Foot Peeling Mask.', N'Cấp ẩm, Dưỡng sáng', 87
+
+EXEC pc_InsertSanPham N'Kem Chống Nắng Lâu Trôi THE FACE SHOP Natural Sun Eco Power Long-Lasting Sun Cream Spf50+ Pa+++', 'CTLSP037', 569000, 560000, 'DBC011', 'QCDG001', 
+N'Natural sun ECO power long-lasting sun cream SPF50+ PA+++ là kem chống nắng đa năng được yêu thích nhất tại The Face Shop. Sản phẩm vừa chống nắng bảo vệ da tối đa nhờ chỉ số SPF50+, vừa có thể sử dụng làm kem lót trang điểm hoàn hảo.', 
+N'Chống nắng', 19
+
+EXEC pc_InsertSanPham N'Sáp Chống Nắng Bảo Vệ Da Toàn Diện THE FACE SHOP Power Long-Lasting Sunscreen Stick ', 'CTLSP038', 769000, 760000, 'DBC005', 'QCDG006', 
+N'Chống nắng là bước dưỡng da nhất định phải thực hiện mỗi ngày để đảm bảo làn da được bảo vệ tốt nhất. Hạn chế thâm nám, sạm da, tăng cường độ ẩm cần thiết giúp làn da ẩm mượt, tươi tắn. 
+Với bước cải tiến trong khâu thiết kế, THE FACE SHOP đã ra mắt dòng sản phẩm sáp chống nắng dạng thỏi, nhỏ gọn, tiện lợi có thể mang theo sử dụng mọi lúc mọi nơi. 
+Chỉ cần lăn một lớp nhẹ trên gương mặt đã có thể bảo vệ da suốt một ngày dài.', N'Chống nắng', 56
+
+EXEC pc_InsertSanPham N'Sữa Chống Nắng Hạ Nhiệt Làn Da THE FACE SHOP Natural Sun Eco Ice Air Puff Sun Spf50+Pa+++', 'CTLSP039', 869000, 860000, 'DBC011', 'QCDG001', 
+N'Với cái nắng gây gắt, làn da của bạn rất dễ tổn thương. Nóng rát, dầu nhờn tiết ra tạo cảm giác khó chịu khi hoạt động trong thời tiết nắng như vậy. 
+Tiếp xúc lâu dài còn khiến da sạm đen, nám và có nguy cơ ung thư da. Hãy thoa ngay kem chống nắng hạ nhiệt làn da natural sun Eco ice air puff sun SPF50+ PA+++ để giúp 
+làn da dễ thở hơn trong thời tiết nắng nóng.', 
+N'Chống nắng', 49
+
+EXEC pc_InsertSanPham N'Giấy Thấm Dầu THE FACE SHOP Oil Blotting Films', 'CTLSP040', 129000, 120000, 'DBC013', 'QCDG003', 
+N'Da đổ nhiều dầu vào trời nắng nóng khiến da mặt của bạn nhờn bóng, lỗ chân lông bị tắc nghẽn và dẫn đến tình trạng mụn. 
+Để giảm lượng dầu nhờn trên da một cách nhanh chóng và hiệu quả, bạn hãy sử dụng giấy thấm dầu, vì đây có thể là lựa chọn tuyệt vời dành cho bạn.', 
+N'Thấm dầu', 26
+
+EXEC pc_InsertSanPham N'Bông Tẩy Trang THE FACE SHOP Multi 5 Layer Facial Pad', 'CTLSP041', 169000, 160000, 'DBC013', 'QCDG007', 
+N'Bông tẩy trang THEFACESHOP được làm từ chất liệu cotton tự nhiên với kết cấu 5 lớp giúp làm sạch tốt, an toàn cho da và tiết kiệm khi sử dụng.
+Hộp bông tẩy trang Multi 5 Layer Facial Pad chứa đến 80 miếng bông cotton mềm mịn, có khả năng làm sạch nhanh và hiệu quả lớp trang điểm dày đặc trên da. 
+Bề mặt bông mịn không làm da kích ứng, giúp nước tẩy trang thấm tốt vào da và cuốn đi các cặn bẩn sâu trong lỗ chân lông.
+Sản phẩm chứa 5 lớp cotton vừa có độ dày chứa đựng được nhiều nước tẩy trang, vừa có cấu trúc sợi cotton bền, ít tơi ra khi bị thấm ướt.', 
+N'Tẩy trang', 36
+
+EXEC pc_InsertSanPham N'Miếng Dán Mụn CNP Laboratory Anti-Blemish Spot Patch', 'CTLSP042', 269000, 260000, 'DBC013', 'QCDG003', 
+N'Miếng dán mụn CNP Laboratory Anti-Blemish Spot Patch được thiết kế hình tròn, trong suốt, chứa các thành phần như acid salicylic và dầu tràm trà giúp điều trị các nốt mụn sưng viêm.', 
+N'Dán mụn', 87
+
+EXEC pc_InsertSanPham N'Bọt Biển Rửa Mặt THE FACE SHOP Beauty Tools Natural Cleansing Sea Sponge', 'CTLSP043', 45000, 30000, 'DBC013', 'QCDG003', 
+N'Bọt rửa mặt Daily Beauty Tools Cleansing Sea Sponge The Face Shop được làm từ Bọt biển tự nhiên, nằm trong bộ dụng cụ làm đẹp The Face Shop với khả năng hấp thụ nước nhanh, hiệu quả vệ sinh da mặt cách an toàn nhất.', 
+N'Làm sạch', 19
+
+EXEC pc_InsertSanPham N'Sữa Tắm Dạng Gel Hương Nước Hoa THE FACE SHOP Perfume Seed Capsule Body Wash', 'CTLSP044', 669000, 650000, 'DBC001', 'QCDG001', 
+N'Gel tắm hương nước hoa giúp lưu lại mùi thơm nồng nàn quyến rũ trọn ngày dài của hương nước hoa được cô đọng trong những viên nang nước hoa nhỏ li ti màu hồng đáng yêu', 
+N'Làm sạch', 57
+
+EXEC pc_InsertSanPham N'Sữa Dưỡng Thể Hương Nước Hoa Cung Cấp Ẩm THE FACE SHOP Perfume Seed Rich Body Milk', 'CTLSP045', 559000, 540000, 'DBC008', 'QCDG001', 
+N'Hướng dẫn sử dụng
+Lấy một lượng sản phẩm vừa đủ và mát xa khắp bề mặt da cơ thể.', 
+N'Dưỡng trắng', 34
+
+EXEC pc_InsertSanPham N'Tẩy Tế Bào Chết Toàn Thân THE FACE SHOP Yehwadam Body Peeling', 'CTLSP046', 369000, 360000, 'DBC001', 'QCDG001', 
+N'Tẩy Tế Bào Chết Toàn Thân YEHWADAM BODY PEELING dành được giải thưởng Allure Editor’s Pick vào tháng 10/2019, với công thức từ các loại hạt thiên nhiên giúp làm sạch nhẹ nhàng, mang lại làn da ẩm mượt và mịn màng. ', 
+N'Tẩy tế bào chết', 78
+
+EXEC pc_InsertSanPham N'Bông Tắm Tròn THE FACE SHOP Daily Beauty Tools Shower Puff', 'CTLSP047', 69000, 60000, 'DBC013', 'QCDG003', 
+N'DAILY BEAUTY TOOLS SHOWER PUFF với chất liệu mềm mại êm dịu cho da sẽ là sản phẩm hỗ trợ không thể thiếu để bạn thư giãn sau một ngày mệt nhọc. Giúp loại bỏ đi những bụi bẩn hằng ngày và lấy đi những tế bào chết, 
+cho bạn làn da sạch sẽ thông thoáng, mịn màng và hấp thụ dưỡng chất từ các sản phẩm dưỡng da được tốt hơn. 
+Hơn nữa, cấu tạo mắt lưới nhỏ mịn, giúp tẩy sạch tế bào chết và bụi bẩn, đồng thời massage cơ thể, tăng cường khả năng tuần hoàn và hấp thụ dưỡng chất, giúp da trở nên mịn màng, tươi trẻ.', 
+N'Làm sạch', 25
+
+EXEC pc_InsertSanPham N'Nước Hoa Cao Cấp THE FACE SHOP Parfum De Lame Sweet Cassis', 'CTLSP048', 1690000, 1600000, 'DBC010', 'QCDG001', 
+N'Nước hoa cao cấp THE FACE SHOP Parfum De Lame Sweet Cassis thuộc thương hiệu Pháp, được chiết xuất từ hương thơm các loại trái cây, xạ hương đầy quyến rũ và tinh tế. 
+Sản phẩm mang lại hương thơm nhẹ nhàng, thanh mát nhưng cũng không kém phần lịch lãm, sang trọng. Đặc biệt có khả năng lưu hương từ 4-6 giờ giúp bạn tạo được sự nổi bật suốt một ngày dài,', N'Thơm', 75
+
+EXEC pc_InsertSanPham N'Dầu gội dành cho tóc hư tổn Dr.Schwarz Damaged Hair Shampoo', 'CTLSP049', 369000, 360000, 'DBC011', 'QCDG001', 
+N'Mỗi ngày tóc phải tiếp xúc với rất nhiều với khói bụi, ánh nắng mặt trời, dầu nhờn trên da đầu, hay do tiếp xúc với hóa chất tẩy nhuộm khiến cho tóc trở nên hư tổn, yếu và dễ gãy rụng. 
+Với thiết kế đặc biệt dành riêng cho tóc hư tổn, Dr. Schwarz Shampoo For Damaged Hair là dầu gội tốt nhất dành cho mái tóc của bạn. Giúp nuôi dưỡng dầu gội tóc để giúp ngăn ngừa tổn thương và chăm sóc tóc.', 
+N'Làm sạch ', 35
+
+EXEC pc_InsertSanPham N'Xịt Dưỡng Tóc THE FACE SHOP Essential Damage Care Hair Mist', 'CTLSP050', 269000, 160000, 'DBC010', 'QCDG001', 
+N'Xit dưỡng tóc giúp nuôi dưỡng và phục hồi độ mướt cho mái tóc khô, xơ rối
+Kết cấu dạng xịt phun sương tiện dụng, thẩm thấu nhanh và không gây bết dính.', N'Dưỡng tóc', 68
+
+EXEC pc_InsertSanPham N'Sáp Tạo Kiểu Tóc Siêu Cứng Và Giữ Nếp THE FACE SHOP Essential Style Up Super Hard Wax', 'CTLSP051', 69000, 60000, 'DBC005', 'QCDG007', 
+N'Một trong những khó chịu của người sử dụng wax tạo nếp tóc là có cảm giác bết dính mất tự nhiên. Không giống với cá wax khác, 
+Thefaceshop Essential Style Up Supper Hard Wax giúp bạn tạo kiểu tóc nhanh chóng theo mong muốn nhưng hoàn toàn không gây cảm giác bết dính rít khó chịu, 
+tóc giữ nếp cố định, đồng thời lượng độ ẩm tối ưu trong sản phẩm giúp tóc bạn bóng đẹp suốt cả ngày.', 
+N'Tạo kiểu tóc', 38
+
+EXEC pc_InsertSanPham N'Kem Dưỡng Tay Cung Cấp Ẩm THE FACE SHOP Rich Hand V Soft Touch Hand Lotion', 'CTLSP052', 169000, 160000, 'DBC008', 'QCDG001', 
+N'Bạn cho một lượng kem dưỡng vừa đủ vào lòng bàn tay rồi massage nhẹ nhàng 2 bàn tay với nhau. Có thể sử dụng nhiều lần trong ngày',
+N'Dưỡng da', 98
+
+EXEC pc_InsertSanPham N'Mặt Nạ Chăm Sóc Tay THE FACE SHOP Rich Hand V Special Carehand Mask', 'CTLSP053', 169000, 160000, 'DBC009', 'QCDG003', 
+N'Mặt nạ chăm sóc tay Rich Hand V Special Care Hand Mask với khả năng dưỡng ẩm sâu do dễ dàng thẩm thấu vào da, công thức chứa Vitamin E giảm quá trình oxi hoá, 
+bảo vệ da với chiết xuất từ dầu hạnh nhân, dầu marula và dầu bơ, cải thiện nếp nhăn, đem lại đôi bàn tay luôn mềm mại, mịn màng', N'Dưỡng da', 16
 
 
 --insert THANHPHAN
@@ -416,6 +510,34 @@ INSERT INTO THANHPHAN( MASP, TENTP, HAMLUONG) VALUES( 'SP021', N'Deoxy – Arbut
 INSERT INTO THANHPHAN( MASP, TENTP, HAMLUONG) VALUES( 'SP022', N'Vitamin B12, Chiết xuất hạt chia Mexico', N'170ml')
 INSERT INTO THANHPHAN( MASP, TENTP, HAMLUONG) VALUES( 'SP023', N'Chiết xuất lô hội, cúc La Mã, rễ dâu tằm', N'140ml')
 INSERT INTO THANHPHAN( MASP, TENTP, HAMLUONG) VALUES( 'SP024', N'N-acetyl Boldin, Abutin', N'45ml')
+INSERT INTO THANHPHAN( MASP, TENTP, HAMLUONG) VALUES( 'SP025', N'Caprylic/Capric Triglyceride,', N'25ml')
+INSERT INTO THANHPHAN( MASP, TENTP, HAMLUONG) VALUES( 'SP026', N'Chiết xuất lô hội, cúc La Mã, rễ dâu tằm', N'60ml')
+INSERT INTO THANHPHAN( MASP, TENTP, HAMLUONG) VALUES( 'SP027', N'Cỏ xạ hương, Hoa cúc, Lá nguyệt quế', N'3pcs')
+INSERT INTO THANHPHAN( MASP, TENTP, HAMLUONG) VALUES( 'SP028', N'Acid Glycolic, ', N'150ml')
+INSERT INTO THANHPHAN( MASP, TENTP, HAMLUONG) VALUES( 'SP029', N'Sodium Pyruvat, Acid Glycolic',N'500ml');
+INSERT INTO THANHPHAN( MASP, TENTP, HAMLUONG) VALUES( 'SP030', N'Chiết xuất Cam thảo, Rau Sam, Tinh dầu hoa Oải Hương, Cây Bạc Hà', N'150ml')
+INSERT INTO THANHPHAN( MASP, TENTP, HAMLUONG) VALUES( 'SP031', N'chiết xuất từ thạch anh tím, đá mắt mèo và bột ngọc trai', N'120ml')
+INSERT INTO THANHPHAN( MASP, TENTP, HAMLUONG) VALUES( 'SP032', N'Sợi tổng hợp', N'5g')
+INSERT INTO THANHPHAN( MASP, TENTP, HAMLUONG) VALUES( 'SP033', N'Nha đam, việt quất, chanh', N'20g')
+INSERT INTO THANHPHAN( MASP, TENTP, HAMLUONG) VALUES( 'SP034', N'Chiết xuất hoa hồng, hạt yến, bột ngọc trai', N'75ml')
+INSERT INTO THANHPHAN( MASP, TENTP, HAMLUONG) VALUES( 'SP036', N'Chiết xuất lô hội, cúc La Mã', N'20mlx2')
+INSERT INTO THANHPHAN( MASP, TENTP, HAMLUONG) VALUES( 'SP037', N'Copper Tripeptide – 1, Oxybenzone', N'80ml')
+INSERT INTO THANHPHAN( MASP, TENTP, HAMLUONG) VALUES( 'SP038', N'Chiết xuất hoa hướng dương, Oxybenzone', N'18g')
+INSERT INTO THANHPHAN( MASP, TENTP, HAMLUONG) VALUES( 'SP039', N'Oxybenzone', N'100ml')
+INSERT INTO THANHPHAN( MASP, TENTP, HAMLUONG) VALUES( 'SP040', N'Giấy', N'50pcs')
+INSERT INTO THANHPHAN( MASP, TENTP, HAMLUONG) VALUES( 'SP041', N'Bông', N'80pcs')
+INSERT INTO THANHPHAN( MASP, TENTP, HAMLUONG) VALUES( 'SP042', N'Chiết xuất từ dầu tràm trà', N'60pcs')
+INSERT INTO THANHPHAN( MASP, TENTP, HAMLUONG) VALUES( 'SP043', N'Bọt biển nén', N'10g')
+INSERT INTO THANHPHAN( MASP, TENTP, HAMLUONG) VALUES( 'SP044', N'Chiết xuất hoa hồng', N'300ml')
+INSERT INTO THANHPHAN( MASP, TENTP, HAMLUONG) VALUES( 'SP045', N'Chiết xuất hoa hồng', N'300ml')
+INSERT INTO THANHPHAN( MASP, TENTP, HAMLUONG) VALUES( 'SP046', N'Đậu xánh, đậu nành, đậu đỏ, hoa cúc', N'300ml')
+INSERT INTO THANHPHAN( MASP, TENTP, HAMLUONG) VALUES( 'SP047', N'Sợi tổng hợp', N'1pcs')
+INSERT INTO THANHPHAN( MASP, TENTP, HAMLUONG) VALUES( 'SP048', N'Xạ hương, Quýt hồng, cassis', N'80ml')
+INSERT INTO THANHPHAN( MASP, TENTP, HAMLUONG) VALUES( 'SP049', N'rau răm, nấm dược liệu, rau diếp cá', N'800ml')
+INSERT INTO THANHPHAN( MASP, TENTP, HAMLUONG) VALUES( 'SP050', N'dầu olive, dầu dừa, dầu jojoba, dầu hạt hướng dương, dầu hoa rum', N'150ml')
+INSERT INTO THANHPHAN( MASP, TENTP, HAMLUONG) VALUES( 'SP051', N'Sáp', N'100g')
+INSERT INTO THANHPHAN( MASP, TENTP, HAMLUONG) VALUES( 'SP052', N'tinh dầu hạnh nhân, dầu marula', N'200ml')
+INSERT INTO THANHPHAN( MASP, TENTP, HAMLUONG) VALUES( 'SP053', N'vitamin e, dầu marula', N'16ml')
 
 go
 -- INSERT DONNHAP
@@ -549,5 +671,3 @@ EXEC sp_InsertCTDG 'DG018', 'SP028', 1, 5, '2023-11-11', N'Nên mua mọi ngư�
 EXEC sp_InsertCTDG 'DG018', 'SP029', 1, 5, '2023-11-11', N'Không uổng tiền khi mua nha mọi người'
 EXEC sp_InsertCTDG 'DG018', 'SP031', 1, 4, '2023-11-11', N'Tạm được'
 EXEC sp_InsertCTDG 'DG019', 'SP032', 1, 5, '2023-07-12', N'Nên mua mọi người ơi, sản phẩm ok lắm á'
-
-go
