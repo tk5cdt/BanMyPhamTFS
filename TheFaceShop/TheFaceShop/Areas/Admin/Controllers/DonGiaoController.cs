@@ -12,10 +12,33 @@ namespace TheFaceShop.Areas.Admin.Controllers
 
         // GET: Admin/DonGiao
         QL_THEFACESHOPEntities db = new QL_THEFACESHOPEntities();
-        [Authorize(Roles = "QuanTri")]
+        //[Authorize(Roles = "QuanTri")]
         public ActionResult DanhSachDonGiao()
         {
             return View(db.DONGIAOs);
+        }
+
+        public ActionResult TrangThaiDonGiao(string MADG, string TrangThai)
+        {
+            DONGIAO dg = db.DONGIAOs.SingleOrDefault(n => n.MADG == MADG);
+            if (dg == null)
+            {
+                Response.StatusCode = 404;
+                return null;
+            }
+            dg.TRANGTHAI = TrangThai;
+            db.SaveChanges();
+            return RedirectToAction("DanhSachDonGiao");
+        }
+        public ActionResult ChiTietDonGiao(string MADG)
+        {
+            DONGIAO dg = db.DONGIAOs.SingleOrDefault(n => n.MADG == MADG);
+            if (dg == null)
+            {
+                Response.StatusCode = 404;
+                return null;
+            }
+            return View(dg.CTDGs);
         }
     }
 }
