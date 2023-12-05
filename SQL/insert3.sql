@@ -1,4 +1,5 @@
 USE QL_THEFACESHOP
+
 -- insert khách hàng
 exec sp_InsertKhachHang N'Nguyễn Ngọc Mai', '0123456789'
 exec sp_InsertKhachHang N'Nguyễn Kiều Quỳnh Trang', '0397661332'
@@ -499,66 +500,30 @@ go
 
 
 
-go
-EXEC pc_InsertThanhPhan 'SP001', N'Dr.Belmeur Cica Peptite Ampoule, Chiết xuất rau má', N'30ml'
-EXEC pc_InsertThanhPhan 'SP002', N'Thành phần chính của kem lót TFS là từ Cotton Seed', N'100ml'
-EXEC pc_InsertThanhPhan 'SP003', N'Antioxidants, chiết xuất từ quả việt quất, quả nho, rau lá có màu xanh đậm, cá', N'10g'
-EXEC pc_InsertThanhPhan 'SP004', N'Thành phần chứa hyaluronic acid giúp bổ sung thêm độ ẩm mang đến vẻ căng mượt, tự nhiên cho đôi gò má.', N'8g'
-EXEC pc_InsertThanhPhan 'SP005', N'Beta hydroxy acid, axit alpha hydroxy', N'50g'
-EXEC pc_InsertThanhPhan 'SP006', N'Titanium dioxide, Axit Salicylic', N'30g'
-EXEC pc_InsertThanhPhan 'SP007', N'Acid Hyaluronic, Panthenol (Provitamin B5)', N'7g'
-EXEC pc_InsertThanhPhan 'SP008', N'Idebenone, Oxybenzone, Retinol', N'20g'
-EXEC pc_InsertThanhPhan 'SP009', N'Chiết xuất từ hạt hướng dương, hạtrum, hạt lanh, dầu hạt mỡ', N'3.5G'
-EXEC pc_InsertThanhPhan 'SP010', N'Caprylic/Capric Triglyceride, Vitamin E', N'4.8g'
-EXEC pc_InsertThanhPhan 'SP011', N'Chiết xuất bơ hạt mỡ', N'5.5g'
-EXEC pc_InsertThanhPhan 'SP012', N'Dầu dừa', N'4.5g'
-EXEC pc_InsertThanhPhan 'SP013', N'Dầu dừa, bơ hạt mỡ', N'4.5g'
-EXEC pc_InsertThanhPhan 'SP014', N'Ceramide NP, Ceramide AP, Hyaluronic acid', N'8.5g'
-EXEC pc_InsertThanhPhan 'SP015', N'Titanium dioxide, Zinc oxide', N'1.2g x 4'
-EXEC pc_InsertThanhPhan 'SP016', N'Cystine, Taurine', N'0.6g+0.13g'
-EXEC pc_InsertThanhPhan 'SP017', N'Nhựa, lông', N'5g'
-EXEC pc_InsertThanhPhan 'SP018', N'Mút, lông', N'5g'
-EXEC pc_InsertThanhPhan 'SP019', N'Bông', N'80pcs'
-EXEC pc_InsertThanhPhan 'SP020', N'Nhựa', N'10g'
-EXEC pc_InsertThanhPhan 'SP021', N'Deoxy – Arbutin, Rễ cam thảo', N'160ml'
-EXEC pc_InsertThanhPhan 'SP022', N'Vitamin B12, Chiết xuất hạt chia Mexico', N'170ml'
-EXEC pc_InsertThanhPhan 'SP023', N'Chiết xuất lô hội, cúc La Mã, rễ dâu tằm', N'140ml'
-EXEC pc_InsertThanhPhan 'SP024', N'N-acetyl Boldin, Abutin', N'45ml'
---EXEC pc_InsertThanhPhan 'SP025', N'', N''
---EXEC pc_InsertThanhPhan 'SP026', N'', N''
---EXEC pc_InsertThanhPhan 'SP027', N'', N''
---EXEC pc_InsertThanhPhan 'SP028', N'', N''
---EXEC pc_InsertThanhPhan 'SP029', N'', N''
---EXEC pc_InsertThanhPhan 'SP030', N'', N''
---EXEC pc_InsertThanhPhan 'SP031', N'', N''
---EXEC pc_InsertThanhPhan 'SP032', N'', N''
---EXEC pc_InsertThanhPhan 'SP033', N'', N''
---EXEC pc_InsertThanhPhan 'SP034', N'', N''
---EXEC pc_InsertThanhPhan 'SP035', N'', N''
---EXEC pc_InsertThanhPhan 'SP036', N'', N''
---EXEC pc_InsertThanhPhan 'SP038', N'', N''
---EXEC pc_InsertThanhPhan 'SP039', N'', N''
---EXEC pc_InsertThanhPhan 'SP040', N'', N''
---EXEC pc_InsertThanhPhan 'SP041', N'', N''
---EXEC pc_InsertThanhPhan 'SP042', N'', N''
---EXEC pc_InsertThanhPhan 'SP043', N'', N''
---EXEC pc_InsertThanhPhan 'SP044', N'', N''
---EXEC pc_InsertThanhPhan 'SP045', N'', N''
---EXEC pc_InsertThanhPhan 'SP046', N'', N''
---EXEC pc_InsertThanhPhan 'SP047', N'', N''
---EXEC pc_InsertThanhPhan 'SP048', N'', N''
---EXEC pc_InsertThanhPhan 'SP049', N'', N''
---EXEC pc_InsertThanhPhan 'SP050', N'', N''
---EXEC pc_InsertThanhPhan 'SP051', N'', N''
---EXEC pc_InsertThanhPhan 'SP052', N'', N''
---EXEC pc_InsertThanhPhan 'SP053', N'', N''
---EXEC pc_InsertThanhPhan 'SP054', N'', N''
---EXEC pc_InsertThanhPhan 'SP055', N'', N''
---EXEC pc_InsertThanhPhan 'SP056', N'', N''
---EXEC pc_InsertThanhPhan 'SP057', N'', N''
---EXEC pc_InsertThanhPhan 'SP058', N'', N''
---EXEC pc_InsertThanhPhan 'SP059', N'', N''
---EXEC pc_InsertThanhPhan 'SP060', N'', N''
+INSERT INTO THANHPHAN( MASP, TENTP, HAMLUONG) VALUES( 'SP001', N'Dr.Belmeur Cica Peptite Ampoule, Chiết xuất rau má', N'30ml')
+INSERT INTO THANHPHAN( MASP, TENTP, HAMLUONG) VALUES( 'SP002', N'Thành phần chính của kem lót TFS là từ Cotton Seed', N'100ml')
+INSERT INTO THANHPHAN( MASP, TENTP, HAMLUONG) VALUES( 'SP003', N'Antioxidants, chiết xuất từ quả việt quất, quả nho, rau lá có màu xanh đậm, cá', N'10g')
+INSERT INTO THANHPHAN( MASP, TENTP, HAMLUONG) VALUES( 'SP004', N'Thành phần chứa hyaluronic acid giúp bổ sung thêm độ ẩm mang đến vẻ căng mượt, tự nhiên cho đôi gò má.', N'8g')
+INSERT INTO THANHPHAN( MASP, TENTP, HAMLUONG) VALUES( 'SP005', N'Beta hydroxy acid, axit alpha hydroxy', N'50g')
+INSERT INTO THANHPHAN( MASP, TENTP, HAMLUONG) VALUES( 'SP006', N'Titanium dioxide, Axit Salicylic', N'30g')
+INSERT INTO THANHPHAN( MASP, TENTP, HAMLUONG) VALUES( 'SP007', N'Acid Hyaluronic, Panthenol (Provitamin B5)', N'7g')
+INSERT INTO THANHPHAN( MASP, TENTP, HAMLUONG) VALUES( 'SP008', N'Idebenone, Oxybenzone, Retinol', N'20g')
+INSERT INTO THANHPHAN( MASP, TENTP, HAMLUONG) VALUES( 'SP009', N'Chiết xuất từ hạt hướng dương, hạtrum, hạt lanh, dầu hạt mỡ', N'3.5G')
+INSERT INTO THANHPHAN( MASP, TENTP, HAMLUONG) VALUES( 'SP010', N'Caprylic/Capric Triglyceride, Vitamin E', N'4.8g')
+INSERT INTO THANHPHAN( MASP, TENTP, HAMLUONG) VALUES( 'SP011', N'Chiết xuất bơ hạt mỡ', N'5.5g')
+INSERT INTO THANHPHAN( MASP, TENTP, HAMLUONG) VALUES( 'SP012', N'Dầu dừa', N'4.5g')
+INSERT INTO THANHPHAN( MASP, TENTP, HAMLUONG) VALUES( 'SP013', N'Dầu dừa, bơ hạt mỡ', N'4.5g')
+INSERT INTO THANHPHAN( MASP, TENTP, HAMLUONG) VALUES( 'SP014', N'Ceramide NP, Ceramide AP, Hyaluronic acid', N'8.5g')
+INSERT INTO THANHPHAN( MASP, TENTP, HAMLUONG) VALUES( 'SP015', N'Titanium dioxide, Zinc oxide', N'1.2g x 4')
+INSERT INTO THANHPHAN( MASP, TENTP, HAMLUONG) VALUES( 'SP016', N'Cystine, Taurine', N'0.6g+0.13g')
+INSERT INTO THANHPHAN( MASP, TENTP, HAMLUONG) VALUES( 'SP017', N'Nhựa, lông', N'5g')
+INSERT INTO THANHPHAN( MASP, TENTP, HAMLUONG) VALUES( 'SP018', N'Mút, lông', N'5g')
+INSERT INTO THANHPHAN( MASP, TENTP, HAMLUONG) VALUES( 'SP019', N'Bông', N'80pcs')
+INSERT INTO THANHPHAN( MASP, TENTP, HAMLUONG) VALUES( 'SP020', N'Nhựa', N'10g')
+INSERT INTO THANHPHAN( MASP, TENTP, HAMLUONG) VALUES( 'SP021', N'Deoxy – Arbutin, Rễ cam thảo', N'160ml')
+INSERT INTO THANHPHAN( MASP, TENTP, HAMLUONG) VALUES( 'SP022', N'Vitamin B12, Chiết xuất hạt chia Mexico', N'170ml')
+INSERT INTO THANHPHAN( MASP, TENTP, HAMLUONG) VALUES( 'SP023', N'Chiết xuất lô hội, cúc La Mã, rễ dâu tằm', N'140ml')
+INSERT INTO THANHPHAN( MASP, TENTP, HAMLUONG) VALUES( 'SP024', N'N-acetyl Boldin, Abutin', N'45ml')
 
 
 INSERT INTO DANGBAOCHE (MADBC, TENDANG) VALUES ('DBC001', N'Gel')

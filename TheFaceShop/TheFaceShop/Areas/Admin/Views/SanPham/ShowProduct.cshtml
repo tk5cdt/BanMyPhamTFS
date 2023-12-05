@@ -1,0 +1,76 @@
+﻿@model IEnumerable<TheFaceShop.Models.SANPHAM>
+
+@{
+    ViewBag.Title = "Danh mục sản phẩm";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+<a href="/Admin/SanPham/CreateProduct"><i class="far fa-plus-square" style="color: black; margin-left:10px"></i></a>
+
+<div class="row-md-1 bg-white rounded">
+    <div class="col overflow-scroll" style="max-height: 75vh">
+        <table class="table text-left align-middle table-striped table-fixed">
+            <thead style="position: sticky; top: 0; background-color: #c1efde; text-align: center; z-index: 1;">
+                <tr>
+                    <th class="col-3">
+                        @Html.DisplayNameFor(model => model.TENSP)
+                    </th>
+                    <th class="col-1">
+                        @Html.DisplayNameFor(model => model.GIABAN)
+                    </th>
+                    <th class="col-2">
+                        @Html.DisplayNameFor(model => model.GIANHAP)
+                    </th>
+                    <th class="col-2">
+                        @Html.DisplayNameFor(model => model.CONGDUNG)
+                    </th>
+                    <th class="col-1">
+                        @Html.DisplayNameFor(model => model.TONKHO)
+                    </th>
+                    <th class="col-2">
+                        @Html.DisplayNameFor(model => model.TRANGTHAI)
+                    </th>
+                    <th class="col-1">Tác vụ</th>
+                </tr>
+            </thead>
+            
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            <div class="d-flex">
+                                <img src="https://mdbootstrap.com/img/new/avatars/8.jpg"
+                                     alt=""
+                                     style="width: 50px; height: 50px"
+                                     class="rounded-circle" />
+                                <div class="ms-3">
+                                    @Html.DisplayFor(modelItem => item.TENSP, new { @class = "text-start" })
+                                    @*<p class="text-muted mb-0">john.doe@gmail.com</p>*@
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.GIABAN)
+                        </td>
+                        <td class="text-center">
+                            @Html.DisplayFor(modelItem => item.GIANHAP)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.CONGDUNG)
+                        </td>
+                        <td class="text-center">
+                            @Html.DisplayFor(modelItem => item.TONKHO)
+                        </td>
+                        <td class="text-center">
+                            @Html.DisplayFor(modelItem => item.TRANGTHAI)
+                        </td>
+                        <td class="text-center">
+                            <a href="@Url.Action("UpdateProduct", "SanPham", new { ma = item.MASP })"><i class="far fa-edit" style="color: black"></i></a> |
+                            <a href="@Url.Action("XemChiTietSP", "SanPham", new { ma = item.MASP })"><i class="far fa-info-circle" style="color: black"></i></a>
+                        </td>
+                    </tr>
+                }
+            </tbody>          
+        </table>
+    </div>
+</div>

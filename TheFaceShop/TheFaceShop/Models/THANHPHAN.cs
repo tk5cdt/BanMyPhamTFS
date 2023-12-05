@@ -15,8 +15,8 @@ namespace TheFaceShop.Models
     public partial class THANHPHAN
     {
         public string MASP { get; set; }
-        public string THANHPHAN1 { get; set; }
         public string HAMLUONG { get; set; }
+        public string TENTP { get; set; }
     
         public virtual SANPHAM SANPHAM { get; set; }
     }

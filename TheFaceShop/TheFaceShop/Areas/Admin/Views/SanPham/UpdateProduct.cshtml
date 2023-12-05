@@ -1,0 +1,96 @@
+﻿@model TheFaceShop.Models.SANPHAM
+
+@{
+    ViewBag.Title = "Cập nhật sản phẩm";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<a href="~/Admin/SanPham/ShowProduct" class="d-inline-block"><i class="far fa-list-alt" style="color: black; margin-left:10px"></i></a>
+<a href="@Url.Action("XemChiTietSP", "SanPham", new { ma = Model.MASP })"><i class="far fa-info-circle" style="color: black"></i></a>
+
+@using (Html.BeginForm("UpdateProduct", "SanPham", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal bg-white rounded">
+
+        @Html.ValidationSummary(true)
+        <div class="form-group row p-3">
+            <label class="control-label col-sm-2 h5" for="hinhAnh">Ảnh đại diện</label>
+            <div class="col-sm-10">
+                <div id="anh" style="margin-bottom:5px"><img src="~/HinhAnhSP/@Model.ANHDAIDIEN" class="img-fluid" style="width:150px; height:150px"/></div>
+                @*<div id="anh" style="margin-bottom:5px"><img src="https://mdbootstrap.com/img/new/avatars/8.jpg" class="img-fluid" style="width:150px; height:150px" /></div>*@
+                <input type="file" class="form-control" name="f" id="inputAnh">
+            </div>
+        </div>
+
+        <div class="form-group row p-3">
+            <label class="control-label col-sm-2 h5" for="name">Tên sản phẩm</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" name="tenSP" value="@Model.TENSP">
+            </div>
+        </div>
+
+        <div class="form-group row p-3">
+            <label class="control-label col-sm-2 h5" for="anhSP">Ảnh sản phẩm</label>
+            <div class="col-sm-10">
+                <div id="listAnhSP">
+                    @*@foreach(var item in Model.HINHANHSPs)
+                    {
+                        <img src="@item.HINHANH"/>
+                    }*@
+                </div>
+                <div class="clear:both"></div>
+                <input type="button" class="btn btn-light" id="chonAnh" value="Chọn ảnh" style="background-color:#c1efde" />
+            </div>
+        </div>
+
+        <div class="form-group row p-3">
+            <label class="control-label col-sm-2 h5" for="giaBan">Giá bán</label>
+            <div class="col-sm-10"><input type="number" class="form-control" name="giaBan" value="@Model.GIABAN"></div>
+        </div>
+
+        <div class="form-group row p-3">
+            <label class="control-label col-sm-2 h5" for="giaBan">Giá nhập</label>
+            <div class="col-sm-10"><input type="number" class="form-control" name="giaNhap" value="@Model.GIANHAP"></div>
+        </div>
+
+        <div class="form-group row p-3">
+            <label class="control-label col-sm-2 h5" for="loaiSP">Loại sản phẩm</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" name="loaiSP" value="@Model.CHITIETLOAISP.TENCTL_SP">
+            </div>
+
+        </div>
+
+        <div class="form-group row p-3">
+            <label class="control-label col-sm-2 h5" for="dangBaoChe">Dạng bào chế</label>
+            <div class="col-sm-10"><input type="text" class="form-control" name="dangBaoChe" value="@Model.DANGBAOCHE.TENDANG"></div>
+        </div>
+
+        <div class="form-group row p-3">
+            <label class="control-label col-sm-2 h5" for="quyCach">Quy cách đóng gói</label>
+            <div class="col-sm-10"><input type="text" class="form-control" name="quyCach" value="@Model.QUYCACHDONGGOI.TENQCDG"></div>
+        </div>
+
+        <div class="form-group row p-3">
+            <label class="control-label col-sm-2 h5" for="congDung">Công dụng</label>
+            <div class="col-sm-10"><input type="text" class="form-control" name="congDung" value="@Model.CONGDUNG"></div>
+        </div>
+
+        <div class="form-group row p-3">
+            <label class="control-label col-sm-2 h5" for="noiDung">Nội dung</label>
+            <div class="col-sm-10"><textarea class="form-control rounded" id="noiDung">@Model.NOIDUNG</textarea></div>
+        </div>
+
+        <div class="form-group row p-3">
+            <input type="submit" class="btn btn-light" id="capNhat" value="Cập nhật" style="background-color:#c1efde" />
+        </div>
+    </div>
+}
+
+@section Scripts{
+    <script>CKEDITOR.replace("noiDung")</script>
+}
+
+
