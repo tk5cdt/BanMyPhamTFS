@@ -1103,6 +1103,7 @@
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\AccountController.cs" />
     <Compile Include="Areas\Admin\Controllers\AdminController.cs" />
+    <Compile Include="Areas\Admin\Controllers\DonGiaoController.cs" />
     <Compile Include="Areas\Admin\Controllers\DonNhapController.cs" />
     <Compile Include="Areas\Admin\Controllers\SanPhamController.cs" />
     <Compile Include="Global.asax.cs">
@@ -1222,6 +1223,7 @@
     <Content Include="Areas\Admin\Assets\ckeditor\samples\toolbarconfigurator\lib\codemirror\LICENSE" />
     <Content Include="Areas\Admin\Assets\ckeditor\skins\moono-lisa\readme.md" />
     <Content Include="Areas\Admin\Views\Account\DangNhap.cshtml" />
+    <Content Include="Areas\Admin\Views\DonGiao\DanhSachDonGiao.cshtml" />
     <None Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
