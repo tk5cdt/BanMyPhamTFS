@@ -66,138 +66,6 @@ values ('NV001', 'QuanTri'),
 	   ('NV003', 'QuanTri'),
 	   ('NV004', 'QuanTri')
 go
--- INSERT DONNHAP
-EXEC sp_InsertDonNhap 'NV001', '2023-05-05', N'Đã đặt'
-EXEC sp_InsertDonNhap 'NV001', '2023-06-06', N'Đã đặt'
-EXEC sp_InsertDonNhap 'NV002', '2023-07-07', N'Đã đặt'
-EXEC sp_InsertDonNhap 'NV003', '2023-08-08', N'Đã đặt'
-EXEC sp_InsertDonNhap 'NV004', '2023-09-09', N'Đã đặt'
-EXEC sp_InsertDonNhap 'NV005', '2023-10-10', N'Đã đặt'
-EXEC sp_InsertDonNhap 'NV006', '2023-11-11', N'Đã đặt'
-EXEC sp_InsertDonNhap 'NV004', '2023-07-12', N'Đã đặt'
-
--- insert CTDN
-EXEC sp_InsertCTDN 'DN001', 'SP001', 145
-EXEC sp_InsertCTDN 'DN001', 'SP002', 123
-EXEC sp_InsertCTDN 'DN001', 'SP003', 356
-EXEC sp_InsertCTDN 'DN001', 'SP004', 243
-EXEC sp_InsertCTDN 'DN002', 'SP005', 124
-EXEC sp_InsertCTDN 'DN002', 'SP006', 132
-EXEC sp_InsertCTDN 'DN002', 'SP007', 167
-EXEC sp_InsertCTDN 'DN002', 'SP008', 176
-EXEC sp_InsertCTDN 'DN003', 'SP009', 221
-EXEC sp_InsertCTDN 'DN003', 'SP010', 101
-EXEC sp_InsertCTDN 'DN003', 'SP011', 102
-EXEC sp_InsertCTDN 'DN003', 'SP012', 201
-EXEC sp_InsertCTDN 'DN004', 'SP013', 132
-EXEC sp_InsertCTDN 'DN004', 'SP014', 184
-EXEC sp_InsertCTDN 'DN004', 'SP015', 144
-EXEC sp_InsertCTDN 'DN004', 'SP016', 193
-EXEC sp_InsertCTDN 'DN005', 'SP017', 199
-EXEC sp_InsertCTDN 'DN005', 'SP018', 223
-EXEC sp_InsertCTDN 'DN005', 'SP019', 213
-EXEC sp_InsertCTDN 'DN005', 'SP020', 221
-EXEC sp_InsertCTDN 'DN006', 'SP021', 122
-EXEC sp_InsertCTDN 'DN006', 'SP022', 112
-EXEC sp_InsertCTDN 'DN006', 'SP023', 121
-EXEC sp_InsertCTDN 'DN006', 'SP024', 113
-EXEC sp_InsertCTDN 'DN007', 'SP025', 153
-EXEC sp_InsertCTDN 'DN007', 'SP026', 124
-EXEC sp_InsertCTDN 'DN007', 'SP027', 143
-EXEC sp_InsertCTDN 'DN007', 'SP028', 201
-EXEC sp_InsertCTDN 'DN008', 'SP029', 121
-EXEC sp_InsertCTDN 'DN008', 'SP030', 123
-EXEC sp_InsertCTDN 'DN008', 'SP031', 132
-EXEC sp_InsertCTDN 'DN008', 'SP032', 184
-
--- insert DONGIAO
-EXEC sp_InsertDonGiao '2023-05-05', 'KH001', N'Nguyễn Ngọc Mai', '0123456789', N'123 Nguyễn Văn Cừ', '27325'
-EXEC sp_InsertDonGiao '2023-06-06', 'KH002', N'Nguyễn Kiều Quỳnh Trang', '0397661332', N'112 Lê Trọng Tấn', '27013'
-EXEC sp_InsertDonGiao '2023-07-07', 'KH003', N'Nguyễn Quốc Thái', '0759632584', N'46/1 Đỗ Nhuận', '27013'
-EXEC sp_InsertDonGiao '2023-08-08', 'KH004', N'Nguyễn Văn A', '0778892253', N'100 Lê Văn Sỹ', '26983'
-EXEC sp_InsertDonGiao '2023-09-09', 'KH005', N'Nguyễn Trí Tuấn', '0575896253', N'193 Đường Số 6', '27442'
-EXEC sp_InsertDonGiao '2023-10-10', 'KH006', N'Cao Tấn Công', '0589635574', N'159 Phan Huy Ích', '27007'
-EXEC sp_InsertDonGiao '2023-11-11', 'KH007', N'Dương Duy Anh', '0996335884', N'18 Dương Đức Hiền', '27013'
-EXEC sp_InsertDonGiao '2023-07-12', 'KH008', N'Phạm Ngọc Đào', '1234518936', N'250 Nguyễn Thị Tú', '27442'
-EXEC sp_InsertDonGiao '2023-05-05', 'KH009', N'Trần Lê Kim Ngân', '0372264805', N'160 Nguyễn Sơn', '27025'
-EXEC sp_InsertDonGiao '2023-06-06', 'KH010', N'Trần Anh Thảo', '0896325114', N'142 Cộng Hòa', '26968'
-EXEC sp_InsertDonGiao '2023-07-07', 'KH011', N'Nguyễn Thị Thanh Thảo', '0932075838', N'47 Trương Công Định', '27004'
-EXEC sp_InsertDonGiao '2023-08-08', 'KH012', N'Nguyễn Thị Kiều Diễm', '0377882435', N'320 Nguyễn Tri Phương', '27199'
-EXEC sp_InsertDonGiao '2023-09-09', 'KH013', N'Lê Nguyễn Thúy An', '0708054432', N'318 Thoại Ngọc Hầu', '27025'
-EXEC sp_InsertDonGiao '2023-10-10', 'KH001', N'Nguyễn Ngọc Mai', '0123456789', N'123 Nguyễn Văn Cừ', '27325'
-EXEC sp_InsertDonGiao '2023-11-11', 'KH002', N'Nguyễn Kiều Quỳnh Trang', '0397661332', N'112 Lê Trọng Tấn', '27013'
-EXEC sp_InsertDonGiao '2023-07-12', 'KH003', N'Nguyễn Quốc Thái', '0759632584', N'46/1 Đỗ Nhuận', '27013'
-EXEC sp_InsertDonGiao '2023-05-05', 'KH004', N'Nguyễn Văn A', '0778892253', N'100 Lê Văn Sỹ', '26983'
-EXEC sp_InsertDonGiao '2023-06-06', 'KH005', N'Nguyễn Trí Tuấn', '0575896253', N'193 Đường Số 6', '27442'
-EXEC sp_InsertDonGiao '2023-07-07', 'KH006', N'Cao Tấn Công', '0589635574', N'159 Phan Huy Ích', '27007'
-
-
--- insert CTDG
-EXEC sp_InsertCTDG 'DG001', 'SP001', 1, 5, '2023-05-05', N'Rất tốt'
-EXEC sp_InsertCTDG 'DG001', 'SP002', 1, 4.5, '2023-05-05', N'Sản phẩm khá tốt'
-EXEC sp_InsertCTDG 'DG001', 'SP003', 1, 5, '2023-05-05', N'Amazing, sản phẩm quá tốt'
-EXEC sp_InsertCTDG 'DG001', 'SP004', 1, 4.5, '2023-05-05', N'Sản phẩm tốt, xài được'
-EXEC sp_InsertCTDG 'DG002', 'SP005', 1, 5, '2023-06-06', N'Dùng tốt lắm nha, nên mua mọi người ơi'
-EXEC sp_InsertCTDG 'DG002', 'SP001', 2, 4.5, '2023-06-06', N'Mới nhận hàng, chưa xài nên chưa biết'
-EXEC sp_InsertCTDG 'DG002', 'SP006', 1, 4.5, '2023-06-06', N'Mới nhận hàng, chưa xài nên chưa biết'
-EXEC sp_InsertCTDG 'DG002', 'SP007', 1, 5, '2023-06-06', N'Mới dùng thử chưa biết kết quả như thế nào'
-EXEC sp_InsertCTDG 'DG002', 'SP008', 1, 4.5, '2023-06-06', N'Rất tốt'
-EXEC sp_InsertCTDG 'DG003', 'SP009', 1, 5, '2023-07-07', N'Trời ơi ưng quá trời luôn áaaaaa'
-EXEC sp_InsertCTDG 'DG003', 'SP010', 1, 5, '2023-07-07', N'Xài mà nó mát lòng mát dạ'
-EXEC sp_InsertCTDG 'DG003', 'SP002', 1, 5, '2023-07-07', N'Không uổng tiền khi mua nha mọi người'
-EXEC sp_InsertCTDG 'DG003', 'SP012', 1, 5, '2023-07-07', N'Sản phẩm tốt lắm nha mọi người'
-EXEC sp_InsertCTDG 'DG004', 'SP013', 1, 4.5, '2023-08-08', N'Rất tốt'
-EXEC sp_InsertCTDG 'DG004', 'SP014', 1, 4, '2023-08-08', N'Mới mua chưa biết có hiệu quả hay không'
-EXEC sp_InsertCTDG 'DG004', 'SP015', 2, 4.5, '2023-08-08', N'Mua rất đáng tiền nha mọi người'
-EXEC sp_InsertCTDG 'DG004', 'SP016', 1, 4.5, '2023-08-08', N'Rất tốt'
-EXEC sp_InsertCTDG 'DG005', 'SP017', 4, 5, '2023-09-09', N'Mới đầu cũng hơi lo mà mua về dùng thử r mới thấy quá xứng đáng'
-EXEC sp_InsertCTDG 'DG005', 'SP018', 1, 4.5, '2023-09-09', N'Rất tốt'
-EXEC sp_InsertCTDG 'DG005', 'SP019', 1, 5, '2023-09-09', N'Nên mua nha, sản phẩm dùng quá ok luôn'
-EXEC sp_InsertCTDG 'DG005', 'SP020', 1, 5, '2023-09-09', N'Không uổng tiền khi mua nha mọi người'
-EXEC sp_InsertCTDG 'DG006', 'SP021', 1, 5, '2023-10-10', N'Nên mua mọi người ơi, sản phẩm ok lắm á'
-EXEC sp_InsertCTDG 'DG006', 'SP022', 1, 5, '2023-10-10', N'10 điểm'
-EXEC sp_InsertCTDG 'DG006', 'SP023', 1, 4.5, '2023-10-10', N'Rất tốt'
-EXEC sp_InsertCTDG 'DG006', 'SP024', 2, 4.5, '2023-10-10', N'Mua xài thử đi mng, đáng tiền lắm'
-EXEC sp_InsertCTDG 'DG007', 'SP025', 1, 3, '2023-11-11', N'Sản phẩm không tốt như review'
-EXEC sp_InsertCTDG 'DG007', 'SP026', 2, 4.5, '2023-11-11', N'Mới mua, đợi sử dụng xong quay lại review'
-EXEC sp_InsertCTDG 'DG007', 'SP027', 1, 4.5, '2023-11-11', N'Sản phẩm khá tốt'
-EXEC sp_InsertCTDG 'DG007', 'SP028', 1, 4.5, '2023-11-11', N'Mua rất đáng tiền nha mọi người'
-EXEC sp_InsertCTDG 'DG008', 'SP029', 1, 5, '2023-07-12', N'Không uổng tiền khi mua nha mọi người'
-EXEC sp_InsertCTDG 'DG008', 'SP030', 1, 4.5, '2023-07-12', N'Rất tốt'
-EXEC sp_InsertCTDG 'DG008', 'SP031', 1, 4.5, '2023-07-12', N'Trải nghiệm khá tốt'
-EXEC sp_InsertCTDG 'DG008', 'SP032', 1, 4.5, '2023-07-12', N'Rất tốt'
-EXEC sp_InsertCTDG 'DG009', 'SP011', 1, 5, '2023-05-05', N'Rất tốt'
-EXEC sp_InsertCTDG 'DG009', 'SP012', 1, 4.5, '2023-05-05', N'Sản phẩm khá tốt'
-EXEC sp_InsertCTDG 'DG009', 'SP024', 1, 5, '2023-05-05', N'Mới xài được bạn khen ưng lắm mấy bà ơi'
-EXEC sp_InsertCTDG 'DG010', 'SP013', 1, 5, '2023-05-05', N'Amazing, sản phẩm quá tốt'
-EXEC sp_InsertCTDG 'DG010', 'SP014', 3, 4.5, '2023-05-05', N'Sản phẩm tốt, xài được'
-EXEC sp_InsertCTDG 'DG010', 'SP004', 1, 5, '2023-05-05', N'Rất tốt'
-EXEC sp_InsertCTDG 'DG011', 'SP003', 1, 5, '2023-06-06', N'Dùng tốt lắm nha, nên mua mọi người ơi'
-EXEC sp_InsertCTDG 'DG011', 'SP006', 1, 4.5, '2023-06-06', N'Mới dùng thử chưa biết kết quả như thế nào'
-EXEC sp_InsertCTDG 'DG011', 'SP005', 1, 5, '2023-06-06', N'Mới nhận hàng, chưa xài nên chưa biết'
-EXEC sp_InsertCTDG 'DG012', 'SP007', 1, 4.5, '2023-06-06', N'Mới nhận hàng, chưa xài nên chưa biết'
-EXEC sp_InsertCTDG 'DG012', 'SP008', 1, 5, '2023-06-06', N'Mới nhận hàng, chưa xài nên chưa biết'
-EXEC sp_InsertCTDG 'DG012', 'SP009', 1, 4.5, '2023-06-06', N'Rất tốt'
-EXEC sp_InsertCTDG 'DG013', 'SP020', 2, 5, '2023-07-07', N'Trời ơi ưng quá trời luôn áaaaaa'
-EXEC sp_InsertCTDG 'DG013', 'SP030', 1, 5, '2023-07-07', N'Xài mà nó mát lòng mát dạ'
-EXEC sp_InsertCTDG 'DG013', 'SP015', 1, 5, '2023-07-07', N'Không uổng tiền khi mua nha mọi người'
-EXEC sp_InsertCTDG 'DG014', 'SP010', 1, 5, '2023-08-08', N'Sản phẩm tốt lắm nha mọi người'
-EXEC sp_InsertCTDG 'DG014', 'SP011', 1, 5, '2023-08-08', N'Rất tốt'
-EXEC sp_InsertCTDG 'DG014', 'SP016', 1, 5, '2023-08-08', N'Mới mua chưa biết có hiệu quả hay không'
-EXEC sp_InsertCTDG 'DG015', 'SP017', 1, 5, '2023-09-09', N'Rất tốt'
-EXEC sp_InsertCTDG 'DG015', 'SP018', 1, 5, '2023-09-09', N'Nên mua nha, sản phẩm dùng quá ok luôn'
-EXEC sp_InsertCTDG 'DG015', 'SP019', 1, 5, '2023-09-09', N'10 điểm'
-EXEC sp_InsertCTDG 'DG016', 'SP021', 1, 5, '2023-10-10', N'Nên mua mọi người ơi, sản phẩm ok lắm á'
-EXEC sp_InsertCTDG 'DG016', 'SP022', 1, 5, '2023-10-10', N'Không uổng tiền khi mua nha mọi người'
-EXEC sp_InsertCTDG 'DG016', 'SP023', 1, 4, '2023-10-10', N'Khá tốt'
-EXEC sp_InsertCTDG 'DG017', 'SP025', 1, 5, '2023-10-10', N'Mua xài thử đi mng, đáng tiền lắm'
-EXEC sp_InsertCTDG 'DG017', 'SP026', 1, 5, '2023-10-10', N'Nên mua mọi người ơi, sản phẩm ok lắm á'
-EXEC sp_InsertCTDG 'DG017', 'SP027', 1, 5, '2023-10-10', N'10 điểm'
-EXEC sp_InsertCTDG 'DG018', 'SP028', 1, 5, '2023-11-11', N'Nên mua mọi người ơi, sản phẩm ok lắm á'
-EXEC sp_InsertCTDG 'DG018', 'SP029', 1, 5, '2023-11-11', N'Không uổng tiền khi mua nha mọi người'
-EXEC sp_InsertCTDG 'DG018', 'SP031', 1, 4, '2023-11-11', N'Tạm được'
-EXEC sp_InsertCTDG 'DG019', 'SP032', 1, 5, '2023-07-12', N'Nên mua mọi người ơi, sản phẩm ok lắm á'
-
 
 -- INSERT LOẠI
 EXEC sp_InsertLoai N'Trang điểm'
@@ -286,6 +154,30 @@ EXEC sp_InsertChiTietLoaiSP N'Tạo Kiểu Tóc','CTL012'
 
 EXEC sp_InsertChiTietLoaiSP N'Kem Dưỡng Tay/Chân','CTL013'
 EXEC sp_InsertChiTietLoaiSP N'Mặt Nạ Tay/Chân','CTL013'
+go
+
+INSERT INTO DANGBAOCHE (MADBC, TENDANG) VALUES ('DBC001', N'Gel')
+INSERT INTO DANGBAOCHE (MADBC, TENDANG) VALUES ('DBC002', N'Serum')
+INSERT INTO DANGBAOCHE (MADBC, TENDANG) VALUES ('DBC003', N'Kem')
+INSERT INTO DANGBAOCHE (MADBC, TENDANG) VALUES ('DBC004', N'Phấn')
+INSERT INTO DANGBAOCHE (MADBC, TENDANG) VALUES ('DBC005', N'Sáp')
+INSERT INTO DANGBAOCHE (MADBC, TENDANG) VALUES ('DBC006', N'Dầu')
+INSERT INTO DANGBAOCHE (MADBC, TENDANG) VALUES ('DBC007', N'Dung dịch')
+INSERT INTO DANGBAOCHE (MADBC, TENDANG) VALUES ('DBC008', N'Lotion')
+INSERT INTO DANGBAOCHE (MADBC, TENDANG) VALUES ('DBC009', N'Tinh chất')
+INSERT INTO DANGBAOCHE (MADBC, TENDANG) VALUES ('DBC010', N'Nước')
+INSERT INTO DANGBAOCHE (MADBC, TENDANG) VALUES ('DBC011', N'Sữa')
+INSERT INTO DANGBAOCHE (MADBC, TENDANG) VALUES ('DBC012', N'Bột')
+INSERT INTO DANGBAOCHE (MADBC, TENDANG) VALUES ('DBC013', N'Khác')
+
+INSERT INTO QUYCACHDONGGOI (MAQCDG, TENQCDG) VALUES ('QCDG001', N'Chai')
+INSERT INTO QUYCACHDONGGOI (MAQCDG, TENQCDG) VALUES ('QCDG002', N'Lọ')
+INSERT INTO QUYCACHDONGGOI (MAQCDG, TENQCDG) VALUES ('QCDG003', N'Miếng')
+INSERT INTO QUYCACHDONGGOI (MAQCDG, TENQCDG) VALUES ('QCDG004', N'Hũ')
+INSERT INTO QUYCACHDONGGOI (MAQCDG, TENQCDG) VALUES ('QCDG005', N'Tuýp')
+INSERT INTO QUYCACHDONGGOI (MAQCDG, TENQCDG) VALUES ('QCDG006', N'Thỏi')
+INSERT INTO QUYCACHDONGGOI (MAQCDG, TENQCDG) VALUES ('QCDG007', N'Hộp')
+INSERT INTO QUYCACHDONGGOI (MAQCDG, TENQCDG) VALUES ('QCDG008', N'Cây')
 go
 EXEC pc_InsertSanPham N'Kem Lót Air Cotton Make Up Base The Face Shop', 'CTLSP002', 599000, 550000, 'DBC003', 'QCDG005',
 N'Công dụng của Kem Lót TFS AIR COTTON MAKE UP BASE
@@ -499,7 +391,7 @@ go
 --EXEC pc_InsertSanPham N'Tinh Chất Dưỡng Ẩm Thefaceshop', N'Kem lót', 629000, 580000, N'Gel', N'Chai 55ml'
 
 
-
+--insert THANHPHAN
 INSERT INTO THANHPHAN( MASP, TENTP, HAMLUONG) VALUES( 'SP001', N'Dr.Belmeur Cica Peptite Ampoule, Chiết xuất rau má', N'30ml')
 INSERT INTO THANHPHAN( MASP, TENTP, HAMLUONG) VALUES( 'SP002', N'Thành phần chính của kem lót TFS là từ Cotton Seed', N'100ml')
 INSERT INTO THANHPHAN( MASP, TENTP, HAMLUONG) VALUES( 'SP003', N'Antioxidants, chiết xuất từ quả việt quất, quả nho, rau lá có màu xanh đậm, cá', N'10g')
@@ -525,27 +417,137 @@ INSERT INTO THANHPHAN( MASP, TENTP, HAMLUONG) VALUES( 'SP022', N'Vitamin B12, Ch
 INSERT INTO THANHPHAN( MASP, TENTP, HAMLUONG) VALUES( 'SP023', N'Chiết xuất lô hội, cúc La Mã, rễ dâu tằm', N'140ml')
 INSERT INTO THANHPHAN( MASP, TENTP, HAMLUONG) VALUES( 'SP024', N'N-acetyl Boldin, Abutin', N'45ml')
 
+go
+-- INSERT DONNHAP
+EXEC sp_InsertDonNhap 'NV001', '2023-05-05', N'Đã đặt'
+EXEC sp_InsertDonNhap 'NV001', '2023-06-06', N'Đã đặt'
+EXEC sp_InsertDonNhap 'NV002', '2023-07-07', N'Đã đặt'
+EXEC sp_InsertDonNhap 'NV003', '2023-08-08', N'Đã đặt'
+EXEC sp_InsertDonNhap 'NV004', '2023-09-09', N'Đã đặt'
+EXEC sp_InsertDonNhap 'NV005', '2023-10-10', N'Đã đặt'
+EXEC sp_InsertDonNhap 'NV006', '2023-11-11', N'Đã đặt'
+EXEC sp_InsertDonNhap 'NV004', '2023-07-12', N'Đã đặt'
+go
+-- insert CTDN
+EXEC sp_InsertCTDN 'DN001', 'SP001', 145
+EXEC sp_InsertCTDN 'DN001', 'SP002', 123
+EXEC sp_InsertCTDN 'DN001', 'SP003', 356
+EXEC sp_InsertCTDN 'DN001', 'SP004', 243
+EXEC sp_InsertCTDN 'DN002', 'SP005', 124
+EXEC sp_InsertCTDN 'DN002', 'SP006', 132
+EXEC sp_InsertCTDN 'DN002', 'SP007', 167
+EXEC sp_InsertCTDN 'DN002', 'SP008', 176
+EXEC sp_InsertCTDN 'DN003', 'SP009', 221
+EXEC sp_InsertCTDN 'DN003', 'SP010', 101
+EXEC sp_InsertCTDN 'DN003', 'SP011', 102
+EXEC sp_InsertCTDN 'DN003', 'SP012', 201
+EXEC sp_InsertCTDN 'DN004', 'SP013', 132
+EXEC sp_InsertCTDN 'DN004', 'SP014', 184
+EXEC sp_InsertCTDN 'DN004', 'SP015', 144
+EXEC sp_InsertCTDN 'DN004', 'SP016', 193
+EXEC sp_InsertCTDN 'DN005', 'SP017', 199
+EXEC sp_InsertCTDN 'DN005', 'SP018', 223
+EXEC sp_InsertCTDN 'DN005', 'SP019', 213
+EXEC sp_InsertCTDN 'DN005', 'SP020', 221
+EXEC sp_InsertCTDN 'DN006', 'SP021', 122
+EXEC sp_InsertCTDN 'DN006', 'SP022', 112
+EXEC sp_InsertCTDN 'DN006', 'SP023', 121
+EXEC sp_InsertCTDN 'DN006', 'SP024', 113
+EXEC sp_InsertCTDN 'DN007', 'SP025', 153
+EXEC sp_InsertCTDN 'DN007', 'SP026', 124
+EXEC sp_InsertCTDN 'DN007', 'SP027', 143
+EXEC sp_InsertCTDN 'DN007', 'SP028', 201
+EXEC sp_InsertCTDN 'DN008', 'SP029', 121
+EXEC sp_InsertCTDN 'DN008', 'SP030', 123
+EXEC sp_InsertCTDN 'DN008', 'SP031', 132
+EXEC sp_InsertCTDN 'DN008', 'SP032', 184
+go
+-- insert DONGIAO
+EXEC sp_InsertDonGiao '2023-05-05', 'KH001', N'Nguyễn Ngọc Mai', '0123456789', N'123 Nguyễn Văn Cừ', '27325'
+EXEC sp_InsertDonGiao '2023-06-06', 'KH002', N'Nguyễn Kiều Quỳnh Trang', '0397661332', N'112 Lê Trọng Tấn', '27013'
+EXEC sp_InsertDonGiao '2023-07-07', 'KH003', N'Nguyễn Quốc Thái', '0759632584', N'46/1 Đỗ Nhuận', '27013'
+EXEC sp_InsertDonGiao '2023-08-08', 'KH004', N'Nguyễn Văn A', '0778892253', N'100 Lê Văn Sỹ', '26983'
+EXEC sp_InsertDonGiao '2023-09-09', 'KH005', N'Nguyễn Trí Tuấn', '0575896253', N'193 Đường Số 6', '27442'
+EXEC sp_InsertDonGiao '2023-10-10', 'KH006', N'Cao Tấn Công', '0589635574', N'159 Phan Huy Ích', '27007'
+EXEC sp_InsertDonGiao '2023-11-11', 'KH007', N'Dương Duy Anh', '0996335884', N'18 Dương Đức Hiền', '27013'
+EXEC sp_InsertDonGiao '2023-07-12', 'KH008', N'Phạm Ngọc Đào', '1234518936', N'250 Nguyễn Thị Tú', '27442'
+EXEC sp_InsertDonGiao '2023-05-05', 'KH009', N'Trần Lê Kim Ngân', '0372264805', N'160 Nguyễn Sơn', '27025'
+EXEC sp_InsertDonGiao '2023-06-06', 'KH010', N'Trần Anh Thảo', '0896325114', N'142 Cộng Hòa', '26968'
+EXEC sp_InsertDonGiao '2023-07-07', 'KH011', N'Nguyễn Thị Thanh Thảo', '0932075838', N'47 Trương Công Định', '27004'
+EXEC sp_InsertDonGiao '2023-08-08', 'KH012', N'Nguyễn Thị Kiều Diễm', '0377882435', N'320 Nguyễn Tri Phương', '27199'
+EXEC sp_InsertDonGiao '2023-09-09', 'KH013', N'Lê Nguyễn Thúy An', '0708054432', N'318 Thoại Ngọc Hầu', '27025'
+EXEC sp_InsertDonGiao '2023-10-10', 'KH001', N'Nguyễn Ngọc Mai', '0123456789', N'123 Nguyễn Văn Cừ', '27325'
+EXEC sp_InsertDonGiao '2023-11-11', 'KH002', N'Nguyễn Kiều Quỳnh Trang', '0397661332', N'112 Lê Trọng Tấn', '27013'
+EXEC sp_InsertDonGiao '2023-07-12', 'KH003', N'Nguyễn Quốc Thái', '0759632584', N'46/1 Đỗ Nhuận', '27013'
+EXEC sp_InsertDonGiao '2023-05-05', 'KH004', N'Nguyễn Văn A', '0778892253', N'100 Lê Văn Sỹ', '26983'
+EXEC sp_InsertDonGiao '2023-06-06', 'KH005', N'Nguyễn Trí Tuấn', '0575896253', N'193 Đường Số 6', '27442'
+EXEC sp_InsertDonGiao '2023-07-07', 'KH006', N'Cao Tấn Công', '0589635574', N'159 Phan Huy Ích', '27007'
+go
 
-INSERT INTO DANGBAOCHE (MADBC, TENDANG) VALUES ('DBC001', N'Gel')
-INSERT INTO DANGBAOCHE (MADBC, TENDANG) VALUES ('DBC002', N'Serum')
-INSERT INTO DANGBAOCHE (MADBC, TENDANG) VALUES ('DBC003', N'Kem')
-INSERT INTO DANGBAOCHE (MADBC, TENDANG) VALUES ('DBC004', N'Phấn')
-INSERT INTO DANGBAOCHE (MADBC, TENDANG) VALUES ('DBC005', N'Sáp')
-INSERT INTO DANGBAOCHE (MADBC, TENDANG) VALUES ('DBC006', N'Dầu')
-INSERT INTO DANGBAOCHE (MADBC, TENDANG) VALUES ('DBC007', N'Dung dịch')
-INSERT INTO DANGBAOCHE (MADBC, TENDANG) VALUES ('DBC008', N'Lotion')
-INSERT INTO DANGBAOCHE (MADBC, TENDANG) VALUES ('DBC009', N'Tinh chất')
-INSERT INTO DANGBAOCHE (MADBC, TENDANG) VALUES ('DBC010', N'Nước')
-INSERT INTO DANGBAOCHE (MADBC, TENDANG) VALUES ('DBC011', N'Sữa')
-INSERT INTO DANGBAOCHE (MADBC, TENDANG) VALUES ('DBC012', N'Bột')
-INSERT INTO DANGBAOCHE (MADBC, TENDANG) VALUES ('DBC013', N'Khác')
+-- insert CTDG
+EXEC sp_InsertCTDG 'DG001', 'SP001', 1, 5, '2023-05-05', N'Rất tốt'
+EXEC sp_InsertCTDG 'DG001', 'SP002', 1, 4.5, '2023-05-05', N'Sản phẩm khá tốt'
+EXEC sp_InsertCTDG 'DG001', 'SP003', 1, 5, '2023-05-05', N'Amazing, sản phẩm quá tốt'
+EXEC sp_InsertCTDG 'DG001', 'SP004', 1, 4.5, '2023-05-05', N'Sản phẩm tốt, xài được'
+EXEC sp_InsertCTDG 'DG002', 'SP005', 1, 5, '2023-06-06', N'Dùng tốt lắm nha, nên mua mọi người ơi'
+EXEC sp_InsertCTDG 'DG002', 'SP001', 2, 4.5, '2023-06-06', N'Mới nhận hàng, chưa xài nên chưa biết'
+EXEC sp_InsertCTDG 'DG002', 'SP006', 1, 4.5, '2023-06-06', N'Mới nhận hàng, chưa xài nên chưa biết'
+EXEC sp_InsertCTDG 'DG002', 'SP007', 1, 5, '2023-06-06', N'Mới dùng thử chưa biết kết quả như thế nào'
+EXEC sp_InsertCTDG 'DG002', 'SP008', 1, 4.5, '2023-06-06', N'Rất tốt'
+EXEC sp_InsertCTDG 'DG003', 'SP009', 1, 5, '2023-07-07', N'Trời ơi ưng quá trời luôn áaaaaa'
+EXEC sp_InsertCTDG 'DG003', 'SP010', 1, 5, '2023-07-07', N'Xài mà nó mát lòng mát dạ'
+EXEC sp_InsertCTDG 'DG003', 'SP002', 1, 5, '2023-07-07', N'Không uổng tiền khi mua nha mọi người'
+EXEC sp_InsertCTDG 'DG003', 'SP012', 1, 5, '2023-07-07', N'Sản phẩm tốt lắm nha mọi người'
+EXEC sp_InsertCTDG 'DG004', 'SP013', 1, 4.5, '2023-08-08', N'Rất tốt'
+EXEC sp_InsertCTDG 'DG004', 'SP014', 1, 4, '2023-08-08', N'Mới mua chưa biết có hiệu quả hay không'
+EXEC sp_InsertCTDG 'DG004', 'SP015', 2, 4.5, '2023-08-08', N'Mua rất đáng tiền nha mọi người'
+EXEC sp_InsertCTDG 'DG004', 'SP016', 1, 4.5, '2023-08-08', N'Rất tốt'
+EXEC sp_InsertCTDG 'DG005', 'SP017', 4, 5, '2023-09-09', N'Mới đầu cũng hơi lo mà mua về dùng thử r mới thấy quá xứng đáng'
+EXEC sp_InsertCTDG 'DG005', 'SP018', 1, 4.5, '2023-09-09', N'Rất tốt'
+EXEC sp_InsertCTDG 'DG005', 'SP019', 1, 5, '2023-09-09', N'Nên mua nha, sản phẩm dùng quá ok luôn'
+EXEC sp_InsertCTDG 'DG005', 'SP020', 1, 5, '2023-09-09', N'Không uổng tiền khi mua nha mọi người'
+EXEC sp_InsertCTDG 'DG006', 'SP021', 1, 5, '2023-10-10', N'Nên mua mọi người ơi, sản phẩm ok lắm á'
+EXEC sp_InsertCTDG 'DG006', 'SP022', 1, 5, '2023-10-10', N'10 điểm'
+EXEC sp_InsertCTDG 'DG006', 'SP023', 1, 4.5, '2023-10-10', N'Rất tốt'
+EXEC sp_InsertCTDG 'DG006', 'SP024', 2, 4.5, '2023-10-10', N'Mua xài thử đi mng, đáng tiền lắm'
+EXEC sp_InsertCTDG 'DG007', 'SP025', 1, 3, '2023-11-11', N'Sản phẩm không tốt như review'
+EXEC sp_InsertCTDG 'DG007', 'SP026', 2, 4.5, '2023-11-11', N'Mới mua, đợi sử dụng xong quay lại review'
+EXEC sp_InsertCTDG 'DG007', 'SP027', 1, 4.5, '2023-11-11', N'Sản phẩm khá tốt'
+EXEC sp_InsertCTDG 'DG007', 'SP028', 1, 4.5, '2023-11-11', N'Mua rất đáng tiền nha mọi người'
+EXEC sp_InsertCTDG 'DG008', 'SP029', 1, 5, '2023-07-12', N'Không uổng tiền khi mua nha mọi người'
+EXEC sp_InsertCTDG 'DG008', 'SP030', 1, 4.5, '2023-07-12', N'Rất tốt'
+EXEC sp_InsertCTDG 'DG008', 'SP031', 1, 4.5, '2023-07-12', N'Trải nghiệm khá tốt'
+EXEC sp_InsertCTDG 'DG008', 'SP032', 1, 4.5, '2023-07-12', N'Rất tốt'
+EXEC sp_InsertCTDG 'DG009', 'SP011', 1, 5, '2023-05-05', N'Rất tốt'
+EXEC sp_InsertCTDG 'DG009', 'SP012', 1, 4.5, '2023-05-05', N'Sản phẩm khá tốt'
+EXEC sp_InsertCTDG 'DG009', 'SP024', 1, 5, '2023-05-05', N'Mới xài được bạn khen ưng lắm mấy bà ơi'
+EXEC sp_InsertCTDG 'DG010', 'SP013', 1, 5, '2023-05-05', N'Amazing, sản phẩm quá tốt'
+EXEC sp_InsertCTDG 'DG010', 'SP014', 3, 4.5, '2023-05-05', N'Sản phẩm tốt, xài được'
+EXEC sp_InsertCTDG 'DG010', 'SP004', 1, 5, '2023-05-05', N'Rất tốt'
+EXEC sp_InsertCTDG 'DG011', 'SP003', 1, 5, '2023-06-06', N'Dùng tốt lắm nha, nên mua mọi người ơi'
+EXEC sp_InsertCTDG 'DG011', 'SP006', 1, 4.5, '2023-06-06', N'Mới dùng thử chưa biết kết quả như thế nào'
+EXEC sp_InsertCTDG 'DG011', 'SP005', 1, 5, '2023-06-06', N'Mới nhận hàng, chưa xài nên chưa biết'
+EXEC sp_InsertCTDG 'DG012', 'SP007', 1, 4.5, '2023-06-06', N'Mới nhận hàng, chưa xài nên chưa biết'
+EXEC sp_InsertCTDG 'DG012', 'SP008', 1, 5, '2023-06-06', N'Mới nhận hàng, chưa xài nên chưa biết'
+EXEC sp_InsertCTDG 'DG012', 'SP009', 1, 4.5, '2023-06-06', N'Rất tốt'
+EXEC sp_InsertCTDG 'DG013', 'SP020', 2, 5, '2023-07-07', N'Trời ơi ưng quá trời luôn áaaaaa'
+EXEC sp_InsertCTDG 'DG013', 'SP030', 1, 5, '2023-07-07', N'Xài mà nó mát lòng mát dạ'
+EXEC sp_InsertCTDG 'DG013', 'SP015', 1, 5, '2023-07-07', N'Không uổng tiền khi mua nha mọi người'
+EXEC sp_InsertCTDG 'DG014', 'SP010', 1, 5, '2023-08-08', N'Sản phẩm tốt lắm nha mọi người'
+EXEC sp_InsertCTDG 'DG014', 'SP011', 1, 5, '2023-08-08', N'Rất tốt'
+EXEC sp_InsertCTDG 'DG014', 'SP016', 1, 5, '2023-08-08', N'Mới mua chưa biết có hiệu quả hay không'
+EXEC sp_InsertCTDG 'DG015', 'SP017', 1, 5, '2023-09-09', N'Rất tốt'
+EXEC sp_InsertCTDG 'DG015', 'SP018', 1, 5, '2023-09-09', N'Nên mua nha, sản phẩm dùng quá ok luôn'
+EXEC sp_InsertCTDG 'DG015', 'SP019', 1, 5, '2023-09-09', N'10 điểm'
+EXEC sp_InsertCTDG 'DG016', 'SP021', 1, 5, '2023-10-10', N'Nên mua mọi người ơi, sản phẩm ok lắm á'
+EXEC sp_InsertCTDG 'DG016', 'SP022', 1, 5, '2023-10-10', N'Không uổng tiền khi mua nha mọi người'
+EXEC sp_InsertCTDG 'DG016', 'SP023', 1, 4, '2023-10-10', N'Khá tốt'
+EXEC sp_InsertCTDG 'DG017', 'SP025', 1, 5, '2023-10-10', N'Mua xài thử đi mng, đáng tiền lắm'
+EXEC sp_InsertCTDG 'DG017', 'SP026', 1, 5, '2023-10-10', N'Nên mua mọi người ơi, sản phẩm ok lắm á'
+EXEC sp_InsertCTDG 'DG017', 'SP027', 1, 5, '2023-10-10', N'10 điểm'
+EXEC sp_InsertCTDG 'DG018', 'SP028', 1, 5, '2023-11-11', N'Nên mua mọi người ơi, sản phẩm ok lắm á'
+EXEC sp_InsertCTDG 'DG018', 'SP029', 1, 5, '2023-11-11', N'Không uổng tiền khi mua nha mọi người'
+EXEC sp_InsertCTDG 'DG018', 'SP031', 1, 4, '2023-11-11', N'Tạm được'
+EXEC sp_InsertCTDG 'DG019', 'SP032', 1, 5, '2023-07-12', N'Nên mua mọi người ơi, sản phẩm ok lắm á'
 
-INSERT INTO QUYCACHDONGGOI (MAQCDG, TENQCDG) VALUES ('QCDG001', N'Chai')
-INSERT INTO QUYCACHDONGGOI (MAQCDG, TENQCDG) VALUES ('QCDG002', N'Lọ')
-INSERT INTO QUYCACHDONGGOI (MAQCDG, TENQCDG) VALUES ('QCDG003', N'Miếng')
-INSERT INTO QUYCACHDONGGOI (MAQCDG, TENQCDG) VALUES ('QCDG004', N'Hũ')
-INSERT INTO QUYCACHDONGGOI (MAQCDG, TENQCDG) VALUES ('QCDG005', N'Tuýp')
-INSERT INTO QUYCACHDONGGOI (MAQCDG, TENQCDG) VALUES ('QCDG006', N'Thỏi')
-INSERT INTO QUYCACHDONGGOI (MAQCDG, TENQCDG) VALUES ('QCDG007', N'Hộp')
-INSERT INTO QUYCACHDONGGOI (MAQCDG, TENQCDG) VALUES ('QCDG008', N'Cây')
-
+go
