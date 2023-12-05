@@ -9,6 +9,7 @@ namespace TheFaceShop.Areas.Admin.Controllers
     public class AdminController : Controller
     {
         // GET: Admin/Admin
+        [Authorize(Roles = "QuanTri")]
         public ActionResult Index()
         {
             return View();

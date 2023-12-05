@@ -1081,6 +1081,7 @@
     <Content Include="Areas\Admin\Assets\ckfinder\skins\v1\richcombo.css" />
     <Content Include="Areas\Admin\Assets\ckfinder\skins\v1\skin.js" />
     <Content Include="Areas\Admin\Assets\ckfinder\skins\v1\uipanel.css" />
+    <Content Include="Areas\Admin\Assets\css\DangNhap.css" />
     <Content Include="Areas\Admin\Assets\css\style.css" />
     <Content Include="Areas\Admin\Assets\js\image.js" />
     <Content Include="Global.asax" />
@@ -1100,6 +1101,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\AccountController.cs" />
     <Compile Include="Areas\Admin\Controllers\AdminController.cs" />
     <Compile Include="Areas\Admin\Controllers\DonNhapController.cs" />
     <Compile Include="Areas\Admin\Controllers\SanPhamController.cs" />
@@ -1219,6 +1221,7 @@
     <Content Include="Areas\Admin\Assets\ckeditor\samples\toolbarconfigurator\font\fontello.woff" />
     <Content Include="Areas\Admin\Assets\ckeditor\samples\toolbarconfigurator\lib\codemirror\LICENSE" />
     <Content Include="Areas\Admin\Assets\ckeditor\skins\moono-lisa\readme.md" />
+    <Content Include="Areas\Admin\Views\Account\DangNhap.cshtml" />
     <None Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
