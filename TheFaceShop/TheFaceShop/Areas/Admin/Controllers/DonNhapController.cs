@@ -7,6 +7,7 @@ using TheFaceShop.Models;
 
 namespace TheFaceShop.Areas.Admin.Controllers
 {
+    [Authorize(Roles = "QuanTri")]
     public class DonNhapController : Controller
     {
         QL_THEFACESHOPEntities db = new QL_THEFACESHOPEntities();
@@ -28,6 +29,15 @@ namespace TheFaceShop.Areas.Admin.Controllers
                 return RedirectToAction("TaoDonNhap", "DonNhap");
             }
             return RedirectToAction("TaoDonNhap", "DonNhap");
+        }
+
+        protected override void HandleUnknownAction(string actionName)
+        {
+            if (HttpContext.Response.StatusCode == 401 &&
+                HttpContext.Session["user"] == null)
+            {
+                RedirectToAction("DangNhap", "Account");
+            }
         }
     }
 }

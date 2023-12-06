@@ -11,7 +11,7 @@ namespace TheFaceShop.Areas.Admin.Controllers
     {
         QL_THEFACESHOPEntities db = new QL_THEFACESHOPEntities();
         // GET: Admin/Admin
-        //[Authorize(Roles = "QuanTri")]
+        [Authorize(Roles = "QuanTri")]
         public ActionResult Index()
         {
             ViewBag.SLSP = db.SANPHAMs.Count();
@@ -50,10 +50,14 @@ namespace TheFaceShop.Areas.Admin.Controllers
             
             return View();
         }
-        
-        public ActionResult DoanhThuTungThang()
+
+        protected override void HandleUnknownAction(string actionName)
         {
-            return Json(db.DONGIAOs.Where(n => n.TRANGTHAI == "Đã giao").GroupBy(n => n.NGAYLAP.Value.Month).Select(n => new { thang = n.Key, doanhthu = n.Sum(m => m.TRIGIA) }).ToList(), JsonRequestBehavior.AllowGet);
+            if (HttpContext.Response.StatusCode == 401 &&
+                HttpContext.Session["user"] == null)
+            {
+                RedirectToAction("DangNhap", "Account");
+            }
         }
     }
 }
