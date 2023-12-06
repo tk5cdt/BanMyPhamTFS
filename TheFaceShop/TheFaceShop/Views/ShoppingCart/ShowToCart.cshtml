@@ -24,21 +24,21 @@
             @foreach (var item in Model.Items)
             {
                 
-                double total = Convert.ToDouble(item._shopping_product.Discount.Value * item._shopping_quantity);
+                double total = Convert.ToDouble(item._shopping_product.GIABAN.Value * item._shopping_quantity);
                 <tr>
                     <td>
-                        @Html.DisplayFor(model => item._shopping_product.Title)
+                        @Html.DisplayFor(model => item._shopping_product.TENSP)
                     </td>
                     <td>
-                        <img src="@Url.Content(item._shopping_product.Thumbnail)" style=" width:150px; height: 150px" />
+                        <img src="@Url.Content(item._shopping_product.ANHDAIDIEN)" style=" width:150px; height: 150px" />
                     </td>
                     <td>
-                        @Html.DisplayFor(model => item._shopping_product.Discount) VND
+                        @Html.DisplayFor(model => item._shopping_product.GIABAN) VND
                     </td>
                     <td>
                         @using (Html.BeginForm("Update_Quantity_Cart", "ShoppingCart"))
                         {
-                            <input type="hidden" value="@item._shopping_product.ID" name="id_Pro" />
+                            <input type="hidden" value="@item._shopping_product.MASP" name="id_Pro" />
                             <input type="number" value="@item._shopping_quantity" name="Quantity" />
                             <input type="submit" value="Update Quantity" />
                         }
@@ -48,7 +48,7 @@
                         Thành tiền: @total
                     </td>
                     <td>
-                        <a href="/ShoppingCart/RemoveCart/@item._shopping_product.ID">xoá</a>
+                        <a href="/ShoppingCart/RemoveCart/@item._shopping_product.MASP">xoá</a>
                     </td>
                 </tr>
             }
@@ -60,7 +60,7 @@
             </tr>
         </tfoot>
     </table>
-    <a href="@Url.Action("TrangChu","Home"href="~/Views/Account/TrangChu")">Tiếp tục mua hàng</a>
+    <a href="@Url.Action("TrangChu","Home")">Tiếp tục mua hàng</a>
 
       @using (Html.BeginForm("CheckOut","ShoppingCart"))
       {
@@ -76,16 +76,16 @@
                         <input type="text" class="form-control" placeholder="Họ và tên..." name="hovaten">
                     </div>
                     <div class="mb-3">
-                        <label for="pwd">Email:</label>
-                        <input type="text" class="form-control" placeholder="Email..." name="email">
-                    </div>
-                    <div class="mb-3">
                         <label for="pwd">SĐT</label>
                         <input type="text" class="form-control" placeholder="SĐT..." name="sdt">
                     </div>
                     <div class="mb-3">
-                        <label for="pwd">Địa Chỉ:</label>
-                        <input type="text" class="form-control" placeholder="Địa Chỉ" name="diachi">
+                        <label for="pwd">Số Nhà:</label>
+                        <input type="text" class="form-control" placeholder="Số nhà..." name="sonha">
+                    </div>
+                    <div class="mb-3">
+                        <label for="pwd">Phường Xã:</label>
+                        <input type="text" class="form-control" placeholder="Phường xã..." name="phuongxa">
                     </div>
                     <div class="mb-3">
                         <label for="pwd">Ghi chú:</label>

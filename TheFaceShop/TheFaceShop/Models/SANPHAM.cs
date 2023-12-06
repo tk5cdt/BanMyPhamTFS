@@ -36,7 +36,6 @@ namespace TheFaceShop.Models
         public Nullable<double> TONGDANHGIA { get; set; }
         public Nullable<int> TONKHO { get; set; }
         public string TRANGTHAI { get; set; }
-        public string THANHPHAN { get; set; }
         public string DUNGTICH { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
