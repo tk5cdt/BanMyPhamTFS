@@ -21,11 +21,9 @@ namespace TheFaceShop.Models
             this.CTDGs = new HashSet<CTDG>();
             this.CTDNs = new HashSet<CTDN>();
             this.HINHANHSPs = new HashSet<HINHANHSP>();
-            this.THANHPHANs = new HashSet<THANHPHAN>();
         }
     
         public string MASP { get; set; }
-        [Display(Name ="Tên sản phẩm")]
         public string TENSP { get; set; }
         public string MACTL_SP { get; set; }
         public Nullable<double> GIABAN { get; set; }
@@ -38,6 +36,8 @@ namespace TheFaceShop.Models
         public Nullable<double> TONGDANHGIA { get; set; }
         public Nullable<int> TONKHO { get; set; }
         public string TRANGTHAI { get; set; }
+        public string THANHPHAN { get; set; }
+        public string DUNGTICH { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CHITIETGIOHANG> CHITIETGIOHANGs { get; set; }
@@ -50,7 +50,5 @@ namespace TheFaceShop.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<HINHANHSP> HINHANHSPs { get; set; }
         public virtual QUYCACHDONGGOI QUYCACHDONGGOI { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<THANHPHAN> THANHPHANs { get; set; }
     }
 }

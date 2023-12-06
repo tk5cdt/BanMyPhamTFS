@@ -47,10 +47,9 @@ namespace TheFaceShop.Models
         public virtual DbSet<QUYCACHDONGGOI> QUYCACHDONGGOIs { get; set; }
         public virtual DbSet<QUYEN> QUYENs { get; set; }
         public virtual DbSet<SANPHAM> SANPHAMs { get; set; }
-        public virtual DbSet<THANHPHAN> THANHPHANs { get; set; }
         public virtual DbSet<TINHTHANH> TINHTHANHs { get; set; }
     
-        public virtual int pc_InsertSanPham(string tensp, string loai, Nullable<int> giaban, Nullable<int> gianhap, string dangbaoche, string qcdonggoi, string noidung, string congdung, Nullable<int> tonkho)
+        public virtual int pc_InsertSanPham(string tensp, string loai, Nullable<int> giaban, Nullable<int> gianhap, string dangbaoche, string qcdonggoi, string noidung, string congdung, Nullable<int> tonkho, string thanhphan, string dungtich)
         {
             var tenspParameter = tensp != null ?
                 new ObjectParameter("tensp", tensp) :
@@ -88,7 +87,15 @@ namespace TheFaceShop.Models
                 new ObjectParameter("tonkho", tonkho) :
                 new ObjectParameter("tonkho", typeof(int));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("pc_InsertSanPham", tenspParameter, loaiParameter, giabanParameter, gianhapParameter, dangbaocheParameter, qcdonggoiParameter, noidungParameter, congdungParameter, tonkhoParameter);
+            var thanhphanParameter = thanhphan != null ?
+                new ObjectParameter("thanhphan", thanhphan) :
+                new ObjectParameter("thanhphan", typeof(string));
+    
+            var dungtichParameter = dungtich != null ?
+                new ObjectParameter("dungtich", dungtich) :
+                new ObjectParameter("dungtich", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("pc_InsertSanPham", tenspParameter, loaiParameter, giabanParameter, gianhapParameter, dangbaocheParameter, qcdonggoiParameter, noidungParameter, congdungParameter, tonkhoParameter, thanhphanParameter, dungtichParameter);
         }
     
         public virtual int pc_TimMaTiepTheo(string table, ObjectParameter id)
