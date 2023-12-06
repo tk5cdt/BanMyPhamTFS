@@ -1,5 +1,5 @@
 ﻿---------Thu
-CREATE FUNCTION f_DoanhThuTungNgay(@NgayBatDau date, @NgayKetThuc date)
+CREATE FUNCTION dbo.DoanhThuTungNgay(@NgayBatDau date, @NgayKetThuc date)
 RETURNS TABLE
 AS
 RETURN
@@ -11,7 +11,7 @@ RETURN
 )
 go
 
-CREATE FUNCTION f_DoanhThuThang(@Thang INT)
+CREATE FUNCTION dbo.DoanhThuThang(@Thang INT)
 RETURNS FLOAT
 AS
 BEGIN
@@ -23,7 +23,7 @@ BEGIN
 END;
 go
 
-CREATE FUNCTION f_DoanhThuTrongNam()
+CREATE FUNCTION dbo.DoanhThuTrongNam()
 RETURNS FLOAT
 AS
 BEGIN
@@ -35,11 +35,11 @@ BEGIN
 END;
 go
 
-CREATE FUNCTION f_DoanhThuTungThang()
+CREATE FUNCTION dbo.DoanhThuTungThang()
 RETURNS TABLE
 AS
 RETURN (
-    SELECT Thang, f_DoanhThuThang(Thang) AS DoanhThu
+    SELECT Thang, dbo.DoanhThuThang(Thang) AS DoanhThu
     FROM (
         VALUES (1), (2), (3), (4), (5), (6),
                (7), (8), (9), (10), (11), (12)
@@ -47,7 +47,7 @@ RETURN (
 );
 go
 
-CREATE FUNCTION f_DoanhThuTrongQuy(@Quy int)
+CREATE FUNCTION dbo.DoanhThuTrongQuy(@Quy int)
 RETURNS TABLE
 AS
 RETURN (
@@ -59,21 +59,21 @@ RETURN (
 );
 go
 
-CREATE FUNCTION f_TongDoanhThuTrongQuy(@Quy int)
+CREATE FUNCTION dbo.TongDoanhThuTrongQuy(@Quy int)
 RETURNS Float
 AS
 BEGIN
     declare @Tong int = 0
-	select @Tong = sum(DoanhThu) from f_DoanhThuTrongQuy(@Quy)
+	select @Tong = sum(DoanhThu) from dbo.DoanhThuTrongQuy(@Quy)
 	return @Tong;
 END
 go
 
-CREATE FUNCTION f_DoanhThuCacQuy()
+CREATE FUNCTION dbo.DoanhThuCacQuy()
 RETURNS TABLE
 AS
 RETURN (
-    SELECT Quy, f_TongDoanhThuTrongQuy(Quy) AS DoanhThu
+    SELECT Quy, dbo.TongDoanhThuTrongQuy(Quy) AS DoanhThu
     FROM (
         VALUES (1), (2), (3), (4)
     ) AS Quy(Quy)
@@ -81,7 +81,7 @@ RETURN (
 go
 
 --------Chi
-CREATE FUNCTION f_ChiNgay(@NgayBatDau date, @NgayKetThuc date)
+CREATE FUNCTION dbo.ChiNgay(@NgayBatDau date, @NgayKetThuc date)
 RETURNS TABLE
 AS
 RETURN
@@ -93,7 +93,7 @@ RETURN
 )
 go
 
-CREATE FUNCTION f_ChiTrongNam()
+CREATE FUNCTION dbo.ChiTrongNam()
 RETURNS FLOAT
 AS
 BEGIN
@@ -105,7 +105,7 @@ BEGIN
 END;
 go
 
-CREATE FUNCTION f_ChiTrongThang(@Thang INT)
+CREATE FUNCTION dbo.ChiTrongThang(@Thang INT)
 RETURNS FLOAT
 AS
 BEGIN
@@ -118,11 +118,11 @@ END;
 go
 
 
-CREATE FUNCTION f_ChiTungThang()
+CREATE FUNCTION dbo.ChiTungThang()
 RETURNS TABLE
 AS
 RETURN (
-    SELECT Thang, f_ChiTrongThang(Thang) AS Chi
+    SELECT Thang, dbo.ChiTrongThang(Thang) AS Chi
     FROM (
         VALUES (1), (2), (3), (4), (5), (6),
                (7), (8), (9), (10), (11), (12)
@@ -130,7 +130,7 @@ RETURN (
 );
 go
 
-CREATE FUNCTION f_ChiTrongQuy(@Quy int)
+CREATE FUNCTION dbo.ChiTrongQuy(@Quy int)
 RETURNS TABLE
 AS
 RETURN (
@@ -142,21 +142,21 @@ RETURN (
 );
 go
 
-CREATE FUNCTION f_TongChiTrongQuy(@Quy int)
+CREATE FUNCTION dbo.TongChiTrongQuy(@Quy int)
 RETURNS Float
 AS
 BEGIN
     declare @Tong int = 0
-	select @Tong = sum(Chi) from f_ChiTrongQuy(@Quy)
+	select @Tong = sum(Chi) from dbo.ChiTrongQuy(@Quy)
 	return @Tong;
 END
 go
 
-CREATE FUNCTION f_ChiThuCacQuy()
+CREATE FUNCTION dbo.ChiThuCacQuy()
 RETURNS TABLE
 AS
 RETURN (
-    SELECT Quy, f_TongDoanhThuTrongQuy(Quy) AS Chi
+    SELECT Quy, dbo.TongDoanhThuTrongQuy(Quy) AS Chi
     FROM (
         VALUES (1), (2), (3), (4)
     ) AS Quy(Quy)
@@ -164,23 +164,23 @@ RETURN (
 go
 
 ----------Lợi nhuận
-CREATE FUNCTION f_LoiNhuanTungNgay(@NgayBatDau date, @NgayKetThuc date)
+CREATE FUNCTION dbo.LoiNhuanTungNgay(@NgayBatDau date, @NgayKetThuc date)
 RETURNS TABLE
 AS
 RETURN (
-    select format(convert(date, COALESCE(n.NGAYLAP, g.NGAYLAP)), 'dd-MM-yyyy') as Ngay, ISNULL(isnull(sum(TRIGIA), 0)-isnull(sum(TONGTIEN), 0), 0) as LoiNhuan
+    select COALESCE(n.NGAYLAP, g.NGAYLAP) as Ngay, isnull(sum(TRIGIA), 0) - isnull(sum(TONGTIEN), 0) as LoiNhuan
 	from DONGIAO g full join DONNHAP n
 	on g.NGAYLAP = n.NGAYLAP
 	where (g.NGAYLAP >= @NgayBatDau and g.NGAYLAP <= @NgayKetThuc) or (n.NGAYLAP >= @NgayBatDau and n.NGAYLAP <= @NgayKetThuc)
-	group by convert(date, COALESCE(g.NGAYLAP, n.NGAYLAP))
+	group by COALESCE(n.NGAYLAP, g.NGAYLAP)
 );
 go
 
-CREATE FUNCTION f_LoiNhuanTungThang()
+CREATE FUNCTION dbo.LoiNhuanTungThang()
 RETURNS TABLE
 AS
 RETURN (
-    SELECT Thang, ISNULL(f_DoanhThuTrongThang(Thang) - f_ChiTrongThang(Thang), 0) AS LOINHUAN
+    SELECT Thang, ISNULL(dbo.DoanhThuThang(Thang) - dbo.ChiTrongThang(Thang), 0) AS LOINHUAN
     FROM (
         VALUES (1), (2), (3), (4), (5), (6),
                (7), (8), (9), (10), (11), (12)

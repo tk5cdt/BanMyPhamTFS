@@ -21,6 +21,7 @@ namespace TheFaceShop.Areas.Admin.Controllers
             }
             return cart;
         }
+        [HttpPost]
         public ActionResult AddtoCart(string id)
         {
             var pro = db.SANPHAMs.SingleOrDefault(s => s.MASP == id);

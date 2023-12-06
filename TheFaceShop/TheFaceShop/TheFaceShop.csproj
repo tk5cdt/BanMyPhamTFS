@@ -1088,6 +1088,7 @@
     <Content Include="Content\Bootstrap5\bootstrap.css" />
     <Content Include="Content\Bootstrap5\bootstrap.min.css" />
     <Content Include="Content\css\SlideShow.css" />
+    <Content Include="Content\css\thuoc.css" />
     <Content Include="Content\css\view.css" />
     <Content Include="Content\css\viewLayoutPage.css" />
     <Content Include="Content\Fontawesome\all.css" />
@@ -1120,6 +1121,7 @@
     <Compile Include="Areas\Admin\Controllers\DonGiaoController.cs" />
     <Compile Include="Areas\Admin\Controllers\DonNhapController.cs" />
     <Compile Include="Areas\Admin\Controllers\SanPhamController.cs" />
+    <Compile Include="Controllers\SPController.cs" />
     <Compile Include="Controllers\ShoppingCartController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoaiSanPhamController.cs" />
@@ -1131,6 +1133,9 @@
       <DependentUpon>QL_TFS.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Cart.cs" />
+    <Compile Include="Models\ChiThuCacQuy_Result.cs">
+      <DependentUpon>QL_TFS.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\CHITIETGIOHANG.cs">
       <DependentUpon>QL_TFS.tt</DependentUpon>
     </Compile>
@@ -1140,6 +1145,9 @@
     <Compile Include="Models\CHITIETLOAISP.cs">
       <DependentUpon>QL_TFS.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\ChiTungThang_Result.cs">
+      <DependentUpon>QL_TFS.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\CTDG.cs">
       <DependentUpon>QL_TFS.tt</DependentUpon>
     </Compile>
@@ -1147,6 +1155,12 @@
       <DependentUpon>QL_TFS.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\DANGBAOCHE.cs">
+      <DependentUpon>QL_TFS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DoanhThuCacQuy_Result.cs">
+      <DependentUpon>QL_TFS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DoanhThuTungThang_Result.cs">
       <DependentUpon>QL_TFS.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\DONGIAO.cs">
@@ -1168,6 +1182,12 @@
       <DependentUpon>QL_TFS.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\LOAI.cs">
+      <DependentUpon>QL_TFS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\LoiNhuanTungNgay_Result.cs">
+      <DependentUpon>QL_TFS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\LoiNhuanTungThang_Result.cs">
       <DependentUpon>QL_TFS.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\NHANVIEN.cs">
@@ -1256,6 +1276,7 @@
     <Content Include="Views\ShoppingCart\ShowToCart.cshtml" />
     <Content Include="Views\Partial\ShowSanPham.cshtml" />
     <Content Include="Views\Partial\DanhMucLoaiSP.cshtml" />
+    <Content Include="Views\SP\ChiTietSanPham.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

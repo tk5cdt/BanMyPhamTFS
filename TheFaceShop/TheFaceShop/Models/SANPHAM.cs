@@ -35,8 +35,9 @@ namespace TheFaceShop.Models
         public string CONGDUNG { get; set; }
         public Nullable<double> TONGDANHGIA { get; set; }
         public Nullable<int> TONKHO { get; set; }
-        public string TRANGTHAI { get; set; }
+        public string THANHPHAN { get; set; }
         public string DUNGTICH { get; set; }
+        public string TRANGTHAI { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CHITIETGIOHANG> CHITIETGIOHANGs { get; set; }
