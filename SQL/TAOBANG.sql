@@ -554,7 +554,7 @@ BEGIN
 	VALUES(@madg, @masp, @soluong, @mucdodg, @ngaybl, @binhluan)
 END
 GO
-
+--Tấn đã thêm ảnh đại diện
 CREATE PROC pc_InsertSanPham
 	@tensp       NVARCHAR(100),
 	@loai        NVARCHAR(30),
@@ -562,6 +562,7 @@ CREATE PROC pc_InsertSanPham
     @gianhap     INT,
 	@dangbaoche  NVARCHAR(10),
 	@qcdonggoi   NVARCHAR(20),
+	@anhdaidien  VARCHAR(100),
 	@noidung	 NVARCHAR(MAX),
 	@congdung	 NVARCHAR(MAX),
 	@tonkho		 INT,
@@ -569,8 +570,8 @@ CREATE PROC pc_InsertSanPham
 	@dungtich NVARCHAR(30)
 AS 
 BEGIN
-    INSERT INTO SANPHAM(TENSP, MACTL_SP, GIABAN, GIANHAP, MADBC, MAQCDG, NOIDUNG, CONGDUNG, TONKHO, THANHPHAN, DUNGTICH)
-    VALUES(@tensp, @loai, @giaban, @gianhap, @dangbaoche, @qcdonggoi, @noidung, @congdung, @tonkho, @thanhphan, @dungtich)
+    INSERT INTO SANPHAM(TENSP, MACTL_SP, GIABAN, GIANHAP, MADBC, MAQCDG, ANHDAIDIEN, NOIDUNG, CONGDUNG, TONKHO, THANHPHAN, DUNGTICH)
+    VALUES(@tensp, @loai, @giaban, @gianhap, @dangbaoche, @qcdonggoi, @anhdaidien, @noidung, @congdung, @tonkho, @thanhphan, @dungtich)
 END
 GO
 

@@ -31,9 +31,9 @@ namespace TheFaceShop.Areas.Admin.Controllers
         public ActionResult CreateProduct()
         {
             //Lấy dữ liệu cho dropdown list
-            ViewBag.MACTL_SP = new SelectList(db.CHITIETLOAISPs, "MACTL_SP", "TENCTL_SP");
-            ViewBag.MAQCDG = new SelectList(db.QUYCACHDONGGOIs, "MAQCDG", "TENQCDG");
-            ViewBag.MADBC = new SelectList(db.DANGBAOCHEs, "MADBC", "TENDANG");
+            ViewBag.MACTL_SP = db.CHITIETLOAISPs;
+            ViewBag.MAQCDG = db.QUYCACHDONGGOIs;
+            ViewBag.MADBC = db.DANGBAOCHEs;
             return View();
         }
 
@@ -67,11 +67,14 @@ namespace TheFaceShop.Areas.Admin.Controllers
         public ActionResult CreateProduct(SANPHAM sp, HttpPostedFileBase f) //, List<HttpPostedFileBase> listImage
         {       
             if (ModelState.IsValid)
-            {
+            {               
                 if (db.SANPHAMs.Any(d => d.TENSP == sp.TENSP))
                 {
-                    ViewBag.TB = "Trùng tên sản phẩm!";
-                    return View();
+                    ViewBag.TB = "Sản phẩm này đã có, vui lòng nhập lại!";
+                    ViewBag.MACTL_SP = db.CHITIETLOAISPs;
+                    ViewBag.MAQCDG = db.QUYCACHDONGGOIs;
+                    ViewBag.MADBC = db.DANGBAOCHEs;
+                    return View(sp);
                 }
                 else
                 {
@@ -80,14 +83,9 @@ namespace TheFaceShop.Areas.Admin.Controllers
                     string fpath = Path.Combine(Server.MapPath("~/HinhAnhSP"), fname);
                     f.SaveAs(fpath);
                     sp.ANHDAIDIEN = fname;
+                    sp.TONKHO = 0;
                     sp.TRANGTHAI = "Đang bán";
                     db.SANPHAMs.Add(sp);
-                    db.SaveChanges();
-
-                    THANHPHAN tp = new THANHPHAN();
-                    tp.MASP = sp.MASP;
-                    tp.TENTP = Request.Form["thanhPhan"];
-                    db.THANHPHANs.Add(tp);
                     db.SaveChanges();
               
                     // Lưu các ảnh còn lại

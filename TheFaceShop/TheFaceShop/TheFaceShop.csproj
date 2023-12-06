@@ -1095,6 +1095,8 @@
     <Content Include="Content\Fontawesome\all.min.css" />
     <Content Include="Content\Fontawesome\all.min.js" />
     <Content Include="Content\css\GioHang.css" />
+    <Content Include="Content\js\LocGia.js" />
+    <Content Include="Content\js\LocLoai.js" />
     <Content Include="Global.asax" />
     <Content Include="Models\QL_TFS.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -1251,6 +1253,7 @@
     <Content Include="Views\ShoppingCart\EmptyCart.cshtml" />
     <Content Include="Views\ShoppingCart\Shopping_Success.cshtml" />
     <Content Include="Views\ShoppingCart\ShowToCart.cshtml" />
+    <Content Include="Views\Partial\ShowSanPham.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
