@@ -1,0 +1,139 @@
+﻿
+@{
+    ViewBag.Title = "DanhMuc";
+    Layout = "~/Views/Shared/AccountLayoutPage.cshtml";
+}
+
+@model List<TheFaceShop.Models.LOAI>
+
+<!--<div class="p-5 pb-2 pt-3 bg-body-tertiary mb-2" style="background-color: #c1efde">
+    <h1 class="">Làm sạch</h1>-->
+     @*Breadcrumb*@ 
+    <!--<nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="#" style="text-decoration: none;">Trang chủ</a></li>-->
+            @*@if (ViewBag.Category != null)
+            {
+                <li class="breadcrumb-item active" aria-current="page">@ViewBag.Category.TENLOAI</li>
+            }
+            else if (ViewBag.SubCategories != null)
+            {
+                <li class="breadcrumb-item">
+                    <a href="@Url.Action("DanhMuc", "LoaiSanPham")">@ViewBag.Category.TENLOAI</a>
+                </li>
+                <li class="breadcrumb-item active" aria-current="page">@ViewBag.Subcategory.TENCTLOAI</li>
+            }
+            else
+            {
+                <li class="breadcrumb-item">
+                    <a href="@Url.Action("DanhMuc", "LoaiSanPham")">@ViewBag.Category.TENLOAI</a>
+                </li>
+                <li class="breadcrumb-item">
+                    <a href="@Url.Action("DanhMuc", "LoaiSanPham", new { categoryId = ViewBag.Category.MALOAI })">@ViewBag.Subcategory.TENCTLOAI</a>
+                </li>
+                <li class="breadcrumb-item active" aria-current="page">@ViewBag.Products.MACTL_SP</li>
+            }*@
+        <!--</ol>
+    </nav>-->
+     @*End Breadcrumb*@ 
+<!--</div>-->
+
+<div class="p-5 pb-2 pt-3 bg-body-tertiary mb-2" style="background-color: #c1efde">
+    <!-- Breadcrumb -->
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="#" style="text-decoration: none">Trang chủ</a></li>
+            @if (ViewBag.Category != null && ViewBag.Subcategory == null)
+            {
+                    <li class="breadcrumb-item active" aria-current="page">@ViewBag.Category.TENLOAI</li>
+            }
+            else
+            {
+                <li class="breadcrumb-item">
+                    <a href="@Url.Action("DanhMuc", "LoaiSanPham")" style="text-decoration: none">@ViewBag.Category.TENLOAI</a>
+                </li>
+                @*<li class="breadcrumb-item">
+                    <a href="@Url.Action("DanhMuc", "LoaiSanPham", new { categoryId = ViewBag.Category.MALOAI })">@ViewBag.Subcategory.TENCTLOAI</a>
+                </li>*@
+                <li class="breadcrumb-item active" aria-current="page" style="text-decoration: none">@ViewBag.Subcategory.TENCTLOAI</li>
+                
+            }
+        </ol>
+    </nav>
+    <!-- End Breadcrumb -->
+</div>
+<div class="row g-3">
+    <!-- Left sidebar for filtering -->
+    <div class="col-3" style="background-color: #ECF4F3; border-radius: 10px; margin-bottom: 20px">
+        <!-- Display subcategories -->
+        <div class="col" style="padding-top: 10px; ">
+            <h5 style="margin-left: 10px">Giá sản phẩm:</h5>
+            <div>
+                <div class="card1 card-body">
+                    <div class="list-group list-group-light">
+                        <li class="list-group-item">
+                            <input class="form-check-input" type="checkbox" value="" id="checkboxExample1" />
+                            <label class="form-check-label" for="checkboxExample1">Dưới 500.000đ</label>
+                        </li>
+                        <li class="list-group-item">
+                            <input class="form-check-input" type="checkbox" value="" id="checkboxExample2" />
+                            <label class="form-check-label" for="checkboxExample2">500.000đ - 1.000.000đ</label>
+                        </li>
+                        <li class="list-group-item">
+                            <input class="form-check-input" type="checkbox" value="" id="checkboxExample3" />
+                            <label class="form-check-label" for="checkboxExample3">1.000.000đ - 1.500.000đ</label>
+                        </li>
+                        <li class="list-group-item">
+                            <input class="form-check-input" type="checkbox" value="" id="checkboxExample4" />
+                            <label class="form-check-label" for="checkboxExample4">1.500.000đ - 2.000.000đ</label>
+                        </li>
+                        <li class="list-group-item">
+                            <input class="form-check-input" type="checkbox" value="" id="checkboxExample5" />
+                            <label class="form-check-label" for="checkboxExample5">Trên 2.000.000</label>
+                        </li>
+                    </div>
+                </div>
+            </div>
+        </div>
+        @if (ViewBag.Subcategories != null)
+        {
+            <div class="col" style="padding-top: 10px;">
+                <h5 data-bs-toggle="collapse" href="#collapseExample1" role="button" aria-expanded="false" aria-controls="collapseExample" style="margin-left: 10px">Loại sản phẩm: </h5>
+                <div class="collapse" id="collapseExample1">
+                    <div class="card1 card-body">
+                        <div class="list-group list-group-light">
+                            @foreach (var subcategory in ViewBag.Subcategories)
+                            {
+                                <li class="list-group-item">
+                                    <a href="@Url.Action("DanhMuc", "LoaiSanPham", new { categoryId = ViewBag.Category.MALOAI, subcategoryId = subcategory.MACTLOAI })">
+                                        @subcategory.TENCTLOAI
+                                    </a>
+                                </li>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+        <div style="padding: 20px;"></div>
+    </div>
+
+    <!-- Product display area -->
+    <div class="col-8" style="background-color: #c1efde; margin-bottom: 20px; border-radius: 10px; flex: auto; margin-left: 20px; padding-top: 10px">
+        <!-- Display products -->
+        đây là đâu
+        @if (ViewBag.Products != null)
+        {
+            <div class="row row-cols-1 row-cols-md-5 g-3 px-1 mb-4">
+                @foreach (var product in ViewBag.Products)
+                {
+                    <div class="col d-flex align-items-stretch justify-content-center">
+                        <!-- Display product details -->
+                    </div>
+                }
+            </div>
+        }
+    </div>
+</div>
+
+

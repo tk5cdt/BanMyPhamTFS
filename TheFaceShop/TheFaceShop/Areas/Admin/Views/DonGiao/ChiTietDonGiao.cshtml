@@ -1,0 +1,71 @@
+﻿@model IEnumerable<TheFaceShop.Models.CTDG>
+
+@{
+    ViewBag.Title = "Quản lý đơn giao";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Chi tiết đơn giao</h2>
+
+<div class="row-md-1 bg-white rounded">
+    <div class="col overflow-scroll" style="max-height: 75vh">
+        <table class="table text-left align-middle table-striped table-fixed">
+            <thead style="position: sticky; top: 0; background-color: #c1efde; text-align: center; z-index: 1;">
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.MASP)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.SOLUONG)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.THANHTIEN)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.MUCDODG)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.NGAYBL)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.BINHLUAN)
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            <div class="d-flex">
+                                <img src="https://mdbootstrap.com/img/new/avatars/8.jpg"
+                                     alt=""
+                                     style="width: 50px; height: 50px"
+                                     class="rounded-circle" />
+                                <div class="ms-3">
+                                    @Html.DisplayFor(modelItem => item.SANPHAM.TENSP, new { @class = "text-start" })
+                                    @*<p class="text-muted mb-0">john.doe@gmail.com</p>*@
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.SOLUONG)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.THANHTIEN)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.MUCDODG)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.NGAYBL)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.BINHLUAN)
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
