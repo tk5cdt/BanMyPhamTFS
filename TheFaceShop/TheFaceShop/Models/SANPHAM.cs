@@ -26,7 +26,7 @@ namespace TheFaceShop.Models
         }
     
         public string MASP { get; set; }
-        [Display(Name = "Tên sản phẩm")]
+        [Display(Name ="Tên sản phẩm")]
         public string TENSP { get; set; }
         public string MACTL_SP { get; set; }
         [Display(Name = "Giá bán")]

@@ -77,7 +77,7 @@
           <Property Name="MADG" Type="varchar" MaxLength="10" Nullable="false" />
           <Property Name="NGAYLAP" Type="date" />
           <Property Name="MAKH" Type="varchar" MaxLength="10" Nullable="false" />
-          <Property Name="NGUOINHAN" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="NGUOINHAN" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="SDT" Type="varchar" MaxLength="10" Nullable="false" />
           <Property Name="SONHA" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="PHUONGXA" Type="nvarchar" MaxLength="20" Nullable="false" />
@@ -482,6 +482,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_THANHPHAN_SANPHAM">
+          <End Role="SANPHAM" Type="Self.SANPHAM" Multiplicity="1" />
+          <End Role="THANHPHAN" Type="Self.THANHPHAN" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SANPHAM">
+              <PropertyRef Name="MASP" />
+            </Principal>
+            <Dependent Role="THANHPHAN">
+              <PropertyRef Name="MASP" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="PHUONGXA_administrative_unit_id_fkey">
           <End Role="DONVIHANHCHINH" Type="Self.DONVIHANHCHINH" Multiplicity="0..1" />
           <End Role="PHUONGXA" Type="Self.PHUONGXA" Multiplicity="*" />
@@ -593,7 +605,7 @@
         <Function Name="sp_InsertDonGiao" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="ngaylap" Type="date" Mode="In" />
           <Parameter Name="makh" Type="varchar" Mode="In" />
-          <Parameter Name="nguoinhan" Type="varchar" Mode="In" />
+          <Parameter Name="nguoinhan" Type="nvarchar" Mode="In" />
           <Parameter Name="sdt" Type="char" Mode="In" />
           <Parameter Name="sonha" Type="nvarchar" Mode="In" />
           <Parameter Name="phuongxa" Type="varchar" Mode="In" />
@@ -724,6 +736,10 @@
             <End Role="QUYCACHDONGGOI" EntitySet="QUYCACHDONGGOI" />
             <End Role="SANPHAM" EntitySet="SANPHAM" />
           </AssociationSet>
+          <AssociationSet Name="FK_THANHPHAN_SANPHAM" Association="Self.FK_THANHPHAN_SANPHAM">
+            <End Role="SANPHAM" EntitySet="SANPHAM" />
+            <End Role="THANHPHAN" EntitySet="THANHPHAN" />
+          </AssociationSet>
           <AssociationSet Name="PHUONGXA_administrative_unit_id_fkey" Association="Self.PHUONGXA_administrative_unit_id_fkey">
             <End Role="DONVIHANHCHINH" EntitySet="DONVIHANHCHINH" />
             <End Role="PHUONGXA" EntitySet="PHUONGXA" />
@@ -837,7 +853,7 @@
           <Property Name="MADG" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="NGAYLAP" Type="DateTime" Precision="0" />
           <Property Name="MAKH" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="NGUOINHAN" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="NGUOINHAN" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="SDT" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="SONHA" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="PHUONGXA" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />

@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using TheFaceShop.Models;
@@ -35,10 +37,35 @@ namespace TheFaceShop.Areas.Admin.Controllers
             return View();
         }
 
+        //public ActionResult UploadImage(string imageUrl)
+        //{
+        //    try
+        //    {
+        //        string imageName = Path.GetFileName(imageUrl);
+        //        string imagePath = Path.Combine(Server.MapPath("~/HinhAnhSP"), imageName);
+
+        //        HttpWebRequest request = (HttpWebRequest)WebRequest.Create(imageUrl);
+        //        HttpWebResponse response = (HttpWebResponse)request.GetResponse();
+        //        using (Stream stream = response.GetResponseStream())
+        //        {
+        //            using (Image image = Image.FromStream(stream))
+        //            {
+        //                image.Save(imagePath);
+        //            }
+        //        }
+
+        //        return Json(new { success = true, imageUrl = imageUrl });
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        return Json(new { success = false, error = ex.Message });
+        //    }
+        //}
+
         [HttpPost]
         [ValidateInput(false)]
-        public ActionResult CreateProduct(SANPHAM sp, HttpPostedFileBase f)
-        {
+        public ActionResult CreateProduct(SANPHAM sp, HttpPostedFileBase f) //, List<HttpPostedFileBase> listImage
+        {       
             if (ModelState.IsValid)
             {
                 if (db.SANPHAMs.Any(d => d.TENSP == sp.TENSP))
@@ -52,13 +79,50 @@ namespace TheFaceShop.Areas.Admin.Controllers
                     string fname = Path.GetFileName(f.FileName);
                     string fpath = Path.Combine(Server.MapPath("~/HinhAnhSP"), fname);
                     f.SaveAs(fpath);
-                    sp.ANHDAIDIEN = fname;  
+                    sp.ANHDAIDIEN = fname;
+                    sp.TRANGTHAI = "Đang bán";
                     db.SANPHAMs.Add(sp);
                     db.SaveChanges();
+
+                    THANHPHAN tp = new THANHPHAN();
+                    tp.MASP = sp.MASP;
+                    tp.TENTP = Request.Form["thanhPhan"];
+                    db.THANHPHANs.Add(tp);
+                    db.SaveChanges();
+              
+                    // Lưu các ảnh còn lại
+                    //List<string> imageNames = new List<string>();
+                    //foreach (HttpPostedFileBase image in listImage)
+                    //{
+                    //    if (image != null && image.ContentLength > 0)
+                    //    {
+                    //        string imageName = Path.GetFileName(image.FileName);
+                    //        string imagePath = Path.Combine(Server.MapPath("~/HinhAnhSP"), imageName);
+                    //        image.SaveAs(imagePath);
+                    //        imageNames.Add(imageName);
+                    //    }
+                    //}
+
+                    //foreach (string imageName in imageNames)
+                    //{
+                    //    HINHANHSP image = new HINHANHSP();
+                    //    image.MASP = sp.MASP;
+                    //    image.HINHANH = imageName;
+                    //    db.HINHANHSPs.Add(image);
+                    //}
+
+                    //db.SaveChanges();
                     return RedirectToAction("ShowProduct");
                 }
             }
             return View(sp);
+        }
+
+        public ActionResult ProductCarousel(string MASP)
+        {
+            var images = db.HINHANHSPs.Where(h => h.MASP == MASP).ToList();
+
+            return View(images);
         }
 
         public ActionResult UpdateProduct(string ma)
