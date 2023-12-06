@@ -54,6 +54,11 @@ namespace TheFaceShop.Controllers
             return View(sanPhams);
         }
 
+        public ActionResult Search(string searchTerm)
+        {
+            var products = db.SANPHAMs.Where(p => p.TENSP.Contains(searchTerm)).ToList();
+            return View(products);
+        }
         public ActionResult FilterByPrice(List<string> prices)
         {
             // Xử lí yêu cầu lọc sản phẩm dựa trên giá
