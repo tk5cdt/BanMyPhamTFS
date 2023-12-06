@@ -990,7 +990,6 @@
           <NavigationProperty Name="DANGBAOCHE" Relationship="Self.FK_SANPHAM_DANGBAOCHE" FromRole="SANPHAM" ToRole="DANGBAOCHE" />
           <NavigationProperty Name="HINHANHSPs" Relationship="Self.FK_HINHANHSP_SANPHAM" FromRole="SANPHAM" ToRole="HINHANHSP" />
           <NavigationProperty Name="QUYCACHDONGGOI" Relationship="Self.FK_SANPHAM_QUYCACHDONGGOI" FromRole="SANPHAM" ToRole="QUYCACHDONGGOI" />
-          <Property Name="THANHPHAN" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
           <Property Name="DUNGTICH" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="TINHTHANH">
@@ -1674,7 +1673,6 @@
             <EntityTypeMapping TypeName="QL_THEFACESHOPModel.SANPHAM">
               <MappingFragment StoreEntitySet="SANPHAM">
                 <ScalarProperty Name="DUNGTICH" ColumnName="DUNGTICH" />
-                <ScalarProperty Name="THANHPHAN" ColumnName="THANHPHAN" />
                 <ScalarProperty Name="MASP" ColumnName="MASP" />
                 <ScalarProperty Name="TENSP" ColumnName="TENSP" />
                 <ScalarProperty Name="MACTL_SP" ColumnName="MACTL_SP" />
