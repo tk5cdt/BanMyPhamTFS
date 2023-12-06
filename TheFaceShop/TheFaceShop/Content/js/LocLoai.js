@@ -12,7 +12,7 @@
         });
     }
     $.ajax({
-        url: '@Html.Action("ShowSanPham", "Partial")' // Thay đổi thành action để lấy tất cả sản phẩm
+        url: '@Html.Action("DanhMucLoaiSP", "Partial")' // Thay đổi thành action để lấy tất cả sản phẩm
         type: 'GET',
         success: function (response) {
             $('#productsContainer').html(response);
