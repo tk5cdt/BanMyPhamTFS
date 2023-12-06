@@ -1,7 +1,88 @@
 ﻿
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Thống kê";
     Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
 }
 
-<h2>Index</h2>
+<div class="row g-3 my-2">
+    <div class="col-md-3">
+        <div class="p-3 bg-white shadow-sm d-flex justify-content-around align-items-center rounded">
+            <div>
+                <h3 class="fs-2">@ViewBag.SLSP</h3>
+                <p class="fs-5">Sản Phẩm</p>
+            </div>
+            <i class="fas fa-gift fs-1 primary-text border rounded-full secondary-bg p-3"></i>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="p-3 bg-white shadow-sm d-flex justify-content-around align-items-center rounded">
+            <div>
+                <h3 class="fs-2">@ViewBag.DonHang</h3>
+                <p class="fs-5">Tổng số đơn</p>
+            </div>
+            <i class="far fa-file-invoice-dollar fs-1 primary-text border rounded-full secondary-bg p-3"></i>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="p-3 bg-white shadow-sm d-flex justify-content-around align-items-center rounded">
+            <div>
+                <h3 class="fs-2">@ViewBag.Shipped</h3>
+                <p class="fs-5">Đã giao</p>
+            </div>
+            <i class="fas fa-truck fs-1 primary-text border rounded-full secondary-bg p-3"></i>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="p-3 bg-white shadow-sm d-flex justify-content-around align-items-center rounded">
+            <div>
+                <h3 class="fs-2">@ViewBag.Pending</h3>
+                <p class="fs-5">Chưa giao</p>
+            </div>
+            <i class="fas fa-shipping-timed fs-1 primary-text border rounded-full secondary-bg p-3"></i>
+        </div>
+    </div>
+</div>
+<div class="row g-3 my-2">
+    <div class="col-md-3">
+        <div class="p-3 bg-white shadow-sm d-flex justify-content-around align-items-center rounded">
+            <div>
+                <h3 class="fs-2">@ViewBag.DoanhThu</h3>
+                <p class="fs-5">Tổng doanh thu</p>
+            </div>
+            <i class="fas fa-hand-holding-usd fs-1 primary-text border rounded-full secondary-bg p-3"></i>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="p-3 bg-white shadow-sm d-flex justify-content-around align-items-center rounded">
+            <div>
+                <h3 class="fs-2">@ViewBag.DoanhThuThang</h3>
+                <p class="fs-5">Doanh thu trong tháng</p>
+            </div>
+            <i class="fas fa-hand-holding-usd fs-1 primary-text border rounded-full secondary-bg p-3"></i>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="p-3 bg-white shadow-sm d-flex justify-content-around align-items-center rounded">
+            <div>
+                <h3 class="fs-2">@ViewBag.DoanhThuNam</h3>
+                <p class="fs-5">Doanh thu trong năm</p>
+            </div>
+            <i class="fas fa-hand-holding-usd fs-1 primary-text border rounded-full secondary-bg p-3"></i>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="p-3 bg-white shadow-sm d-flex justify-content-around align-items-center rounded">
+            <div>
+                <h3 class="fs-2">@ViewBag.KhachHang</h3>
+                <p class="fs-5">Số lượng khách hàng</p>
+            </div>
+            <i class="fas fa-user fs-1 primary-text border rounded-full secondary-bg p-3"></i>
+        </div>
+    </div>
+</div>
