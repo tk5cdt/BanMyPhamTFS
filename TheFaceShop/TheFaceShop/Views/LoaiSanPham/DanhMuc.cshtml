@@ -121,19 +121,14 @@
     <!-- Product display area -->
     <div class="col-8" style="background-color: #c1efde; margin-bottom: 20px; border-radius: 10px; flex: auto; margin-left: 20px; padding-top: 10px">
         <!-- Display products -->
-        đây là đâu
-        @if (ViewBag.Products != null)
-        {
-            <div class="row row-cols-1 row-cols-md-5 g-3 px-1 mb-4">
-                @foreach (var product in ViewBag.Products)
-                {
-                    <div class="col d-flex align-items-stretch justify-content-center">
-                        <!-- Display product details -->
-                    </div>
-                }
-            </div>
-        }
-    </div>
-</div>
+        
 
+        <div class="row row-cols-1 row-cols-md-5 g-4 px-5 mb-4">
+            @Html.Action("ShowSanPham", "Partial")
+        </div>
+    </div>
+
+</div>
+<script src="~/Content/js/LocGia.js"></script>
+<script src="~/Content/js/LocLoai.js"></script>
 
