@@ -46,6 +46,7 @@ namespace TheFaceShop.Models
         public virtual DbSet<QUANHUYEN> QUANHUYENs { get; set; }
         public virtual DbSet<QUYCACHDONGGOI> QUYCACHDONGGOIs { get; set; }
         public virtual DbSet<QUYEN> QUYENs { get; set; }
+        public virtual DbSet<SANPHAM> SANPHAMs { get; set; }
         public virtual DbSet<TINHTHANH> TINHTHANHs { get; set; }
     
         public virtual int pc_InsertSanPham(string tensp, string loai, Nullable<int> giaban, Nullable<int> gianhap, string dangbaoche, string qcdonggoi, string anhdaidien, string noidung, string congdung, Nullable<int> tonkho, string thanhphan, string dungtich)

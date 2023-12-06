@@ -1223,15 +1223,6 @@
     <Compile Include="Models\SANPHAM.cs">
       <DependentUpon>QL_TFS.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\sp_helpdiagramdefinition_Result.cs">
-      <DependentUpon>QL_TFS.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\sp_helpdiagrams_Result.cs">
-      <DependentUpon>QL_TFS.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\sysdiagram.cs">
-      <DependentUpon>QL_TFS.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\TINHTHANH.cs">
       <DependentUpon>QL_TFS.tt</DependentUpon>
     </Compile>
