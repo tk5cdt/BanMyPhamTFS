@@ -1223,6 +1223,15 @@
     <Compile Include="Models\SANPHAM.cs">
       <DependentUpon>QL_TFS.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\sp_helpdiagramdefinition_Result.cs">
+      <DependentUpon>QL_TFS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sp_helpdiagrams_Result.cs">
+      <DependentUpon>QL_TFS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sysdiagram.cs">
+      <DependentUpon>QL_TFS.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\TINHTHANH.cs">
       <DependentUpon>QL_TFS.tt</DependentUpon>
     </Compile>
@@ -1277,6 +1286,7 @@
     <Content Include="Views\Partial\ShowSanPham.cshtml" />
     <Content Include="Views\Partial\DanhMucLoaiSP.cshtml" />
     <Content Include="Views\SP\ChiTietSanPham.cshtml" />
+    <Content Include="Views\Partial\Search.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

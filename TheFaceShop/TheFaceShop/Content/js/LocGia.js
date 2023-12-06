@@ -55,7 +55,7 @@ $(document).ready(function () {
             });
         } else {
             $.ajax({
-                url: '@Html.Action("ShowSanPham", "Partial")', // Thay đổi thành action để lấy tất cả sản phẩm
+                url: '@Html.Action("DanhMucLoaiSP", "Partial")', // Thay đổi thành action để lấy tất cả sản phẩm
                 type: 'GET',
                 success: function (response) {
                     $('#productsContainer').html(response);
@@ -78,7 +78,7 @@ $(document).ready(function () {
         } else {
             // Khi checkbox bị bỏ chọn, hiển thị toàn bộ sản phẩm
             $.ajax({
-                url: '@Html.Action("ShowSanPham", "Partial")',
+                url: '@Html.Action("DanhMucLoaiSP", "Partial")',
                 type: 'GET',
                 success: function (response) {
                     $('#productsContainer').html(response);
@@ -101,7 +101,7 @@ $(document).ready(function () {
         } else {
             // Khi checkbox bị bỏ chọn, hiển thị toàn bộ sản phẩm
             $.ajax({
-                url: '@Html.Action("ShowSanPham", "Partial")',
+                url: '@Html.Action("DanhMucLoaiSP", "Partial")',
                 type: 'GET',
                 success: function (response) {
                     $('#productsContainer').html(response);
@@ -123,7 +123,7 @@ $(document).ready(function () {
         } else {
             // Khi checkbox bị bỏ chọn, hiển thị toàn bộ sản phẩm
             $.ajax({
-                url: '@Html.Action("ShowSanPham", "Partial")',
+                url: '@Html.Action("DanhMucLoaiSP", "Partial")',
                 type: 'GET',
                 success: function (response) {
                     $('#productsContainer').html(response);
