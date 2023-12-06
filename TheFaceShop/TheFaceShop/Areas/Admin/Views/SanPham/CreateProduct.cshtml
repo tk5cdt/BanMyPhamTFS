@@ -24,13 +24,18 @@
         <label class="control-label col-sm-2 h5" for="tenSP">Tên sản phẩm</label>
         <div class="col-sm-10"><input type="text" class="form-control" name="tenSP"></div>
     </div>
-
+    @if (ViewBag.TB != null)
+    {
+        <div class="form-group row p-3 text-center" style="color: red">
+            <p>@ViewBag.TB</p>
+        </div>
+    }
     <div class="form-group row p-3">
         <label class="control-label col-sm-2 h5" for="anhSP">Ảnh sản phẩm</label>
         <div class="col-sm-10">
             <div id="listAnhSP"></div>
             <div class="clear:both"></div>
-            <input type="button" class="btn btn-light" id="chonAnh" value="Chọn ảnh" style="background-color:#c1efde" name="f"/>
+            <input type="button" class="btn btn-light" id="chonAnh" value="Chọn ảnh" style="background-color:#c1efde" name="imageName" />
         </div>
     </div>
 
@@ -47,24 +52,28 @@
     <div class="form-group row p-3">
         <label class="control-label col-sm-2 h5" for="loaiSP">Loại sản phẩm</label>
         <div class="col-sm-10">
-            @Html.DropDownListFor(model => model.MACTL_SP, null, "", new { @class = "form-control" })
+            @Html.DropDownListFor(model => model.MACTL_SP, new SelectList(ViewBag.MACTL_SP, "MACTL_SP", "TENCTL_SP"), "", new { @class = "form-control" })
             @Html.ValidationMessageFor(model => model.MACTL_SP, "", new { @class = "text-danger" })
         </div>
-
     </div>
 
     <div class="form-group row p-3">
         <label class="control-label col-sm-2 h5" for="dangBaoChe">Dạng bào chế</label>
         <div class="col-sm-10">
-            @Html.DropDownListFor(model => model.MADBC, null, "", new { @class = "form-control" })
+            @Html.DropDownListFor(model => model.MADBC, new SelectList(ViewBag.MADBC, "MADBC", "TENDANG"), "", new { @class = "form-control" })
             @Html.ValidationMessageFor(model => model.MADBC, "", new { @class = "text-danger" })
         </div>
     </div>
 
     <div class="form-group row p-3">
+        <label class="control-label col-sm-2 h5" for="thanhPhan">Thành phần</label>
+        <div class="col-sm-10"><input type="text" class="form-control" name="thanhPhan"></div>
+    </div>
+
+    <div class="form-group row p-3">
         <label class="control-label col-sm-2 h5" for="quyCach">Quy cách đóng gói</label>
         <div class="col-sm-10">
-            @Html.DropDownListFor(model => model.MAQCDG, null, "", new { @class = "form-control" })
+            @Html.DropDownListFor(model => model.MAQCDG, new SelectList(ViewBag.MAQCDG, "MAQCDG", "TENQCDG"), "", new { @class = "form-control" })
             @Html.ValidationMessageFor(model => model.MAQCDG, "", new { @class = "text-danger" })
         </div>
     </div>
@@ -74,7 +83,7 @@
         <div class="col-sm-10"><input type="text" class="form-control" name="congDung"></div>
     </div>
 
-    <div class="form-group row p-3">        
+    <div class="form-group row p-3">
         <label class="control-label col-sm-2 h5" for="noiDung">Nội dung</label>
         <div class="col-sm-10"><textarea class="form-control rounded" id="noiDung" name="noiDung"></textarea></div>
     </div>
