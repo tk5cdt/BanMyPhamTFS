@@ -51,7 +51,7 @@
                         <div class="soluong mt-5 mx-2">
                             <div class="cart my-2 align-items-center">
                                 <form action="/ShoppingCart/AddtoCart/@Model.MASP" method="POST">
-                                    <button class="btn btn-danger text-uppercase my-2" type="submit">
+                                    <button class="btn btn-success text-uppercase my-2" type="submit">
                                         Thêm vào giỏ hàng
                                     </button>
                                 </form>
@@ -134,7 +134,7 @@
                     else
                     {
                         <h4>Bạn cần đăng nhập để bình luận</h4>
-                        @Html.ActionLink("Đăng nhập", "Login", "Account", new { area = "" }, new { @class = "btn btn-primary" })
+                        @Html.ActionLink("Đăng nhập", "DangNhap", "Home", new { area = "" }, new { @class = "btn btn-primary btn-success" })
                     }
                 </form>
             </div>
