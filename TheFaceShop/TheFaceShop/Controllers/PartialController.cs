@@ -18,7 +18,7 @@ namespace TheFaceShop.Controllers
         }
         public ActionResult DanhMucLoaiSP_Home()
         {
-            var sanPhams = db.SANPHAMs.Where(sp => sp.CHITIETLOAISP.CHITIETLOAI.MACTLOAI == "CTL001");
+            var sanPhams = db.SANPHAMs.Where(sp => sp.CHITIETLOAISP.CHITIETLOAI.MACTLOAI == "CTL006");
             return View(sanPhams);
         }
     }
