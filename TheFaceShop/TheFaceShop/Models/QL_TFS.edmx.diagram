@@ -25,7 +25,6 @@
         <EntityTypeShape EntityType="QL_THEFACESHOPModel.QUYCACHDONGGOI" Width="1.5" PointX="5.25" PointY="10.625" IsExpanded="true" />
         <EntityTypeShape EntityType="QL_THEFACESHOPModel.QUYEN" Width="1.5" PointX="10.5" PointY="10.25" IsExpanded="true" />
         <EntityTypeShape EntityType="QL_THEFACESHOPModel.SANPHAM" Width="1.5" PointX="7.5" PointY="5.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="QL_THEFACESHOPModel.THANHPHAN" Width="1.5" PointX="9.75" PointY="17.75" IsExpanded="true" />
         <EntityTypeShape EntityType="QL_THEFACESHOPModel.TINHTHANH" Width="1.5" PointX="3.75" PointY="24.5" IsExpanded="true" />
         <AssociationConnector Association="QL_THEFACESHOPModel.TINHTHANH_administrative_region_id_fkey" ManuallyRouted="false" />
         <AssociationConnector Association="QL_THEFACESHOPModel.FK_DATHANG_GIOHANG" ManuallyRouted="false" />
@@ -49,7 +48,6 @@
         <AssociationConnector Association="QL_THEFACESHOPModel.PHUONGXA_district_code_fkey" ManuallyRouted="false" />
         <AssociationConnector Association="QL_THEFACESHOPModel.QUANHUYEN_province_code_fkey" ManuallyRouted="false" />
         <AssociationConnector Association="QL_THEFACESHOPModel.FK_SANPHAM_QUYCACHDONGGOI" ManuallyRouted="false" />
-        <AssociationConnector Association="QL_THEFACESHOPModel.FK_THANHPHAN_SANPHAM" ManuallyRouted="false" />
         <AssociationConnector Association="QL_THEFACESHOPModel.QUYENKHACHHANG" ManuallyRouted="false" />
         <AssociationConnector Association="QL_THEFACESHOPModel.QUYENNHANVIEN" ManuallyRouted="false" />
       </Diagram>

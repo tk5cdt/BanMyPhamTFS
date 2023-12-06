@@ -218,16 +218,9 @@
           <Property Name="CONGDUNG" Type="nvarchar(max)" />
           <Property Name="TONGDANHGIA" Type="float" />
           <Property Name="TONKHO" Type="int" />
+          <Property Name="THANHPHAN" Type="nvarchar" MaxLength="200" />
+          <Property Name="DUNGTICH" Type="nvarchar" MaxLength="30" />
           <Property Name="TRANGTHAI" Type="nvarchar" MaxLength="20" />
-        </EntityType>
-        <EntityType Name="THANHPHAN">
-          <Key>
-            <PropertyRef Name="MASP" />
-            <PropertyRef Name="TENTP" />
-          </Key>
-          <Property Name="MASP" Type="varchar" MaxLength="10" Nullable="false" />
-          <Property Name="TENTP" Type="nvarchar" MaxLength="200" Nullable="false" />
-          <Property Name="HAMLUONG" Type="nvarchar" MaxLength="30" />
         </EntityType>
         <EntityType Name="TINHTHANH">
           <Key>
@@ -482,18 +475,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_THANHPHAN_SANPHAM">
-          <End Role="SANPHAM" Type="Self.SANPHAM" Multiplicity="1" />
-          <End Role="THANHPHAN" Type="Self.THANHPHAN" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="SANPHAM">
-              <PropertyRef Name="MASP" />
-            </Principal>
-            <Dependent Role="THANHPHAN">
-              <PropertyRef Name="MASP" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="PHUONGXA_administrative_unit_id_fkey">
           <End Role="DONVIHANHCHINH" Type="Self.DONVIHANHCHINH" Multiplicity="0..1" />
           <End Role="PHUONGXA" Type="Self.PHUONGXA" Multiplicity="*" />
@@ -576,6 +557,8 @@
           <Parameter Name="noidung" Type="nvarchar(max)" Mode="In" />
           <Parameter Name="congdung" Type="nvarchar(max)" Mode="In" />
           <Parameter Name="tonkho" Type="int" Mode="In" />
+          <Parameter Name="thanhphan" Type="nvarchar" Mode="In" />
+          <Parameter Name="dungtich" Type="nvarchar" Mode="In" />
         </Function>
         <Function Name="pc_TimMaTiepTheo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="table" Type="varchar" Mode="In" />
@@ -654,7 +637,6 @@
           <EntitySet Name="QUYENKHACHHANG" EntityType="Self.QUYENKHACHHANG" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="QUYENNHANVIEN" EntityType="Self.QUYENNHANVIEN" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SANPHAM" EntityType="Self.SANPHAM" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="THANHPHAN" EntityType="Self.THANHPHAN" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TINHTHANH" EntityType="Self.TINHTHANH" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_CHITIETLOAI_LOAI" Association="Self.FK_CHITIETLOAI_LOAI">
             <End Role="LOAI" EntitySet="LOAI" />
@@ -735,10 +717,6 @@
           <AssociationSet Name="FK_SANPHAM_QUYCACHDONGGOI" Association="Self.FK_SANPHAM_QUYCACHDONGGOI">
             <End Role="QUYCACHDONGGOI" EntitySet="QUYCACHDONGGOI" />
             <End Role="SANPHAM" EntitySet="SANPHAM" />
-          </AssociationSet>
-          <AssociationSet Name="FK_THANHPHAN_SANPHAM" Association="Self.FK_THANHPHAN_SANPHAM">
-            <End Role="SANPHAM" EntitySet="SANPHAM" />
-            <End Role="THANHPHAN" EntitySet="THANHPHAN" />
           </AssociationSet>
           <AssociationSet Name="PHUONGXA_administrative_unit_id_fkey" Association="Self.PHUONGXA_administrative_unit_id_fkey">
             <End Role="DONVIHANHCHINH" EntitySet="DONVIHANHCHINH" />
@@ -1012,17 +990,8 @@
           <NavigationProperty Name="DANGBAOCHE" Relationship="Self.FK_SANPHAM_DANGBAOCHE" FromRole="SANPHAM" ToRole="DANGBAOCHE" />
           <NavigationProperty Name="HINHANHSPs" Relationship="Self.FK_HINHANHSP_SANPHAM" FromRole="SANPHAM" ToRole="HINHANHSP" />
           <NavigationProperty Name="QUYCACHDONGGOI" Relationship="Self.FK_SANPHAM_QUYCACHDONGGOI" FromRole="SANPHAM" ToRole="QUYCACHDONGGOI" />
-          <NavigationProperty Name="THANHPHANs" Relationship="Self.FK_THANHPHAN_SANPHAM" FromRole="SANPHAM" ToRole="THANHPHAN" />
-        </EntityType>
-        <EntityType Name="THANHPHAN">
-          <Key>
-            <PropertyRef Name="MASP" />
-            <PropertyRef Name="TENTP" />
-          </Key>
-          <Property Name="MASP" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="HAMLUONG" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="SANPHAM" Relationship="Self.FK_THANHPHAN_SANPHAM" FromRole="THANHPHAN" ToRole="SANPHAM" />
-          <Property Name="TENTP" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="THANHPHAN" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="DUNGTICH" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="TINHTHANH">
           <Key>
@@ -1304,18 +1273,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_THANHPHAN_SANPHAM">
-          <End Role="SANPHAM" Type="Self.SANPHAM" Multiplicity="1" />
-          <End Role="THANHPHAN" Type="Self.THANHPHAN" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="SANPHAM">
-              <PropertyRef Name="MASP" />
-            </Principal>
-            <Dependent Role="THANHPHAN">
-              <PropertyRef Name="MASP" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="QUYENKHACHHANG">
           <End Role="KHACHHANG" Type="Self.KHACHHANG" Multiplicity="*" />
           <End Role="QUYEN" Type="Self.QUYEN" Multiplicity="*" />
@@ -1345,7 +1302,6 @@
           <EntitySet Name="QUYCACHDONGGOIs" EntityType="Self.QUYCACHDONGGOI" />
           <EntitySet Name="QUYENs" EntityType="Self.QUYEN" />
           <EntitySet Name="SANPHAMs" EntityType="Self.SANPHAM" />
-          <EntitySet Name="THANHPHANs" EntityType="Self.THANHPHAN" />
           <EntitySet Name="TINHTHANHs" EntityType="Self.TINHTHANH" />
           <AssociationSet Name="TINHTHANH_administrative_region_id_fkey" Association="Self.TINHTHANH_administrative_region_id_fkey">
             <End Role="CACMIEN" EntitySet="CACMIENs" />
@@ -1435,10 +1391,6 @@
             <End Role="QUYCACHDONGGOI" EntitySet="QUYCACHDONGGOIs" />
             <End Role="SANPHAM" EntitySet="SANPHAMs" />
           </AssociationSet>
-          <AssociationSet Name="FK_THANHPHAN_SANPHAM" Association="Self.FK_THANHPHAN_SANPHAM">
-            <End Role="SANPHAM" EntitySet="SANPHAMs" />
-            <End Role="THANHPHAN" EntitySet="THANHPHANs" />
-          </AssociationSet>
           <AssociationSet Name="QUYENKHACHHANG" Association="Self.QUYENKHACHHANG">
             <End Role="KHACHHANG" EntitySet="KHACHHANGs" />
             <End Role="QUYEN" EntitySet="QUYENs" />
@@ -1457,6 +1409,8 @@
             <Parameter Name="noidung" Mode="In" Type="String" />
             <Parameter Name="congdung" Mode="In" Type="String" />
             <Parameter Name="tonkho" Mode="In" Type="Int32" />
+            <Parameter Name="thanhphan" Mode="In" Type="String" />
+            <Parameter Name="dungtich" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="pc_TimMaTiepTheo">
             <Parameter Name="table" Mode="In" Type="String" />
@@ -1719,6 +1673,8 @@
           <EntitySetMapping Name="SANPHAMs">
             <EntityTypeMapping TypeName="QL_THEFACESHOPModel.SANPHAM">
               <MappingFragment StoreEntitySet="SANPHAM">
+                <ScalarProperty Name="DUNGTICH" ColumnName="DUNGTICH" />
+                <ScalarProperty Name="THANHPHAN" ColumnName="THANHPHAN" />
                 <ScalarProperty Name="MASP" ColumnName="MASP" />
                 <ScalarProperty Name="TENSP" ColumnName="TENSP" />
                 <ScalarProperty Name="MACTL_SP" ColumnName="MACTL_SP" />
@@ -1732,15 +1688,6 @@
                 <ScalarProperty Name="TONGDANHGIA" ColumnName="TONGDANHGIA" />
                 <ScalarProperty Name="TONKHO" ColumnName="TONKHO" />
                 <ScalarProperty Name="TRANGTHAI" ColumnName="TRANGTHAI" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="THANHPHANs">
-            <EntityTypeMapping TypeName="QL_THEFACESHOPModel.THANHPHAN">
-              <MappingFragment StoreEntitySet="THANHPHAN">
-                <ScalarProperty Name="TENTP" ColumnName="TENTP" />
-                <ScalarProperty Name="MASP" ColumnName="MASP" />
-                <ScalarProperty Name="HAMLUONG" ColumnName="HAMLUONG" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
