@@ -1,0 +1,72 @@
+﻿@model IEnumerable<TheFaceShop.Models.DONNHAP>
+
+@{
+    ViewBag.Title = "Quản lý đơn nhập";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="row-md-1 bg-white rounded">
+    <div class="col overflow-scroll" style="max-height: 75vh">
+        <table class="table text-left align-middle table-striped table-fixed table-bordered">
+            <thead style="position: sticky; top: 0; background-color: #c1efde; text-align: center; z-index: 1;">
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.MADN)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.NHANVIEN.TENNV)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.NGAYLAP)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.TONGTIEN)
+                    </th>
+                    <th colspan="2">
+                        @Html.DisplayNameFor(model => model.TRANGTHAI)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.MADN)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.NHANVIEN.TENNV)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.NGAYLAP)
+                        </td>
+                        <td style="text-align: right">
+                            @Html.DisplayFor(modelItem => item.TONGTIEN)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.TRANGTHAI)
+                        </td>
+                        <td>
+                            @if (item.TRANGTHAI == "Đã đặt")
+                            {
+                                <form action="/Admin/DonNhap/TrangThaiDonNhap" method="post">
+                                    <input type="hidden" name="MADN" value="@item.MADN" />
+                                    <select class="form-control form-control-sm" onchange="this.form.submit()" name="TRANGTHAI">
+                                        <option>Trạng thái đơn hàng</option>
+                                        <option value="Đã hủy">Đã huỷ</option>
+                                        <option value="Đã nhận hàng">Đã nhận hàng</option>
+                                    </select>
+                                </form>
+                            }
+                        </td>
+                        <td>
+                            <a href="@Url.Action("XemChiTietDonNhap", "DonNhap", new {ma=item.MADN})"><i class="far fa-info-circle" style="color: black"></i></a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+

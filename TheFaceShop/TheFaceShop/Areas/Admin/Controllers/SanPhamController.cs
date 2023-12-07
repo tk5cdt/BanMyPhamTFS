@@ -38,37 +38,12 @@ namespace TheFaceShop.Areas.Admin.Controllers
             return View();
         }
 
-        //public ActionResult UploadImage(string imageUrl)
-        //{
-        //    try
-        //    {
-        //        string imageName = Path.GetFileName(imageUrl);
-        //        string imagePath = Path.Combine(Server.MapPath("~/HinhAnhSP"), imageName);
-
-        //        HttpWebRequest request = (HttpWebRequest)WebRequest.Create(imageUrl);
-        //        HttpWebResponse response = (HttpWebResponse)request.GetResponse();
-        //        using (Stream stream = response.GetResponseStream())
-        //        {
-        //            using (Image image = Image.FromStream(stream))
-        //            {
-        //                image.Save(imagePath);
-        //            }
-        //        }
-
-        //        return Json(new { success = true, imageUrl = imageUrl });
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        return Json(new { success = false, error = ex.Message });
-        //    }
-        //}
-
         [HttpPost]
         [ValidateInput(false)]
-        public ActionResult CreateProduct(SANPHAM sp, HttpPostedFileBase f) //, List<HttpPostedFileBase> listImage
-        {       
+        public ActionResult CreateProduct(SANPHAM sp, HttpPostedFileBase f, string selectedImages)
+        {
             if (ModelState.IsValid)
-            {               
+            {
                 if (db.SANPHAMs.Any(d => d.TENSP == sp.TENSP))
                 {
                     ViewBag.TB = "Sản phẩm này đã có, vui lòng nhập lại!";
@@ -80,37 +55,39 @@ namespace TheFaceShop.Areas.Admin.Controllers
                 else
                 {
                     sp.MASP = "SP000";
+                    // Lưu ảnh đại diện vào thư mục và tên file vào cơ sở dữ liệu
                     string fname = Path.GetFileName(f.FileName);
                     string fpath = Path.Combine(Server.MapPath("~/HinhAnhSP"), fname);
                     f.SaveAs(fpath);
                     sp.ANHDAIDIEN = fname;
+
                     sp.TONKHO = 0;
                     sp.TRANGTHAI = "Đang bán";
                     db.SANPHAMs.Add(sp);
                     db.SaveChanges();
-              
-                    // Lưu các ảnh còn lại
-                    //List<string> imageNames = new List<string>();
-                    //foreach (HttpPostedFileBase image in listImage)
-                    //{
-                    //    if (image != null && image.ContentLength > 0)
-                    //    {
-                    //        string imageName = Path.GetFileName(image.FileName);
-                    //        string imagePath = Path.Combine(Server.MapPath("~/HinhAnhSP"), imageName);
-                    //        image.SaveAs(imagePath);
-                    //        imageNames.Add(imageName);
-                    //    }
-                    //}
+                    // Lưu đường dẫn của ảnh từ CKFinder vào cơ sở dữ liệu
+                    if (!string.IsNullOrEmpty(selectedImages))
+                    {
+                        string[] imagePaths = selectedImages.Split(';');
+                        foreach (string imagePath in imagePaths)
+                        {
+                            // Tạo đối tượng HINHANHSP và lưu đường dẫn ảnh vào cơ sở dữ liệu
+                            HINHANHSP image = new HINHANHSP();
+                            image.MASP = db.SANPHAMs.FirstOrDefault(s => s.TENSP == sp.TENSP).MASP; // Gán MASP của sản phẩm vừa tạo cho ảnh
+                            image.HINHANH = imagePath; // Lưu đường dẫn ảnh vào thuộc tính HINHANH của đối tượng HINHANHSP
+                            db.HINHANHSPs.Add(image);
 
-                    //foreach (string imageName in imageNames)
-                    //{
-                    //    HINHANHSP image = new HINHANHSP();
-                    //    image.MASP = sp.MASP;
-                    //    image.HINHANH = imageName;
-                    //    db.HINHANHSPs.Add(image);
-                    //}
+                            string imageName = Path.GetFileName(imagePath);
+                            string imgPath = Path.Combine(Server.MapPath("~/HinhAnhSP"), imageName);
 
-                    //db.SaveChanges();
+                            string imgPath2 = Path.Combine(Server.MapPath("~/DATA/Images"), imagePath);
+                            // Copy file từ đường dẫn ảnh trong CSDL xuống thư mục ~/HinhAnhSP
+                            System.IO.File.Copy(imgPath2, imgPath);
+                        }   
+   
+                        db.SaveChanges();
+                    }
+
                     return RedirectToAction("ShowProduct");
                 }
             }
