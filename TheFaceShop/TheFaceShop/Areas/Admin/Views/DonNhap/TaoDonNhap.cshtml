@@ -4,14 +4,14 @@
     Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
 }
 
-@using (Html.BeginForm())
+@using (Html.BeginForm("TaoDonNhap", "DonNhap", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
 
     <div class="form-horizontal bg-white rounded">
         <div class="form-group row p-3">
             <label class="control-label col-sm-2 h6">Tên nhân viên:</label>
-            <label class="control-label col-sm-4 h6" for="tenNV"></label>
+            <label class="control-label col-sm-4 h6" for="tenNV">@Session["TENNV"]</label>
             <label class="control-label col-sm-1 h6">Ngày:</label>
             <label class="control-label col-sm-5 h6" for="ngay">@DateTime.Now.ToString("dd/MM/yyyy")</label>
         </div>
@@ -46,12 +46,12 @@
         </table>
 
         <div class="form-group row p-3 d-flex justify-content-end">
-            <label class="control-label col-sm-2 h5">Tổng tiền: </label>
-            <label class="control-label col-sm-3 h5" for="tongTien">0</label>
+            <label class="control-label col-sm-2 h5">Tổng tiền: </label>  
+            <div class="col-sm-3"><input type="number" name="tongTien" id="tongTien" class="form-control" style="text-align: right" value="0" readonly /></div>           
         </div>
 
         <div class="form-group row p-3">
-            <input type="button" class="btn btn-light" value="Tạo" style="background-color:#c1efde" />
+            <input type="submit" class="btn btn-light" id="tao" value="Tạo" style="background-color:#c1efde" />
         </div>
     </div>
 }

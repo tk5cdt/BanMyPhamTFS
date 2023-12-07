@@ -1241,6 +1241,8 @@
     <Content Include="Areas\Admin\Views\Account\DangNhap.cshtml" />
     <Content Include="Areas\Admin\Views\DonGiao\DanhSachDonGiao.cshtml" />
     <Content Include="Areas\Admin\Views\DonGiao\ChiTietDonGiao.cshtml" />
+    <Content Include="Areas\Admin\Views\DonNhap\DanhSachDonNhap.cshtml" />
+    <Content Include="Areas\Admin\Views\DonNhap\XemChiTietDonNhap.cshtml" />
     <None Include="packages.config" />
     <Content Include="Views\Shared\AccountLayoutPage.cshtml" />
     <Content Include="Views\LoaiSanPham\DanhMuc.cshtml" />
