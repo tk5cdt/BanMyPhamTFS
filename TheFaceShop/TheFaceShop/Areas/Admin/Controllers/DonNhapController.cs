@@ -42,25 +42,28 @@ namespace TheFaceShop.Areas.Admin.Controllers
             return View(dn.CTDNs);
         }
 
+        [HttpGet]
         public ActionResult TaoDonNhap()
         {
             ViewBag.MASP = new SelectList(db.SANPHAMs, "MASP", "TENSP");
             return View();
         }
 
-        [HttpPost]
-        public ActionResult TaoDonNHap(DONNHAP dn)
-        {
-            NHANVIEN nv = Session["user"] as NHANVIEN;
-            dn.MADN = "DN000";
-            dn.MANV = nv.MANV;
-            dn.NGAYLAP=DateTime.Now;
-            dn.TONGTIEN = float.Parse(Request.Form["tongTien"]);
-            dn.TRANGTHAI = "Đã đặt";
+        //[HttpPost]
+        //public ActionResult TaoDonNHap(DONNHAP dn)
+        //{
+        //    NHANVIEN nv = Session["user"] as NHANVIEN;
+        //    dn.MADN = "DN000";
+        //    dn.MANV = nv.MANV;
+        //    dn.NGAYLAP = DateTime.Now;
+        //    dn.TONGTIEN = float.Parse(Request.Form["tongTien"]);
+        //    dn.TRANGTHAI = "Đã đặt";
+
+        //    CTDN cTDN = new CTDN();
 
 
-            return View ("DanhSachDonNhap");
-        }
+        //    return View("DanhSachDonNhap");
+        //}
 
         //[HttpPost]
         //public ActionResult TaoDonNhap(FormCollection f)
@@ -84,47 +87,47 @@ namespace TheFaceShop.Areas.Admin.Controllers
         //    return View();
         //}
 
-        //[HttpPost]
-        //public ActionResult TaoDonNhap(List<CTDN> chiTietDonNhapList)
-        //{
-        //    if (chiTietDonNhapList != null && chiTietDonNhapList.Any())
-        //    {
-        //        NHANVIEN nv = Session["user"] as NHANVIEN;
-        //        DONNHAP dn = new DONNHAP();
-        //        dn.MADN = "DN000"; // Có thể tạo mã đơn nhập theo quy tắc nào đó
-        //        dn.MANV = nv.MANV;
-        //        dn.NGAYLAP = DateTime.Now;
-        //        dn.TONGTIEN = float.Parse(Request.Form["tongTien"]); // Lấy tổng tiền từ form
-        //        dn.TRANGTHAI = "Đã đặt";
+        [HttpPost]
+        public ActionResult TaoDonNhap(CTDN[] chiTietDonNhapList)
+        {
+            if (chiTietDonNhapList != null && chiTietDonNhapList.Any())
+            {
+                NHANVIEN nv = Session["user"] as NHANVIEN;
+                DONNHAP dn = new DONNHAP();
+                dn.MADN = "DN000"; // Có thể tạo mã đơn nhập theo quy tắc nào đó
+                dn.MANV = nv.MANV;
+                dn.NGAYLAP = DateTime.Now;
+                dn.TONGTIEN = float.Parse(Request.Form["tongTien"]); // Lấy tổng tiền từ form
+                dn.TRANGTHAI = "Đã đặt";
 
-        //        db.DONNHAPs.Add(dn);
-        //        db.SaveChanges();
+                db.DONNHAPs.Add(dn);
+                db.SaveChanges();
 
-        //        foreach (var item in chiTietDonNhapList)
-        //        {
-        //            // Tìm mã sản phẩm dựa trên tên sản phẩm
-        //            string maSP = db.SANPHAMs.FirstOrDefault(sp => sp.TENSP == item.MASP).MASP;
+                foreach (var item in chiTietDonNhapList)
+                {
+                    // Tìm mã sản phẩm dựa trên tên sản phẩm
+                    string maSP = db.SANPHAMs.FirstOrDefault(sp => sp.TENSP == item.MASP).MASP;
 
-        //            if (maSP != null)
-        //            {
-        //                // Tạo chi tiết đơn nhập và lưu vào cơ sở dữ liệu
-        //                CTDN chiTietDN = new CTDN
-        //                {
-        //                    MADN = dn.MADN,
-        //                    MASP = maSP,
-        //                    SOLUONG = item.SOLUONG,
-        //                    THANHTIEN = item.THANHTIEN
-        //                };
+                    if (maSP != null)
+                    {
+                        // Tạo chi tiết đơn nhập và lưu vào cơ sở dữ liệu
+                        CTDN chiTietDN = new CTDN
+                        {
+                            MADN = dn.MADN,
+                            MASP = maSP,
+                            SOLUONG = item.SOLUONG,
+                            THANHTIEN = item.THANHTIEN
+                        };
 
-        //                db.CTDNs.Add(chiTietDN);
-        //            }
-        //        }
+                        db.CTDNs.Add(chiTietDN);
+                    }
+                }
 
-        //        db.SaveChanges();
+                db.SaveChanges();
 
-        //        return Json(new { success = true });
-        //    }
-        //    return Json(new { success = false });
-        //}
-    }             
+                return View("DanhSachDonNhap");
+            }
+            return Json(new { success = false });
+        }
+    }
 }

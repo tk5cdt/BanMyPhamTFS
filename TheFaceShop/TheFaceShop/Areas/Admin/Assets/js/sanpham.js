@@ -63,6 +63,8 @@ $(document).ready(function () {
 });
 
 $(document).ready(function () {
+    var tenSP = [];
+    var soLuong = [];
     $("#themSP").click(function (e) {
         e.preventDefault();
         var tenSP = $("#productDropdown option:selected").text();
@@ -86,8 +88,10 @@ $(document).ready(function () {
                 $("table tbody").append(`
                     <tr>
                         <td>${tenSP}</td>
-                        <td class="text-center">${giaNhap}</td>
+                        <input type="hidden" id="tenSP" name="tenSP" />
+                        <td class="text-center">${giaNhap}</td>                       
                         <td class="text-center">${soLuong}</td>
+                        <input type="hidden" id="soLuong" name="soLuong" />
                         <td class="text-center">${thanhTien}</td>
                         <td class="text-center">
                             <a href="#" class="delete"><i class="fas fa-trash-alt" style="color: black"></i></a>
@@ -104,7 +108,6 @@ $(document).ready(function () {
             alert("Vui lòng nhập đủ thông tin sản phẩm");
         }
     });
-
     $("table").on("click", ".delete", function () {
         var row = $(this).closest("tr");
         var thanhTien = parseInt(row.find("td:eq(3)").text());
@@ -113,36 +116,3 @@ $(document).ready(function () {
         row.remove();
     });
 });
-
-$(document).ready(function () {
-    var chiTietDonNhapList = [];
-
-    $('#yourTableId tbody tr').each(function () {
-        var tenSanPham = $(this).find('td:eq(0)').text(); // Thay đổi index để lấy dữ liệu từ các cột khác
-        var donGia = parseFloat($(this).find('td:eq(1)').text()); // Đây là đơn giá, bạn cần phù hợp với cột tương ứng trong bảng
-        var soLuong = parseInt($(this).find('td:eq(2)').text()); // Đây là số lượng, bạn cần phù hợp với cột tương ứng trong bảng
-        var thanhTien = donGia * soLuong; // Tính thành tiền
-
-        var chiTietDonNhap = {
-            MASP: tenSanPham,
-            SOLUONG: soLuong,
-            THANHTIEN: thanhTien
-        };
-
-        chiTietDonNhapList.push(chiTietDonNhap); // Thêm vào danh sách chiTietDonNhapList
-    });
-
-    // Gửi danh sách sản phẩm đi qua Ajax
-    $.ajax({
-        url: '/DonNhap/TaoDonNhap',
-        type: 'POST',
-        contentType: 'application/json',
-        data: JSON.stringify(chiTietDonNhapList),
-        success: function (response) {
-            // Xử lý phản hồi từ Controller nếu cần
-        },
-        error: function (error) {
-            // Xử lý lỗi nếu có
-        }
-    });
-})
