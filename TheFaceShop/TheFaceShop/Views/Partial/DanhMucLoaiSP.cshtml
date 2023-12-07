@@ -4,17 +4,10 @@
     int count = 0;
     foreach (var item in Model)
     {
-        count++;
-        if (count > 5)
-        {
-            break;
-        }
-        else
-        {
-            <div class="col d-flex align-items-stretch justify-content-center">
+        <div class="col d-flex align-items-stretch justify-content-center">
                 <div class="card" style="display: flex; text-align: center;">
                     <img src="~/HinhAnhSP/@item.ANHDAIDIEN"
-                         class="card-img-top" alt="Hollywood Sign on The Hill" />
+                         class="card-img-top" alt="@item.TENSP" />
                     <div class="card-body ">
                         @if (item.TENSP.Length <= 50)
                         {
@@ -32,10 +25,10 @@
                         <p><i class="fas fa-star" style="color: #000000;"></i> @item.TONGDANHGIA/5</p>
                         </p>
                         <div class="d-grid mx-auto mb-20">
-                            <a href="@Url.Action("ChiTietSanPham", "SP", new {id = item.MASP})"><button type="button" class="btn btn-outline-success rounded-pill">Xem chi tiết</button></a>                        </div>
+                            <a href="@Url.Action("ChiTietSanPham", "SP", new {id = item.MASP})"><button type="button" class="btn btn-outline-success rounded-pill">Xem chi tiết</button></a>
+                        </div>
                     </div>
                 </div>
             </div>
-        }
     }
 }

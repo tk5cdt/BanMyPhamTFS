@@ -6,38 +6,6 @@
 
 @model List<TheFaceShop.Models.LOAI>
 
-<!--<div class="p-5 pb-2 pt-3 bg-body-tertiary mb-2" style="background-color: #c1efde">
-    <h1 class="">Làm sạch</h1>-->
-     @*Breadcrumb*@ 
-    <!--<nav aria-label="breadcrumb">
-        <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="#" style="text-decoration: none;">Trang chủ</a></li>-->
-            @*@if (ViewBag.Category != null)
-            {
-                <li class="breadcrumb-item active" aria-current="page">@ViewBag.Category.TENLOAI</li>
-            }
-            else if (ViewBag.SubCategories != null)
-            {
-                <li class="breadcrumb-item">
-                    <a href="@Url.Action("DanhMuc", "LoaiSanPham")">@ViewBag.Category.TENLOAI</a>
-                </li>
-                <li class="breadcrumb-item active" aria-current="page">@ViewBag.Subcategory.TENCTLOAI</li>
-            }
-            else
-            {
-                <li class="breadcrumb-item">
-                    <a href="@Url.Action("DanhMuc", "LoaiSanPham")">@ViewBag.Category.TENLOAI</a>
-                </li>
-                <li class="breadcrumb-item">
-                    <a href="@Url.Action("DanhMuc", "LoaiSanPham", new { categoryId = ViewBag.Category.MALOAI })">@ViewBag.Subcategory.TENCTLOAI</a>
-                </li>
-                <li class="breadcrumb-item active" aria-current="page">@ViewBag.Products.MACTL_SP</li>
-            }*@
-        <!--</ol>
-    </nav>-->
-     @*End Breadcrumb*@ 
-<!--</div>-->
-
 <div class="p-5 pb-2 pt-3 bg-body-tertiary mb-2" style="background-color: #c1efde">
     <!-- Breadcrumb -->
     <nav aria-label="breadcrumb">
@@ -89,7 +57,7 @@
                         </li>
                         <li class="list-group-item">
                             <input class="form-check-input" type="checkbox" value="" id="checkboxExample5" />
-                            <label class="form-check-label" for="checkboxExample5">Trên 2.000.000</label>
+                            <label class="form-check-label" for="checkboxExample5">Trên 2.000.000đ</label>
                         </li>
                     </div>
                 </div>
@@ -109,6 +77,7 @@
                                         @subcategory.TENCTLOAI
                                     </a>
                                 </li>
+
                             }
                         </div>
                     </div>
@@ -121,19 +90,14 @@
     <!-- Product display area -->
     <div class="col-8" style="background-color: #c1efde; margin-bottom: 20px; border-radius: 10px; flex: auto; margin-left: 20px; padding-top: 10px">
         <!-- Display products -->
-        đây là đâu
-        @if (ViewBag.Products != null)
-        {
-            <div class="row row-cols-1 row-cols-md-5 g-3 px-1 mb-4">
-                @foreach (var product in ViewBag.Products)
-                {
-                    <div class="col d-flex align-items-stretch justify-content-center">
-                        <!-- Display product details -->
-                    </div>
-                }
-            </div>
-        }
-    </div>
-</div>
+        
 
+        <div class="row row-cols-1 row-cols-md-5 g-4 px-5 mb-4">
+            @Html.Action("DanhMucLoaiSP", "Partial")
+        </div>
+    </div>
+
+</div>
+<script src="~/Content/js/LocGia.js"></script>
+<script src="~/Content/js/LocLoai.js"></script>
 

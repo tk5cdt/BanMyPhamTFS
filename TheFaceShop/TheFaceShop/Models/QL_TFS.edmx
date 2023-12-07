@@ -547,6 +547,118 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Function Name="ChiNgay" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="NgayBatDau" Type="date" Mode="In" />
+          <Parameter Name="NgayKetThuc" Type="date" Mode="In" />
+          <ReturnType>
+            <CollectionType>
+              <RowType>
+                <Property Name="Chi" Type="float" />
+              </RowType>
+            </CollectionType>
+          </ReturnType>
+        </Function>
+        <Function Name="ChiThuCacQuy" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <ReturnType>
+            <CollectionType>
+              <RowType>
+                <Property Name="Quy" Type="int" Nullable="false" />
+                <Property Name="Chi" Type="float" />
+              </RowType>
+            </CollectionType>
+          </ReturnType>
+        </Function>
+        <Function Name="ChiTrongNam" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="float" />
+        <Function Name="ChiTrongQuy" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Quy" Type="int" Mode="In" />
+          <ReturnType>
+            <CollectionType>
+              <RowType>
+                <Property Name="Chi" Type="float" />
+              </RowType>
+            </CollectionType>
+          </ReturnType>
+        </Function>
+        <Function Name="ChiTrongThang" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="float">
+          <Parameter Name="Thang" Type="int" Mode="In" />
+        </Function>
+        <Function Name="ChiTungThang" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <ReturnType>
+            <CollectionType>
+              <RowType>
+                <Property Name="Thang" Type="int" Nullable="false" />
+                <Property Name="Chi" Type="float" />
+              </RowType>
+            </CollectionType>
+          </ReturnType>
+        </Function>
+        <Function Name="DoanhThuCacQuy" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <ReturnType>
+            <CollectionType>
+              <RowType>
+                <Property Name="Quy" Type="int" Nullable="false" />
+                <Property Name="DoanhThu" Type="float" />
+              </RowType>
+            </CollectionType>
+          </ReturnType>
+        </Function>
+        <Function Name="DoanhThuThang" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="float">
+          <Parameter Name="Thang" Type="int" Mode="In" />
+        </Function>
+        <Function Name="DoanhThuTrongNam" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="float" />
+        <Function Name="DoanhThuTrongQuy" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Quy" Type="int" Mode="In" />
+          <ReturnType>
+            <CollectionType>
+              <RowType>
+                <Property Name="DoanhThu" Type="float" />
+              </RowType>
+            </CollectionType>
+          </ReturnType>
+        </Function>
+        <Function Name="DoanhThuTungNgay" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="NgayBatDau" Type="date" Mode="In" />
+          <Parameter Name="NgayKetThuc" Type="date" Mode="In" />
+          <ReturnType>
+            <CollectionType>
+              <RowType>
+                <Property Name="DoanhThu" Type="float" />
+              </RowType>
+            </CollectionType>
+          </ReturnType>
+        </Function>
+        <Function Name="DoanhThuTungThang" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <ReturnType>
+            <CollectionType>
+              <RowType>
+                <Property Name="Thang" Type="int" Nullable="false" />
+                <Property Name="DoanhThu" Type="float" />
+              </RowType>
+            </CollectionType>
+          </ReturnType>
+        </Function>
+        <Function Name="LoiNhuanTungNgay" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="NgayBatDau" Type="date" Mode="In" />
+          <Parameter Name="NgayKetThuc" Type="date" Mode="In" />
+          <ReturnType>
+            <CollectionType>
+              <RowType>
+                <Property Name="Ngay" Type="date" />
+                <Property Name="LoiNhuan" Type="float" Nullable="false" />
+              </RowType>
+            </CollectionType>
+          </ReturnType>
+        </Function>
+        <Function Name="LoiNhuanTungThang" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <ReturnType>
+            <CollectionType>
+              <RowType>
+                <Property Name="Thang" Type="int" Nullable="false" />
+                <Property Name="LOINHUAN" Type="float" Nullable="false" />
+              </RowType>
+            </CollectionType>
+          </ReturnType>
+        </Function>
         <Function Name="pc_InsertSanPham" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="tensp" Type="nvarchar" Mode="In" />
           <Parameter Name="loai" Type="nvarchar" Mode="In" />
@@ -554,6 +666,7 @@
           <Parameter Name="gianhap" Type="int" Mode="In" />
           <Parameter Name="dangbaoche" Type="nvarchar" Mode="In" />
           <Parameter Name="qcdonggoi" Type="nvarchar" Mode="In" />
+          <Parameter Name="anhdaidien" Type="varchar" Mode="In" />
           <Parameter Name="noidung" Type="nvarchar(max)" Mode="In" />
           <Parameter Name="congdung" Type="nvarchar(max)" Mode="In" />
           <Parameter Name="tonkho" Type="int" Mode="In" />
@@ -613,6 +726,12 @@
           <Parameter Name="gioitinh" Type="nvarchar" Mode="In" />
           <Parameter Name="sdt" Type="char" Mode="In" />
           <Parameter Name="mk" Type="nchar" Mode="In" />
+        </Function>
+        <Function Name="TongChiTrongQuy" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="float">
+          <Parameter Name="Quy" Type="int" Mode="In" />
+        </Function>
+        <Function Name="TongDoanhThuTrongQuy" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="float">
+          <Parameter Name="Quy" Type="int" Mode="In" />
         </Function>
         <EntityContainer Name="QL_THEFACESHOPModelStoreContainer">
           <EntitySet Name="CACMIEN" EntityType="Self.CACMIEN" Schema="dbo" store:Type="Tables" />
@@ -747,658 +866,7 @@
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="QL_THEFACESHOPModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityType Name="CACMIEN">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="Int32" Nullable="false" />
-          <Property Name="name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="name_en" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="code_name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="code_name_en" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="TINHTHANHs" Relationship="Self.TINHTHANH_administrative_region_id_fkey" FromRole="CACMIEN" ToRole="TINHTHANH" />
-        </EntityType>
-        <EntityType Name="CHITIETGIOHANG">
-          <Key>
-            <PropertyRef Name="MAGH" />
-            <PropertyRef Name="MASP" />
-          </Key>
-          <Property Name="MAGH" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="MASP" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="SOLUONG" Type="Int32" />
-          <NavigationProperty Name="GIOHANG" Relationship="Self.FK_DATHANG_GIOHANG" FromRole="CHITIETGIOHANG" ToRole="GIOHANG" />
-          <NavigationProperty Name="SANPHAM" Relationship="Self.FK_DATHANG_SANPHAM" FromRole="CHITIETGIOHANG" ToRole="SANPHAM" />
-        </EntityType>
-        <EntityType Name="CHITIETLOAI">
-          <Key>
-            <PropertyRef Name="MACTLOAI" />
-          </Key>
-          <Property Name="MACTLOAI" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="TENCTLOAI" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
-          <Property Name="MALOAI" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="LOAI" Relationship="Self.FK_CHITIETLOAI_LOAI" FromRole="CHITIETLOAI" ToRole="LOAI" />
-          <NavigationProperty Name="CHITIETLOAISPs" Relationship="Self.FK_CHITIETLOAISP_CHITIETLOAI" FromRole="CHITIETLOAI" ToRole="CHITIETLOAISP" />
-        </EntityType>
-        <EntityType Name="CHITIETLOAISP">
-          <Key>
-            <PropertyRef Name="MACTL_SP" />
-          </Key>
-          <Property Name="MACTL_SP" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="TENCTL_SP" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
-          <Property Name="MACTLOAI" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="CHITIETLOAI" Relationship="Self.FK_CHITIETLOAISP_CHITIETLOAI" FromRole="CHITIETLOAISP" ToRole="CHITIETLOAI" />
-          <NavigationProperty Name="SANPHAMs" Relationship="Self.FK_SANPHAM_CHITIETLOAISP" FromRole="CHITIETLOAISP" ToRole="SANPHAM" />
-        </EntityType>
-        <EntityType Name="CTDG">
-          <Key>
-            <PropertyRef Name="MADG" />
-            <PropertyRef Name="MASP" />
-          </Key>
-          <Property Name="MADG" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="MASP" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="SOLUONG" Type="Int32" />
-          <Property Name="THANHTIEN" Type="Double" />
-          <Property Name="MUCDODG" Type="Double" />
-          <Property Name="NGAYBL" Type="DateTime" Precision="0" />
-          <Property Name="BINHLUAN" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="DONGIAO" Relationship="Self.FK_CTDG_DONGIAO" FromRole="CTDG" ToRole="DONGIAO" />
-          <NavigationProperty Name="SANPHAM" Relationship="Self.FK_CTDG_SANPHAM" FromRole="CTDG" ToRole="SANPHAM" />
-        </EntityType>
-        <EntityType Name="CTDN">
-          <Key>
-            <PropertyRef Name="MADN" />
-            <PropertyRef Name="MASP" />
-          </Key>
-          <Property Name="MADN" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="MASP" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="SOLUONG" Type="Int32" />
-          <Property Name="THANHTIEN" Type="Double" />
-          <NavigationProperty Name="DONNHAP" Relationship="Self.FK_CTDN_DONNHAP" FromRole="CTDN" ToRole="DONNHAP" />
-          <NavigationProperty Name="SANPHAM" Relationship="Self.FK_CTDN_SANPHAM" FromRole="CTDN" ToRole="SANPHAM" />
-        </EntityType>
-        <EntityType Name="DANGBAOCHE">
-          <Key>
-            <PropertyRef Name="MADBC" />
-          </Key>
-          <Property Name="MADBC" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="TENDANG" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="SANPHAMs" Relationship="Self.FK_SANPHAM_DANGBAOCHE" FromRole="DANGBAOCHE" ToRole="SANPHAM" />
-        </EntityType>
-        <EntityType Name="DONGIAO">
-          <Key>
-            <PropertyRef Name="MADG" />
-          </Key>
-          <Property Name="MADG" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="NGAYLAP" Type="DateTime" Precision="0" />
-          <Property Name="MAKH" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="NGUOINHAN" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="SDT" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="SONHA" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="PHUONGXA" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="TRIGIA" Type="Double" />
-          <Property Name="TRANGTHAI" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="CTDGs" Relationship="Self.FK_CTDG_DONGIAO" FromRole="DONGIAO" ToRole="CTDG" />
-          <NavigationProperty Name="KHACHHANG" Relationship="Self.FK_DONGIAO_KHACHHANG" FromRole="DONGIAO" ToRole="KHACHHANG" />
-          <NavigationProperty Name="PHUONGXA1" Relationship="Self.FK_DONGIAO_PHUONGXA" FromRole="DONGIAO" ToRole="PHUONGXA" />
-        </EntityType>
-        <EntityType Name="DONNHAP">
-          <Key>
-            <PropertyRef Name="MADN" />
-          </Key>
-          <Property Name="MADN" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="MANV" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="NGAYLAP" Type="DateTime" Precision="0" />
-          <Property Name="TONGTIEN" Type="Double" />
-          <Property Name="TRANGTHAI" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="CTDNs" Relationship="Self.FK_CTDN_DONNHAP" FromRole="DONNHAP" ToRole="CTDN" />
-          <NavigationProperty Name="NHANVIEN" Relationship="Self.FK_DONNHAP_NHANVIEN" FromRole="DONNHAP" ToRole="NHANVIEN" />
-        </EntityType>
-        <EntityType Name="DONVIHANHCHINH">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="Int32" Nullable="false" />
-          <Property Name="full_name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="full_name_en" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="short_name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="short_name_en" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="code_name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="code_name_en" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="PHUONGXAs" Relationship="Self.PHUONGXA_administrative_unit_id_fkey" FromRole="DONVIHANHCHINH" ToRole="PHUONGXA" />
-          <NavigationProperty Name="QUANHUYENs" Relationship="Self.QUANHUYEN_administrative_unit_id_fkey" FromRole="DONVIHANHCHINH" ToRole="QUANHUYEN" />
-          <NavigationProperty Name="TINHTHANHs" Relationship="Self.TINHTHANH_administrative_unit_id_fkey" FromRole="DONVIHANHCHINH" ToRole="TINHTHANH" />
-        </EntityType>
-        <EntityType Name="GIOHANG">
-          <Key>
-            <PropertyRef Name="MAGH" />
-          </Key>
-          <Property Name="MAGH" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="MAKH" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="CHITIETGIOHANGs" Relationship="Self.FK_DATHANG_GIOHANG" FromRole="GIOHANG" ToRole="CHITIETGIOHANG" />
-          <NavigationProperty Name="KHACHHANG" Relationship="Self.FK_GIOHANG_KHACHHANG" FromRole="GIOHANG" ToRole="KHACHHANG" />
-        </EntityType>
-        <EntityType Name="HINHANHSP">
-          <Key>
-            <PropertyRef Name="MAHA" />
-          </Key>
-          <Property Name="MAHA" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="MASP" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-          <Property Name="HINHANH" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="SANPHAM" Relationship="Self.FK_HINHANHSP_SANPHAM" FromRole="HINHANHSP" ToRole="SANPHAM" />
-        </EntityType>
-        <EntityType Name="KHACHHANG">
-          <Key>
-            <PropertyRef Name="MAKH" />
-          </Key>
-          <Property Name="MAKH" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="TENKH" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="SDT" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
-          <NavigationProperty Name="DONGIAOs" Relationship="Self.FK_DONGIAO_KHACHHANG" FromRole="KHACHHANG" ToRole="DONGIAO" />
-          <NavigationProperty Name="GIOHANGs" Relationship="Self.FK_GIOHANG_KHACHHANG" FromRole="KHACHHANG" ToRole="GIOHANG" />
-          <NavigationProperty Name="QUYENs" Relationship="Self.QUYENKHACHHANG" FromRole="KHACHHANG" ToRole="QUYEN" />
-        </EntityType>
-        <EntityType Name="LOAI">
-          <Key>
-            <PropertyRef Name="MALOAI" />
-          </Key>
-          <Property Name="MALOAI" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="TENLOAI" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="CHITIETLOAIs" Relationship="Self.FK_CHITIETLOAI_LOAI" FromRole="LOAI" ToRole="CHITIETLOAI" />
-        </EntityType>
-        <EntityType Name="NHANVIEN">
-          <Key>
-            <PropertyRef Name="MANV" />
-          </Key>
-          <Property Name="MANV" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="TENNV" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="GIOITINH" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
-          <Property Name="SDT" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
-          <Property Name="MATKHAU" Type="String" MaxLength="20" FixedLength="true" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="DONNHAPs" Relationship="Self.FK_DONNHAP_NHANVIEN" FromRole="NHANVIEN" ToRole="DONNHAP" />
-          <NavigationProperty Name="QUYENs" Relationship="Self.QUYENNHANVIEN" FromRole="NHANVIEN" ToRole="QUYEN" />
-        </EntityType>
-        <EntityType Name="PHUONGXA">
-          <Key>
-            <PropertyRef Name="code" />
-          </Key>
-          <Property Name="code" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="name_en" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="full_name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="full_name_en" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="code_name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="district_code" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Name="administrative_unit_id" Type="Int32" />
-          <NavigationProperty Name="DONGIAOs" Relationship="Self.FK_DONGIAO_PHUONGXA" FromRole="PHUONGXA" ToRole="DONGIAO" />
-          <NavigationProperty Name="DONVIHANHCHINH" Relationship="Self.PHUONGXA_administrative_unit_id_fkey" FromRole="PHUONGXA" ToRole="DONVIHANHCHINH" />
-          <NavigationProperty Name="QUANHUYEN" Relationship="Self.PHUONGXA_district_code_fkey" FromRole="PHUONGXA" ToRole="QUANHUYEN" />
-        </EntityType>
-        <EntityType Name="QUANHUYEN">
-          <Key>
-            <PropertyRef Name="code" />
-          </Key>
-          <Property Name="code" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="name_en" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="full_name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="full_name_en" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="code_name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="province_code" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Name="administrative_unit_id" Type="Int32" />
-          <NavigationProperty Name="DONVIHANHCHINH" Relationship="Self.QUANHUYEN_administrative_unit_id_fkey" FromRole="QUANHUYEN" ToRole="DONVIHANHCHINH" />
-          <NavigationProperty Name="PHUONGXAs" Relationship="Self.PHUONGXA_district_code_fkey" FromRole="QUANHUYEN" ToRole="PHUONGXA" />
-          <NavigationProperty Name="TINHTHANH" Relationship="Self.QUANHUYEN_province_code_fkey" FromRole="QUANHUYEN" ToRole="TINHTHANH" />
-        </EntityType>
-        <EntityType Name="QUYCACHDONGGOI">
-          <Key>
-            <PropertyRef Name="MAQCDG" />
-          </Key>
-          <Property Name="MAQCDG" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="TENQCDG" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="SANPHAMs" Relationship="Self.FK_SANPHAM_QUYCACHDONGGOI" FromRole="QUYCACHDONGGOI" ToRole="SANPHAM" />
-        </EntityType>
-        <EntityType Name="QUYEN">
-          <Key>
-            <PropertyRef Name="MAQUYEN" />
-          </Key>
-          <Property Name="MAQUYEN" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="TENQUYEN" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="KHACHHANGs" Relationship="Self.QUYENKHACHHANG" FromRole="QUYEN" ToRole="KHACHHANG" />
-          <NavigationProperty Name="NHANVIENs" Relationship="Self.QUYENNHANVIEN" FromRole="QUYEN" ToRole="NHANVIEN" />
-        </EntityType>
-        <EntityType Name="SANPHAM">
-          <Key>
-            <PropertyRef Name="MASP" />
-          </Key>
-          <Property Name="MASP" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="TENSP" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="MACTL_SP" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="GIABAN" Type="Double" />
-          <Property Name="GIANHAP" Type="Double" />
-          <Property Name="MADBC" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="MAQCDG" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="ANHDAIDIEN" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="NOIDUNG" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="CONGDUNG" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="TONGDANHGIA" Type="Double" />
-          <Property Name="TONKHO" Type="Int32" />
-          <Property Name="TRANGTHAI" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="CHITIETGIOHANGs" Relationship="Self.FK_DATHANG_SANPHAM" FromRole="SANPHAM" ToRole="CHITIETGIOHANG" />
-          <NavigationProperty Name="CHITIETLOAISP" Relationship="Self.FK_SANPHAM_CHITIETLOAISP" FromRole="SANPHAM" ToRole="CHITIETLOAISP" />
-          <NavigationProperty Name="CTDGs" Relationship="Self.FK_CTDG_SANPHAM" FromRole="SANPHAM" ToRole="CTDG" />
-          <NavigationProperty Name="CTDNs" Relationship="Self.FK_CTDN_SANPHAM" FromRole="SANPHAM" ToRole="CTDN" />
-          <NavigationProperty Name="DANGBAOCHE" Relationship="Self.FK_SANPHAM_DANGBAOCHE" FromRole="SANPHAM" ToRole="DANGBAOCHE" />
-          <NavigationProperty Name="HINHANHSPs" Relationship="Self.FK_HINHANHSP_SANPHAM" FromRole="SANPHAM" ToRole="HINHANHSP" />
-          <NavigationProperty Name="QUYCACHDONGGOI" Relationship="Self.FK_SANPHAM_QUYCACHDONGGOI" FromRole="SANPHAM" ToRole="QUYCACHDONGGOI" />
-          <Property Name="THANHPHAN" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="DUNGTICH" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
-        </EntityType>
-        <EntityType Name="TINHTHANH">
-          <Key>
-            <PropertyRef Name="code" />
-          </Key>
-          <Property Name="code" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="name_en" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="full_name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="full_name_en" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="code_name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="administrative_unit_id" Type="Int32" />
-          <Property Name="administrative_region_id" Type="Int32" />
-          <NavigationProperty Name="CACMIEN" Relationship="Self.TINHTHANH_administrative_region_id_fkey" FromRole="TINHTHANH" ToRole="CACMIEN" />
-          <NavigationProperty Name="DONVIHANHCHINH" Relationship="Self.TINHTHANH_administrative_unit_id_fkey" FromRole="TINHTHANH" ToRole="DONVIHANHCHINH" />
-          <NavigationProperty Name="QUANHUYENs" Relationship="Self.QUANHUYEN_province_code_fkey" FromRole="TINHTHANH" ToRole="QUANHUYEN" />
-        </EntityType>
-        <Association Name="TINHTHANH_administrative_region_id_fkey">
-          <End Role="CACMIEN" Type="Self.CACMIEN" Multiplicity="0..1" />
-          <End Role="TINHTHANH" Type="Self.TINHTHANH" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="CACMIEN">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="TINHTHANH">
-              <PropertyRef Name="administrative_region_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_DATHANG_GIOHANG">
-          <End Role="GIOHANG" Type="Self.GIOHANG" Multiplicity="1" />
-          <End Role="CHITIETGIOHANG" Type="Self.CHITIETGIOHANG" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="GIOHANG">
-              <PropertyRef Name="MAGH" />
-            </Principal>
-            <Dependent Role="CHITIETGIOHANG">
-              <PropertyRef Name="MAGH" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_DATHANG_SANPHAM">
-          <End Role="SANPHAM" Type="Self.SANPHAM" Multiplicity="1" />
-          <End Role="CHITIETGIOHANG" Type="Self.CHITIETGIOHANG" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="SANPHAM">
-              <PropertyRef Name="MASP" />
-            </Principal>
-            <Dependent Role="CHITIETGIOHANG">
-              <PropertyRef Name="MASP" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_CHITIETLOAI_LOAI">
-          <End Role="LOAI" Type="Self.LOAI" Multiplicity="0..1" />
-          <End Role="CHITIETLOAI" Type="Self.CHITIETLOAI" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="LOAI">
-              <PropertyRef Name="MALOAI" />
-            </Principal>
-            <Dependent Role="CHITIETLOAI">
-              <PropertyRef Name="MALOAI" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_CHITIETLOAISP_CHITIETLOAI">
-          <End Role="CHITIETLOAI" Type="Self.CHITIETLOAI" Multiplicity="0..1" />
-          <End Role="CHITIETLOAISP" Type="Self.CHITIETLOAISP" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="CHITIETLOAI">
-              <PropertyRef Name="MACTLOAI" />
-            </Principal>
-            <Dependent Role="CHITIETLOAISP">
-              <PropertyRef Name="MACTLOAI" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_SANPHAM_CHITIETLOAISP">
-          <End Role="CHITIETLOAISP" Type="Self.CHITIETLOAISP" Multiplicity="1" />
-          <End Role="SANPHAM" Type="Self.SANPHAM" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="CHITIETLOAISP">
-              <PropertyRef Name="MACTL_SP" />
-            </Principal>
-            <Dependent Role="SANPHAM">
-              <PropertyRef Name="MACTL_SP" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_CTDG_DONGIAO">
-          <End Role="DONGIAO" Type="Self.DONGIAO" Multiplicity="1" />
-          <End Role="CTDG" Type="Self.CTDG" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="DONGIAO">
-              <PropertyRef Name="MADG" />
-            </Principal>
-            <Dependent Role="CTDG">
-              <PropertyRef Name="MADG" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_CTDG_SANPHAM">
-          <End Role="SANPHAM" Type="Self.SANPHAM" Multiplicity="1" />
-          <End Role="CTDG" Type="Self.CTDG" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="SANPHAM">
-              <PropertyRef Name="MASP" />
-            </Principal>
-            <Dependent Role="CTDG">
-              <PropertyRef Name="MASP" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_CTDN_DONNHAP">
-          <End Role="DONNHAP" Type="Self.DONNHAP" Multiplicity="1" />
-          <End Role="CTDN" Type="Self.CTDN" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="DONNHAP">
-              <PropertyRef Name="MADN" />
-            </Principal>
-            <Dependent Role="CTDN">
-              <PropertyRef Name="MADN" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_CTDN_SANPHAM">
-          <End Role="SANPHAM" Type="Self.SANPHAM" Multiplicity="1" />
-          <End Role="CTDN" Type="Self.CTDN" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="SANPHAM">
-              <PropertyRef Name="MASP" />
-            </Principal>
-            <Dependent Role="CTDN">
-              <PropertyRef Name="MASP" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_SANPHAM_DANGBAOCHE">
-          <End Role="DANGBAOCHE" Type="Self.DANGBAOCHE" Multiplicity="1" />
-          <End Role="SANPHAM" Type="Self.SANPHAM" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="DANGBAOCHE">
-              <PropertyRef Name="MADBC" />
-            </Principal>
-            <Dependent Role="SANPHAM">
-              <PropertyRef Name="MADBC" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_DONGIAO_KHACHHANG">
-          <End Role="KHACHHANG" Type="Self.KHACHHANG" Multiplicity="1" />
-          <End Role="DONGIAO" Type="Self.DONGIAO" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="KHACHHANG">
-              <PropertyRef Name="MAKH" />
-            </Principal>
-            <Dependent Role="DONGIAO">
-              <PropertyRef Name="MAKH" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_DONGIAO_PHUONGXA">
-          <End Role="PHUONGXA" Type="Self.PHUONGXA" Multiplicity="1" />
-          <End Role="DONGIAO" Type="Self.DONGIAO" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="PHUONGXA">
-              <PropertyRef Name="code" />
-            </Principal>
-            <Dependent Role="DONGIAO">
-              <PropertyRef Name="PHUONGXA" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_DONNHAP_NHANVIEN">
-          <End Role="NHANVIEN" Type="Self.NHANVIEN" Multiplicity="1" />
-          <End Role="DONNHAP" Type="Self.DONNHAP" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="NHANVIEN">
-              <PropertyRef Name="MANV" />
-            </Principal>
-            <Dependent Role="DONNHAP">
-              <PropertyRef Name="MANV" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="PHUONGXA_administrative_unit_id_fkey">
-          <End Role="DONVIHANHCHINH" Type="Self.DONVIHANHCHINH" Multiplicity="0..1" />
-          <End Role="PHUONGXA" Type="Self.PHUONGXA" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="DONVIHANHCHINH">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="PHUONGXA">
-              <PropertyRef Name="administrative_unit_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="QUANHUYEN_administrative_unit_id_fkey">
-          <End Role="DONVIHANHCHINH" Type="Self.DONVIHANHCHINH" Multiplicity="0..1" />
-          <End Role="QUANHUYEN" Type="Self.QUANHUYEN" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="DONVIHANHCHINH">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="QUANHUYEN">
-              <PropertyRef Name="administrative_unit_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="TINHTHANH_administrative_unit_id_fkey">
-          <End Role="DONVIHANHCHINH" Type="Self.DONVIHANHCHINH" Multiplicity="0..1" />
-          <End Role="TINHTHANH" Type="Self.TINHTHANH" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="DONVIHANHCHINH">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="TINHTHANH">
-              <PropertyRef Name="administrative_unit_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_GIOHANG_KHACHHANG">
-          <End Role="KHACHHANG" Type="Self.KHACHHANG" Multiplicity="1" />
-          <End Role="GIOHANG" Type="Self.GIOHANG" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="KHACHHANG">
-              <PropertyRef Name="MAKH" />
-            </Principal>
-            <Dependent Role="GIOHANG">
-              <PropertyRef Name="MAKH" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_HINHANHSP_SANPHAM">
-          <End Role="SANPHAM" Type="Self.SANPHAM" Multiplicity="0..1" />
-          <End Role="HINHANHSP" Type="Self.HINHANHSP" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="SANPHAM">
-              <PropertyRef Name="MASP" />
-            </Principal>
-            <Dependent Role="HINHANHSP">
-              <PropertyRef Name="MASP" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="PHUONGXA_district_code_fkey">
-          <End Role="QUANHUYEN" Type="Self.QUANHUYEN" Multiplicity="0..1" />
-          <End Role="PHUONGXA" Type="Self.PHUONGXA" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="QUANHUYEN">
-              <PropertyRef Name="code" />
-            </Principal>
-            <Dependent Role="PHUONGXA">
-              <PropertyRef Name="district_code" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="QUANHUYEN_province_code_fkey">
-          <End Role="TINHTHANH" Type="Self.TINHTHANH" Multiplicity="0..1" />
-          <End Role="QUANHUYEN" Type="Self.QUANHUYEN" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="TINHTHANH">
-              <PropertyRef Name="code" />
-            </Principal>
-            <Dependent Role="QUANHUYEN">
-              <PropertyRef Name="province_code" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_SANPHAM_QUYCACHDONGGOI">
-          <End Role="QUYCACHDONGGOI" Type="Self.QUYCACHDONGGOI" Multiplicity="1" />
-          <End Role="SANPHAM" Type="Self.SANPHAM" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="QUYCACHDONGGOI">
-              <PropertyRef Name="MAQCDG" />
-            </Principal>
-            <Dependent Role="SANPHAM">
-              <PropertyRef Name="MAQCDG" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="QUYENKHACHHANG">
-          <End Role="KHACHHANG" Type="Self.KHACHHANG" Multiplicity="*" />
-          <End Role="QUYEN" Type="Self.QUYEN" Multiplicity="*" />
-        </Association>
-        <Association Name="QUYENNHANVIEN">
-          <End Role="NHANVIEN" Type="Self.NHANVIEN" Multiplicity="*" />
-          <End Role="QUYEN" Type="Self.QUYEN" Multiplicity="*" />
-        </Association>
         <EntityContainer Name="QL_THEFACESHOPEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="CACMIENs" EntityType="Self.CACMIEN" />
-          <EntitySet Name="CHITIETGIOHANGs" EntityType="Self.CHITIETGIOHANG" />
-          <EntitySet Name="CHITIETLOAIs" EntityType="Self.CHITIETLOAI" />
-          <EntitySet Name="CHITIETLOAISPs" EntityType="Self.CHITIETLOAISP" />
-          <EntitySet Name="CTDGs" EntityType="Self.CTDG" />
-          <EntitySet Name="CTDNs" EntityType="Self.CTDN" />
-          <EntitySet Name="DANGBAOCHEs" EntityType="Self.DANGBAOCHE" />
-          <EntitySet Name="DONGIAOs" EntityType="Self.DONGIAO" />
-          <EntitySet Name="DONNHAPs" EntityType="Self.DONNHAP" />
-          <EntitySet Name="DONVIHANHCHINHs" EntityType="Self.DONVIHANHCHINH" />
-          <EntitySet Name="GIOHANGs" EntityType="Self.GIOHANG" />
-          <EntitySet Name="HINHANHSPs" EntityType="Self.HINHANHSP" />
-          <EntitySet Name="KHACHHANGs" EntityType="Self.KHACHHANG" />
-          <EntitySet Name="LOAIs" EntityType="Self.LOAI" />
-          <EntitySet Name="NHANVIENs" EntityType="Self.NHANVIEN" />
-          <EntitySet Name="PHUONGXAs" EntityType="Self.PHUONGXA" />
-          <EntitySet Name="QUANHUYENs" EntityType="Self.QUANHUYEN" />
-          <EntitySet Name="QUYCACHDONGGOIs" EntityType="Self.QUYCACHDONGGOI" />
-          <EntitySet Name="QUYENs" EntityType="Self.QUYEN" />
-          <EntitySet Name="SANPHAMs" EntityType="Self.SANPHAM" />
-          <EntitySet Name="TINHTHANHs" EntityType="Self.TINHTHANH" />
-          <AssociationSet Name="TINHTHANH_administrative_region_id_fkey" Association="Self.TINHTHANH_administrative_region_id_fkey">
-            <End Role="CACMIEN" EntitySet="CACMIENs" />
-            <End Role="TINHTHANH" EntitySet="TINHTHANHs" />
-          </AssociationSet>
-          <AssociationSet Name="FK_DATHANG_GIOHANG" Association="Self.FK_DATHANG_GIOHANG">
-            <End Role="GIOHANG" EntitySet="GIOHANGs" />
-            <End Role="CHITIETGIOHANG" EntitySet="CHITIETGIOHANGs" />
-          </AssociationSet>
-          <AssociationSet Name="FK_DATHANG_SANPHAM" Association="Self.FK_DATHANG_SANPHAM">
-            <End Role="SANPHAM" EntitySet="SANPHAMs" />
-            <End Role="CHITIETGIOHANG" EntitySet="CHITIETGIOHANGs" />
-          </AssociationSet>
-          <AssociationSet Name="FK_CHITIETLOAI_LOAI" Association="Self.FK_CHITIETLOAI_LOAI">
-            <End Role="LOAI" EntitySet="LOAIs" />
-            <End Role="CHITIETLOAI" EntitySet="CHITIETLOAIs" />
-          </AssociationSet>
-          <AssociationSet Name="FK_CHITIETLOAISP_CHITIETLOAI" Association="Self.FK_CHITIETLOAISP_CHITIETLOAI">
-            <End Role="CHITIETLOAI" EntitySet="CHITIETLOAIs" />
-            <End Role="CHITIETLOAISP" EntitySet="CHITIETLOAISPs" />
-          </AssociationSet>
-          <AssociationSet Name="FK_SANPHAM_CHITIETLOAISP" Association="Self.FK_SANPHAM_CHITIETLOAISP">
-            <End Role="CHITIETLOAISP" EntitySet="CHITIETLOAISPs" />
-            <End Role="SANPHAM" EntitySet="SANPHAMs" />
-          </AssociationSet>
-          <AssociationSet Name="FK_CTDG_DONGIAO" Association="Self.FK_CTDG_DONGIAO">
-            <End Role="DONGIAO" EntitySet="DONGIAOs" />
-            <End Role="CTDG" EntitySet="CTDGs" />
-          </AssociationSet>
-          <AssociationSet Name="FK_CTDG_SANPHAM" Association="Self.FK_CTDG_SANPHAM">
-            <End Role="SANPHAM" EntitySet="SANPHAMs" />
-            <End Role="CTDG" EntitySet="CTDGs" />
-          </AssociationSet>
-          <AssociationSet Name="FK_CTDN_DONNHAP" Association="Self.FK_CTDN_DONNHAP">
-            <End Role="DONNHAP" EntitySet="DONNHAPs" />
-            <End Role="CTDN" EntitySet="CTDNs" />
-          </AssociationSet>
-          <AssociationSet Name="FK_CTDN_SANPHAM" Association="Self.FK_CTDN_SANPHAM">
-            <End Role="SANPHAM" EntitySet="SANPHAMs" />
-            <End Role="CTDN" EntitySet="CTDNs" />
-          </AssociationSet>
-          <AssociationSet Name="FK_SANPHAM_DANGBAOCHE" Association="Self.FK_SANPHAM_DANGBAOCHE">
-            <End Role="DANGBAOCHE" EntitySet="DANGBAOCHEs" />
-            <End Role="SANPHAM" EntitySet="SANPHAMs" />
-          </AssociationSet>
-          <AssociationSet Name="FK_DONGIAO_KHACHHANG" Association="Self.FK_DONGIAO_KHACHHANG">
-            <End Role="KHACHHANG" EntitySet="KHACHHANGs" />
-            <End Role="DONGIAO" EntitySet="DONGIAOs" />
-          </AssociationSet>
-          <AssociationSet Name="FK_DONGIAO_PHUONGXA" Association="Self.FK_DONGIAO_PHUONGXA">
-            <End Role="PHUONGXA" EntitySet="PHUONGXAs" />
-            <End Role="DONGIAO" EntitySet="DONGIAOs" />
-          </AssociationSet>
-          <AssociationSet Name="FK_DONNHAP_NHANVIEN" Association="Self.FK_DONNHAP_NHANVIEN">
-            <End Role="NHANVIEN" EntitySet="NHANVIENs" />
-            <End Role="DONNHAP" EntitySet="DONNHAPs" />
-          </AssociationSet>
-          <AssociationSet Name="PHUONGXA_administrative_unit_id_fkey" Association="Self.PHUONGXA_administrative_unit_id_fkey">
-            <End Role="DONVIHANHCHINH" EntitySet="DONVIHANHCHINHs" />
-            <End Role="PHUONGXA" EntitySet="PHUONGXAs" />
-          </AssociationSet>
-          <AssociationSet Name="QUANHUYEN_administrative_unit_id_fkey" Association="Self.QUANHUYEN_administrative_unit_id_fkey">
-            <End Role="DONVIHANHCHINH" EntitySet="DONVIHANHCHINHs" />
-            <End Role="QUANHUYEN" EntitySet="QUANHUYENs" />
-          </AssociationSet>
-          <AssociationSet Name="TINHTHANH_administrative_unit_id_fkey" Association="Self.TINHTHANH_administrative_unit_id_fkey">
-            <End Role="DONVIHANHCHINH" EntitySet="DONVIHANHCHINHs" />
-            <End Role="TINHTHANH" EntitySet="TINHTHANHs" />
-          </AssociationSet>
-          <AssociationSet Name="FK_GIOHANG_KHACHHANG" Association="Self.FK_GIOHANG_KHACHHANG">
-            <End Role="KHACHHANG" EntitySet="KHACHHANGs" />
-            <End Role="GIOHANG" EntitySet="GIOHANGs" />
-          </AssociationSet>
-          <AssociationSet Name="FK_HINHANHSP_SANPHAM" Association="Self.FK_HINHANHSP_SANPHAM">
-            <End Role="SANPHAM" EntitySet="SANPHAMs" />
-            <End Role="HINHANHSP" EntitySet="HINHANHSPs" />
-          </AssociationSet>
-          <AssociationSet Name="PHUONGXA_district_code_fkey" Association="Self.PHUONGXA_district_code_fkey">
-            <End Role="QUANHUYEN" EntitySet="QUANHUYENs" />
-            <End Role="PHUONGXA" EntitySet="PHUONGXAs" />
-          </AssociationSet>
-          <AssociationSet Name="QUANHUYEN_province_code_fkey" Association="Self.QUANHUYEN_province_code_fkey">
-            <End Role="TINHTHANH" EntitySet="TINHTHANHs" />
-            <End Role="QUANHUYEN" EntitySet="QUANHUYENs" />
-          </AssociationSet>
-          <AssociationSet Name="FK_SANPHAM_QUYCACHDONGGOI" Association="Self.FK_SANPHAM_QUYCACHDONGGOI">
-            <End Role="QUYCACHDONGGOI" EntitySet="QUYCACHDONGGOIs" />
-            <End Role="SANPHAM" EntitySet="SANPHAMs" />
-          </AssociationSet>
-          <AssociationSet Name="QUYENKHACHHANG" Association="Self.QUYENKHACHHANG">
-            <End Role="KHACHHANG" EntitySet="KHACHHANGs" />
-            <End Role="QUYEN" EntitySet="QUYENs" />
-          </AssociationSet>
-          <AssociationSet Name="QUYENNHANVIEN" Association="Self.QUYENNHANVIEN">
-            <End Role="NHANVIEN" EntitySet="NHANVIENs" />
-            <End Role="QUYEN" EntitySet="QUYENs" />
-          </AssociationSet>
           <FunctionImport Name="pc_InsertSanPham">
             <Parameter Name="tensp" Mode="In" Type="String" />
             <Parameter Name="loai" Mode="In" Type="String" />
@@ -1406,6 +874,7 @@
             <Parameter Name="gianhap" Mode="In" Type="Int32" />
             <Parameter Name="dangbaoche" Mode="In" Type="String" />
             <Parameter Name="qcdonggoi" Mode="In" Type="String" />
+            <Parameter Name="anhdaidien" Mode="In" Type="String" />
             <Parameter Name="noidung" Mode="In" Type="String" />
             <Parameter Name="congdung" Mode="In" Type="String" />
             <Parameter Name="tonkho" Mode="In" Type="Int32" />
@@ -1466,261 +935,711 @@
             <Parameter Name="sdt" Mode="In" Type="String" />
             <Parameter Name="mk" Mode="In" Type="String" />
           </FunctionImport>
+          <FunctionImport Name="ChiNgay" IsComposable="true" ReturnType="Collection(Double)">
+            <Parameter Name="NgayBatDau" Mode="In" Type="DateTime" />
+            <Parameter Name="NgayKetThuc" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="ChiThuCacQuy" IsComposable="true" ReturnType="Collection(QL_THEFACESHOPModel.ChiThuCacQuy_Result)" />
+          <FunctionImport Name="ChiTrongQuy" IsComposable="true" ReturnType="Collection(Double)">
+          <Parameter Name="Quy" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="ChiTungThang" IsComposable="true" ReturnType="Collection(QL_THEFACESHOPModel.ChiTungThang_Result)" />
+          <FunctionImport Name="DoanhThuCacQuy" IsComposable="true" ReturnType="Collection(QL_THEFACESHOPModel.DoanhThuCacQuy_Result)" />
+          <FunctionImport Name="DoanhThuTrongQuy" IsComposable="true" ReturnType="Collection(Double)">
+          <Parameter Name="Quy" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="DoanhThuTungNgay" IsComposable="true" ReturnType="Collection(Double)">
+            <Parameter Name="NgayBatDau" Mode="In" Type="DateTime" />
+            <Parameter Name="NgayKetThuc" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="DoanhThuTungThang" IsComposable="true" ReturnType="Collection(QL_THEFACESHOPModel.DoanhThuTungThang_Result)" />
+          <FunctionImport Name="LoiNhuanTungNgay" IsComposable="true" ReturnType="Collection(QL_THEFACESHOPModel.LoiNhuanTungNgay_Result)">
+            <Parameter Name="NgayBatDau" Mode="In" Type="DateTime" />
+            <Parameter Name="NgayKetThuc" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="LoiNhuanTungThang" IsComposable="true" ReturnType="Collection(QL_THEFACESHOPModel.LoiNhuanTungThang_Result)" />
+          <EntitySet Name="CACMIENs" EntityType="QL_THEFACESHOPModel.CACMIEN" />
+          <EntitySet Name="CHITIETGIOHANGs" EntityType="QL_THEFACESHOPModel.CHITIETGIOHANG" />
+          <EntitySet Name="CHITIETLOAIs" EntityType="QL_THEFACESHOPModel.CHITIETLOAI" />
+          <EntitySet Name="CHITIETLOAISPs" EntityType="QL_THEFACESHOPModel.CHITIETLOAISP" />
+          <EntitySet Name="CTDGs" EntityType="QL_THEFACESHOPModel.CTDG" />
+          <EntitySet Name="CTDNs" EntityType="QL_THEFACESHOPModel.CTDN" />
+          <EntitySet Name="DANGBAOCHEs" EntityType="QL_THEFACESHOPModel.DANGBAOCHE" />
+          <EntitySet Name="DONGIAOs" EntityType="QL_THEFACESHOPModel.DONGIAO" />
+          <EntitySet Name="DONNHAPs" EntityType="QL_THEFACESHOPModel.DONNHAP" />
+          <EntitySet Name="DONVIHANHCHINHs" EntityType="QL_THEFACESHOPModel.DONVIHANHCHINH" />
+          <EntitySet Name="GIOHANGs" EntityType="QL_THEFACESHOPModel.GIOHANG" />
+          <EntitySet Name="HINHANHSPs" EntityType="QL_THEFACESHOPModel.HINHANHSP" />
+          <EntitySet Name="KHACHHANGs" EntityType="QL_THEFACESHOPModel.KHACHHANG" />
+          <EntitySet Name="LOAIs" EntityType="QL_THEFACESHOPModel.LOAI" />
+          <EntitySet Name="NHANVIENs" EntityType="QL_THEFACESHOPModel.NHANVIEN" />
+          <EntitySet Name="PHUONGXAs" EntityType="QL_THEFACESHOPModel.PHUONGXA" />
+          <EntitySet Name="QUANHUYENs" EntityType="QL_THEFACESHOPModel.QUANHUYEN" />
+          <EntitySet Name="QUYCACHDONGGOIs" EntityType="QL_THEFACESHOPModel.QUYCACHDONGGOI" />
+          <EntitySet Name="QUYENs" EntityType="QL_THEFACESHOPModel.QUYEN" />
+          <EntitySet Name="SANPHAMs" EntityType="QL_THEFACESHOPModel.SANPHAM" />
+          <EntitySet Name="TINHTHANHs" EntityType="QL_THEFACESHOPModel.TINHTHANH" />
+          <AssociationSet Name="TINHTHANH_administrative_region_id_fkey" Association="QL_THEFACESHOPModel.TINHTHANH_administrative_region_id_fkey">
+            <End Role="CACMIEN" EntitySet="CACMIENs" />
+            <End Role="TINHTHANH" EntitySet="TINHTHANHs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DATHANG_GIOHANG" Association="QL_THEFACESHOPModel.FK_DATHANG_GIOHANG">
+            <End Role="GIOHANG" EntitySet="GIOHANGs" />
+            <End Role="CHITIETGIOHANG" EntitySet="CHITIETGIOHANGs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DATHANG_SANPHAM" Association="QL_THEFACESHOPModel.FK_DATHANG_SANPHAM">
+            <End Role="SANPHAM" EntitySet="SANPHAMs" />
+            <End Role="CHITIETGIOHANG" EntitySet="CHITIETGIOHANGs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CHITIETLOAI_LOAI" Association="QL_THEFACESHOPModel.FK_CHITIETLOAI_LOAI">
+            <End Role="LOAI" EntitySet="LOAIs" />
+            <End Role="CHITIETLOAI" EntitySet="CHITIETLOAIs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CHITIETLOAISP_CHITIETLOAI" Association="QL_THEFACESHOPModel.FK_CHITIETLOAISP_CHITIETLOAI">
+            <End Role="CHITIETLOAI" EntitySet="CHITIETLOAIs" />
+            <End Role="CHITIETLOAISP" EntitySet="CHITIETLOAISPs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SANPHAM_CHITIETLOAISP" Association="QL_THEFACESHOPModel.FK_SANPHAM_CHITIETLOAISP">
+            <End Role="CHITIETLOAISP" EntitySet="CHITIETLOAISPs" />
+            <End Role="SANPHAM" EntitySet="SANPHAMs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CTDG_DONGIAO" Association="QL_THEFACESHOPModel.FK_CTDG_DONGIAO">
+            <End Role="DONGIAO" EntitySet="DONGIAOs" />
+            <End Role="CTDG" EntitySet="CTDGs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CTDG_SANPHAM" Association="QL_THEFACESHOPModel.FK_CTDG_SANPHAM">
+            <End Role="SANPHAM" EntitySet="SANPHAMs" />
+            <End Role="CTDG" EntitySet="CTDGs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CTDN_DONNHAP" Association="QL_THEFACESHOPModel.FK_CTDN_DONNHAP">
+            <End Role="DONNHAP" EntitySet="DONNHAPs" />
+            <End Role="CTDN" EntitySet="CTDNs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CTDN_SANPHAM" Association="QL_THEFACESHOPModel.FK_CTDN_SANPHAM">
+            <End Role="SANPHAM" EntitySet="SANPHAMs" />
+            <End Role="CTDN" EntitySet="CTDNs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SANPHAM_DANGBAOCHE" Association="QL_THEFACESHOPModel.FK_SANPHAM_DANGBAOCHE">
+            <End Role="DANGBAOCHE" EntitySet="DANGBAOCHEs" />
+            <End Role="SANPHAM" EntitySet="SANPHAMs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DONGIAO_KHACHHANG" Association="QL_THEFACESHOPModel.FK_DONGIAO_KHACHHANG">
+            <End Role="KHACHHANG" EntitySet="KHACHHANGs" />
+            <End Role="DONGIAO" EntitySet="DONGIAOs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DONGIAO_PHUONGXA" Association="QL_THEFACESHOPModel.FK_DONGIAO_PHUONGXA">
+            <End Role="PHUONGXA" EntitySet="PHUONGXAs" />
+            <End Role="DONGIAO" EntitySet="DONGIAOs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DONNHAP_NHANVIEN" Association="QL_THEFACESHOPModel.FK_DONNHAP_NHANVIEN">
+            <End Role="NHANVIEN" EntitySet="NHANVIENs" />
+            <End Role="DONNHAP" EntitySet="DONNHAPs" />
+          </AssociationSet>
+          <AssociationSet Name="PHUONGXA_administrative_unit_id_fkey" Association="QL_THEFACESHOPModel.PHUONGXA_administrative_unit_id_fkey">
+            <End Role="DONVIHANHCHINH" EntitySet="DONVIHANHCHINHs" />
+            <End Role="PHUONGXA" EntitySet="PHUONGXAs" />
+          </AssociationSet>
+          <AssociationSet Name="QUANHUYEN_administrative_unit_id_fkey" Association="QL_THEFACESHOPModel.QUANHUYEN_administrative_unit_id_fkey">
+            <End Role="DONVIHANHCHINH" EntitySet="DONVIHANHCHINHs" />
+            <End Role="QUANHUYEN" EntitySet="QUANHUYENs" />
+          </AssociationSet>
+          <AssociationSet Name="TINHTHANH_administrative_unit_id_fkey" Association="QL_THEFACESHOPModel.TINHTHANH_administrative_unit_id_fkey">
+            <End Role="DONVIHANHCHINH" EntitySet="DONVIHANHCHINHs" />
+            <End Role="TINHTHANH" EntitySet="TINHTHANHs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GIOHANG_KHACHHANG" Association="QL_THEFACESHOPModel.FK_GIOHANG_KHACHHANG">
+            <End Role="KHACHHANG" EntitySet="KHACHHANGs" />
+            <End Role="GIOHANG" EntitySet="GIOHANGs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HINHANHSP_SANPHAM" Association="QL_THEFACESHOPModel.FK_HINHANHSP_SANPHAM">
+            <End Role="SANPHAM" EntitySet="SANPHAMs" />
+            <End Role="HINHANHSP" EntitySet="HINHANHSPs" />
+          </AssociationSet>
+          <AssociationSet Name="PHUONGXA_district_code_fkey" Association="QL_THEFACESHOPModel.PHUONGXA_district_code_fkey">
+            <End Role="QUANHUYEN" EntitySet="QUANHUYENs" />
+            <End Role="PHUONGXA" EntitySet="PHUONGXAs" />
+          </AssociationSet>
+          <AssociationSet Name="QUANHUYEN_province_code_fkey" Association="QL_THEFACESHOPModel.QUANHUYEN_province_code_fkey">
+            <End Role="TINHTHANH" EntitySet="TINHTHANHs" />
+            <End Role="QUANHUYEN" EntitySet="QUANHUYENs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SANPHAM_QUYCACHDONGGOI" Association="QL_THEFACESHOPModel.FK_SANPHAM_QUYCACHDONGGOI">
+            <End Role="QUYCACHDONGGOI" EntitySet="QUYCACHDONGGOIs" />
+            <End Role="SANPHAM" EntitySet="SANPHAMs" />
+          </AssociationSet>
+          <AssociationSet Name="QUYENKHACHHANG" Association="QL_THEFACESHOPModel.QUYENKHACHHANG">
+            <End Role="KHACHHANG" EntitySet="KHACHHANGs" />
+            <End Role="QUYEN" EntitySet="QUYENs" />
+          </AssociationSet>
+          <AssociationSet Name="QUYENNHANVIEN" Association="QL_THEFACESHOPModel.QUYENNHANVIEN">
+            <End Role="NHANVIEN" EntitySet="NHANVIENs" />
+            <End Role="QUYEN" EntitySet="QUYENs" />
+          </AssociationSet>
         </EntityContainer>
+        <ComplexType Name="ChiThuCacQuy_Result">
+          <Property Type="Int32" Name="Quy" Nullable="false" />
+          <Property Type="Double" Name="Chi" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="ChiTungThang_Result">
+          <Property Type="Int32" Name="Thang" Nullable="false" />
+          <Property Type="Double" Name="Chi" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="DoanhThuCacQuy_Result">
+          <Property Type="Int32" Name="Quy" Nullable="false" />
+          <Property Type="Double" Name="DoanhThu" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="DoanhThuTungThang_Result">
+          <Property Type="Int32" Name="Thang" Nullable="false" />
+          <Property Type="Double" Name="DoanhThu" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="LoiNhuanTungNgay_Result">
+          <Property Type="DateTime" Name="Ngay" Nullable="true" Precision="10" />
+          <Property Type="Double" Name="LoiNhuan" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="LoiNhuanTungThang_Result">
+          <Property Type="Int32" Name="Thang" Nullable="false" />
+          <Property Type="Double" Name="LOINHUAN" Nullable="false" />
+        </ComplexType>
+        <EntityType Name="CACMIEN">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="name" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="name_en" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="code_name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="code_name_en" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="TINHTHANHs" Relationship="QL_THEFACESHOPModel.TINHTHANH_administrative_region_id_fkey" FromRole="CACMIEN" ToRole="TINHTHANH" />
+        </EntityType>
+        <EntityType Name="CHITIETGIOHANG">
+          <Key>
+            <PropertyRef Name="MAGH" />
+            <PropertyRef Name="MASP" />
+          </Key>
+          <Property Name="MAGH" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="MASP" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="SOLUONG" Type="Int32" />
+          <NavigationProperty Name="GIOHANG" Relationship="QL_THEFACESHOPModel.FK_DATHANG_GIOHANG" FromRole="CHITIETGIOHANG" ToRole="GIOHANG" />
+          <NavigationProperty Name="SANPHAM" Relationship="QL_THEFACESHOPModel.FK_DATHANG_SANPHAM" FromRole="CHITIETGIOHANG" ToRole="SANPHAM" />
+        </EntityType>
+        <EntityType Name="CHITIETLOAI">
+          <Key>
+            <PropertyRef Name="MACTLOAI" />
+          </Key>
+          <Property Name="MACTLOAI" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="TENCTLOAI" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="MALOAI" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="LOAI" Relationship="QL_THEFACESHOPModel.FK_CHITIETLOAI_LOAI" FromRole="CHITIETLOAI" ToRole="LOAI" />
+          <NavigationProperty Name="CHITIETLOAISPs" Relationship="QL_THEFACESHOPModel.FK_CHITIETLOAISP_CHITIETLOAI" FromRole="CHITIETLOAI" ToRole="CHITIETLOAISP" />
+        </EntityType>
+        <EntityType Name="CHITIETLOAISP">
+          <Key>
+            <PropertyRef Name="MACTL_SP" />
+          </Key>
+          <Property Name="MACTL_SP" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="TENCTL_SP" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="MACTLOAI" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="CHITIETLOAI" Relationship="QL_THEFACESHOPModel.FK_CHITIETLOAISP_CHITIETLOAI" FromRole="CHITIETLOAISP" ToRole="CHITIETLOAI" />
+          <NavigationProperty Name="SANPHAMs" Relationship="QL_THEFACESHOPModel.FK_SANPHAM_CHITIETLOAISP" FromRole="CHITIETLOAISP" ToRole="SANPHAM" />
+        </EntityType>
+        <EntityType Name="CTDG">
+          <Key>
+            <PropertyRef Name="MADG" />
+            <PropertyRef Name="MASP" />
+          </Key>
+          <Property Name="MADG" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="MASP" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="SOLUONG" Type="Int32" />
+          <Property Name="THANHTIEN" Type="Double" />
+          <Property Name="MUCDODG" Type="Double" />
+          <Property Name="NGAYBL" Type="DateTime" Precision="0" />
+          <Property Name="BINHLUAN" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="DONGIAO" Relationship="QL_THEFACESHOPModel.FK_CTDG_DONGIAO" FromRole="CTDG" ToRole="DONGIAO" />
+          <NavigationProperty Name="SANPHAM" Relationship="QL_THEFACESHOPModel.FK_CTDG_SANPHAM" FromRole="CTDG" ToRole="SANPHAM" />
+        </EntityType>
+        <EntityType Name="CTDN">
+          <Key>
+            <PropertyRef Name="MADN" />
+            <PropertyRef Name="MASP" />
+          </Key>
+          <Property Name="MADN" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="MASP" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="SOLUONG" Type="Int32" />
+          <Property Name="THANHTIEN" Type="Double" />
+          <NavigationProperty Name="DONNHAP" Relationship="QL_THEFACESHOPModel.FK_CTDN_DONNHAP" FromRole="CTDN" ToRole="DONNHAP" />
+          <NavigationProperty Name="SANPHAM" Relationship="QL_THEFACESHOPModel.FK_CTDN_SANPHAM" FromRole="CTDN" ToRole="SANPHAM" />
+        </EntityType>
+        <EntityType Name="DANGBAOCHE">
+          <Key>
+            <PropertyRef Name="MADBC" />
+          </Key>
+          <Property Name="MADBC" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="TENDANG" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="SANPHAMs" Relationship="QL_THEFACESHOPModel.FK_SANPHAM_DANGBAOCHE" FromRole="DANGBAOCHE" ToRole="SANPHAM" />
+        </EntityType>
+        <EntityType Name="DONGIAO">
+          <Key>
+            <PropertyRef Name="MADG" />
+          </Key>
+          <Property Name="MADG" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="NGAYLAP" Type="DateTime" Precision="0" />
+          <Property Name="MAKH" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="NGUOINHAN" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SDT" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="SONHA" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="PHUONGXA" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="TRIGIA" Type="Double" />
+          <Property Name="TRANGTHAI" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="CTDGs" Relationship="QL_THEFACESHOPModel.FK_CTDG_DONGIAO" FromRole="DONGIAO" ToRole="CTDG" />
+          <NavigationProperty Name="KHACHHANG" Relationship="QL_THEFACESHOPModel.FK_DONGIAO_KHACHHANG" FromRole="DONGIAO" ToRole="KHACHHANG" />
+          <NavigationProperty Name="PHUONGXA1" Relationship="QL_THEFACESHOPModel.FK_DONGIAO_PHUONGXA" FromRole="DONGIAO" ToRole="PHUONGXA" />
+        </EntityType>
+        <EntityType Name="DONNHAP">
+          <Key>
+            <PropertyRef Name="MADN" />
+          </Key>
+          <Property Name="MADN" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="MANV" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="NGAYLAP" Type="DateTime" Precision="0" />
+          <Property Name="TONGTIEN" Type="Double" />
+          <Property Name="TRANGTHAI" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="CTDNs" Relationship="QL_THEFACESHOPModel.FK_CTDN_DONNHAP" FromRole="DONNHAP" ToRole="CTDN" />
+          <NavigationProperty Name="NHANVIEN" Relationship="QL_THEFACESHOPModel.FK_DONNHAP_NHANVIEN" FromRole="DONNHAP" ToRole="NHANVIEN" />
+        </EntityType>
+        <EntityType Name="DONVIHANHCHINH">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="full_name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="full_name_en" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="short_name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="short_name_en" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="code_name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="code_name_en" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="PHUONGXAs" Relationship="QL_THEFACESHOPModel.PHUONGXA_administrative_unit_id_fkey" FromRole="DONVIHANHCHINH" ToRole="PHUONGXA" />
+          <NavigationProperty Name="QUANHUYENs" Relationship="QL_THEFACESHOPModel.QUANHUYEN_administrative_unit_id_fkey" FromRole="DONVIHANHCHINH" ToRole="QUANHUYEN" />
+          <NavigationProperty Name="TINHTHANHs" Relationship="QL_THEFACESHOPModel.TINHTHANH_administrative_unit_id_fkey" FromRole="DONVIHANHCHINH" ToRole="TINHTHANH" />
+        </EntityType>
+        <EntityType Name="GIOHANG">
+          <Key>
+            <PropertyRef Name="MAGH" />
+          </Key>
+          <Property Name="MAGH" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="MAKH" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="CHITIETGIOHANGs" Relationship="QL_THEFACESHOPModel.FK_DATHANG_GIOHANG" FromRole="GIOHANG" ToRole="CHITIETGIOHANG" />
+          <NavigationProperty Name="KHACHHANG" Relationship="QL_THEFACESHOPModel.FK_GIOHANG_KHACHHANG" FromRole="GIOHANG" ToRole="KHACHHANG" />
+        </EntityType>
+        <EntityType Name="HINHANHSP">
+          <Key>
+            <PropertyRef Name="MAHA" />
+          </Key>
+          <Property Name="MAHA" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MASP" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="HINHANH" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="SANPHAM" Relationship="QL_THEFACESHOPModel.FK_HINHANHSP_SANPHAM" FromRole="HINHANHSP" ToRole="SANPHAM" />
+        </EntityType>
+        <EntityType Name="KHACHHANG">
+          <Key>
+            <PropertyRef Name="MAKH" />
+          </Key>
+          <Property Name="MAKH" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="TENKH" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SDT" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="DONGIAOs" Relationship="QL_THEFACESHOPModel.FK_DONGIAO_KHACHHANG" FromRole="KHACHHANG" ToRole="DONGIAO" />
+          <NavigationProperty Name="GIOHANGs" Relationship="QL_THEFACESHOPModel.FK_GIOHANG_KHACHHANG" FromRole="KHACHHANG" ToRole="GIOHANG" />
+          <NavigationProperty Name="QUYENs" Relationship="QL_THEFACESHOPModel.QUYENKHACHHANG" FromRole="KHACHHANG" ToRole="QUYEN" />
+        </EntityType>
+        <EntityType Name="LOAI">
+          <Key>
+            <PropertyRef Name="MALOAI" />
+          </Key>
+          <Property Name="MALOAI" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="TENLOAI" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="CHITIETLOAIs" Relationship="QL_THEFACESHOPModel.FK_CHITIETLOAI_LOAI" FromRole="LOAI" ToRole="CHITIETLOAI" />
+        </EntityType>
+        <EntityType Name="NHANVIEN">
+          <Key>
+            <PropertyRef Name="MANV" />
+          </Key>
+          <Property Name="MANV" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="TENNV" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="GIOITINH" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="SDT" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Name="MATKHAU" Type="String" Nullable="false" MaxLength="20" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="DONNHAPs" Relationship="QL_THEFACESHOPModel.FK_DONNHAP_NHANVIEN" FromRole="NHANVIEN" ToRole="DONNHAP" />
+          <NavigationProperty Name="QUYENs" Relationship="QL_THEFACESHOPModel.QUYENNHANVIEN" FromRole="NHANVIEN" ToRole="QUYEN" />
+        </EntityType>
+        <EntityType Name="PHUONGXA">
+          <Key>
+            <PropertyRef Name="code" />
+          </Key>
+          <Property Name="code" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="name" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="name_en" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="full_name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="full_name_en" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="code_name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="district_code" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="administrative_unit_id" Type="Int32" />
+          <NavigationProperty Name="DONGIAOs" Relationship="QL_THEFACESHOPModel.FK_DONGIAO_PHUONGXA" FromRole="PHUONGXA" ToRole="DONGIAO" />
+          <NavigationProperty Name="DONVIHANHCHINH" Relationship="QL_THEFACESHOPModel.PHUONGXA_administrative_unit_id_fkey" FromRole="PHUONGXA" ToRole="DONVIHANHCHINH" />
+          <NavigationProperty Name="QUANHUYEN" Relationship="QL_THEFACESHOPModel.PHUONGXA_district_code_fkey" FromRole="PHUONGXA" ToRole="QUANHUYEN" />
+        </EntityType>
+        <EntityType Name="QUANHUYEN">
+          <Key>
+            <PropertyRef Name="code" />
+          </Key>
+          <Property Name="code" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="name" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="name_en" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="full_name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="full_name_en" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="code_name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="province_code" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="administrative_unit_id" Type="Int32" />
+          <NavigationProperty Name="DONVIHANHCHINH" Relationship="QL_THEFACESHOPModel.QUANHUYEN_administrative_unit_id_fkey" FromRole="QUANHUYEN" ToRole="DONVIHANHCHINH" />
+          <NavigationProperty Name="PHUONGXAs" Relationship="QL_THEFACESHOPModel.PHUONGXA_district_code_fkey" FromRole="QUANHUYEN" ToRole="PHUONGXA" />
+          <NavigationProperty Name="TINHTHANH" Relationship="QL_THEFACESHOPModel.QUANHUYEN_province_code_fkey" FromRole="QUANHUYEN" ToRole="TINHTHANH" />
+        </EntityType>
+        <EntityType Name="QUYCACHDONGGOI">
+          <Key>
+            <PropertyRef Name="MAQCDG" />
+          </Key>
+          <Property Name="MAQCDG" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="TENQCDG" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="SANPHAMs" Relationship="QL_THEFACESHOPModel.FK_SANPHAM_QUYCACHDONGGOI" FromRole="QUYCACHDONGGOI" ToRole="SANPHAM" />
+        </EntityType>
+        <EntityType Name="QUYEN">
+          <Key>
+            <PropertyRef Name="MAQUYEN" />
+          </Key>
+          <Property Name="MAQUYEN" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="TENQUYEN" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="KHACHHANGs" Relationship="QL_THEFACESHOPModel.QUYENKHACHHANG" FromRole="QUYEN" ToRole="KHACHHANG" />
+          <NavigationProperty Name="NHANVIENs" Relationship="QL_THEFACESHOPModel.QUYENNHANVIEN" FromRole="QUYEN" ToRole="NHANVIEN" />
+        </EntityType>
+        <EntityType Name="SANPHAM">
+          <Key>
+            <PropertyRef Name="MASP" />
+          </Key>
+          <Property Name="MASP" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="TENSP" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="MACTL_SP" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="GIABAN" Type="Double" />
+          <Property Name="GIANHAP" Type="Double" />
+          <Property Name="MADBC" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="MAQCDG" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="ANHDAIDIEN" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="NOIDUNG" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CONGDUNG" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="TONGDANHGIA" Type="Double" />
+          <Property Name="TONKHO" Type="Int32" />
+          <Property Name="THANHPHAN" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="DUNGTICH" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="TRANGTHAI" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="CHITIETGIOHANGs" Relationship="QL_THEFACESHOPModel.FK_DATHANG_SANPHAM" FromRole="SANPHAM" ToRole="CHITIETGIOHANG" />
+          <NavigationProperty Name="CHITIETLOAISP" Relationship="QL_THEFACESHOPModel.FK_SANPHAM_CHITIETLOAISP" FromRole="SANPHAM" ToRole="CHITIETLOAISP" />
+          <NavigationProperty Name="CTDGs" Relationship="QL_THEFACESHOPModel.FK_CTDG_SANPHAM" FromRole="SANPHAM" ToRole="CTDG" />
+          <NavigationProperty Name="CTDNs" Relationship="QL_THEFACESHOPModel.FK_CTDN_SANPHAM" FromRole="SANPHAM" ToRole="CTDN" />
+          <NavigationProperty Name="DANGBAOCHE" Relationship="QL_THEFACESHOPModel.FK_SANPHAM_DANGBAOCHE" FromRole="SANPHAM" ToRole="DANGBAOCHE" />
+          <NavigationProperty Name="HINHANHSPs" Relationship="QL_THEFACESHOPModel.FK_HINHANHSP_SANPHAM" FromRole="SANPHAM" ToRole="HINHANHSP" />
+          <NavigationProperty Name="QUYCACHDONGGOI" Relationship="QL_THEFACESHOPModel.FK_SANPHAM_QUYCACHDONGGOI" FromRole="SANPHAM" ToRole="QUYCACHDONGGOI" />
+        </EntityType>
+        <EntityType Name="TINHTHANH">
+          <Key>
+            <PropertyRef Name="code" />
+          </Key>
+          <Property Name="code" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="name" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="name_en" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="full_name" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="full_name_en" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="code_name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="administrative_unit_id" Type="Int32" />
+          <Property Name="administrative_region_id" Type="Int32" />
+          <NavigationProperty Name="CACMIEN" Relationship="QL_THEFACESHOPModel.TINHTHANH_administrative_region_id_fkey" FromRole="TINHTHANH" ToRole="CACMIEN" />
+          <NavigationProperty Name="DONVIHANHCHINH" Relationship="QL_THEFACESHOPModel.TINHTHANH_administrative_unit_id_fkey" FromRole="TINHTHANH" ToRole="DONVIHANHCHINH" />
+          <NavigationProperty Name="QUANHUYENs" Relationship="QL_THEFACESHOPModel.QUANHUYEN_province_code_fkey" FromRole="TINHTHANH" ToRole="QUANHUYEN" />
+        </EntityType>
+        <Association Name="TINHTHANH_administrative_region_id_fkey">
+          <End Type="QL_THEFACESHOPModel.CACMIEN" Role="CACMIEN" Multiplicity="0..1" />
+          <End Type="QL_THEFACESHOPModel.TINHTHANH" Role="TINHTHANH" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CACMIEN">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="TINHTHANH">
+              <PropertyRef Name="administrative_region_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DATHANG_GIOHANG">
+          <End Type="QL_THEFACESHOPModel.GIOHANG" Role="GIOHANG" Multiplicity="1" />
+          <End Type="QL_THEFACESHOPModel.CHITIETGIOHANG" Role="CHITIETGIOHANG" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GIOHANG">
+              <PropertyRef Name="MAGH" />
+            </Principal>
+            <Dependent Role="CHITIETGIOHANG">
+              <PropertyRef Name="MAGH" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DATHANG_SANPHAM">
+          <End Type="QL_THEFACESHOPModel.SANPHAM" Role="SANPHAM" Multiplicity="1" />
+          <End Type="QL_THEFACESHOPModel.CHITIETGIOHANG" Role="CHITIETGIOHANG" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SANPHAM">
+              <PropertyRef Name="MASP" />
+            </Principal>
+            <Dependent Role="CHITIETGIOHANG">
+              <PropertyRef Name="MASP" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CHITIETLOAI_LOAI">
+          <End Type="QL_THEFACESHOPModel.LOAI" Role="LOAI" Multiplicity="0..1" />
+          <End Type="QL_THEFACESHOPModel.CHITIETLOAI" Role="CHITIETLOAI" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LOAI">
+              <PropertyRef Name="MALOAI" />
+            </Principal>
+            <Dependent Role="CHITIETLOAI">
+              <PropertyRef Name="MALOAI" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CHITIETLOAISP_CHITIETLOAI">
+          <End Type="QL_THEFACESHOPModel.CHITIETLOAI" Role="CHITIETLOAI" Multiplicity="0..1" />
+          <End Type="QL_THEFACESHOPModel.CHITIETLOAISP" Role="CHITIETLOAISP" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CHITIETLOAI">
+              <PropertyRef Name="MACTLOAI" />
+            </Principal>
+            <Dependent Role="CHITIETLOAISP">
+              <PropertyRef Name="MACTLOAI" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SANPHAM_CHITIETLOAISP">
+          <End Type="QL_THEFACESHOPModel.CHITIETLOAISP" Role="CHITIETLOAISP" Multiplicity="1" />
+          <End Type="QL_THEFACESHOPModel.SANPHAM" Role="SANPHAM" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CHITIETLOAISP">
+              <PropertyRef Name="MACTL_SP" />
+            </Principal>
+            <Dependent Role="SANPHAM">
+              <PropertyRef Name="MACTL_SP" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CTDG_DONGIAO">
+          <End Type="QL_THEFACESHOPModel.DONGIAO" Role="DONGIAO" Multiplicity="1" />
+          <End Type="QL_THEFACESHOPModel.CTDG" Role="CTDG" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DONGIAO">
+              <PropertyRef Name="MADG" />
+            </Principal>
+            <Dependent Role="CTDG">
+              <PropertyRef Name="MADG" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CTDG_SANPHAM">
+          <End Type="QL_THEFACESHOPModel.SANPHAM" Role="SANPHAM" Multiplicity="1" />
+          <End Type="QL_THEFACESHOPModel.CTDG" Role="CTDG" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SANPHAM">
+              <PropertyRef Name="MASP" />
+            </Principal>
+            <Dependent Role="CTDG">
+              <PropertyRef Name="MASP" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CTDN_DONNHAP">
+          <End Type="QL_THEFACESHOPModel.DONNHAP" Role="DONNHAP" Multiplicity="1" />
+          <End Type="QL_THEFACESHOPModel.CTDN" Role="CTDN" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DONNHAP">
+              <PropertyRef Name="MADN" />
+            </Principal>
+            <Dependent Role="CTDN">
+              <PropertyRef Name="MADN" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CTDN_SANPHAM">
+          <End Type="QL_THEFACESHOPModel.SANPHAM" Role="SANPHAM" Multiplicity="1" />
+          <End Type="QL_THEFACESHOPModel.CTDN" Role="CTDN" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SANPHAM">
+              <PropertyRef Name="MASP" />
+            </Principal>
+            <Dependent Role="CTDN">
+              <PropertyRef Name="MASP" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SANPHAM_DANGBAOCHE">
+          <End Type="QL_THEFACESHOPModel.DANGBAOCHE" Role="DANGBAOCHE" Multiplicity="1" />
+          <End Type="QL_THEFACESHOPModel.SANPHAM" Role="SANPHAM" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DANGBAOCHE">
+              <PropertyRef Name="MADBC" />
+            </Principal>
+            <Dependent Role="SANPHAM">
+              <PropertyRef Name="MADBC" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DONGIAO_KHACHHANG">
+          <End Type="QL_THEFACESHOPModel.KHACHHANG" Role="KHACHHANG" Multiplicity="1" />
+          <End Type="QL_THEFACESHOPModel.DONGIAO" Role="DONGIAO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="KHACHHANG">
+              <PropertyRef Name="MAKH" />
+            </Principal>
+            <Dependent Role="DONGIAO">
+              <PropertyRef Name="MAKH" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DONGIAO_PHUONGXA">
+          <End Type="QL_THEFACESHOPModel.PHUONGXA" Role="PHUONGXA" Multiplicity="1" />
+          <End Type="QL_THEFACESHOPModel.DONGIAO" Role="DONGIAO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PHUONGXA">
+              <PropertyRef Name="code" />
+            </Principal>
+            <Dependent Role="DONGIAO">
+              <PropertyRef Name="PHUONGXA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DONNHAP_NHANVIEN">
+          <End Type="QL_THEFACESHOPModel.NHANVIEN" Role="NHANVIEN" Multiplicity="1" />
+          <End Type="QL_THEFACESHOPModel.DONNHAP" Role="DONNHAP" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NHANVIEN">
+              <PropertyRef Name="MANV" />
+            </Principal>
+            <Dependent Role="DONNHAP">
+              <PropertyRef Name="MANV" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="PHUONGXA_administrative_unit_id_fkey">
+          <End Type="QL_THEFACESHOPModel.DONVIHANHCHINH" Role="DONVIHANHCHINH" Multiplicity="0..1" />
+          <End Type="QL_THEFACESHOPModel.PHUONGXA" Role="PHUONGXA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DONVIHANHCHINH">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="PHUONGXA">
+              <PropertyRef Name="administrative_unit_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="QUANHUYEN_administrative_unit_id_fkey">
+          <End Type="QL_THEFACESHOPModel.DONVIHANHCHINH" Role="DONVIHANHCHINH" Multiplicity="0..1" />
+          <End Type="QL_THEFACESHOPModel.QUANHUYEN" Role="QUANHUYEN" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DONVIHANHCHINH">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="QUANHUYEN">
+              <PropertyRef Name="administrative_unit_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="TINHTHANH_administrative_unit_id_fkey">
+          <End Type="QL_THEFACESHOPModel.DONVIHANHCHINH" Role="DONVIHANHCHINH" Multiplicity="0..1" />
+          <End Type="QL_THEFACESHOPModel.TINHTHANH" Role="TINHTHANH" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DONVIHANHCHINH">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="TINHTHANH">
+              <PropertyRef Name="administrative_unit_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GIOHANG_KHACHHANG">
+          <End Type="QL_THEFACESHOPModel.KHACHHANG" Role="KHACHHANG" Multiplicity="1" />
+          <End Type="QL_THEFACESHOPModel.GIOHANG" Role="GIOHANG" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="KHACHHANG">
+              <PropertyRef Name="MAKH" />
+            </Principal>
+            <Dependent Role="GIOHANG">
+              <PropertyRef Name="MAKH" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HINHANHSP_SANPHAM">
+          <End Type="QL_THEFACESHOPModel.SANPHAM" Role="SANPHAM" Multiplicity="0..1" />
+          <End Type="QL_THEFACESHOPModel.HINHANHSP" Role="HINHANHSP" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SANPHAM">
+              <PropertyRef Name="MASP" />
+            </Principal>
+            <Dependent Role="HINHANHSP">
+              <PropertyRef Name="MASP" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="PHUONGXA_district_code_fkey">
+          <End Type="QL_THEFACESHOPModel.QUANHUYEN" Role="QUANHUYEN" Multiplicity="0..1" />
+          <End Type="QL_THEFACESHOPModel.PHUONGXA" Role="PHUONGXA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="QUANHUYEN">
+              <PropertyRef Name="code" />
+            </Principal>
+            <Dependent Role="PHUONGXA">
+              <PropertyRef Name="district_code" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="QUANHUYEN_province_code_fkey">
+          <End Type="QL_THEFACESHOPModel.TINHTHANH" Role="TINHTHANH" Multiplicity="0..1" />
+          <End Type="QL_THEFACESHOPModel.QUANHUYEN" Role="QUANHUYEN" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TINHTHANH">
+              <PropertyRef Name="code" />
+            </Principal>
+            <Dependent Role="QUANHUYEN">
+              <PropertyRef Name="province_code" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SANPHAM_QUYCACHDONGGOI">
+          <End Type="QL_THEFACESHOPModel.QUYCACHDONGGOI" Role="QUYCACHDONGGOI" Multiplicity="1" />
+          <End Type="QL_THEFACESHOPModel.SANPHAM" Role="SANPHAM" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="QUYCACHDONGGOI">
+              <PropertyRef Name="MAQCDG" />
+            </Principal>
+            <Dependent Role="SANPHAM">
+              <PropertyRef Name="MAQCDG" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="QUYENKHACHHANG">
+          <End Type="QL_THEFACESHOPModel.KHACHHANG" Role="KHACHHANG" Multiplicity="*" />
+          <End Type="QL_THEFACESHOPModel.QUYEN" Role="QUYEN" Multiplicity="*" />
+        </Association>
+        <Association Name="QUYENNHANVIEN">
+          <End Type="QL_THEFACESHOPModel.NHANVIEN" Role="NHANVIEN" Multiplicity="*" />
+          <End Type="QL_THEFACESHOPModel.QUYEN" Role="QUYEN" Multiplicity="*" />
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="QL_THEFACESHOPModelStoreContainer" CdmEntityContainer="QL_THEFACESHOPEntities">
-          <EntitySetMapping Name="CACMIENs">
-            <EntityTypeMapping TypeName="QL_THEFACESHOPModel.CACMIEN">
-              <MappingFragment StoreEntitySet="CACMIEN">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="name" ColumnName="name" />
-                <ScalarProperty Name="name_en" ColumnName="name_en" />
-                <ScalarProperty Name="code_name" ColumnName="code_name" />
-                <ScalarProperty Name="code_name_en" ColumnName="code_name_en" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="CHITIETGIOHANGs">
-            <EntityTypeMapping TypeName="QL_THEFACESHOPModel.CHITIETGIOHANG">
-              <MappingFragment StoreEntitySet="CHITIETGIOHANG">
-                <ScalarProperty Name="MAGH" ColumnName="MAGH" />
-                <ScalarProperty Name="MASP" ColumnName="MASP" />
-                <ScalarProperty Name="SOLUONG" ColumnName="SOLUONG" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="CHITIETLOAIs">
-            <EntityTypeMapping TypeName="QL_THEFACESHOPModel.CHITIETLOAI">
-              <MappingFragment StoreEntitySet="CHITIETLOAI">
-                <ScalarProperty Name="MACTLOAI" ColumnName="MACTLOAI" />
-                <ScalarProperty Name="TENCTLOAI" ColumnName="TENCTLOAI" />
-                <ScalarProperty Name="MALOAI" ColumnName="MALOAI" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="CHITIETLOAISPs">
-            <EntityTypeMapping TypeName="QL_THEFACESHOPModel.CHITIETLOAISP">
-              <MappingFragment StoreEntitySet="CHITIETLOAISP">
-                <ScalarProperty Name="MACTL_SP" ColumnName="MACTL_SP" />
-                <ScalarProperty Name="TENCTL_SP" ColumnName="TENCTL_SP" />
-                <ScalarProperty Name="MACTLOAI" ColumnName="MACTLOAI" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="CTDGs">
-            <EntityTypeMapping TypeName="QL_THEFACESHOPModel.CTDG">
-              <MappingFragment StoreEntitySet="CTDG">
-                <ScalarProperty Name="MADG" ColumnName="MADG" />
-                <ScalarProperty Name="MASP" ColumnName="MASP" />
-                <ScalarProperty Name="SOLUONG" ColumnName="SOLUONG" />
-                <ScalarProperty Name="THANHTIEN" ColumnName="THANHTIEN" />
-                <ScalarProperty Name="MUCDODG" ColumnName="MUCDODG" />
-                <ScalarProperty Name="NGAYBL" ColumnName="NGAYBL" />
-                <ScalarProperty Name="BINHLUAN" ColumnName="BINHLUAN" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="CTDNs">
-            <EntityTypeMapping TypeName="QL_THEFACESHOPModel.CTDN">
-              <MappingFragment StoreEntitySet="CTDN">
-                <ScalarProperty Name="MADN" ColumnName="MADN" />
-                <ScalarProperty Name="MASP" ColumnName="MASP" />
-                <ScalarProperty Name="SOLUONG" ColumnName="SOLUONG" />
-                <ScalarProperty Name="THANHTIEN" ColumnName="THANHTIEN" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="DANGBAOCHEs">
-            <EntityTypeMapping TypeName="QL_THEFACESHOPModel.DANGBAOCHE">
-              <MappingFragment StoreEntitySet="DANGBAOCHE">
-                <ScalarProperty Name="MADBC" ColumnName="MADBC" />
-                <ScalarProperty Name="TENDANG" ColumnName="TENDANG" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="DONGIAOs">
-            <EntityTypeMapping TypeName="QL_THEFACESHOPModel.DONGIAO">
-              <MappingFragment StoreEntitySet="DONGIAO">
-                <ScalarProperty Name="MADG" ColumnName="MADG" />
-                <ScalarProperty Name="NGAYLAP" ColumnName="NGAYLAP" />
-                <ScalarProperty Name="MAKH" ColumnName="MAKH" />
-                <ScalarProperty Name="NGUOINHAN" ColumnName="NGUOINHAN" />
-                <ScalarProperty Name="SDT" ColumnName="SDT" />
-                <ScalarProperty Name="SONHA" ColumnName="SONHA" />
-                <ScalarProperty Name="PHUONGXA" ColumnName="PHUONGXA" />
-                <ScalarProperty Name="TRIGIA" ColumnName="TRIGIA" />
-                <ScalarProperty Name="TRANGTHAI" ColumnName="TRANGTHAI" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="DONNHAPs">
-            <EntityTypeMapping TypeName="QL_THEFACESHOPModel.DONNHAP">
-              <MappingFragment StoreEntitySet="DONNHAP">
-                <ScalarProperty Name="MADN" ColumnName="MADN" />
-                <ScalarProperty Name="MANV" ColumnName="MANV" />
-                <ScalarProperty Name="NGAYLAP" ColumnName="NGAYLAP" />
-                <ScalarProperty Name="TONGTIEN" ColumnName="TONGTIEN" />
-                <ScalarProperty Name="TRANGTHAI" ColumnName="TRANGTHAI" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="DONVIHANHCHINHs">
-            <EntityTypeMapping TypeName="QL_THEFACESHOPModel.DONVIHANHCHINH">
-              <MappingFragment StoreEntitySet="DONVIHANHCHINH">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="full_name" ColumnName="full_name" />
-                <ScalarProperty Name="full_name_en" ColumnName="full_name_en" />
-                <ScalarProperty Name="short_name" ColumnName="short_name" />
-                <ScalarProperty Name="short_name_en" ColumnName="short_name_en" />
-                <ScalarProperty Name="code_name" ColumnName="code_name" />
-                <ScalarProperty Name="code_name_en" ColumnName="code_name_en" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="GIOHANGs">
-            <EntityTypeMapping TypeName="QL_THEFACESHOPModel.GIOHANG">
-              <MappingFragment StoreEntitySet="GIOHANG">
-                <ScalarProperty Name="MAGH" ColumnName="MAGH" />
-                <ScalarProperty Name="MAKH" ColumnName="MAKH" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="HINHANHSPs">
-            <EntityTypeMapping TypeName="QL_THEFACESHOPModel.HINHANHSP">
-              <MappingFragment StoreEntitySet="HINHANHSP">
-                <ScalarProperty Name="MAHA" ColumnName="MAHA" />
-                <ScalarProperty Name="MASP" ColumnName="MASP" />
-                <ScalarProperty Name="HINHANH" ColumnName="HINHANH" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="KHACHHANGs">
-            <EntityTypeMapping TypeName="QL_THEFACESHOPModel.KHACHHANG">
-              <MappingFragment StoreEntitySet="KHACHHANG">
-                <ScalarProperty Name="MAKH" ColumnName="MAKH" />
-                <ScalarProperty Name="TENKH" ColumnName="TENKH" />
-                <ScalarProperty Name="SDT" ColumnName="SDT" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="LOAIs">
-            <EntityTypeMapping TypeName="QL_THEFACESHOPModel.LOAI">
-              <MappingFragment StoreEntitySet="LOAI">
-                <ScalarProperty Name="MALOAI" ColumnName="MALOAI" />
-                <ScalarProperty Name="TENLOAI" ColumnName="TENLOAI" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="NHANVIENs">
-            <EntityTypeMapping TypeName="QL_THEFACESHOPModel.NHANVIEN">
-              <MappingFragment StoreEntitySet="NHANVIEN">
-                <ScalarProperty Name="MANV" ColumnName="MANV" />
-                <ScalarProperty Name="TENNV" ColumnName="TENNV" />
-                <ScalarProperty Name="GIOITINH" ColumnName="GIOITINH" />
-                <ScalarProperty Name="SDT" ColumnName="SDT" />
-                <ScalarProperty Name="MATKHAU" ColumnName="MATKHAU" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="PHUONGXAs">
-            <EntityTypeMapping TypeName="QL_THEFACESHOPModel.PHUONGXA">
-              <MappingFragment StoreEntitySet="PHUONGXA">
-                <ScalarProperty Name="code" ColumnName="code" />
-                <ScalarProperty Name="name" ColumnName="name" />
-                <ScalarProperty Name="name_en" ColumnName="name_en" />
-                <ScalarProperty Name="full_name" ColumnName="full_name" />
-                <ScalarProperty Name="full_name_en" ColumnName="full_name_en" />
-                <ScalarProperty Name="code_name" ColumnName="code_name" />
-                <ScalarProperty Name="district_code" ColumnName="district_code" />
-                <ScalarProperty Name="administrative_unit_id" ColumnName="administrative_unit_id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="QUANHUYENs">
-            <EntityTypeMapping TypeName="QL_THEFACESHOPModel.QUANHUYEN">
-              <MappingFragment StoreEntitySet="QUANHUYEN">
-                <ScalarProperty Name="code" ColumnName="code" />
-                <ScalarProperty Name="name" ColumnName="name" />
-                <ScalarProperty Name="name_en" ColumnName="name_en" />
-                <ScalarProperty Name="full_name" ColumnName="full_name" />
-                <ScalarProperty Name="full_name_en" ColumnName="full_name_en" />
-                <ScalarProperty Name="code_name" ColumnName="code_name" />
-                <ScalarProperty Name="province_code" ColumnName="province_code" />
-                <ScalarProperty Name="administrative_unit_id" ColumnName="administrative_unit_id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="QUYCACHDONGGOIs">
-            <EntityTypeMapping TypeName="QL_THEFACESHOPModel.QUYCACHDONGGOI">
-              <MappingFragment StoreEntitySet="QUYCACHDONGGOI">
-                <ScalarProperty Name="MAQCDG" ColumnName="MAQCDG" />
-                <ScalarProperty Name="TENQCDG" ColumnName="TENQCDG" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="QUYENs">
-            <EntityTypeMapping TypeName="QL_THEFACESHOPModel.QUYEN">
-              <MappingFragment StoreEntitySet="QUYEN">
-                <ScalarProperty Name="MAQUYEN" ColumnName="MAQUYEN" />
-                <ScalarProperty Name="TENQUYEN" ColumnName="TENQUYEN" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="SANPHAMs">
-            <EntityTypeMapping TypeName="QL_THEFACESHOPModel.SANPHAM">
-              <MappingFragment StoreEntitySet="SANPHAM">
-                <ScalarProperty Name="DUNGTICH" ColumnName="DUNGTICH" />
-                <ScalarProperty Name="THANHPHAN" ColumnName="THANHPHAN" />
-                <ScalarProperty Name="MASP" ColumnName="MASP" />
-                <ScalarProperty Name="TENSP" ColumnName="TENSP" />
-                <ScalarProperty Name="MACTL_SP" ColumnName="MACTL_SP" />
-                <ScalarProperty Name="GIABAN" ColumnName="GIABAN" />
-                <ScalarProperty Name="GIANHAP" ColumnName="GIANHAP" />
-                <ScalarProperty Name="MADBC" ColumnName="MADBC" />
-                <ScalarProperty Name="MAQCDG" ColumnName="MAQCDG" />
-                <ScalarProperty Name="ANHDAIDIEN" ColumnName="ANHDAIDIEN" />
-                <ScalarProperty Name="NOIDUNG" ColumnName="NOIDUNG" />
-                <ScalarProperty Name="CONGDUNG" ColumnName="CONGDUNG" />
-                <ScalarProperty Name="TONGDANHGIA" ColumnName="TONGDANHGIA" />
-                <ScalarProperty Name="TONKHO" ColumnName="TONKHO" />
-                <ScalarProperty Name="TRANGTHAI" ColumnName="TRANGTHAI" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="TINHTHANHs">
-            <EntityTypeMapping TypeName="QL_THEFACESHOPModel.TINHTHANH">
-              <MappingFragment StoreEntitySet="TINHTHANH">
-                <ScalarProperty Name="code" ColumnName="code" />
-                <ScalarProperty Name="name" ColumnName="name" />
-                <ScalarProperty Name="name_en" ColumnName="name_en" />
-                <ScalarProperty Name="full_name" ColumnName="full_name" />
-                <ScalarProperty Name="full_name_en" ColumnName="full_name_en" />
-                <ScalarProperty Name="code_name" ColumnName="code_name" />
-                <ScalarProperty Name="administrative_unit_id" ColumnName="administrative_unit_id" />
-                <ScalarProperty Name="administrative_region_id" ColumnName="administrative_region_id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <AssociationSetMapping Name="QUYENKHACHHANG" TypeName="QL_THEFACESHOPModel.QUYENKHACHHANG" StoreEntitySet="QUYENKHACHHANG">
-            <EndProperty Name="KHACHHANG">
-              <ScalarProperty Name="MAKH" ColumnName="MAKH" />
-            </EndProperty>
-            <EndProperty Name="QUYEN">
-              <ScalarProperty Name="MAQUYEN" ColumnName="MAQUYEN" />
-            </EndProperty>
-          </AssociationSetMapping>
-          <AssociationSetMapping Name="QUYENNHANVIEN" TypeName="QL_THEFACESHOPModel.QUYENNHANVIEN" StoreEntitySet="QUYENNHANVIEN">
-            <EndProperty Name="NHANVIEN">
-              <ScalarProperty Name="MANV" ColumnName="MANV" />
-            </EndProperty>
-            <EndProperty Name="QUYEN">
-              <ScalarProperty Name="MAQUYEN" ColumnName="MAQUYEN" />
-            </EndProperty>
-          </AssociationSetMapping>
           <FunctionImportMapping FunctionImportName="pc_InsertSanPham" FunctionName="QL_THEFACESHOPModel.Store.pc_InsertSanPham" />
           <FunctionImportMapping FunctionImportName="pc_TimMaTiepTheo" FunctionName="QL_THEFACESHOPModel.Store.pc_TimMaTiepTheo" />
           <FunctionImportMapping FunctionImportName="sp_InsertChiTietLoai" FunctionName="QL_THEFACESHOPModel.Store.sp_InsertChiTietLoai" />
@@ -1733,6 +1652,306 @@
           <FunctionImportMapping FunctionImportName="sp_InsertKhachHang" FunctionName="QL_THEFACESHOPModel.Store.sp_InsertKhachHang" />
           <FunctionImportMapping FunctionImportName="sp_InsertLoai" FunctionName="QL_THEFACESHOPModel.Store.sp_InsertLoai" />
           <FunctionImportMapping FunctionImportName="sp_InsertNhanVien" FunctionName="QL_THEFACESHOPModel.Store.sp_InsertNhanVien" />
+          <FunctionImportMapping FunctionImportName="ChiNgay" FunctionName="QL_THEFACESHOPModel.Store.ChiNgay" />
+          <FunctionImportMapping FunctionImportName="ChiThuCacQuy" FunctionName="QL_THEFACESHOPModel.Store.ChiThuCacQuy">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="QL_THEFACESHOPModel.ChiThuCacQuy_Result">
+                <ScalarProperty Name="Quy" ColumnName="Quy" />
+                <ScalarProperty Name="Chi" ColumnName="Chi" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="ChiTrongQuy" FunctionName="QL_THEFACESHOPModel.Store.ChiTrongQuy" />
+          <FunctionImportMapping FunctionImportName="ChiTungThang" FunctionName="QL_THEFACESHOPModel.Store.ChiTungThang">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="QL_THEFACESHOPModel.ChiTungThang_Result">
+                <ScalarProperty Name="Thang" ColumnName="Thang" />
+                <ScalarProperty Name="Chi" ColumnName="Chi" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="DoanhThuCacQuy" FunctionName="QL_THEFACESHOPModel.Store.DoanhThuCacQuy">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="QL_THEFACESHOPModel.DoanhThuCacQuy_Result">
+                <ScalarProperty Name="Quy" ColumnName="Quy" />
+                <ScalarProperty Name="DoanhThu" ColumnName="DoanhThu" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="DoanhThuTrongQuy" FunctionName="QL_THEFACESHOPModel.Store.DoanhThuTrongQuy" />
+          <FunctionImportMapping FunctionImportName="DoanhThuTungNgay" FunctionName="QL_THEFACESHOPModel.Store.DoanhThuTungNgay" />
+          <FunctionImportMapping FunctionImportName="DoanhThuTungThang" FunctionName="QL_THEFACESHOPModel.Store.DoanhThuTungThang">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="QL_THEFACESHOPModel.DoanhThuTungThang_Result">
+                <ScalarProperty Name="Thang" ColumnName="Thang" />
+                <ScalarProperty Name="DoanhThu" ColumnName="DoanhThu" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="LoiNhuanTungNgay" FunctionName="QL_THEFACESHOPModel.Store.LoiNhuanTungNgay">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="QL_THEFACESHOPModel.LoiNhuanTungNgay_Result">
+                <ScalarProperty Name="Ngay" ColumnName="Ngay" />
+                <ScalarProperty Name="LoiNhuan" ColumnName="LoiNhuan" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="LoiNhuanTungThang" FunctionName="QL_THEFACESHOPModel.Store.LoiNhuanTungThang">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="QL_THEFACESHOPModel.LoiNhuanTungThang_Result">
+                <ScalarProperty Name="Thang" ColumnName="Thang" />
+                <ScalarProperty Name="LOINHUAN" ColumnName="LOINHUAN" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <EntitySetMapping Name="CACMIENs">
+            <EntityTypeMapping TypeName="QL_THEFACESHOPModel.CACMIEN">
+              <MappingFragment StoreEntitySet="CACMIEN">
+                <ScalarProperty Name="code_name_en" ColumnName="code_name_en" />
+                <ScalarProperty Name="code_name" ColumnName="code_name" />
+                <ScalarProperty Name="name_en" ColumnName="name_en" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CHITIETGIOHANGs">
+            <EntityTypeMapping TypeName="QL_THEFACESHOPModel.CHITIETGIOHANG">
+              <MappingFragment StoreEntitySet="CHITIETGIOHANG">
+                <ScalarProperty Name="SOLUONG" ColumnName="SOLUONG" />
+                <ScalarProperty Name="MASP" ColumnName="MASP" />
+                <ScalarProperty Name="MAGH" ColumnName="MAGH" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CHITIETLOAIs">
+            <EntityTypeMapping TypeName="QL_THEFACESHOPModel.CHITIETLOAI">
+              <MappingFragment StoreEntitySet="CHITIETLOAI">
+                <ScalarProperty Name="MALOAI" ColumnName="MALOAI" />
+                <ScalarProperty Name="TENCTLOAI" ColumnName="TENCTLOAI" />
+                <ScalarProperty Name="MACTLOAI" ColumnName="MACTLOAI" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CHITIETLOAISPs">
+            <EntityTypeMapping TypeName="QL_THEFACESHOPModel.CHITIETLOAISP">
+              <MappingFragment StoreEntitySet="CHITIETLOAISP">
+                <ScalarProperty Name="MACTLOAI" ColumnName="MACTLOAI" />
+                <ScalarProperty Name="TENCTL_SP" ColumnName="TENCTL_SP" />
+                <ScalarProperty Name="MACTL_SP" ColumnName="MACTL_SP" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CTDGs">
+            <EntityTypeMapping TypeName="QL_THEFACESHOPModel.CTDG">
+              <MappingFragment StoreEntitySet="CTDG">
+                <ScalarProperty Name="BINHLUAN" ColumnName="BINHLUAN" />
+                <ScalarProperty Name="NGAYBL" ColumnName="NGAYBL" />
+                <ScalarProperty Name="MUCDODG" ColumnName="MUCDODG" />
+                <ScalarProperty Name="THANHTIEN" ColumnName="THANHTIEN" />
+                <ScalarProperty Name="SOLUONG" ColumnName="SOLUONG" />
+                <ScalarProperty Name="MASP" ColumnName="MASP" />
+                <ScalarProperty Name="MADG" ColumnName="MADG" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CTDNs">
+            <EntityTypeMapping TypeName="QL_THEFACESHOPModel.CTDN">
+              <MappingFragment StoreEntitySet="CTDN">
+                <ScalarProperty Name="THANHTIEN" ColumnName="THANHTIEN" />
+                <ScalarProperty Name="SOLUONG" ColumnName="SOLUONG" />
+                <ScalarProperty Name="MASP" ColumnName="MASP" />
+                <ScalarProperty Name="MADN" ColumnName="MADN" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DANGBAOCHEs">
+            <EntityTypeMapping TypeName="QL_THEFACESHOPModel.DANGBAOCHE">
+              <MappingFragment StoreEntitySet="DANGBAOCHE">
+                <ScalarProperty Name="TENDANG" ColumnName="TENDANG" />
+                <ScalarProperty Name="MADBC" ColumnName="MADBC" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DONGIAOs">
+            <EntityTypeMapping TypeName="QL_THEFACESHOPModel.DONGIAO">
+              <MappingFragment StoreEntitySet="DONGIAO">
+                <ScalarProperty Name="TRANGTHAI" ColumnName="TRANGTHAI" />
+                <ScalarProperty Name="TRIGIA" ColumnName="TRIGIA" />
+                <ScalarProperty Name="PHUONGXA" ColumnName="PHUONGXA" />
+                <ScalarProperty Name="SONHA" ColumnName="SONHA" />
+                <ScalarProperty Name="SDT" ColumnName="SDT" />
+                <ScalarProperty Name="NGUOINHAN" ColumnName="NGUOINHAN" />
+                <ScalarProperty Name="MAKH" ColumnName="MAKH" />
+                <ScalarProperty Name="NGAYLAP" ColumnName="NGAYLAP" />
+                <ScalarProperty Name="MADG" ColumnName="MADG" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DONNHAPs">
+            <EntityTypeMapping TypeName="QL_THEFACESHOPModel.DONNHAP">
+              <MappingFragment StoreEntitySet="DONNHAP">
+                <ScalarProperty Name="TRANGTHAI" ColumnName="TRANGTHAI" />
+                <ScalarProperty Name="TONGTIEN" ColumnName="TONGTIEN" />
+                <ScalarProperty Name="NGAYLAP" ColumnName="NGAYLAP" />
+                <ScalarProperty Name="MANV" ColumnName="MANV" />
+                <ScalarProperty Name="MADN" ColumnName="MADN" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DONVIHANHCHINHs">
+            <EntityTypeMapping TypeName="QL_THEFACESHOPModel.DONVIHANHCHINH">
+              <MappingFragment StoreEntitySet="DONVIHANHCHINH">
+                <ScalarProperty Name="code_name_en" ColumnName="code_name_en" />
+                <ScalarProperty Name="code_name" ColumnName="code_name" />
+                <ScalarProperty Name="short_name_en" ColumnName="short_name_en" />
+                <ScalarProperty Name="short_name" ColumnName="short_name" />
+                <ScalarProperty Name="full_name_en" ColumnName="full_name_en" />
+                <ScalarProperty Name="full_name" ColumnName="full_name" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GIOHANGs">
+            <EntityTypeMapping TypeName="QL_THEFACESHOPModel.GIOHANG">
+              <MappingFragment StoreEntitySet="GIOHANG">
+                <ScalarProperty Name="MAKH" ColumnName="MAKH" />
+                <ScalarProperty Name="MAGH" ColumnName="MAGH" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HINHANHSPs">
+            <EntityTypeMapping TypeName="QL_THEFACESHOPModel.HINHANHSP">
+              <MappingFragment StoreEntitySet="HINHANHSP">
+                <ScalarProperty Name="HINHANH" ColumnName="HINHANH" />
+                <ScalarProperty Name="MASP" ColumnName="MASP" />
+                <ScalarProperty Name="MAHA" ColumnName="MAHA" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="KHACHHANGs">
+            <EntityTypeMapping TypeName="QL_THEFACESHOPModel.KHACHHANG">
+              <MappingFragment StoreEntitySet="KHACHHANG">
+                <ScalarProperty Name="SDT" ColumnName="SDT" />
+                <ScalarProperty Name="TENKH" ColumnName="TENKH" />
+                <ScalarProperty Name="MAKH" ColumnName="MAKH" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LOAIs">
+            <EntityTypeMapping TypeName="QL_THEFACESHOPModel.LOAI">
+              <MappingFragment StoreEntitySet="LOAI">
+                <ScalarProperty Name="TENLOAI" ColumnName="TENLOAI" />
+                <ScalarProperty Name="MALOAI" ColumnName="MALOAI" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NHANVIENs">
+            <EntityTypeMapping TypeName="QL_THEFACESHOPModel.NHANVIEN">
+              <MappingFragment StoreEntitySet="NHANVIEN">
+                <ScalarProperty Name="MATKHAU" ColumnName="MATKHAU" />
+                <ScalarProperty Name="SDT" ColumnName="SDT" />
+                <ScalarProperty Name="GIOITINH" ColumnName="GIOITINH" />
+                <ScalarProperty Name="TENNV" ColumnName="TENNV" />
+                <ScalarProperty Name="MANV" ColumnName="MANV" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PHUONGXAs">
+            <EntityTypeMapping TypeName="QL_THEFACESHOPModel.PHUONGXA">
+              <MappingFragment StoreEntitySet="PHUONGXA">
+                <ScalarProperty Name="administrative_unit_id" ColumnName="administrative_unit_id" />
+                <ScalarProperty Name="district_code" ColumnName="district_code" />
+                <ScalarProperty Name="code_name" ColumnName="code_name" />
+                <ScalarProperty Name="full_name_en" ColumnName="full_name_en" />
+                <ScalarProperty Name="full_name" ColumnName="full_name" />
+                <ScalarProperty Name="name_en" ColumnName="name_en" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="code" ColumnName="code" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="QUANHUYENs">
+            <EntityTypeMapping TypeName="QL_THEFACESHOPModel.QUANHUYEN">
+              <MappingFragment StoreEntitySet="QUANHUYEN">
+                <ScalarProperty Name="administrative_unit_id" ColumnName="administrative_unit_id" />
+                <ScalarProperty Name="province_code" ColumnName="province_code" />
+                <ScalarProperty Name="code_name" ColumnName="code_name" />
+                <ScalarProperty Name="full_name_en" ColumnName="full_name_en" />
+                <ScalarProperty Name="full_name" ColumnName="full_name" />
+                <ScalarProperty Name="name_en" ColumnName="name_en" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="code" ColumnName="code" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="QUYCACHDONGGOIs">
+            <EntityTypeMapping TypeName="QL_THEFACESHOPModel.QUYCACHDONGGOI">
+              <MappingFragment StoreEntitySet="QUYCACHDONGGOI">
+                <ScalarProperty Name="TENQCDG" ColumnName="TENQCDG" />
+                <ScalarProperty Name="MAQCDG" ColumnName="MAQCDG" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="QUYENs">
+            <EntityTypeMapping TypeName="QL_THEFACESHOPModel.QUYEN">
+              <MappingFragment StoreEntitySet="QUYEN">
+                <ScalarProperty Name="TENQUYEN" ColumnName="TENQUYEN" />
+                <ScalarProperty Name="MAQUYEN" ColumnName="MAQUYEN" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SANPHAMs">
+            <EntityTypeMapping TypeName="QL_THEFACESHOPModel.SANPHAM">
+              <MappingFragment StoreEntitySet="SANPHAM">
+                <ScalarProperty Name="TRANGTHAI" ColumnName="TRANGTHAI" />
+                <ScalarProperty Name="DUNGTICH" ColumnName="DUNGTICH" />
+                <ScalarProperty Name="THANHPHAN" ColumnName="THANHPHAN" />
+                <ScalarProperty Name="TONKHO" ColumnName="TONKHO" />
+                <ScalarProperty Name="TONGDANHGIA" ColumnName="TONGDANHGIA" />
+                <ScalarProperty Name="CONGDUNG" ColumnName="CONGDUNG" />
+                <ScalarProperty Name="NOIDUNG" ColumnName="NOIDUNG" />
+                <ScalarProperty Name="ANHDAIDIEN" ColumnName="ANHDAIDIEN" />
+                <ScalarProperty Name="MAQCDG" ColumnName="MAQCDG" />
+                <ScalarProperty Name="MADBC" ColumnName="MADBC" />
+                <ScalarProperty Name="GIANHAP" ColumnName="GIANHAP" />
+                <ScalarProperty Name="GIABAN" ColumnName="GIABAN" />
+                <ScalarProperty Name="MACTL_SP" ColumnName="MACTL_SP" />
+                <ScalarProperty Name="TENSP" ColumnName="TENSP" />
+                <ScalarProperty Name="MASP" ColumnName="MASP" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TINHTHANHs">
+            <EntityTypeMapping TypeName="QL_THEFACESHOPModel.TINHTHANH">
+              <MappingFragment StoreEntitySet="TINHTHANH">
+                <ScalarProperty Name="administrative_region_id" ColumnName="administrative_region_id" />
+                <ScalarProperty Name="administrative_unit_id" ColumnName="administrative_unit_id" />
+                <ScalarProperty Name="code_name" ColumnName="code_name" />
+                <ScalarProperty Name="full_name_en" ColumnName="full_name_en" />
+                <ScalarProperty Name="full_name" ColumnName="full_name" />
+                <ScalarProperty Name="name_en" ColumnName="name_en" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="code" ColumnName="code" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="QUYENKHACHHANG" TypeName="QL_THEFACESHOPModel.QUYENKHACHHANG" StoreEntitySet="QUYENKHACHHANG">
+            <EndProperty Name="QUYEN">
+              <ScalarProperty Name="MAQUYEN" ColumnName="MAQUYEN" />
+            </EndProperty>
+            <EndProperty Name="KHACHHANG">
+              <ScalarProperty Name="MAKH" ColumnName="MAKH" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="QUYENNHANVIEN" TypeName="QL_THEFACESHOPModel.QUYENNHANVIEN" StoreEntitySet="QUYENNHANVIEN">
+            <EndProperty Name="QUYEN">
+              <ScalarProperty Name="MAQUYEN" ColumnName="MAQUYEN" />
+            </EndProperty>
+            <EndProperty Name="NHANVIEN">
+              <ScalarProperty Name="MANV" ColumnName="MANV" />
+            </EndProperty>
+          </AssociationSetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

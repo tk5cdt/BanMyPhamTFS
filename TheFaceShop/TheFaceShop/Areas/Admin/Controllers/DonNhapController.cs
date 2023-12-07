@@ -8,6 +8,7 @@ using TheFaceShop.Models;
 
 namespace TheFaceShop.Areas.Admin.Controllers
 {
+    [Authorize(Roles = "QuanTri")]
     public class DonNhapController : Controller
     {
         QL_THEFACESHOPEntities db = new QL_THEFACESHOPEntities();

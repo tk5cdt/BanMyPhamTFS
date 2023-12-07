@@ -21,6 +21,7 @@ namespace TheFaceShop.Areas.Admin.Controllers
             }
             return cart;
         }
+        [HttpPost]
         public ActionResult AddtoCart(string id)
         {
             var pro = db.SANPHAMs.SingleOrDefault(s => s.MASP == id);
@@ -79,6 +80,7 @@ namespace TheFaceShop.Areas.Admin.Controllers
                 _order.SDT = form["sdt"];
                 _order.SONHA = form["sonha"];
                 _order.PHUONGXA = form["phuongxa"];
+               
                 _order.NGAYLAP = DateTime.Now;
                 db.DONGIAOs.Add(_order);
                 foreach (var item in cart.Items)

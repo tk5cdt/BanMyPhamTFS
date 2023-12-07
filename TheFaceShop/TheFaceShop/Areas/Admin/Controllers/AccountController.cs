@@ -10,7 +10,7 @@ namespace TheFaceShop.Areas.Admin.Controllers
 {
     public class AccountController : Controller
     {
-        QL_THEFACESHOPEntities db = new QL_THEFACESHOPEntities();
+        readonly QL_THEFACESHOPEntities db = new QL_THEFACESHOPEntities();
         // GET: Admin/Account
         [HttpGet]
         public ActionResult DangNhap()
@@ -54,6 +54,14 @@ namespace TheFaceShop.Areas.Admin.Controllers
                 cookie.Expires = ticket.Expiration;
             }
             Response.Cookies.Add(cookie);
+        }
+
+        public ActionResult DangXuat()
+        {
+            FormsAuthentication.SignOut();
+            Session["user"] = null;
+            Session["TENNV"] = null;
+            return RedirectToAction("DangNhap", "Account");
         }
     }
 }

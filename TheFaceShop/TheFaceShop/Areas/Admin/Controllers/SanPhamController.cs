@@ -10,6 +10,7 @@ using TheFaceShop.Models;
 
 namespace TheFaceShop.Areas.Admin.Controllers
 {
+    [Authorize(Roles = "QuanTri")]
     public class SanPhamController : Controller
     {
         QL_THEFACESHOPEntities db = new QL_THEFACESHOPEntities();
