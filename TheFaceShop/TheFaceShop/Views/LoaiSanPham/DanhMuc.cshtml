@@ -68,7 +68,6 @@
         {
             <div class="col" style="padding-top: 10px;">
                 <h5 data-bs-toggle="collapse" href="#collapseExample1" role="button" aria-expanded="false" aria-controls="collapseExample" style="margin-left: 10px">Loại sản phẩm: </h5>
-                <div class="collapse" id="collapseExample1">
                     <div class="card1 card-body">
                         <div class="list-group list-group-light">
                             @foreach (var subcategory in ViewBag.Subcategories)
@@ -78,11 +77,9 @@
                                         @subcategory.TENCTLOAI
                                     </a>
                                 </li>
-
                             }
                         </div>
                     </div>
-                </div>
             </div>
         }
         <div style="padding: 20px;"></div>
