@@ -1,11 +1,14 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using System.Xml.Linq;
 using TheFaceShop.Models;
 
 namespace TheFaceShop.Areas.Admin.Controllers
@@ -83,8 +86,8 @@ namespace TheFaceShop.Areas.Admin.Controllers
                             string imgPath2 = Path.Combine(Server.MapPath("~/DATA/Images"), imagePath);
                             // Copy file từ đường dẫn ảnh trong CSDL xuống thư mục ~/HinhAnhSP
                             System.IO.File.Copy(imgPath2, imgPath);
-                        }   
-   
+                        }
+
                         db.SaveChanges();
                     }
 
@@ -108,27 +111,94 @@ namespace TheFaceShop.Areas.Admin.Controllers
             {
                 return HttpNotFound();
             }
+            //Lấy dữ liệu cho dropdown list
+            ViewBag.MACTL_SP = db.CHITIETLOAISPs;
+            ViewBag.MAQCDG = db.QUYCACHDONGGOIs;
+            ViewBag.MADBC = db.DANGBAOCHEs;
             return View(sp);
-        }
+        }        
 
         [HttpPost]
         [ValidateInput(false)]
-        public ActionResult UpdateProduct(SANPHAM sp)
+        public ActionResult UpdateProduct(SANPHAM sp, HttpPostedFileBase f, string anhDaiDien, string[] hinhAnhItem)
         {
             if (ModelState.IsValid)
             {
-                if (db.SANPHAMs.Any(d => d.TENSP == sp.TENSP))
+                sp.MASP = db.SANPHAMs.FirstOrDefault(s => s.TENSP == sp.TENSP).MASP;
+                // Lấy sản phẩm từ database để cập nhật
+                var sanPham = db.SANPHAMs.Include("HINHANHSPs").FirstOrDefault(s => s.MASP == sp.MASP);
+
+                if (sanPham == null)
                 {
-                    ViewBag.TB = "Trùng tên sản phẩm!";
+                    return HttpNotFound();
+                }
+
+                if (sp.TENSP != sanPham.TENSP && db.SANPHAMs.FirstOrDefault(s => s.TENSP == sp.TENSP) != null)
+                {
+                    ViewBag.TB = "Số điện thoại này không hợp lệ!";
                     return View();
                 }
+
+                // Cập nhật thông tin của sản phẩm
+                sanPham.TENSP = sp.TENSP;
+                sanPham.GIABAN = sp.GIABAN;
+                sanPham.GIANHAP = sp.GIANHAP;
+                sanPham.THANHPHAN = sp.THANHPHAN;
+                sanPham.MACTL_SP = sp.MACTL_SP;
+                sanPham.MAQCDG = sp.MAQCDG;
+                sanPham.MADBC = sp.MADBC;
+                sanPham.CONGDUNG = sp.CONGDUNG;
+                sanPham.NOIDUNG = sp.NOIDUNG;
+                if (f != null && f.ContentLength > 0)
+                {
+                    string fname = Path.GetFileName(f.FileName);
+                    string fpath = Path.Combine(Server.MapPath("~/HinhAnhSP"), anhDaiDien);
+                    f.SaveAs(fpath);
+                    sanPham.ANHDAIDIEN=fname;
+                }   
                 else
                 {
-                    db.SANPHAMs.Attach(sp);
-                    db.Entry(sp).State = System.Data.Entity.EntityState.Modified;
-                    db.SaveChanges();
-                    return RedirectToAction("ShowProduct");
+                    sanPham.ANHDAIDIEN = anhDaiDien;
                 }
+
+                foreach (var dbImage in sanPham.HINHANHSPs.ToList())
+                {
+                    // Kiểm tra xem ảnh từ cơ sở dữ liệu có tồn tại trong hinhAnhItem hay không
+                    if (!hinhAnhItem.Contains(dbImage.HINHANH))
+                    {
+                        // Nếu không tìm thấy, xóa khỏi cơ sở dữ liệu
+                        db.HINHANHSPs.Remove(dbImage);
+
+                        // Xóa khỏi thư mục HinhAnhSP
+                        string imagePath = Path.Combine(Server.MapPath("~/HinhAnhSP"), dbImage.HINHANH);
+                        if (System.IO.File.Exists(imagePath))
+                        {
+                            System.IO.File.Delete(imagePath);
+                        }
+                    }
+                }
+
+                foreach (var item in hinhAnhItem)
+                {
+                    string imagePath = Path.Combine(Server.MapPath("~/HinhAnhSP"), item);
+
+                    if(!System.IO.File.Exists(imagePath))
+                    {
+                        HINHANHSP ha = new HINHANHSP();
+                        ha.MASP = sanPham.MASP;
+                        ha.HINHANH = item;
+                        sanPham.HINHANHSPs.Add(ha);
+
+                        string imgPath = Path.Combine(Server.MapPath("~/DATA/Images"), item);
+                        string imgPath1 = Path.Combine(Server.MapPath("~/HinhAnhSP"), item);
+
+                        // Di chuyển hoặc sao chép tệp ảnh vào thư mục HinhAnhSP
+                        System.IO.File.Copy(imgPath, imgPath1);
+                    }                       
+                }    
+
+                db.SaveChanges();
+                return RedirectToAction("ShowProduct");
             }
             return View(sp);
         }

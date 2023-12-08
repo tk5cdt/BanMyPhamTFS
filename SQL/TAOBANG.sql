@@ -845,19 +845,7 @@ CREATE TRIGGER TRG_UPDATE_DONNHAP
     ON DONNHAP
     FOR UPDATE
 AS
-BEGIN
-    IF EXISTS (
-        SELECT * FROM inserted JOIN deleted
-        ON inserted.TONGTIEN != deleted.TONGTIEN
-        AND inserted.TONGTIEN != (
-                SELECT SUM(THANHTIEN) FROM CTDN
-                WHERE CTDN.MADN = inserted.MADN
-        ))
-    BEGIN
-        PRINT N'This data cannot be changed'
-        ROLLBACK TRAN
-    END
-
+BEGIN    
     IF (SELECT TRANGTHAI FROM deleted) != N'Đã đặt'
     BEGIN
         PRINT N'Update failed!'
@@ -920,18 +908,6 @@ CREATE TRIGGER TRG_UPDATE_DONGIAO
     AFTER UPDATE
 AS
 BEGIN
-    IF EXISTS (
-            SELECT * FROM inserted JOIN deleted
-            ON inserted.TRIGIA != deleted.TRIGIA
-            AND inserted.TRIGIA != (
-                  SELECT SUM(THANHTIEN) FROM CTDG
-                  WHERE CTDG.MADG = inserted.MADG
-            ))
-    BEGIN
-            PRINT N'This data cannot be changed'
-            ROLLBACK TRAN
-    END
-
     IF EXISTS (
         SELECT inserted.TRANGTHAI FROM deleted JOIN inserted 
         ON (deleted.TRANGTHAI = N'Đã hủy' AND inserted.TRANGTHAI != N'Đã hủy') 

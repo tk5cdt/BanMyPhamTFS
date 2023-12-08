@@ -7,11 +7,11 @@ using TheFaceShop.Models;
 
 namespace TheFaceShop.Areas.Admin.Controllers
 {
+    [Authorize(Roles = "QuanTri")]
     public class AdminController : Controller
     {
         QL_THEFACESHOPEntities db = new QL_THEFACESHOPEntities();
-        // GET: Admin/Admin
-        [Authorize(Roles = "QuanTri")]
+        // GET: Admin/Admin       
         public ActionResult Index()
         {
             ViewBag.SLSP = db.SANPHAMs.Count();

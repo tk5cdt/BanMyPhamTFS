@@ -1,4 +1,7 @@
 ﻿---------Thu
+USE QL_THEFACESHOP
+go
+
 CREATE FUNCTION dbo.DoanhThuTungNgay(@NgayBatDau date, @NgayKetThuc date)
 RETURNS TABLE
 AS

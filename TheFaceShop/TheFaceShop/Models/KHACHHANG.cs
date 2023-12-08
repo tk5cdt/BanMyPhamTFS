@@ -23,6 +23,7 @@ namespace TheFaceShop.Models
         }
     
         public string MAKH { get; set; }
+        [Display(Name = "Tên khách hàng")]
         public string TENKH { get; set; }
         public string SDT { get; set; }
     
