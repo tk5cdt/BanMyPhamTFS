@@ -1,31 +1,105 @@
 ﻿@model IEnumerable<TheFaceShop.Models.SANPHAM>
 
-@foreach (var product in Model)
-{
-    <div class="col d-flex align-items-stretch justify-content-center">
-        <div class="card" style="display: flex; text-align: center;">
-            <img src="~/HinhAnhSP/@product.ANHDAIDIEN"
-                 class="card-img-top" alt="@product.TENSP" />
-            <div class="card-body ">
-                @if (product.TENSP.Length <= 50)
-                {
-                    <h6 class="card-title text-capitalize">@product.TENSP</h6>
-                }
-                else
-                {
-                    <h6 class="card-title text-capitalize">@product.TENSP.Substring(0, 50)...</h6>
-                }
+@{
+    ViewBag.Title = "ShowSanPham";
+    Layout = "~/Views/Shared/AccountLayoutPage.cshtml";
+}
 
-                <p class="card-text fw-bold">
-                    @String.Format("{0:n0}", product.GIABAN)đ
-                </p>
-                <p class="card-text">
-                <p><i class="fas fa-star" style="color: #000000;"></i> @product.TONGDANHGIA/5</p>
-                </p>
-                <div class="d-grid mx-auto mb-20">
-                    <button type="button" class="btn btn-outline-success rounded-pill">Xem chi tiết</button>
+
+<div class="row g-3" style="margin-top: 10px" >
+    <div class="col-3" style="background-color: #ECF4F3; border-radius: 10px; margin-bottom: 20px; ">
+        <div class="col" style="padding-top: 10px;">
+            <h5 style="margin-left: 10px">Giá sản phẩm:</h5>
+            <div>
+                <div class="card1 card-body">
+                    <div class="list-group list-group-light">
+                        <li class="list-group-item">
+                            <input class="form-check-input price-filter" type="checkbox" value="0, 500000" id="checkboxExample1" onchange="getValueFromCheckbox()" />
+                            <label class="form-check-label" for="checkboxExample1">Dưới 500.000đ</label>
+                        </li>
+                        <li class="list-group-item">
+                            <input class="form-check-input price-filter" type="checkbox" value="500000, 1000000" id="checkboxExample2" onchange="getValueFromCheckbox()" />
+                            <label class="form-check-label" for="checkboxExample2">500.000đ - 1.000.000đ</label>
+                        </li>
+                        <li class="list-group-item">
+                            <input class="form-check-input price-filter" type="checkbox" value="1000000, 1500000" id="checkboxExample3" onchange="getValueFromCheckbox()" />
+                            <label class="form-check-label" for="checkboxExample3">1.000.000đ - 1.500.000đ</label>
+                        </li>
+                        <li class="list-group-item">
+                            <input class="form-check-input price-filter" type="checkbox" value="1500000, 2000000" id="checkboxExample4" onchange="getValueFromCheckbox()" />
+                            <label class="form-check-label" for="checkboxExample4">1.500.000đ - 2.000.000đ</label>
+                        </li>
+                        <li class="list-group-item">
+                            <input class="form-check-input price-filter" type="checkbox" value="2000000, " id="checkboxExample5" onchange="getValueFromCheckbox()" />
+                            <label class="form-check-label" for="checkboxExample5">Trên 2.000.000đ</label>
+                        </li>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
+    <div class="col-8" style="background-color: #c1efde; margin-bottom: 20px; border-radius: 10px; flex: auto; margin-left: 20px; padding-top: 10px">
+        <div class="row row-cols-1 row-cols-md-5 g-4 px-5 mb-4 product-list">
+            @foreach (var product in Model)
+            {
+                <div class="col d-flex align-items-stretch justify-content-center">
+                    <div class="card" style="display: flex; text-align: center;">
+                        <img src="~/HinhAnhSP/@product.ANHDAIDIEN"
+                             class="card-img-top" alt="@product.TENSP" />
+                        <div class="card-body ">
+                            @if (product.TENSP.Length <= 50)
+                            {
+                                <h6 class="card-title text-capitalize">@product.TENSP</h6>
+                            }
+                            else
+                            {
+                                <h6 class="card-title text-capitalize">@product.TENSP.Substring(0, 50)...</h6>
+                            }
+
+                            <p class="card-text fw-bold">
+                                @String.Format("{0:n0}", product.GIABAN)đ
+                            </p>
+                            <p class="card-text">
+                            <p><i class="fas fa-star" style="color: #000000;"></i> @product.TONGDANHGIA/5</p>
+                            </p>
+                            <div class="d-grid mx-auto mb-20">
+                                <button type="button" class="btn btn-outline-success rounded-pill">Xem chi tiết</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+
+        </div>
+    </div>
+</div>
+@section script {
+    <script>
+        function getValueFromCheckbox() {
+            var checkboxes = document.getElementsByClassName('price-filter');
+            for (var i = 0; i < checkboxes.length; i++) {
+                if (checkboxes[i].checked) {
+                    // Lấy giá trị từ checkbox
+                    var priceRange = checkboxes[i].value;
+
+                    // Tạo một form ẩn để gửi dữ liệu
+                    var form = document.createElement('form');
+                    form.method = 'post';
+                    form.action = '/LoaiSanPham/FilterProductsByPrice'; // Thay 'ControllerName' bằng tên của controller của bạn
+
+                    // Tạo một input ẩn để chứa giá trị priceRange
+                    var input = document.createElement('input');
+                    input.type = 'hidden';
+                    input.name = 'priceRange';
+                    input.value = priceRange;
+
+                    // Thêm input vào form và gửi form
+                    form.appendChild(input);
+                    document.body.appendChild(form);
+                    form.submit();
+                }
+            }
+        }
+    </script>
 }
+

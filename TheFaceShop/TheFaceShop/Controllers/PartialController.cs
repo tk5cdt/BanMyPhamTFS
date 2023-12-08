@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.DynamicData;
 using System.Web.Mvc;
 using TheFaceShop.Models;
 
@@ -59,42 +60,6 @@ namespace TheFaceShop.Controllers
             var products = db.SANPHAMs.Where(p => p.TENSP.Contains(searchTerm)).ToList();
             return View(products);
         }
-        public ActionResult FilterByPrice(List<string> prices)
-        {
-            // Xử lí yêu cầu lọc sản phẩm dựa trên giá
-            // Ở đây, bạn có thể phân tích các giá trị và lọc sản phẩm dựa trên khoảng giá
-            // Ví dụ:
-            var filteredProducts = new List<SANPHAM>();
-
-            foreach (var priceRange in prices)
-            {
-                switch (priceRange)
-                {
-                    case "Dưới 500.000đ":
-                        // Lọc các sản phẩm dưới 500,000 VND
-                        filteredProducts.AddRange(db.SANPHAMs.Where(sp => sp.GIABAN < 500000));
-                        break;
-                    case "500.000đ - 1.000.000đ":
-                        // Lọc các sản phẩm từ 500,000 đến 1,000,000 VND
-                        filteredProducts.AddRange(db.SANPHAMs.Where(sp => sp.GIABAN >= 500000 && sp.GIABAN <= 1000000));
-                        break;
-                    case "1.000.000đ - 1.500.000đ":
-                        filteredProducts.AddRange(db.SANPHAMs.Where(sp => sp.GIABAN >= 1000000 && sp.GIABAN <= 1500000));
-                        break;
-                    case "1.500.000đ - 2.000.000đ":
-                        filteredProducts.AddRange(db.SANPHAMs.Where(sp => sp.GIABAN >= 1500000 && sp.GIABAN <= 2000000));
-                        break;
-                    case "Trên 2.000.000đ":
-                        filteredProducts.AddRange(db.SANPHAMs.Where(sp => sp.GIABAN >= 2000000));
-                        break;
-                }
-            }
-
-            //// Loại bỏ các sản phẩm trùng lặp
-            //var uniqueFilteredProducts = filteredProducts.Distinct().ToList();
-
-            return PartialView("DanhMucLoaiSP", /*uniqueFilteredProducts*/ filteredProducts);
-        }
 
         public ActionResult FilterBySubcategory(string subcategoryId)
         {
@@ -102,5 +67,13 @@ namespace TheFaceShop.Controllers
             var filteredProducts = db.SANPHAMs.Where(p => p.MACTL_SP == subcategoryId).ToList();
             return PartialView("DanhMucLoaiSP", filteredProducts);
         }
+
+
+
+
+
+       
+
+
     }
 }

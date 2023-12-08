@@ -6,6 +6,7 @@
 
 @model List<TheFaceShop.Models.LOAI>
 
+
 <div class="p-5 pb-2 pt-3 bg-body-tertiary mb-2" style="background-color: #c1efde">
     <!-- Breadcrumb -->
     <nav aria-label="breadcrumb">
@@ -13,7 +14,7 @@
             <li class="breadcrumb-item"><a href="#" style="text-decoration: none">Trang chủ</a></li>
             @if (ViewBag.Category != null && ViewBag.Subcategory == null)
             {
-                    <li class="breadcrumb-item active" aria-current="page">@ViewBag.Category.TENLOAI</li>
+                <li class="breadcrumb-item active" aria-current="page">@ViewBag.Category.TENLOAI</li>
             }
             else
             {
@@ -21,10 +22,10 @@
                     <a href="@Url.Action("DanhMuc", "LoaiSanPham")" style="text-decoration: none">@ViewBag.Category.TENLOAI</a>
                 </li>
                 @*<li class="breadcrumb-item">
-                    <a href="@Url.Action("DanhMuc", "LoaiSanPham", new { categoryId = ViewBag.Category.MALOAI })">@ViewBag.Subcategory.TENCTLOAI</a>
-                </li>*@
+                        <a href="@Url.Action("DanhMuc", "LoaiSanPham", new { categoryId = ViewBag.Category.MALOAI })">@ViewBag.Subcategory.TENCTLOAI</a>
+                    </li>*@
                 <li class="breadcrumb-item active" aria-current="page" style="text-decoration: none">@ViewBag.Subcategory.TENCTLOAI</li>
-                
+
             }
         </ol>
     </nav>
@@ -34,35 +35,35 @@
     <!-- Left sidebar for filtering -->
     <div class="col-3" style="background-color: #ECF4F3; border-radius: 10px; margin-bottom: 20px">
         <!-- Display subcategories -->
-        <div class="col" style="padding-top: 10px; ">
-            <h5 style="margin-left: 10px">Giá sản phẩm:</h5>
-            <div>
-                <div class="card1 card-body">
-                    <div class="list-group list-group-light">
-                        <li class="list-group-item">
-                            <input class="form-check-input" type="checkbox" value="" id="checkboxExample1" />
-                            <label class="form-check-label" for="checkboxExample1">Dưới 500.000đ</label>
-                        </li>
-                        <li class="list-group-item">
-                            <input class="form-check-input" type="checkbox" value="" id="checkboxExample2" />
-                            <label class="form-check-label" for="checkboxExample2">500.000đ - 1.000.000đ</label>
-                        </li>
-                        <li class="list-group-item">
-                            <input class="form-check-input" type="checkbox" value="" id="checkboxExample3" />
-                            <label class="form-check-label" for="checkboxExample3">1.000.000đ - 1.500.000đ</label>
-                        </li>
-                        <li class="list-group-item">
-                            <input class="form-check-input" type="checkbox" value="" id="checkboxExample4" />
-                            <label class="form-check-label" for="checkboxExample4">1.500.000đ - 2.000.000đ</label>
-                        </li>
-                        <li class="list-group-item">
-                            <input class="form-check-input" type="checkbox" value="" id="checkboxExample5" />
-                            <label class="form-check-label" for="checkboxExample5">Trên 2.000.000đ</label>
-                        </li>
+        @*<div class="col" style="padding-top: 10px; ">
+                <h5 style="margin-left: 10px">Giá sản phẩm:</h5>
+                <div>
+                    <div class="card1 card-body">
+                        <div class="list-group list-group-light">
+                            <li class="list-group-item">
+                                <input class="form-check-input" type="checkbox" value="" id="checkboxExample1" />
+                                <label class="form-check-label" for="checkboxExample1">Dưới 500.000đ</label>
+                            </li>
+                            <li class="list-group-item">
+                                <input class="form-check-input" type="checkbox" value="" id="checkboxExample2" />
+                                <label class="form-check-label" for="checkboxExample2">500.000đ - 1.000.000đ</label>
+                            </li>
+                            <li class="list-group-item">
+                                <input class="form-check-input" type="checkbox" value="" id="checkboxExample3" />
+                                <label class="form-check-label" for="checkboxExample3">1.000.000đ - 1.500.000đ</label>
+                            </li>
+                            <li class="list-group-item">
+                                <input class="form-check-input" type="checkbox" value="" id="checkboxExample4" />
+                                <label class="form-check-label" for="checkboxExample4">1.500.000đ - 2.000.000đ</label>
+                            </li>
+                            <li class="list-group-item">
+                                <input class="form-check-input" type="checkbox" value="" id="checkboxExample5" />
+                                <label class="form-check-label" for="checkboxExample5">Trên 2.000.000đ</label>
+                            </li>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </div>
+            </div>*@
         @if (ViewBag.Subcategories != null)
         {
             <div class="col" style="padding-top: 10px;">
@@ -90,14 +91,13 @@
     <!-- Product display area -->
     <div class="col-8" style="background-color: #c1efde; margin-bottom: 20px; border-radius: 10px; flex: auto; margin-left: 20px; padding-top: 10px">
         <!-- Display products -->
-        
 
-        <div class="row row-cols-1 row-cols-md-5 g-4 px-5 mb-4">
+
+        <div class="row row-cols-1 row-cols-md-5 g-4 px-5 mb-4 product-list">
             @Html.Action("DanhMucLoaiSP", "Partial")
         </div>
     </div>
 
 </div>
-<script src="~/Content/js/LocGia.js"></script>
-<script src="~/Content/js/LocLoai.js"></script>
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>

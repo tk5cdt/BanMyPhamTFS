@@ -68,7 +68,7 @@
                                                     </span>
                                                 </div>
                                             </div>*@
-                                            @Html.Action("Search", "Partial")
+                                            @*@Html.Action("Search", "Partial")*@
                                             <div class="menu-section menu-section-first left-menu">
                                                 <a role="presentation" href="/stores" style="color: initial;">
                                                     <button type="button" class="ant-btn ant-btn-default btn-text-hover">
@@ -97,9 +97,28 @@
                                             <div class="menu-section right-menu">
                                                 <button type="button" class="ant-btn ant-btn-default user-btn">
                                                     <span class="ant-badge">
-                                                        <span class="size-xxl icon-ICLoginHeader "></span>
                                                         <div class="title-section">
-                                                            <div class="title">Đăng nhập</div>
+                                                            <div class="title">
+
+                                                                @if (Session["TENKH"] != null)
+                                                                {
+                                                                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                                                                        <li class="nav-item dropdown">
+                                                                            <a class="nav-link dropdown-toggle second-text fw-bold" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                                                                <i class="fas fa-user me-2"></i>@Session["TENKH"].ToString()
+                                                                            </a>
+                                                                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                                                                <li><a class="dropdown-item" href="@Url.Action("DangXuat", "Home")">Đăng xuất</a></li>
+                                                                            </ul>
+                                                                        </li>
+                                                                    </ul>
+
+                                                                }
+                                                                else
+                                                                {
+                                                                    @Html.ActionLink("Đăng nhập", "DangNhap", "Home", new { area = "" }, new { @class = "text-decoration-none" })
+                                                                }
+                                                            </div>
                                                         </div>
                                                     </span>
                                                 </button>
@@ -132,7 +151,7 @@
                                                 </ul>
                                             </li>
                                             <li class="nav-item">
-                                                <a class="nav-link text-dark" href="#">Sản phẩm mới</a>
+                                                <a class="nav-link text-dark" href="@Url.Action("ShowSanPham", "Partial")">Tất cả sản phẩm</a>
                                             </li>
                                             <li class="nav-item dropdown">
                                                 <a class="nav-link dropdown-toggle text-dark" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">

@@ -187,3 +187,11 @@ RETURN (
     ) AS Thang(Thang)
 );
 go
+
+------------------Lọc giá sản phẩm--------------------
+CREATE FUNCTION dbo.LocSanPhamTheoGia(@giaDau int, @giaCuoi int)
+RETURNS TABLE
+AS
+	RETURN (SELECT * FROM SANPHAM
+			WHERE GIABAN >= @giaDau AND GIABAN <= @giaCuoi)
+GO
