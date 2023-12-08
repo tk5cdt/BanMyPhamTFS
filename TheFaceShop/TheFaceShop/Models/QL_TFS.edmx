@@ -547,114 +547,27 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Function Name="ChiNgay" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="NgayBatDau" Type="date" Mode="In" />
-          <Parameter Name="NgayKetThuc" Type="date" Mode="In" />
+        <Function Name="LocSanPhamTheoGia" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="giaDau" Type="int" Mode="In" />
+          <Parameter Name="giaCuoi" Type="int" Mode="In" />
           <ReturnType>
             <CollectionType>
               <RowType>
-                <Property Name="Chi" Type="float" />
-              </RowType>
-            </CollectionType>
-          </ReturnType>
-        </Function>
-        <Function Name="ChiThuCacQuy" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <ReturnType>
-            <CollectionType>
-              <RowType>
-                <Property Name="Quy" Type="int" Nullable="false" />
-                <Property Name="Chi" Type="float" />
-              </RowType>
-            </CollectionType>
-          </ReturnType>
-        </Function>
-        <Function Name="ChiTrongNam" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="float" />
-        <Function Name="ChiTrongQuy" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="Quy" Type="int" Mode="In" />
-          <ReturnType>
-            <CollectionType>
-              <RowType>
-                <Property Name="Chi" Type="float" />
-              </RowType>
-            </CollectionType>
-          </ReturnType>
-        </Function>
-        <Function Name="ChiTrongThang" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="float">
-          <Parameter Name="Thang" Type="int" Mode="In" />
-        </Function>
-        <Function Name="ChiTungThang" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <ReturnType>
-            <CollectionType>
-              <RowType>
-                <Property Name="Thang" Type="int" Nullable="false" />
-                <Property Name="Chi" Type="float" />
-              </RowType>
-            </CollectionType>
-          </ReturnType>
-        </Function>
-        <Function Name="DoanhThuCacQuy" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <ReturnType>
-            <CollectionType>
-              <RowType>
-                <Property Name="Quy" Type="int" Nullable="false" />
-                <Property Name="DoanhThu" Type="float" />
-              </RowType>
-            </CollectionType>
-          </ReturnType>
-        </Function>
-        <Function Name="DoanhThuThang" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="float">
-          <Parameter Name="Thang" Type="int" Mode="In" />
-        </Function>
-        <Function Name="DoanhThuTrongNam" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="float" />
-        <Function Name="DoanhThuTrongQuy" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="Quy" Type="int" Mode="In" />
-          <ReturnType>
-            <CollectionType>
-              <RowType>
-                <Property Name="DoanhThu" Type="float" />
-              </RowType>
-            </CollectionType>
-          </ReturnType>
-        </Function>
-        <Function Name="DoanhThuTungNgay" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="NgayBatDau" Type="date" Mode="In" />
-          <Parameter Name="NgayKetThuc" Type="date" Mode="In" />
-          <ReturnType>
-            <CollectionType>
-              <RowType>
-                <Property Name="DoanhThu" Type="float" />
-              </RowType>
-            </CollectionType>
-          </ReturnType>
-        </Function>
-        <Function Name="DoanhThuTungThang" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <ReturnType>
-            <CollectionType>
-              <RowType>
-                <Property Name="Thang" Type="int" Nullable="false" />
-                <Property Name="DoanhThu" Type="float" />
-              </RowType>
-            </CollectionType>
-          </ReturnType>
-        </Function>
-        <Function Name="LoiNhuanTungNgay" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="NgayBatDau" Type="date" Mode="In" />
-          <Parameter Name="NgayKetThuc" Type="date" Mode="In" />
-          <ReturnType>
-            <CollectionType>
-              <RowType>
-                <Property Name="Ngay" Type="date" />
-                <Property Name="LoiNhuan" Type="float" Nullable="false" />
-              </RowType>
-            </CollectionType>
-          </ReturnType>
-        </Function>
-        <Function Name="LoiNhuanTungThang" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <ReturnType>
-            <CollectionType>
-              <RowType>
-                <Property Name="Thang" Type="int" Nullable="false" />
-                <Property Name="LOINHUAN" Type="float" Nullable="false" />
+                <Property Name="MASP" Type="varchar" MaxLength="10" Nullable="false" />
+                <Property Name="TENSP" Type="nvarchar" MaxLength="100" />
+                <Property Name="MACTL_SP" Type="varchar" MaxLength="10" Nullable="false" />
+                <Property Name="GIABAN" Type="float" />
+                <Property Name="GIANHAP" Type="float" />
+                <Property Name="MADBC" Type="varchar" MaxLength="10" Nullable="false" />
+                <Property Name="MAQCDG" Type="varchar" MaxLength="10" Nullable="false" />
+                <Property Name="ANHDAIDIEN" Type="varchar" MaxLength="100" />
+                <Property Name="NOIDUNG" Type="nvarchar(max)" />
+                <Property Name="CONGDUNG" Type="nvarchar(max)" />
+                <Property Name="TONGDANHGIA" Type="float" />
+                <Property Name="TONKHO" Type="int" />
+                <Property Name="THANHPHAN" Type="nvarchar" MaxLength="200" />
+                <Property Name="DUNGTICH" Type="nvarchar" MaxLength="30" />
+                <Property Name="TRANGTHAI" Type="nvarchar" MaxLength="20" />
               </RowType>
             </CollectionType>
           </ReturnType>
@@ -726,12 +639,6 @@
           <Parameter Name="gioitinh" Type="nvarchar" Mode="In" />
           <Parameter Name="sdt" Type="char" Mode="In" />
           <Parameter Name="mk" Type="nchar" Mode="In" />
-        </Function>
-        <Function Name="TongChiTrongQuy" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="float">
-          <Parameter Name="Quy" Type="int" Mode="In" />
-        </Function>
-        <Function Name="TongDoanhThuTrongQuy" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="float">
-          <Parameter Name="Quy" Type="int" Mode="In" />
         </Function>
         <EntityContainer Name="QL_THEFACESHOPModelStoreContainer">
           <EntitySet Name="CACMIEN" EntityType="Self.CACMIEN" Schema="dbo" store:Type="Tables" />
@@ -1075,6 +982,10 @@
             <End Role="NHANVIEN" EntitySet="NHANVIENs" />
             <End Role="QUYEN" EntitySet="QUYENs" />
           </AssociationSet>
+          <FunctionImport Name="LocSanPhamTheoGia" IsComposable="true" ReturnType="Collection(QL_THEFACESHOPModel.LocSanPhamTheoGia_Result)">
+            <Parameter Name="giaDau" Mode="In" Type="Int32" />
+            <Parameter Name="giaCuoi" Mode="In" Type="Int32" />
+          </FunctionImport>
         </EntityContainer>
         <ComplexType Name="ChiThuCacQuy_Result">
           <Property Type="Int32" Name="Quy" Nullable="false" />
@@ -1634,6 +1545,23 @@
           <End Type="QL_THEFACESHOPModel.NHANVIEN" Role="NHANVIEN" Multiplicity="*" />
           <End Type="QL_THEFACESHOPModel.QUYEN" Role="QUYEN" Multiplicity="*" />
         </Association>
+        <ComplexType Name="LocSanPhamTheoGia_Result">
+          <Property Type="String" Name="MASP" Nullable="false" MaxLength="10" />
+          <Property Type="String" Name="TENSP" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="MACTL_SP" Nullable="false" MaxLength="10" />
+          <Property Type="Double" Name="GIABAN" Nullable="true" />
+          <Property Type="Double" Name="GIANHAP" Nullable="true" />
+          <Property Type="String" Name="MADBC" Nullable="false" MaxLength="10" />
+          <Property Type="String" Name="MAQCDG" Nullable="false" MaxLength="10" />
+          <Property Type="String" Name="ANHDAIDIEN" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="NOIDUNG" Nullable="true" />
+          <Property Type="String" Name="CONGDUNG" Nullable="true" />
+          <Property Type="Double" Name="TONGDANHGIA" Nullable="true" />
+          <Property Type="Int32" Name="TONKHO" Nullable="true" />
+          <Property Type="String" Name="THANHPHAN" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="DUNGTICH" Nullable="true" MaxLength="30" />
+          <Property Type="String" Name="TRANGTHAI" Nullable="true" MaxLength="20" />
+        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1652,58 +1580,6 @@
           <FunctionImportMapping FunctionImportName="sp_InsertKhachHang" FunctionName="QL_THEFACESHOPModel.Store.sp_InsertKhachHang" />
           <FunctionImportMapping FunctionImportName="sp_InsertLoai" FunctionName="QL_THEFACESHOPModel.Store.sp_InsertLoai" />
           <FunctionImportMapping FunctionImportName="sp_InsertNhanVien" FunctionName="QL_THEFACESHOPModel.Store.sp_InsertNhanVien" />
-          <FunctionImportMapping FunctionImportName="ChiNgay" FunctionName="QL_THEFACESHOPModel.Store.ChiNgay" />
-          <FunctionImportMapping FunctionImportName="ChiThuCacQuy" FunctionName="QL_THEFACESHOPModel.Store.ChiThuCacQuy">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="QL_THEFACESHOPModel.ChiThuCacQuy_Result">
-                <ScalarProperty Name="Quy" ColumnName="Quy" />
-                <ScalarProperty Name="Chi" ColumnName="Chi" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="ChiTrongQuy" FunctionName="QL_THEFACESHOPModel.Store.ChiTrongQuy" />
-          <FunctionImportMapping FunctionImportName="ChiTungThang" FunctionName="QL_THEFACESHOPModel.Store.ChiTungThang">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="QL_THEFACESHOPModel.ChiTungThang_Result">
-                <ScalarProperty Name="Thang" ColumnName="Thang" />
-                <ScalarProperty Name="Chi" ColumnName="Chi" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="DoanhThuCacQuy" FunctionName="QL_THEFACESHOPModel.Store.DoanhThuCacQuy">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="QL_THEFACESHOPModel.DoanhThuCacQuy_Result">
-                <ScalarProperty Name="Quy" ColumnName="Quy" />
-                <ScalarProperty Name="DoanhThu" ColumnName="DoanhThu" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="DoanhThuTrongQuy" FunctionName="QL_THEFACESHOPModel.Store.DoanhThuTrongQuy" />
-          <FunctionImportMapping FunctionImportName="DoanhThuTungNgay" FunctionName="QL_THEFACESHOPModel.Store.DoanhThuTungNgay" />
-          <FunctionImportMapping FunctionImportName="DoanhThuTungThang" FunctionName="QL_THEFACESHOPModel.Store.DoanhThuTungThang">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="QL_THEFACESHOPModel.DoanhThuTungThang_Result">
-                <ScalarProperty Name="Thang" ColumnName="Thang" />
-                <ScalarProperty Name="DoanhThu" ColumnName="DoanhThu" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="LoiNhuanTungNgay" FunctionName="QL_THEFACESHOPModel.Store.LoiNhuanTungNgay">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="QL_THEFACESHOPModel.LoiNhuanTungNgay_Result">
-                <ScalarProperty Name="Ngay" ColumnName="Ngay" />
-                <ScalarProperty Name="LoiNhuan" ColumnName="LoiNhuan" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="LoiNhuanTungThang" FunctionName="QL_THEFACESHOPModel.Store.LoiNhuanTungThang">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="QL_THEFACESHOPModel.LoiNhuanTungThang_Result">
-                <ScalarProperty Name="Thang" ColumnName="Thang" />
-                <ScalarProperty Name="LOINHUAN" ColumnName="LOINHUAN" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
           <EntitySetMapping Name="CACMIENs">
             <EntityTypeMapping TypeName="QL_THEFACESHOPModel.CACMIEN">
               <MappingFragment StoreEntitySet="CACMIEN">
@@ -1952,6 +1828,27 @@
               <ScalarProperty Name="MANV" ColumnName="MANV" />
             </EndProperty>
           </AssociationSetMapping>
+          <FunctionImportMapping FunctionImportName="LocSanPhamTheoGia" FunctionName="QL_THEFACESHOPModel.Store.LocSanPhamTheoGia">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="QL_THEFACESHOPModel.LocSanPhamTheoGia_Result">
+                <ScalarProperty Name="MASP" ColumnName="MASP" />
+                <ScalarProperty Name="TENSP" ColumnName="TENSP" />
+                <ScalarProperty Name="MACTL_SP" ColumnName="MACTL_SP" />
+                <ScalarProperty Name="GIABAN" ColumnName="GIABAN" />
+                <ScalarProperty Name="GIANHAP" ColumnName="GIANHAP" />
+                <ScalarProperty Name="MADBC" ColumnName="MADBC" />
+                <ScalarProperty Name="MAQCDG" ColumnName="MAQCDG" />
+                <ScalarProperty Name="ANHDAIDIEN" ColumnName="ANHDAIDIEN" />
+                <ScalarProperty Name="NOIDUNG" ColumnName="NOIDUNG" />
+                <ScalarProperty Name="CONGDUNG" ColumnName="CONGDUNG" />
+                <ScalarProperty Name="TONGDANHGIA" ColumnName="TONGDANHGIA" />
+                <ScalarProperty Name="TONKHO" ColumnName="TONKHO" />
+                <ScalarProperty Name="THANHPHAN" ColumnName="THANHPHAN" />
+                <ScalarProperty Name="DUNGTICH" ColumnName="DUNGTICH" />
+                <ScalarProperty Name="TRANGTHAI" ColumnName="TRANGTHAI" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

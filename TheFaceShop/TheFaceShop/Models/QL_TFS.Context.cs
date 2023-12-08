@@ -372,5 +372,19 @@ namespace TheFaceShop.Models
         {
             return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<LoiNhuanTungThang_Result>("[QL_THEFACESHOPEntities].[LoiNhuanTungThang]()");
         }
+    
+        [DbFunction("QL_THEFACESHOPEntities", "LocSanPhamTheoGia")]
+        public virtual IQueryable<LocSanPhamTheoGia_Result> LocSanPhamTheoGia(Nullable<int> giaDau, Nullable<int> giaCuoi)
+        {
+            var giaDauParameter = giaDau.HasValue ?
+                new ObjectParameter("giaDau", giaDau) :
+                new ObjectParameter("giaDau", typeof(int));
+    
+            var giaCuoiParameter = giaCuoi.HasValue ?
+                new ObjectParameter("giaCuoi", giaCuoi) :
+                new ObjectParameter("giaCuoi", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<LocSanPhamTheoGia_Result>("[QL_THEFACESHOPEntities].[LocSanPhamTheoGia](@giaDau, @giaCuoi)", giaDauParameter, giaCuoiParameter);
+        }
     }
 }

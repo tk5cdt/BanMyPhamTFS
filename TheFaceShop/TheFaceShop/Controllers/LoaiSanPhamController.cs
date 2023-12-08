@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
+using System.Drawing.Printing;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -54,6 +56,24 @@ namespace TheFaceShop.Controllers
                 }
             }
             return View(categories);
+        }
+
+        [HttpPost]
+        public ActionResult FilterProductsByPrice(string priceRange)
+        {
+            string[] parts = priceRange.Split(new string[] { ", " }, StringSplitOptions.None);
+
+            var products = db.LocSanPhamTheoGia(int.Parse(parts[0]), int.Parse(parts[1]));
+
+            var sanPhams = new List<SANPHAM>();
+
+            foreach(var item in products)
+            {
+                SANPHAM SP = JsonConvert.DeserializeObject<SANPHAM>(JsonConvert.SerializeObject(item));
+                sanPhams.Add(SP);
+            }    
+            
+            return View("~/Views/Partial/ShowSanPham.cshtml", sanPhams);
         }
     }
 }
