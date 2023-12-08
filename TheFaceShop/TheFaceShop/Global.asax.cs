@@ -46,10 +46,29 @@ namespace TheFaceShop
                     }
                     else
                     {
-                        Context.Response.Redirect("/Home/Index");
+                        Context.Response.Redirect("/Home/TrangChu");
                     }
                 }
-            }    
+            }
+        }
+
+        protected void Application_Error(object sender, EventArgs e)
+        {
+            Exception ex = Server.GetLastError();
+            if (ex is HttpException)
+            {
+                if (((HttpException)ex).GetHttpCode() == 401)
+                {
+                    if (Context.Request.Url.ToString().Contains("/Admin/"))
+                    {
+                        Context.Response.Redirect("/Admin/Account/DangNhap");
+                    }
+                    else
+                    {
+                        Context.Response.Redirect("/Home/TrangChu");
+                    }
+                }
+            }
         }
     }
 }

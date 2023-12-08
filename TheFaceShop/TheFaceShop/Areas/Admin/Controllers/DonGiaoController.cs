@@ -7,12 +7,12 @@ using TheFaceShop.Models;
 
 namespace TheFaceShop.Areas.Admin.Controllers
 {
+    [Authorize(Roles = "QuanTri")]
     public class DonGiaoController : Controller
     {
 
         // GET: Admin/DonGiao
         QL_THEFACESHOPEntities db = new QL_THEFACESHOPEntities();
-        //[Authorize(Roles = "QuanTri")]
         public ActionResult DanhSachDonGiao()
         {
             return View(db.DONGIAOs);
@@ -39,6 +39,15 @@ namespace TheFaceShop.Areas.Admin.Controllers
                 return null;
             }
             return View(dg.CTDGs);
+        }
+
+        protected override void HandleUnknownAction(string actionName)
+        {
+            if (HttpContext.Response.StatusCode == 401 &&
+                HttpContext.Session["user"] == null)
+            {
+                RedirectToAction("DangNhap", "Account");
+            }
         }
     }
 }

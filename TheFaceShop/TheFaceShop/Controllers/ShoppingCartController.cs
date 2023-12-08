@@ -67,6 +67,7 @@ namespace TheFaceShop.Areas.Admin.Controllers
             return PartialView("BagCart");
         }
 
+        [Authorize(Roles = "KhachHang")]
         public ActionResult CheckOut(FormCollection form)
         {
             try

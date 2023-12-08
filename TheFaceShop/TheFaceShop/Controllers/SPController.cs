@@ -17,5 +17,13 @@ namespace TheFaceShop.Controllers
             ViewBag.SPLQ = db.SANPHAMs.Where(n => n.MACTL_SP == sp.MACTL_SP);
             return View(sp);
         }
+        protected override void HandleUnknownAction(string actionName)
+        {
+            if (HttpContext.Response.StatusCode == 401 &&
+                HttpContext.Session["user"] == null)
+            {
+                RedirectToAction("DangNhap", "Account");
+            }
+        }
     }
 }

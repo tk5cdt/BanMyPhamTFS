@@ -11,7 +11,7 @@ namespace TheFaceShop.Areas.Admin.Controllers
     {
         QL_THEFACESHOPEntities db = new QL_THEFACESHOPEntities();
         // GET: Admin/Admin
-        //[Authorize(Roles = "QuanTri")]
+        [Authorize(Roles = "QuanTri")]
         public ActionResult Index()
         {
             ViewBag.SLSP = db.SANPHAMs.Count();
@@ -19,6 +19,28 @@ namespace TheFaceShop.Areas.Admin.Controllers
             ViewBag.Pending = db.DONGIAOs.Where(n => n.TRANGTHAI != "Đã giao" && n.TRANGTHAI != "Đã huỷ").Count();
             ViewBag.DonHang = db.DONGIAOs.Count();
             ViewBag.KhachHang = db.KHACHHANGs.Count();
+            double[] a = new double[12];
+            var kq = db.DoanhThuTungThang();
+            var kq1 = db.ChiTungThang();
+            foreach(var item in kq)
+            {
+                if(item.DoanhThu == null)
+                {
+                    item.DoanhThu = 0;
+                }
+                a[item.Thang - 1] = item.DoanhThu.Value;
+            }
+            double[] b = new double[12];
+            foreach(var item in kq1)
+            {
+                if(item.Chi == null)
+                {
+                    item.Chi = 0;
+                }
+                b[item.Thang - 1] -= item.Chi.Value;
+            }
+            ViewBag.Thang = a;
+            ViewBag.Chi = b;
             var dt = db.DONGIAOs.Where(n => n.TRANGTHAI == "Đã giao").Sum(n => n.TRIGIA);
             if(dt > 0)
             {
@@ -50,10 +72,16 @@ namespace TheFaceShop.Areas.Admin.Controllers
             
             return View();
         }
-        
-        public ActionResult DoanhThuTungThang()
+
+
+
+        protected override void HandleUnknownAction(string actionName)
         {
-            return Json(db.DONGIAOs.Where(n => n.TRANGTHAI == "Đã giao").GroupBy(n => n.NGAYLAP.Value.Month).Select(n => new { thang = n.Key, doanhthu = n.Sum(m => m.TRIGIA) }).ToList(), JsonRequestBehavior.AllowGet);
+            if (HttpContext.Response.StatusCode == 401 &&
+                HttpContext.Session["user"] == null)
+            {
+                RedirectToAction("DangNhap", "Account");
+            }
         }
     }
 }
