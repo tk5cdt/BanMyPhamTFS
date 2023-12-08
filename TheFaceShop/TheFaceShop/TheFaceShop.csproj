@@ -1120,6 +1120,7 @@
     <Compile Include="Areas\Admin\Controllers\AdminController.cs" />
     <Compile Include="Areas\Admin\Controllers\DonGiaoController.cs" />
     <Compile Include="Areas\Admin\Controllers\DonNhapController.cs" />
+    <Compile Include="Areas\Admin\Controllers\NhanVienController.cs" />
     <Compile Include="Areas\Admin\Controllers\SanPhamController.cs" />
     <Compile Include="Controllers\SPController.cs" />
     <Compile Include="Controllers\ShoppingCartController.cs" />
@@ -1266,6 +1267,10 @@
     <Content Include="Areas\Admin\Views\DonGiao\ChiTietDonGiao.cshtml" />
     <Content Include="Areas\Admin\Views\DonNhap\DanhSachDonNhap.cshtml" />
     <Content Include="Areas\Admin\Views\DonNhap\XemChiTietDonNhap.cshtml" />
+    <Content Include="Areas\Admin\Views\Account\Quyen.cshtml" />
+    <Content Include="Areas\Admin\Views\NhanVien\DanhSachNhanVien.cshtml" />
+    <Content Include="Areas\Admin\Views\NhanVien\ThemNhanVien.cshtml" />
+    <Content Include="Areas\Admin\Views\NhanVien\CapNhatNhanVien.cshtml" />
     <None Include="packages.config" />
     <Content Include="Views\Shared\AccountLayoutPage.cshtml" />
     <Content Include="Views\LoaiSanPham\DanhMuc.cshtml" />

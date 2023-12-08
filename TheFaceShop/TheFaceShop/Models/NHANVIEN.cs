@@ -23,14 +23,19 @@ namespace TheFaceShop.Models
         }
     
         public string MANV { get; set; }
+        [Display(Name = "Tên nhân viên")]
         public string TENNV { get; set; }
+        [Display(Name = "Giới tính")]
         public string GIOITINH { get; set; }
         [Required(ErrorMessage = "Số điện thoại không được trống")]
         [RegularExpression(@"^(0|\+84)([0-9]{9}|[0-9]{3}\-[0-9]{3}\-[0-9]{3})$", ErrorMessage = "Hãy nhập số điện thoại hợp lệ")]
+        [Display(Name = "Số điện thoại")]
         public string SDT { get; set; }
         [Required(ErrorMessage = "Mật khẩu thoại không được trống")]
         [StringLength(16, ErrorMessage = "Mật khẩu phải từ 3 đến 16 kí tự", MinimumLength = 3)]
-        [RegularExpression(@"^(.{0,7}|[^0-9]*|[^A-Z])$", ErrorMessage = "Hãy nhập mật khẩu hợp lệ")]
+        //[RegularExpression(@"^(.{0,7}|[^0-9]*|[^A-Z])$", ErrorMessage = "Hãy nhập mật khẩu hợp lệ")]
+        [DataType(DataType.Password)]
+        [Display(Name = "Mật khẩu")]
         public string MATKHAU { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

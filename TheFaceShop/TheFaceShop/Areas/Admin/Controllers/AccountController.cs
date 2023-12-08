@@ -63,5 +63,10 @@ namespace TheFaceShop.Areas.Admin.Controllers
             Session["TENNV"] = null;
             return RedirectToAction("DangNhap", "Account");
         }
+
+        public ActionResult Quyen()
+        {
+            return View(db.QUYENs);
+        }       
     }
 }

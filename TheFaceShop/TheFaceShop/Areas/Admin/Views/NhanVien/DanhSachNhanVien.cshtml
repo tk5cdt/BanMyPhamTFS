@@ -1,0 +1,56 @@
+﻿@model IEnumerable<TheFaceShop.Models.NHANVIEN>
+
+@{
+    ViewBag.Title = "Quản lý nhân viên";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<a href="/Admin/NhanVien/ThemNhanVien"><i class="far fa-plus-square" style="color: black; margin-left: 10px"></i></a>
+
+<div class="row-md-1 bg-white rounded" style="margin-top: 30px">
+    <div class="col overflow-scroll" style="max-height: 75vh">
+        <table class="table text-left align-middle table-striped table-fixed">
+            <thead style="position: sticky; top: 0; background-color: #c1efde; text-align: center; z-index: 1;">
+                <tr>
+                    <th class="col-3">
+                        @Html.DisplayNameFor(model => model.TENNV)
+                    </th>
+                    <th class="col-1">
+                        @Html.DisplayNameFor(model => model.GIOITINH)
+                    </th>
+                    <th class="col-2">
+                        @Html.DisplayNameFor(model => model.SDT)
+                    </th>
+                    <th class="col-2">
+                        @Html.DisplayNameFor(model => model.MATKHAU)
+                    </th>                    
+                    <th class="col-1">Tác vụ</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>                        
+                        <td>
+                            @Html.DisplayFor(modelItem => item.TENNV)
+                        </td>
+                        <td class="text-center">
+                            @Html.DisplayFor(modelItem => item.GIOITINH)
+                        </td>
+                        <td class="text-center">
+                            @Html.DisplayFor(modelItem => item.SDT)
+                        </td>
+                        <td class="text-center">
+                            @Html.DisplayFor(modelItem => item.MATKHAU)
+                        </td>                        
+                        <td class="text-center">
+                            <a href="@Url.Action("CapNhatNhanVien", "NhanVien", new { ma = item.MANV })"><i class="far fa-edit" style="color: black"></i></a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+

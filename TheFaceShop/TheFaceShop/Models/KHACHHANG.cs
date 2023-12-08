@@ -24,6 +24,7 @@ namespace TheFaceShop.Models
         }
     
         public string MAKH { get; set; }
+        [Display(Name = "Tên khách hàng")]
         public string TENKH { get; set; }
 
         [Required(ErrorMessage = "Số điện thoại không được trống")]

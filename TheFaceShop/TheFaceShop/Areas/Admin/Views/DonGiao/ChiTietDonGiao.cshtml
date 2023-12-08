@@ -7,13 +7,14 @@
 
 <h2>Chi tiết đơn giao</h2>
 
+<a href="~/Admin/DonGiao/DanhSachDonGiao" class="d-inline-block"><i class="far fa-list-alt" style="color: black; margin-left:10px"></i></a>
 <div class="row-md-1 bg-white rounded">
     <div class="col overflow-scroll" style="max-height: 75vh">
         <table class="table text-left align-middle table-striped table-fixed">
             <thead style="position: sticky; top: 0; background-color: #c1efde; text-align: center; z-index: 1;">
                 <tr>
                     <th>
-                        @Html.DisplayNameFor(model => model.MASP)
+                        @Html.DisplayNameFor(model => model.SANPHAM.TENSP)
                     </th>
                     <th>
                         @Html.DisplayNameFor(model => model.SOLUONG)
@@ -48,16 +49,16 @@
                                 </div>
                             </div>
                         </td>
-                        <td>
+                        <td style="text-align:center">
                             @Html.DisplayFor(modelItem => item.SOLUONG)
                         </td>
                         <td>
                             @Html.DisplayFor(modelItem => item.THANHTIEN)
                         </td>
-                        <td>
+                        <td style="text-align:center">
                             @Html.DisplayFor(modelItem => item.MUCDODG)
                         </td>
-                        <td>
+                        <td style="text-align:center">
                             @Html.DisplayFor(modelItem => item.NGAYBL)
                         </td>
                         <td>

@@ -1,6 +1,8 @@
 ﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity.Core.Objects;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -49,85 +51,48 @@ namespace TheFaceShop.Areas.Admin.Controllers
             return View();
         }
 
-        //[HttpPost]
-        //public ActionResult TaoDonNHap(DONNHAP dn)
-        //{
-        //    NHANVIEN nv = Session["user"] as NHANVIEN;
-        //    dn.MADN = "DN000";
-        //    dn.MANV = nv.MANV;
-        //    dn.NGAYLAP = DateTime.Now;
-        //    dn.TONGTIEN = float.Parse(Request.Form["tongTien"]);
-        //    dn.TRANGTHAI = "Đã đặt";
-
-        //    CTDN cTDN = new CTDN();
-
-
-        //    return View("DanhSachDonNhap");
-        //}
-
-        //[HttpPost]
-        //public ActionResult TaoDonNhap(FormCollection f)
-        //{
-        //    if (ModelState.IsValid)
-        //    {
-        //        NHANVIEN nv = Session["user"] as NHANVIEN;
-        //        // Tạo đơn nhập mới
-        //        DONNHAP dn = new DONNHAP();
-        //        dn.MADN = "DN000";// Bạn có thể tạo mã đơn nhập theo quy tắc nào đó
-        //        dn.MANV = nv.MANV;
-        //        dn.NGAYLAP = DateTime.Now;
-        //        dn.TONGTIEN = float.Parse(f["tongTien"]);
-        //        dn.TRANGTHAI = "Đã đặt";
-
-        //        // Thêm đơn nhập vào cơ sở dữ liệu
-        //        db.DONNHAPs.Add(dn);
-        //        db.SaveChanges();
-        //        return View("DanhSachDonNhap");
-        //    }
-        //    return View();
-        //}
-
         [HttpPost]
-        public ActionResult TaoDonNhap(CTDN[] chiTietDonNhapList)
+        public ActionResult TaoDonNhap(DONNHAP dn, string chuoiTenSP, string chuoiSoLuong)
         {
-            if (chiTietDonNhapList != null && chiTietDonNhapList.Any())
+            NHANVIEN nv = Session["user"] as NHANVIEN;
+            dn.MADN = "DN000";
+            var obj = new ObjectParameter("id", typeof(string));
+            db.pc_TimMaTiepTheo("DONNHAP", obj);
+            dn.MANV = nv.MANV;
+            dn.NGAYLAP = DateTime.Now;
+            //dn.TONGTIEN = float.Parse(Request.Form["tongTien"]);
+            dn.TRANGTHAI = "Đã đặt";
+            db.DONNHAPs.Add(dn);
+            db.SaveChanges();
+
+            var donNhap = db.DONNHAPs.FirstOrDefault(s => s.MADN == obj.Value.ToString());
+
+            if (!string.IsNullOrEmpty(chuoiTenSP) && !string.IsNullOrEmpty(chuoiSoLuong))
             {
-                NHANVIEN nv = Session["user"] as NHANVIEN;
-                DONNHAP dn = new DONNHAP();
-                dn.MADN = "DN000"; // Có thể tạo mã đơn nhập theo quy tắc nào đó
-                dn.MANV = nv.MANV;
-                dn.NGAYLAP = DateTime.Now;
-                dn.TONGTIEN = float.Parse(Request.Form["tongTien"]); // Lấy tổng tiền từ form
-                dn.TRANGTHAI = "Đã đặt";
+                
+                string[] tenSPs= chuoiTenSP.Split(';');
+                string[] soLuongs = chuoiSoLuong.Split(';');
 
-                db.DONNHAPs.Add(dn);
-                db.SaveChanges();
-
-                foreach (var item in chiTietDonNhapList)
+                for (int i = 0; i < tenSPs.Length; i++)
                 {
-                    // Tìm mã sản phẩm dựa trên tên sản phẩm
-                    string maSP = db.SANPHAMs.FirstOrDefault(sp => sp.TENSP == item.MASP).MASP;
+                    CTDN ct = new CTDN();
+                    ct.MADN = obj.Value.ToString();
 
-                    if (maSP != null)
+                    string currentTenSP = tenSPs[i]; // Lưu trữ giá trị tạm thời
+
+                    // Tìm sản phẩm dựa trên tên
+                    SANPHAM sp = db.SANPHAMs.FirstOrDefault(s => s.TENSP == currentTenSP);
+
+                    if (sp != null && int.TryParse(soLuongs[i], out int quantity))
                     {
-                        // Tạo chi tiết đơn nhập và lưu vào cơ sở dữ liệu
-                        CTDN chiTietDN = new CTDN
-                        {
-                            MADN = dn.MADN,
-                            MASP = maSP,
-                            SOLUONG = item.SOLUONG,
-                            THANHTIEN = item.THANHTIEN
-                        };
-
-                        db.CTDNs.Add(chiTietDN);
+                        ct.MASP = sp.MASP; // Gán MASP của sản phẩm
+                        ct.SOLUONG = quantity;
+                        donNhap.CTDNs.Add(ct);
                     }
-                }
-
-                db.SaveChanges();
-
-                return View("DanhSachDonNhap");
+                    db.SaveChanges();
+                }                                  
             }
-            return Json(new { success = false });
-        }
+            return RedirectToAction("DanhSachDonNhap");
+        }       
     }
 }

@@ -98,3 +98,8 @@
     display: none;
     padding-left: 8px;
 }
+
+.dropdown-menu-right {
+    right: 0 !important;
+    left: auto !important;
+}

@@ -1,7 +1,7 @@
 ﻿@model TheFaceShop.Models.SANPHAM
 
 @{
-    ViewBag.Title = "Cập nhật sản phẩm";
+    ViewBag.Title = "Quản lý sản phẩm";
     Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
 }
 
@@ -12,80 +12,136 @@
 {
     @Html.AntiForgeryToken()
 
-    <div class="form-horizontal bg-white rounded">
+<div class="form-horizontal bg-white rounded">
 
-        @Html.ValidationSummary(true)
-        <div class="form-group row p-3">
-            <label class="control-label col-sm-2 h5" for="hinhAnh">Ảnh đại diện</label>
-            <div class="col-sm-10">
-                <div id="anh" style="margin-bottom:5px"><img src="~/HinhAnhSP/@Model.ANHDAIDIEN" class="img-fluid" style="width:150px; height:150px"/></div>
-                <input type="file" class="form-control" name="images" id="inputAnh">
-            </div>
-        </div>
-
-        <div class="form-group row p-3">
-            <label class="control-label col-sm-2 h5" for="name">Tên sản phẩm</label>
-            <div class="col-sm-10">
-                <input type="text" class="form-control" name="tenSP" value="@Model.TENSP">
-            </div>
-        </div>
-
-        <div class="form-group row p-3">
-            <label class="control-label col-sm-2 h5" for="anhSP">Ảnh sản phẩm</label>
-            <div class="col-sm-10">
-                <div id="listAnhSP">
-                    @foreach (var item in Model.HINHANHSPs)
-                    {
-                        <div style="display: inline-block; margin-left:5px; margin-bottom:5px"><img src="~/HinhAnhSP/@item.HINHANH" width="100" /><a href="#" class="btn-delImg"><i class="fas fa-times"></i></a></div>
-                    }
-                </div>
-                <div class="clear:both"></div>
-                <input type="button" class="btn btn-light" id="chonAnh" value="Chọn ảnh" style="background-color:#c1efde" />
-            </div>
-        </div>
-
-        <div class="form-group row p-3">
-            <label class="control-label col-sm-2 h5" for="giaBan">Giá bán</label>
-            <div class="col-sm-10"><input type="number" class="form-control" name="giaBan" value="@Model.GIABAN"></div>
-        </div>
-
-        <div class="form-group row p-3">
-            <label class="control-label col-sm-2 h5" for="giaBan">Giá nhập</label>
-            <div class="col-sm-10"><input type="number" class="form-control" name="giaNhap" value="@Model.GIANHAP"></div>
-        </div>
-
-        <div class="form-group row p-3">
-            <label class="control-label col-sm-2 h5" for="loaiSP">Loại sản phẩm</label>
-            <div class="col-sm-10">
-                <input type="text" class="form-control" name="loaiSP" value="@Model.CHITIETLOAISP.TENCTL_SP">
-            </div>
-
-        </div>
-
-        <div class="form-group row p-3">
-            <label class="control-label col-sm-2 h5" for="dangBaoChe">Dạng bào chế</label>
-            <div class="col-sm-10"><input type="text" class="form-control" name="dangBaoChe" value="@Model.DANGBAOCHE.TENDANG"></div>
-        </div>
-
-        <div class="form-group row p-3">
-            <label class="control-label col-sm-2 h5" for="quyCach">Quy cách đóng gói</label>
-            <div class="col-sm-10"><input type="text" class="form-control" name="quyCach" value="@Model.QUYCACHDONGGOI.TENQCDG"></div>
-        </div>
-
-        <div class="form-group row p-3">
-            <label class="control-label col-sm-2 h5" for="congDung">Công dụng</label>
-            <div class="col-sm-10"><input type="text" class="form-control" name="congDung" value="@Model.CONGDUNG"></div>
-        </div>
-
-        <div class="form-group row p-3">
-            <label class="control-label col-sm-2 h5" for="noiDung">Nội dung</label>
-            <div class="col-sm-10"><textarea class="form-control rounded" id="noiDung">@Model.NOIDUNG</textarea></div>
-        </div>
-
-        <div class="form-group row p-3">
-            <input type="submit" class="btn btn-light" id="capNhat" value="Cập nhật" style="background-color:#c1efde" />
+    @Html.ValidationSummary(true)
+    <div class="form-group row p-3">
+        <label class="control-label col-sm-2 h5" for="hinhAnh">Ảnh đại diện</label>
+        <div class="col-sm-10">
+            <div id="anh" style="margin-bottom:5px"><img src="~/HinhAnhSP/@Model.ANHDAIDIEN" class="img-fluid" style="width:150px; height:150px" /></div>
+            <input type="file" class="form-control" name="f" id="inputAnh">
+            <input type="hidden" id="anhDaiDien" name="anhDaiDien" value="@Model.ANHDAIDIEN" />
         </div>
     </div>
+
+    <div class="form-group row p-3">
+        <label class="control-label col-sm-2 h5" for="name">Tên sản phẩm</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" name="tenSP" value="@Model.TENSP">
+        </div>
+    </div>
+    @if (ViewBag.TB != null)
+    {
+        <div class="form-group row p-3 text-center" style="color: red">
+            <p>@ViewBag.TB</p>
+        </div>
+    }
+
+    <div class="form-group row p-3">
+        <label class="control-label col-sm-2 h5" for="anhSP">Ảnh sản phẩm</label>
+        <div class="col-sm-10">
+            <div id="listAnhSP">
+                @foreach (var item in Model.HINHANHSPs)
+                {
+                    <div style="display: inline-block; margin-left:5px; margin-bottom:5px"><img src="~/HinhAnhSP/@item.HINHANH" width="100" /><a href="#" class="btn-delImg"><i class="fas fa-times"></i></a></div>
+                    <input type="hidden" class="hinhAnhItem" name="hinhAnhItem" value="@item.HINHANH" />
+                }
+            </div>
+            <div class="clear:both"></div>
+            <input type="hidden" id="selectedImages" name="selectedImages" />
+            <input type="button" class="btn btn-light" id="chonAnh" value="Chọn ảnh" style="background-color:#c1efde" />
+        </div>
+    </div>
+
+    <div class="form-group row p-3">
+        <label class="control-label col-sm-2 h5" for="giaBan">Giá bán</label>
+        <div class="col-sm-10"><input type="number" class="form-control" name="giaBan" value="@Model.GIABAN"></div>
+    </div>
+
+    <div class="form-group row p-3">
+        <label class="control-label col-sm-2 h5" for="giaBan">Giá nhập</label>
+        <div class="col-sm-10"><input type="number" class="form-control" name="giaNhap" value="@Model.GIANHAP"></div>
+    </div>
+
+    <div class="form-group row p-3">
+        <label class="control-label col-sm-2 h5" for="loaiSP">Loại sản phẩm</label>
+        <div class="col-sm-10">
+            <select class="form-control" id="MACTL_SP" name="MACTL_SP">
+                @foreach (var item in ViewBag.MACTL_SP)
+                {
+                    if (item.MACTL_SP == Model.MACTL_SP)
+                    {
+                        <option value="@Model.MACTL_SP" selected>@item.TENCTL_SP</option>
+                    }
+                    else
+                    {
+                        <option value="@Model.MACTL_SP">@item.TENCTL_SP</option>
+                    }
+                }
+            </select>
+            @Html.ValidationMessageFor(model => model.MACTL_SP, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group row p-3">
+        <label class="control-label col-sm-2 h5" for="dangBaoChe">Dạng bào chế</label>
+        <div class="col-sm-10">
+            <select class="form-control" id="MADBC" name="MADBC">
+                @foreach (var item in ViewBag.MADBC)
+                {
+                    if (item.MADBC == Model.MADBC)
+                    {
+                        <option value="@Model.MADBC" selected>@item.TENDANG</option>
+                    }
+                    else
+                    {
+                        <option value="@Model.MADBC">@item.TENDANG</option>
+                    }
+                }
+            </select>
+            @Html.ValidationMessageFor(model => model.MADBC, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group row p-3">
+        <label class="control-label col-sm-2 h5" for="thanhPhan">Thành phần</label>
+        <div class="col-sm-10"><input type="text" class="form-control" name="thanhPhan" value="@Model.THANHPHAN"></div>
+    </div>
+
+    <div class="form-group row p-3">
+        <label class="control-label col-sm-2 h5" for="quyCach">Quy cách đóng gói</label>
+        <div class="col-sm-10">
+            <select class="form-control" id="MAQCDG" name="MAQCDG">
+                @foreach (var item in ViewBag.MAQCDG)
+                {
+                    if (item.MAQCDG == Model.MAQCDG)
+                    {
+                        <option value="@Model.MAQCDG" selected>@item.TENQCDG</option>
+                    }
+                    else
+                    {
+                        <option value="@Model.MAQCDG">@item.TENQCDG</option>
+                    }
+                }
+            </select>
+            @Html.ValidationMessageFor(model => model.MAQCDG, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group row p-3">
+        <label class="control-label col-sm-2 h5" for="congDung">Công dụng</label>
+        <div class="col-sm-10"><input type="text" class="form-control" name="congDung" value="@Model.CONGDUNG"></div>
+    </div>
+
+    <div class="form-group row p-3">
+        <label class="control-label col-sm-2 h5" for="noiDung">Nội dung</label>
+        <div class="col-sm-10"><textarea class="form-control rounded" id="noiDung" name="noiDung">@Model.NOIDUNG</textarea></div>
+    </div>
+
+    <div class="form-group row p-3">
+        <input type="submit" class="btn btn-light" id="capNhat" value="Cập nhật" style="background-color:#c1efde" />
+    </div>
+</div>
 }
 
 @section Scripts{

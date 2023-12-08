@@ -1,0 +1,62 @@
+﻿@model IEnumerable<TheFaceShop.Models.QUYEN>
+
+@{
+    ViewBag.Title = "Quản lý quyền";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+@using (Html.BeginForm("Quyen", "Acount", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    <div class="form-horizontal bg-white rounded row py-5" style="height: 400px; margin-top: 50px">
+        <div class="col-sm-6 py-5 border" style="height: 300px">
+            <div class="form-group row p-3">
+                <label class="control-label col-sm-3 h5" for="maQuyen">Mã quyền</label>
+                <div class="col-sm-9"><input type="text" class="form-control" name="maQuyen"></div>
+            </div>
+            <div class="form-group row p-3">
+                <label class="control-label col-sm-3 h5" for="tenQuyen">Tên quyền</label>
+                <div class="col-sm-9"><input type="text" class="form-control" name="tenQuyen"></div>
+            </div>
+            <div class="form-group row p-3">
+                <input type="submit" class="btn btn-light" id="taoQuyen" value="Tạo" style="background-color:#c1efde" />
+            </div>
+        </div>
+
+        <div class="col-sm-6 py-5 overflow-scroll border rounded" style="max-height: 300px">
+            <table class="table text-left align-middle table-striped table-fixed">
+                <thead style="position: sticky; top: 0; background-color: #c1efde; text-align: center; z-index: 1;">
+                    <tr>
+                        <th class="col-3">
+                            @Html.DisplayNameFor(model => model.MAQUYEN)
+                        </th>
+                        <th class="col-1">
+                            @Html.DisplayNameFor(model => model.TENQUYEN)
+                        </th>
+                        <th class="col-1">Tác vụ</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>                           
+                            <td>
+                                @Html.DisplayFor(modelItem => item.MAQUYEN)
+                            </td>
+                            <td class="text-center">
+                                @Html.DisplayFor(modelItem => item.TENQUYEN)
+                            </td>                            
+                            <td class="text-center">
+                                <a href="#"><i class="far fa-edit" style="color: black"></i></a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+
+        
+    </div>
+}
