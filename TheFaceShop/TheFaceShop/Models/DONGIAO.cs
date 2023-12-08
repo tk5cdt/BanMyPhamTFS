@@ -36,7 +36,7 @@ namespace TheFaceShop.Models
         public Nullable<double> TRIGIA { get; set; }
         [Display(Name = "Trạng thái")]
         public string TRANGTHAI { get; set; }
-    
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CTDG> CTDGs { get; set; }
         public virtual KHACHHANG KHACHHANG { get; set; }
