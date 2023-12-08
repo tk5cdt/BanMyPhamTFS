@@ -11,6 +11,7 @@ namespace TheFaceShop.Models
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
     
     public partial class KHACHHANG
     {
@@ -23,7 +24,7 @@ namespace TheFaceShop.Models
         }
     
         public string MAKH { get; set; }
-        [Display(Name = "TÃªn khÃ¡ch hÃ ng")]
+        [Display(Name = "Tên khách hàng")]
         public string TENKH { get; set; }
         public string SDT { get; set; }
     

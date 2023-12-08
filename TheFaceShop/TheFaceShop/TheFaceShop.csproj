@@ -1134,6 +1134,9 @@
     <Compile Include="Models\ChiThuCacQuy_Result.cs">
       <DependentUpon>QL_TFS.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\ChiThuCacQuy_Result1.cs">
+      <DependentUpon>QL_TFS.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\CHITIETGIOHANG.cs">
       <DependentUpon>QL_TFS.tt</DependentUpon>
     </Compile>
@@ -1144,6 +1147,9 @@
       <DependentUpon>QL_TFS.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ChiTungThang_Result.cs">
+      <DependentUpon>QL_TFS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ChiTungThang_Result1.cs">
       <DependentUpon>QL_TFS.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\CTDG.cs">
@@ -1158,7 +1164,13 @@
     <Compile Include="Models\DoanhThuCacQuy_Result.cs">
       <DependentUpon>QL_TFS.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\DoanhThuCacQuy_Result1.cs">
+      <DependentUpon>QL_TFS.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\DoanhThuTungThang_Result.cs">
+      <DependentUpon>QL_TFS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DoanhThuTungThang_Result1.cs">
       <DependentUpon>QL_TFS.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\DONGIAO.cs">
@@ -1185,10 +1197,19 @@
     <Compile Include="Models\LocSanPhamTheoGia_Result.cs">
       <DependentUpon>QL_TFS.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\LocSanPhamTheoGia_Result1.cs">
+      <DependentUpon>QL_TFS.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\LoiNhuanTungNgay_Result.cs">
       <DependentUpon>QL_TFS.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\LoiNhuanTungNgay_Result1.cs">
+      <DependentUpon>QL_TFS.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\LoiNhuanTungThang_Result.cs">
+      <DependentUpon>QL_TFS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\LoiNhuanTungThang_Result1.cs">
       <DependentUpon>QL_TFS.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\NHANVIEN.cs">

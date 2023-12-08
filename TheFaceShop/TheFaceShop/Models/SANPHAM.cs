@@ -23,9 +23,9 @@ namespace TheFaceShop.Models
             this.CTDNs = new HashSet<CTDN>();
             this.HINHANHSPs = new HashSet<HINHANHSP>();
         }
-    
+
         public string MASP { get; set; }
-        [Display(Name ="Tên sản phẩm")]
+        [Display(Name = "Tên sản phẩm")]
         public string TENSP { get; set; }
         public string MACTL_SP { get; set; }
         [Display(Name = "Giá bán")]
@@ -45,7 +45,7 @@ namespace TheFaceShop.Models
         public string DUNGTICH { get; set; }
         [Display(Name = "Trạng thái")]
         public string TRANGTHAI { get; set; }
-    
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CHITIETGIOHANG> CHITIETGIOHANGs { get; set; }
         public virtual CHITIETLOAISP CHITIETLOAISP { get; set; }
