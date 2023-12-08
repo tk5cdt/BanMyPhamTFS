@@ -23,7 +23,7 @@ namespace TheFaceShop.Models
 
         [Display(Name = "Mã đơn nhập")]
         public string MADN { get; set; }
-        [Display(Name ="Tên nhân viên")]
+        [Display(Name = "Tên nhân viên")]
         public string MANV { get; set; }
         [Display(Name = "Ngày lập")]
         public Nullable<System.DateTime> NGAYLAP { get; set; }
@@ -31,7 +31,7 @@ namespace TheFaceShop.Models
         public Nullable<double> TONGTIEN { get; set; }
         [Display(Name = "Trạng thái")]
         public string TRANGTHAI { get; set; }
-    
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CTDN> CTDNs { get; set; }
         public virtual NHANVIEN NHANVIEN { get; set; }

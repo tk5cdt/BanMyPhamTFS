@@ -21,7 +21,7 @@ namespace TheFaceShop.Models
         public Nullable<int> SOLUONG { get; set; }
         [Display(Name = "Thành tiền")]
         public Nullable<double> THANHTIEN { get; set; }
-    
+
         public virtual DONNHAP DONNHAP { get; set; }
         public virtual SANPHAM SANPHAM { get; set; }
     }

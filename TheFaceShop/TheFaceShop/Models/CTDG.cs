@@ -12,9 +12,8 @@ namespace TheFaceShop.Models
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
-
     public partial class CTDG
-    {      
+    {
         public string MADG { get; set; }
         public string MASP { get; set; }
         [Display(Name = "Số lượng")]

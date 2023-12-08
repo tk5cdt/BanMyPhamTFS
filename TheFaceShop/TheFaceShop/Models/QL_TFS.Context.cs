@@ -49,6 +49,112 @@ namespace TheFaceShop.Models
         public virtual DbSet<SANPHAM> SANPHAMs { get; set; }
         public virtual DbSet<TINHTHANH> TINHTHANHs { get; set; }
     
+        [DbFunction("QL_THEFACESHOPEntities", "ChiNgay")]
+        public virtual IQueryable<Nullable<double>> ChiNgay(Nullable<System.DateTime> ngayBatDau, Nullable<System.DateTime> ngayKetThuc)
+        {
+            var ngayBatDauParameter = ngayBatDau.HasValue ?
+                new ObjectParameter("NgayBatDau", ngayBatDau) :
+                new ObjectParameter("NgayBatDau", typeof(System.DateTime));
+    
+            var ngayKetThucParameter = ngayKetThuc.HasValue ?
+                new ObjectParameter("NgayKetThuc", ngayKetThuc) :
+                new ObjectParameter("NgayKetThuc", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<Nullable<double>>("[QL_THEFACESHOPEntities].[ChiNgay](@NgayBatDau, @NgayKetThuc)", ngayBatDauParameter, ngayKetThucParameter);
+        }
+    
+        [DbFunction("QL_THEFACESHOPEntities", "ChiThuCacQuy")]
+        public virtual IQueryable<ChiThuCacQuy_Result1> ChiThuCacQuy()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<ChiThuCacQuy_Result1>("[QL_THEFACESHOPEntities].[ChiThuCacQuy]()");
+        }
+    
+        [DbFunction("QL_THEFACESHOPEntities", "ChiTrongQuy")]
+        public virtual IQueryable<Nullable<double>> ChiTrongQuy(Nullable<int> quy)
+        {
+            var quyParameter = quy.HasValue ?
+                new ObjectParameter("Quy", quy) :
+                new ObjectParameter("Quy", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<Nullable<double>>("[QL_THEFACESHOPEntities].[ChiTrongQuy](@Quy)", quyParameter);
+        }
+    
+        [DbFunction("QL_THEFACESHOPEntities", "ChiTungThang")]
+        public virtual IQueryable<ChiTungThang_Result1> ChiTungThang()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<ChiTungThang_Result1>("[QL_THEFACESHOPEntities].[ChiTungThang]()");
+        }
+    
+        [DbFunction("QL_THEFACESHOPEntities", "DoanhThuCacQuy")]
+        public virtual IQueryable<DoanhThuCacQuy_Result1> DoanhThuCacQuy()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<DoanhThuCacQuy_Result1>("[QL_THEFACESHOPEntities].[DoanhThuCacQuy]()");
+        }
+    
+        [DbFunction("QL_THEFACESHOPEntities", "DoanhThuTrongQuy")]
+        public virtual IQueryable<Nullable<double>> DoanhThuTrongQuy(Nullable<int> quy)
+        {
+            var quyParameter = quy.HasValue ?
+                new ObjectParameter("Quy", quy) :
+                new ObjectParameter("Quy", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<Nullable<double>>("[QL_THEFACESHOPEntities].[DoanhThuTrongQuy](@Quy)", quyParameter);
+        }
+    
+        [DbFunction("QL_THEFACESHOPEntities", "DoanhThuTungNgay")]
+        public virtual IQueryable<Nullable<double>> DoanhThuTungNgay(Nullable<System.DateTime> ngayBatDau, Nullable<System.DateTime> ngayKetThuc)
+        {
+            var ngayBatDauParameter = ngayBatDau.HasValue ?
+                new ObjectParameter("NgayBatDau", ngayBatDau) :
+                new ObjectParameter("NgayBatDau", typeof(System.DateTime));
+    
+            var ngayKetThucParameter = ngayKetThuc.HasValue ?
+                new ObjectParameter("NgayKetThuc", ngayKetThuc) :
+                new ObjectParameter("NgayKetThuc", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<Nullable<double>>("[QL_THEFACESHOPEntities].[DoanhThuTungNgay](@NgayBatDau, @NgayKetThuc)", ngayBatDauParameter, ngayKetThucParameter);
+        }
+    
+        [DbFunction("QL_THEFACESHOPEntities", "DoanhThuTungThang")]
+        public virtual IQueryable<DoanhThuTungThang_Result1> DoanhThuTungThang()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<DoanhThuTungThang_Result1>("[QL_THEFACESHOPEntities].[DoanhThuTungThang]()");
+        }
+    
+        [DbFunction("QL_THEFACESHOPEntities", "LocSanPhamTheoGia")]
+        public virtual IQueryable<LocSanPhamTheoGia_Result1> LocSanPhamTheoGia(Nullable<int> giaDau, Nullable<int> giaCuoi)
+        {
+            var giaDauParameter = giaDau.HasValue ?
+                new ObjectParameter("giaDau", giaDau) :
+                new ObjectParameter("giaDau", typeof(int));
+    
+            var giaCuoiParameter = giaCuoi.HasValue ?
+                new ObjectParameter("giaCuoi", giaCuoi) :
+                new ObjectParameter("giaCuoi", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<LocSanPhamTheoGia_Result1>("[QL_THEFACESHOPEntities].[LocSanPhamTheoGia](@giaDau, @giaCuoi)", giaDauParameter, giaCuoiParameter);
+        }
+    
+        [DbFunction("QL_THEFACESHOPEntities", "LoiNhuanTungNgay")]
+        public virtual IQueryable<LoiNhuanTungNgay_Result1> LoiNhuanTungNgay(Nullable<System.DateTime> ngayBatDau, Nullable<System.DateTime> ngayKetThuc)
+        {
+            var ngayBatDauParameter = ngayBatDau.HasValue ?
+                new ObjectParameter("NgayBatDau", ngayBatDau) :
+                new ObjectParameter("NgayBatDau", typeof(System.DateTime));
+    
+            var ngayKetThucParameter = ngayKetThuc.HasValue ?
+                new ObjectParameter("NgayKetThuc", ngayKetThuc) :
+                new ObjectParameter("NgayKetThuc", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<LoiNhuanTungNgay_Result1>("[QL_THEFACESHOPEntities].[LoiNhuanTungNgay](@NgayBatDau, @NgayKetThuc)", ngayBatDauParameter, ngayKetThucParameter);
+        }
+    
+        [DbFunction("QL_THEFACESHOPEntities", "LoiNhuanTungThang")]
+        public virtual IQueryable<LoiNhuanTungThang_Result1> LoiNhuanTungThang()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<LoiNhuanTungThang_Result1>("[QL_THEFACESHOPEntities].[LoiNhuanTungThang]()");
+        }
+    
         public virtual int pc_InsertSanPham(string tensp, string loai, Nullable<int> giaban, Nullable<int> gianhap, string dangbaoche, string qcdonggoi, string anhdaidien, string noidung, string congdung, Nullable<int> tonkho, string thanhphan, string dungtich)
         {
             var tenspParameter = tensp != null ?
@@ -279,112 +385,6 @@ namespace TheFaceShop.Models
                 new ObjectParameter("mk", typeof(string));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_InsertNhanVien", tenParameter, gioitinhParameter, sdtParameter, mkParameter);
-        }
-    
-        [DbFunction("QL_THEFACESHOPEntities", "ChiNgay")]
-        public virtual IQueryable<Nullable<double>> ChiNgay(Nullable<System.DateTime> ngayBatDau, Nullable<System.DateTime> ngayKetThuc)
-        {
-            var ngayBatDauParameter = ngayBatDau.HasValue ?
-                new ObjectParameter("NgayBatDau", ngayBatDau) :
-                new ObjectParameter("NgayBatDau", typeof(System.DateTime));
-    
-            var ngayKetThucParameter = ngayKetThuc.HasValue ?
-                new ObjectParameter("NgayKetThuc", ngayKetThuc) :
-                new ObjectParameter("NgayKetThuc", typeof(System.DateTime));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<Nullable<double>>("[QL_THEFACESHOPEntities].[ChiNgay](@NgayBatDau, @NgayKetThuc)", ngayBatDauParameter, ngayKetThucParameter);
-        }
-    
-        [DbFunction("QL_THEFACESHOPEntities", "ChiThuCacQuy")]
-        public virtual IQueryable<ChiThuCacQuy_Result> ChiThuCacQuy()
-        {
-            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<ChiThuCacQuy_Result>("[QL_THEFACESHOPEntities].[ChiThuCacQuy]()");
-        }
-    
-        [DbFunction("QL_THEFACESHOPEntities", "ChiTrongQuy")]
-        public virtual IQueryable<Nullable<double>> ChiTrongQuy(Nullable<int> quy)
-        {
-            var quyParameter = quy.HasValue ?
-                new ObjectParameter("Quy", quy) :
-                new ObjectParameter("Quy", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<Nullable<double>>("[QL_THEFACESHOPEntities].[ChiTrongQuy](@Quy)", quyParameter);
-        }
-    
-        [DbFunction("QL_THEFACESHOPEntities", "ChiTungThang")]
-        public virtual IQueryable<ChiTungThang_Result> ChiTungThang()
-        {
-            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<ChiTungThang_Result>("[QL_THEFACESHOPEntities].[ChiTungThang]()");
-        }
-    
-        [DbFunction("QL_THEFACESHOPEntities", "DoanhThuCacQuy")]
-        public virtual IQueryable<DoanhThuCacQuy_Result> DoanhThuCacQuy()
-        {
-            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<DoanhThuCacQuy_Result>("[QL_THEFACESHOPEntities].[DoanhThuCacQuy]()");
-        }
-    
-        [DbFunction("QL_THEFACESHOPEntities", "DoanhThuTrongQuy")]
-        public virtual IQueryable<Nullable<double>> DoanhThuTrongQuy(Nullable<int> quy)
-        {
-            var quyParameter = quy.HasValue ?
-                new ObjectParameter("Quy", quy) :
-                new ObjectParameter("Quy", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<Nullable<double>>("[QL_THEFACESHOPEntities].[DoanhThuTrongQuy](@Quy)", quyParameter);
-        }
-    
-        [DbFunction("QL_THEFACESHOPEntities", "DoanhThuTungNgay")]
-        public virtual IQueryable<Nullable<double>> DoanhThuTungNgay(Nullable<System.DateTime> ngayBatDau, Nullable<System.DateTime> ngayKetThuc)
-        {
-            var ngayBatDauParameter = ngayBatDau.HasValue ?
-                new ObjectParameter("NgayBatDau", ngayBatDau) :
-                new ObjectParameter("NgayBatDau", typeof(System.DateTime));
-    
-            var ngayKetThucParameter = ngayKetThuc.HasValue ?
-                new ObjectParameter("NgayKetThuc", ngayKetThuc) :
-                new ObjectParameter("NgayKetThuc", typeof(System.DateTime));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<Nullable<double>>("[QL_THEFACESHOPEntities].[DoanhThuTungNgay](@NgayBatDau, @NgayKetThuc)", ngayBatDauParameter, ngayKetThucParameter);
-        }
-    
-        [DbFunction("QL_THEFACESHOPEntities", "DoanhThuTungThang")]
-        public virtual IQueryable<DoanhThuTungThang_Result> DoanhThuTungThang()
-        {
-            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<DoanhThuTungThang_Result>("[QL_THEFACESHOPEntities].[DoanhThuTungThang]()");
-        }
-    
-        [DbFunction("QL_THEFACESHOPEntities", "LoiNhuanTungNgay")]
-        public virtual IQueryable<LoiNhuanTungNgay_Result> LoiNhuanTungNgay(Nullable<System.DateTime> ngayBatDau, Nullable<System.DateTime> ngayKetThuc)
-        {
-            var ngayBatDauParameter = ngayBatDau.HasValue ?
-                new ObjectParameter("NgayBatDau", ngayBatDau) :
-                new ObjectParameter("NgayBatDau", typeof(System.DateTime));
-    
-            var ngayKetThucParameter = ngayKetThuc.HasValue ?
-                new ObjectParameter("NgayKetThuc", ngayKetThuc) :
-                new ObjectParameter("NgayKetThuc", typeof(System.DateTime));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<LoiNhuanTungNgay_Result>("[QL_THEFACESHOPEntities].[LoiNhuanTungNgay](@NgayBatDau, @NgayKetThuc)", ngayBatDauParameter, ngayKetThucParameter);
-        }
-    
-        [DbFunction("QL_THEFACESHOPEntities", "LoiNhuanTungThang")]
-        public virtual IQueryable<LoiNhuanTungThang_Result> LoiNhuanTungThang()
-        {
-            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<LoiNhuanTungThang_Result>("[QL_THEFACESHOPEntities].[LoiNhuanTungThang]()");
-        }
-    
-        [DbFunction("QL_THEFACESHOPEntities", "LocSanPhamTheoGia")]
-        public virtual IQueryable<LocSanPhamTheoGia_Result> LocSanPhamTheoGia(Nullable<int> giaDau, Nullable<int> giaCuoi)
-        {
-            var giaDauParameter = giaDau.HasValue ?
-                new ObjectParameter("giaDau", giaDau) :
-                new ObjectParameter("giaDau", typeof(int));
-    
-            var giaCuoiParameter = giaCuoi.HasValue ?
-                new ObjectParameter("giaCuoi", giaCuoi) :
-                new ObjectParameter("giaCuoi", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<LocSanPhamTheoGia_Result>("[QL_THEFACESHOPEntities].[LocSanPhamTheoGia](@giaDau, @giaCuoi)", giaDauParameter, giaCuoiParameter);
         }
     }
 }
