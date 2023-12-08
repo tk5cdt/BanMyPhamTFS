@@ -4,7 +4,9 @@
     ViewBag.Title = "Chi tiết sản phẩm";
     Layout = "~/Views/Shared/AccountLayoutPage.cshtml";
 }
-
+@section style{
+    <link href="~/Content/css/thuoc.css" rel="stylesheet" />
+}
 <div class="container mt-5 mb-5 w-100" style="padding-top: 100px;">
     <div class="row d-flex justify-content-center">
         <div class="col-md-12">
@@ -17,7 +19,7 @@
                                      src="~/HinhAnhSP/@Model.ANHDAIDIEN" />
                             </div>
                             <div class="d-flex flex-row thumbnail text-center" style="gap: 5px">
-                                @foreach(var item in Model.HINHANHSPs)
+                                @foreach (var item in Model.HINHANHSPs)
                                 {
                                     <img class="mb-3" onclick="change_image(this)"
                                          src="~/HinhAnhSP/@item.HINHANH"
@@ -69,12 +71,12 @@
         <h1 style="text-align: center; margin-bottom: 100px; font-size: 45px; font-style: italic; font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; color: rgb(228, 42, 42);">
             SẢN PHẨM LIÊN QUAN
         </h1>
-        @foreach(var item in ViewBag.SPLQ)
+        @foreach (var item in ViewBag.SPLQ)
         {
             <div class="row row-cols-1 row-cols-md-3 g-4">
                 <div class="col d-flex align-items-stretch justify-content-center">
                     <div class="card shadow border-0" style="max-width: 300px">
-                        <img src="~/HinhAnhSP/@item.ANHDAIDIEN" alt="" class="card-img-top" >
+                        <img src="~/HinhAnhSP/@item.ANHDAIDIEN" alt="" class="card-img-top">
                         <div class="card-body">
                             <h5 class="card-title">@item.TENSP</h5>
                             <p class="card-text">@item.CONGDUNG</p>
@@ -96,7 +98,7 @@
                 <h1>Comments</h1>
                 @foreach (var item in Model.CTDGs)
                 {
-                    if(item.BINHLUAN != null)
+                    if (item.BINHLUAN != null)
                     {
                         <div class="comment mt-4 text-justify float-left">
                             <h4>@item.DONGIAO.KHACHHANG.TENKH</h4>
@@ -151,4 +153,4 @@
             image.src = tmp;
         }
     </script>
-    }
+}
