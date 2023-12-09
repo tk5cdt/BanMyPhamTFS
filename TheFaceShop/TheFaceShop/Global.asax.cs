@@ -69,6 +69,10 @@ namespace TheFaceShop
                     }
                 }
             }
+            else
+            {
+                Context.Response.Redirect("/Home/TrangChu");
+            }
         }
     }
 }
