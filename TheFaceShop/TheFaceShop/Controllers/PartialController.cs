@@ -57,8 +57,10 @@ namespace TheFaceShop.Controllers
 
         public ActionResult Search(string searchTerm)
         {
-            var products = db.SANPHAMs.Where(p => p.TENSP.Contains(searchTerm)).ToList();
-            return View(products);
+            var sanPhams = db.SANPHAMs
+                        .Where(p => p.TENSP.ToLower().Contains(searchTerm.ToLower()) || p.THANHPHAN.ToLower().Contains(searchTerm.ToLower()) || p.CONGDUNG.ToLower().Contains(searchTerm.ToLower()));
+
+            return View(sanPhams);
         }
 
         public ActionResult FilterBySubcategory(string subcategoryId)
