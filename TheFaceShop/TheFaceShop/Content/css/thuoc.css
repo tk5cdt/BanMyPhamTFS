@@ -1,30 +1,42 @@
 /* Google fonts import link */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
-.wrapper{
-  height: 40px;
-  width: 150px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: #FFF;
-  border-radius: 12px;
-  box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+.ctsp {
+    border-radius: 50px;
+    background: #e0e0e0;
+    box-shadow: 20px 20px 60px #bebebe, -20px -20px 60px #ffffff;
 }
-.wrapper span, input{
-  width: 100%;
-  text-align: center;
-  font-size: 20px;
-  font-weight: 600;
-  cursor: pointer;
-  user-select: none;
-  outline: none;
-  border: none;
+
+#show-more {
+    display: inline-block;
 }
-.wrapper input.num{
-  font-size: 16px;
-  outline: none;
-  border: none;
-  border-right: 2px solid rgba(0,0,0,0.2);
-  border-left: 2px solid rgba(0,0,0,0.2);
-  pointer-events: none;
+
+.box1 button {
+    margin: 0 auto;
+    background: transparent;
+    border:1px solid #009d63;
+    border-radius: 50px;
+    color: #009d63;
+    text-transform: uppercase;
+    font-size: 20px;
+    padding: 0 20px;
+    cursor: pointer;
+}
+
+#show-less {
+    display: none;
+}
+
+.boxnd {
+    overflow: hidden;
+    line-height: 1.5;
+    transition: 0.5s ease-in-out;
+}
+
+.bg {
+    transition: 0.5s ease-in-out;
+    -webkit-mask-image: linear-gradient(#fff, rgba(255, 255, 255, 0.1));
+}
+
+.max-height {
+    max-height: 150px;
 }

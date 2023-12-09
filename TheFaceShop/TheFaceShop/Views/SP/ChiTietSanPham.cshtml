@@ -7,10 +7,10 @@
 @section style{
     <link href="~/Content/css/thuoc.css" rel="stylesheet" />
 }
-<div class="container mt-5 mb-5 w-100" style="padding-top: 100px;">
-    <div class="row d-flex justify-content-center">
-        <div class="col-md-12">
-            <div class="card w-100" style="transform: none; box-shadow: none;">
+<div class="mt-5 mb-5 w-75" style="margin: 0 auto">
+    <div class="ctsp d-flex justify-content-center">
+        <div class="w-100">
+            <div class="card w-100" style="transform: none; box-shadow: none; border-radius: 20px">
                 <div class="row">
                     <div class="col-md-6">
                         <div class="d-flex flex-column align-items-center justify-content-center images p-3">
@@ -29,7 +29,7 @@
                         </div>
                     </div>
                     <div class="col-md-6">
-                        <div class="product p-5 pb-1">
+                        <div class="product p-2 pb-1">
                             <div class="mt-2 mb-3">
                                 <span class="text-uppercase text-muted brand">
                                     Dung tích: @Model.DUNGTICH
@@ -66,16 +66,33 @@
         </div>
     </div>
 </div>
+<div class="containernd">
+    <div class="box1" style="margin: 2rem 15rem">
+        <h1>Nội dung</h1>
+        <div class="boxnd bg max-height" style="text-align: justify; text-justify: inter-word; font-size:24px">
+            @Html.Raw(Model.NOIDUNG)
+        </div>
+        <div class="btn d-flex justify-content-center align-center w-100">
+            <button id="show-more">
+                Xem thêm
+            </button>
+            <button id="show-less">
+                Ẩn bớt
+            </button>
+        </div>
+    </div>
+</div>
+
 <section>
     <div class="related-product">
-        <h1 style="text-align: center; margin-bottom: 100px; font-size: 45px; font-family:'Times New Roman', Tahoma, Geneva, Verdana, sans-serif; color: black;">
+        <h1 style="text-align: center; margin-bottom: 100px; font-size: 45px; color: black;">
             SẢN PHẨM LIÊN QUAN
         </h1>
-        @foreach (var item in ViewBag.SPLQ)
-        {
-            <div class="row row-cols-1 row-cols-md-3 g-4">
+        <div class="row row-cols-1 row-cols-md-5 g-4">
+            @foreach (var item in ViewBag.SPLQ)
+            {
                 <div class="col d-flex align-items-stretch justify-content-center">
-                    <div class="card shadow border-0" style="max-width: 300px">
+                    <div class="card d-flex justify-content-between shadow border-0" style="max-width: 300px">
                         <img src="~/HinhAnhSP/@item.ANHDAIDIEN" alt="" class="card-img-top">
                         <div class="card-body">
                             <h5 class="card-title">@item.TENSP</h5>
@@ -84,8 +101,8 @@
                         </div>
                     </div>
                 </div>
-            </div>
-        }
+            }
+        </div>
     </div>
 </section>
 <div class="d-flex justify-content-center align-items-center">
@@ -151,6 +168,36 @@
             tmp = container.src;
             container.src = image.src;
             image.src = tmp;
+        }
+    </script>
+    <script>
+        const showMore = document.getElementById("show-more");
+        const maxHeight = document.querySelector(".max-height");
+        const showLess = document.getElementById("show-less");
+        if (showMore) {
+            showMore.onclick = () => {
+                if (maxHeight) {
+                    maxHeight.style.maxHeight = "max-content";
+                    maxHeight.classList.remove("bg");
+                    if (showLess) {
+                        showLess.style.display = "inline-block";
+                        showMore.style.display = "none";
+                    }
+                }
+            };
+        }
+        if (showLess) {
+            showLess.onclick = () => {
+                console.log("call show less");
+                if (maxHeight) {
+                    maxHeight.style.maxHeight = "150px";
+                    maxHeight.classList.add("bg");
+                    if (showMore) {
+                        showLess.style.display = "none";
+                        showMore.style.display = "inline-block";
+                    }
+                }
+            };
         }
     </script>
 }
