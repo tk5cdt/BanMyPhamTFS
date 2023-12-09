@@ -1,5 +1,4 @@
 ﻿@model TheFaceShop.Models.Cart
-
 @{
     ViewBag.Title = "ShowToCart";
     Layout = "~/Views/Shared/AccountLayoutPage.cshtml";
@@ -7,103 +6,126 @@
 <link href="~/Content/GioHang.css" rel="stylesheet" />
 @if (Model != null)
 {
-<div class="container mt-3">
-    <h2 style="text-align: center">Giỏ hàng của bạn</h2>
-    <table class="table table-striped">
-        <thead>
-            <tr>
-                <th>Tên sản phẩm</th>
-                <th>Ảnh Sản Phẩm</th>
-                <th>Giá</th>
-                <th>Số lượng</th>
-                <th>Thành tiền</th>
-                <th>Xoá</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var item in Model.Items)
-            {
-                
-                double total = Convert.ToDouble(item._shopping_product.GIABAN.Value * item._shopping_quantity);
+    <div class="container mt-3">
+        <h2 style="text-align: center">Giỏ hàng của bạn</h2>
+        <table class="table table-striped">
+            <thead>
                 <tr>
-                    <td>
-                        @Html.DisplayFor(model => item._shopping_product.TENSP)
-                    </td>
-                    <td>
-                        <img src="~/HinhAnhSP/@item._shopping_product.ANHDAIDIEN" style=" width:150px; height: 150px" />
-                    </td>
-                    <td>
-                        @Html.DisplayFor(model => item._shopping_product.GIABAN) VND
-                    </td>
-                    <td>
-                        @using (Html.BeginForm("Update_Quantity_Cart", "ShoppingCart"))
-                        {
-                            <input type="hidden" value="@item._shopping_product.MASP" name="id_Pro" />
-                            <input type="number" value="@item._shopping_quantity" name="Quantity" />
-                            <input type="submit" value="Update Quantity" />
-                        }
-                    </td>
-
-                    <td>
-                        Thành tiền: @total
-                    </td>
-                    <td>
-                        <a href="/ShoppingCart/RemoveCart/@item._shopping_product.MASP">xoá</a>
-                    </td>
+                    <th>Tên sản phẩm</th>
+                    <th>Ảnh Sản Phẩm</th>
+                    <th>Giá</th>
+                    <th>Số lượng</th>
+                    <th>Thành tiền</th>
+                    <th>Xoá</th>
                 </tr>
-            }
+            </thead>
+            <tbody>
+                @foreach (var item in Model.Items)
+                {
 
-        </tbody>
-        <tfoot>
-            <tr>
-                <td colspan="5" style="text-align:right">Tổng tiền: @Model.Total_Money() </td>
-            </tr>
-        </tfoot>
-    </table>
-    <a href="@Url.Action("TrangChu","Home")" class="btn btn-success">Tiếp tục mua hàng</a>
+                    double total = Convert.ToDouble(item._shopping_product.GIABAN.Value * item._shopping_quantity);
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(model => item._shopping_product.TENSP)
+                        </td>
+                        <td>
+                            <img src="~/HinhAnhSP/@item._shopping_product.ANHDAIDIEN" style=" width:150px; height: 150px" />
+                        </td>
+                        <td>
+                            @Html.DisplayFor(model => item._shopping_product.GIABAN) VND
+                        </td>
+                        <td>
+                            @using (Html.BeginForm("Update_Quantity_Cart", "ShoppingCart"))
+                            {
+                                <input type="hidden" value="@item._shopping_product.MASP" name="id_Pro" />
+                                <input type="number" value="@item._shopping_quantity" name="Quantity" />
+                                <input type="submit" value="Update Quantity" />
+                            }
+                        </td>
 
-      @using (Html.BeginForm("CheckOut","ShoppingCart"))
-      {
-         <div class="container mt-3">
+                        <td>
+                            Thành tiền: @total
+                        </td>
+                        <td>
+                            <a href="/ShoppingCart/RemoveCart/@item._shopping_product.MASP">xoá</a>
+                        </td>
+                    </tr>
+                }
+
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="5" style="text-align:right">Tổng tiền: @Model.Total_Money() </td>
+                </tr>
+            </tfoot>
+        </table>
+        <a href="@Url.Action("TrangChu","Home")" class="btn btn-success">Tiếp tục mua hàng</a>
+
+        @using (Html.BeginForm("CheckOut", "ShoppingCart"))
+        {
+            <div class="container mt-3">
                 <h2>Thông tin giao hàng</h2>
                 <form action="/action_page.php">
-                    <div class="mb-3 mt-3">
-                        <label for="email">ID:</label>
-                        <input type="number" class="form-control" placeholder="id..." name="iduser">
+                    <div class="mb-3 ">
+                        <label style="font-size: 16px"><b>Địa Chỉ Giao Hàng:      </b> </label>
                     </div>
-                    <div class="mb-3 mt-3">
-                        <label for="email">Họ và tên</label>
-                        <input type="text" class="form-control" placeholder="Họ và tên..." name="hovaten">
+                    <div class="form-group">
+                        <label for="phuongInput">Phường:</label>
+                        <input type="text" class="form-control" id="phuongInput" name="phuong">
+                        <div id="phuongSuggestions" class="suggestions-container"></div>
                     </div>
-                    <div class="mb-3">
-                        <label for="pwd">SĐT</label>
-                        <input type="text" class="form-control" placeholder="SĐT..." name="sdt">
-                    </div>
-                    <div class="mb-3">
-                        <label for="pwd">Số Nhà:</label>
-                        <input type="text" class="form-control" placeholder="Số nhà..." name="sonha">
-                    </div>
-                    <div class="mb-3">
-                        <label for="pwd">Phường Xã:</label>
-                        <input type="text" class="form-control" placeholder="Phường xã..." name="phuongxa">
-                    </div>
-                    <div class="mb-3">
-                        <label for="pwd">Ghi chú:</label>
-                        <input type="text" class="form-control" placeholder="Ghi chú" name="ghichu">
 
-                    </div>
                     @*<input type="submit" value="CheckOut" class="btn btn-success" />*@
-         
+
 
                     @*<a href="@Url.Action("Shopping_Success", "ShoppingCart")" >
-            <input type="submit" value="Đặt Hàng" class="btn btn-success " />
-             <a class="btn btn-success" href="@Url.Action("Shopping_Success","ShoppingCart")"> CheckOut </a>
-        </a>*@
-                    <a class="btn btn-success" href="@Url.Action("Shopping_Success","ShoppingCart")"> CheckOut </a>
+                            <input type="submit" value="Đặt Hàng" class="btn btn-success " />
+                             <a class="btn btn-success" href="@Url.Action("Shopping_Success","ShoppingCart")"> CheckOut </a>
+                        </a>*@
+                    <a class="btn btn-success" href="@Url.Action("CheckOut","ShoppingCart")"> CheckOut </a>
                 </form>
             </div>
-       }
-</div>
+        }
+    </div>
 
 }
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#phuongInput').on('input', function () {
+            var inputText = $(this).val();
+            if (inputText.length >= 3) {
+                $.ajax({
+                    url: '/ShoppingCart/GetPhuongXaSuggestions',
+                    type: 'GET',
+                    data: { searchTerm: inputText },
+                    success: function (data) {
+                        displaySuggestions(data);
+                    }
+                });
+            } else {
+                clearSuggestions();
+            }
+        });
+    });
+
+    function displaySuggestions(suggestions) {
+        var suggestionsDiv = $('#phuongSuggestions');
+        suggestionsDiv.empty();
+        $.each(suggestions, function (index, suggestion) {
+            suggestionsDiv.append('<div class="suggestion" data-id="' + suggestion.Id + '">' + suggestion.Name + '</div>');
+        });
+
+        $('.suggestion').on('click', function () {
+            $('#phuongInput').val($(this).text());
+            // You can also store the PhuongXa Id in a hidden field if needed
+            // $('#phuongId').val($(this).data('id'));
+            clearSuggestions();
+        });
+    }
+
+    function clearSuggestions() {
+        $('#phuongSuggestions').empty();
+    }
+</script>
 
