@@ -41,17 +41,38 @@ namespace TheFaceShop.Areas.Admin.Controllers
                 string maGH = gh.MAGH;
 
                 var ctgh = db.CHITIETGIOHANGs.FirstOrDefault(t => t.MASP == pro.MASP && t.MAGH == maGH);
-                int soLuong = 1;
-                CHITIETGIOHANG gioHang = new CHITIETGIOHANG()
+
+                if (ctgh == null)
                 {
+                    int soLuong = 1;
+                  
 
-                    MAGH = maGH,
-                    MASP = pro.MASP,
-                    SOLUONG = soLuong
-                };
+                    CHITIETGIOHANG gioHang = new CHITIETGIOHANG()
+                    {
 
-                db.CHITIETGIOHANGs.Add(gioHang);
-                db.SaveChanges();
+                        MAGH = maGH,
+                        MASP = pro.MASP,
+                        SOLUONG = soLuong
+                    };
+                    db.CHITIETGIOHANGs.Add(gioHang);
+                    db.SaveChanges();
+                }
+                else
+                {
+                    int a = (int)ctgh.SOLUONG;
+                    int soLuong = a + 1;
+
+                    CHITIETGIOHANG gioHang = new CHITIETGIOHANG()
+                    {
+
+                        MAGH = maGH,
+                        MASP = pro.MASP,
+                        SOLUONG = soLuong
+                    };
+                    db.CHITIETGIOHANGs.AddOrUpdate(gioHang);
+                    db.SaveChanges();
+                }
+
                 return RedirectToAction("ShowToCart", "ShoppingCart");
             }
             else
@@ -165,16 +186,14 @@ namespace TheFaceShop.Areas.Admin.Controllers
         {
             try
             {
-             
+
                 Cart cart = Session["Cart"] as Cart;
                 var kh = Session["user"] as KHACHHANG;
                 var gh = db.GIOHANGs.FirstOrDefault(t => t.MAKH == kh.MAKH);
                 string maGH = gh.MAGH;
                 List<CHITIETGIOHANG> g = db.CHITIETGIOHANGs.Where(row => string.Compare(row.MAGH, maGH) == 0).ToList();
                 DONGIAO _order = new DONGIAO();
-
-                //var maDG = db.DONGIAOs.Max(T => T.MADG);
-                _order.MADG = "DG001";
+                _order.MADG = "DG000";
                 var obj = new ObjectParameter("id", typeof(string));
                 db.pc_TimMaTiepTheo("DONGIAO", obj);
                 _order.NGAYLAP = DateTime.Now;
@@ -188,7 +207,7 @@ namespace TheFaceShop.Areas.Admin.Controllers
                 _order.TRANGTHAI = "Đang chuẩn bị";
                 db.DONGIAOs.Add(_order);
 
-               
+
                 db.SaveChanges();
                 cart.ClearCart();
                 return RedirectToAction("Shopping_Success", "ShoppingCart");
