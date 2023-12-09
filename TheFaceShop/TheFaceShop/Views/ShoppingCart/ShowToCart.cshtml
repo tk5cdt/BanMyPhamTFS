@@ -64,25 +64,30 @@
         @using (Html.BeginForm("CheckOut", "ShoppingCart"))
         {
             <div class="container mt-3">
-                <h2>Thông tin giao hàng</h2>
+                <h2>Thông tin địa chỉ giao hàng</h2>
                 <form action="/action_page.php">
-                    <div class="mb-3 ">
-                        <label style="font-size: 16px"><b>Địa Chỉ Giao Hàng:      </b> </label>
-                    </div>
+
+
                     <div class="form-group">
-                        <label for="phuongInput">Phường:</label>
-                        <input type="text" class="form-control" id="phuongInput" name="phuong">
-                        <div id="phuongSuggestions" class="suggestions-container"></div>
+                        <div class="mb-3 mt-3">
+                            <label for="email">ID:</label>
+                            <input type="text" " class="form-control" placeholder="Số Nhà / Tên Đường" name="sonha">
+                        </div>
+                        <div class="mb-3 mt-3">
+                            <label for="phuongId">Phường:</label>
+                            <input type="text" class="form-control" id="phuongId" name="phuong">
+                            <div id="phuongSuggestions" class="suggestions-container"></div>
+                        </div>
                     </div>
 
                     @*<input type="submit" value="CheckOut" class="btn btn-success" />*@
 
 
-                    @*<a href="@Url.Action("Shopping_Success", "ShoppingCart")" >
-                            <input type="submit" value="Đặt Hàng" class="btn btn-success " />
-                             <a class="btn btn-success" href="@Url.Action("Shopping_Success","ShoppingCart")"> CheckOut </a>
-                        </a>*@
-                    <a class="btn btn-success" href="@Url.Action("CheckOut","ShoppingCart")"> CheckOut </a>
+                    <a href="@Url.Action("Shopping_Success", "ShoppingCart")">
+                        <input type="submit" value="Đặt Hàng" class="btn btn-success " />
+                        @* <a class="btn btn-success" href="@Url.Action("Shopping_Success","ShoppingCart")">  </a>*@
+                    </a>
+                    @*<a class="btn btn-success" href="@Url.Action("Shopping_Success","ShoppingCart")"> CheckOut </a>*@
                 </form>
             </div>
         }
@@ -94,7 +99,7 @@
     $(document).ready(function () {
         $('#phuongInput').on('input', function () {
             var inputText = $(this).val();
-            if (inputText.length >= 3) {
+            if (inputText.length >= 2) {
                 $.ajax({
                     url: '/ShoppingCart/GetPhuongXaSuggestions',
                     type: 'GET',
@@ -113,13 +118,13 @@
         var suggestionsDiv = $('#phuongSuggestions');
         suggestionsDiv.empty();
         $.each(suggestions, function (index, suggestion) {
-            suggestionsDiv.append('<div class="suggestion" data-id="' + suggestion.Id + '">' + suggestion.Name + '</div>');
+            suggestionsDiv.append('<div class="suggestion" data-id="' + suggestion.Id + '">' + suggestion.Name + ' , ' + suggestion.QuanHuyen + ' , ' + suggestion.TinhThanh + '</div>');
         });
 
         $('.suggestion').on('click', function () {
             $('#phuongInput').val($(this).text());
-            // You can also store the PhuongXa Id in a hidden field if needed
-            // $('#phuongId').val($(this).data('id'));
+
+            $('#phuongId').val($(this).data('id'));
             clearSuggestions();
         });
     }

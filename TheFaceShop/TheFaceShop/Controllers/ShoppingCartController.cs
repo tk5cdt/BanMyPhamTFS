@@ -229,7 +229,7 @@ namespace TheFaceShop.Areas.Admin.Controllers
         {
             var suggestions = db.PHUONGXAs
                 .Where(p => p.name.Contains(searchTerm) || p.full_name.Contains(searchTerm) ||  p.name_en.Contains(searchTerm)|| p.full_name_en.Contains(searchTerm))
-                .Select(p => new { Id = p.code, Name = p.full_name })
+                .Select(p => new { Id = p.code, Name = p.full_name, QuanHuyen = p.QUANHUYEN.full_name, TinhThanh = p.QUANHUYEN.TINHTHANH.full_name  })
                 .Take(10) // You can adjust the number of suggestions returned
                 .ToList();
 
@@ -238,7 +238,7 @@ namespace TheFaceShop.Areas.Admin.Controllers
         [Authorize(Roles = "KhachHang")]
 
         [HttpPost]
-        public ActionResult ThanhToan(FormCollection form)
+        public ActionResult CheckOut(FormCollection form)
         {
            
             if (Session["user"] != null)
@@ -265,8 +265,6 @@ namespace TheFaceShop.Areas.Admin.Controllers
                     _order.NGAYLAP = DateTime.Now;
                     _order.TRANGTHAI = "Đang chuẩn bị";
                     db.DONGIAOs.Add(_order);
-
-
                     db.SaveChanges();
                     cart.ClearCart();
                     return RedirectToAction("Shopping_Success", "ShoppingCart");
