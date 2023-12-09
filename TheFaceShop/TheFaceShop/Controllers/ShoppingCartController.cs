@@ -225,44 +225,58 @@ namespace TheFaceShop.Areas.Admin.Controllers
             return kq;
         }
 
+        public JsonResult GetPhuongXaSuggestions(string searchTerm)
+        {
+            var suggestions = db.PHUONGXAs
+                .Where(p => p.name.Contains(searchTerm) || p.full_name.Contains(searchTerm) ||  p.name_en.Contains(searchTerm)|| p.full_name_en.Contains(searchTerm))
+                .Select(p => new { Id = p.code, Name = p.full_name, QuanHuyen = p.QUANHUYEN.full_name, TinhThanh = p.QUANHUYEN.TINHTHANH.full_name  })
+                .Take(10) // You can adjust the number of suggestions returned
+                .ToList();
 
+            return Json(suggestions, JsonRequestBehavior.AllowGet);
+        }
         [Authorize(Roles = "KhachHang")]
 
         [HttpPost]
         public ActionResult CheckOut(FormCollection form)
         {
-            try
+           
+            if (Session["user"] != null)
             {
+                try
+                {
+                    Cart cart = Session["Cart"] as Cart;
+                    var kh = Session["user"] as KHACHHANG;
+                    var gh = db.GIOHANGs.FirstOrDefault(t => t.MAKH == kh.MAKH);
+                    string maGH = gh.MAGH;
+                    List<CHITIETGIOHANG> g = db.CHITIETGIOHANGs.Where(row => string.Compare(row.MAGH, maGH) == 0).ToList();
+                    DONGIAO _order = new DONGIAO();
 
-                Cart cart = Session["Cart"] as Cart;
-                var kh = Session["user"] as KHACHHANG;
-                var gh = db.GIOHANGs.FirstOrDefault(t => t.MAKH == kh.MAKH);
-                string maGH = gh.MAGH;
-                List<CHITIETGIOHANG> g = db.CHITIETGIOHANGs.Where(row => string.Compare(row.MAGH, maGH) == 0).ToList();
-                DONGIAO _order = new DONGIAO();
-                _order.MADG = "DG000";
-                var obj = new ObjectParameter("id", typeof(string));
-                db.pc_TimMaTiepTheo("DONGIAO", obj);
-                _order.NGAYLAP = DateTime.Now;
-                _order.MAKH = kh.MAKH;
-                _order.NGUOINHAN = kh.TENKH;
-                _order.SDT = kh.SDT;
-                _order.SONHA = form["sonha"];
-                _order.PHUONGXA = form["phuongxa"];
-                _order.TRIGIA = TinhTongTien(g);
-                _order.NGAYLAP = DateTime.Now;
-                _order.TRANGTHAI = "Đang chuẩn bị";
-                db.DONGIAOs.Add(_order);
-
-
-                db.SaveChanges();
-                cart.ClearCart();
-                return RedirectToAction("Shopping_Success", "ShoppingCart");
+                    _order.MADG = "DG000";
+                    var obj = new ObjectParameter("id", typeof(string));
+                    db.pc_TimMaTiepTheo("DONGIAO", obj);
+                    _order.NGAYLAP = DateTime.Now;
+                    _order.MAKH = kh.MAKH;
+                    _order.NGUOINHAN = kh.TENKH;
+                    _order.SDT = kh.SDT;
+                    _order.SONHA = form["sonha"];
+                    _order.PHUONGXA = form["phuong"];
+                    _order.TRIGIA = TinhTongTien(g);
+                    _order.NGAYLAP = DateTime.Now;
+                    _order.TRANGTHAI = "Đang chuẩn bị";
+                    db.DONGIAOs.Add(_order);
+                    db.SaveChanges();
+                    cart.ClearCart();
+                    return RedirectToAction("Shopping_Success", "ShoppingCart");
+                }
+                catch
+                {
+                    return Content("Bạn đã đặt hàng thành công!!!!!");
+                }
             }
-            catch
-            {
-                return Content("Bạn đã đặt hàng thành công!!!!!");
-            }
+            else
+                return RedirectToAction("DangNhap", "Home");
+
         }
 
         public ActionResult Shopping_Success()

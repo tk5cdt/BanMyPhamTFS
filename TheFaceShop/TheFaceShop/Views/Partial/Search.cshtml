@@ -1,38 +1,44 @@
-﻿@model List<TheFaceShop.Models.SANPHAM>
+﻿@model IEnumerable<TheFaceShop.Models.SANPHAM>
 
+@{
+    ViewBag.Title = "Search";
+    Layout = "~/Views/Shared/AccountLayoutPage.cshtml";
+}
 
-<div class="d-desktop input-wrapper">
-        <div class="sc-fcb373ec-4 bQKRra ant-dropdown-trigger d-flex">
-            <span class="ant-input-affix-wrapper sc-fcb373ec-0 eWONFM" style="width: 1500px; left: -150px;">
-                <span class="ant-input-prefix">
-                    <i class="fal fa-search" style="color: #858585;"></i>
-                </span>
-                <input class="ant-input" placeholder="Mặt nạ, kem chống nắng, kem dưỡng, son thỏi, sữa rửa mặt,..." type="text" value="" style="border: solid 1px gray; height: 35px; padding-left: 10px; padding-right: 10px; top: -5px;">
-                <span class=" ant-input-suffix">
-                    <div class="sc-17e56e44-0 cRZrSE search-image-btn ">
-                        <button type="button" class="ant-btn ant-btn-text btn-image btn-text-hover">
-                            <img src="https://thefaceshop.com.vn/images/scan-image.gif" alt="scan" width="30px" height="30px" loading="lazy" class="search-image-btn__lottie">
-                        </button>
+@if (Model.Any())
+{
+    <h4>Kết quả tìm kiếm:</h4>
+    @*<ul>
+            @foreach (var product in Model)
+            {
+                <li>@product</li>
+            }
+        </ul>*@
+    <div class="row row-cols-1 row-cols-md-3 g-4 px-5 mb-4" style="margin-top: 10px;">
+        @foreach (var productName in Model)
+        {
+            <div class="col d-flex align-items-stretch justify-content-center">
+                <div class="card" style="display: flex; text-align: center;">
+                    <!-- Ảnh sản phẩm (thay thế link ảnh dựa vào dữ liệu của bạn) -->
+                    <img src="~/HinhAnhSP/@productName.ANHDAIDIEN" class="card-img-top" alt="@productName.TENSP" />
+                    <div class="card-body">
+                        <!-- Tên sản phẩm -->
+                        <h6 class="card-title text-capitalize">@productName.TENSP</h6>
+                        <!-- Giá sản phẩm -->
+                        <p class="card-text fw-bold">@String.Format("{0:n0}", productName.GIABAN)đ</p>
+                        <!-- Đánh giá (có thể thay thế dựa trên dữ liệu thực tế của bạn) -->
+                        <p class="card-text"><i class="fas fa-star" style="color: #000000;"></i> @productName.TONGDANHGIA/5</p>
+                        <!-- Nút Xem chi tiết -->
+                        <div class="d-grid mx-auto mb-20">
+                            <a href="@Url.Action("ChiTietSanPham", "SP", new {id= productName.MASP})"><button type="button" class="btn btn-outline-success rounded-pill">Xem chi tiết</button></a>
+                        </div>
                     </div>
-                </span>
-            </span>
-        </div>
-</div>
-
-<script>
-    document.getElementById("searchInput").addEventListener("keypress", function(event) {
-        if (event.key === "Enter") {
-            search();
+                </div>
+            </div>
         }
-    });
-
-    document.getElementById("searchButton").addEventListener("click", function() {
-        search();
-    });
-
-    function search() {
-        var searchTerm = document.getElementById("searchInput").value;
-        // Chuyển hướng đến trang tìm kiếm với từ khóa đã nhập
-        window.location.href = "@Url.Action("Search", "Product")?searchTerm=" + searchTerm;
-    }
-</script>
+    </div>
+}
+else
+{
+    <p>Không tìm thấy sản phẩm nào phù hợp.</p>
+}

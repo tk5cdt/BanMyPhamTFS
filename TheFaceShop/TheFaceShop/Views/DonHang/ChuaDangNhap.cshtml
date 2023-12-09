@@ -1,0 +1,10 @@
+﻿
+@{
+    ViewBag.Title = "ChuaDangNhap";
+    Layout = "~/Views/Shared/AccountLayoutPage.cshtml";
+}
+
+<div class="px-2 py-4" style="text-align: center">
+    <h5>Bạn cần đăng nhập để tra cứu</h5>
+    @Html.ActionLink("Đăng nhập", "DangNhap", "Home", new { area = "" }, new { @class = "btn btn-primary btn-success" })
+</div>
