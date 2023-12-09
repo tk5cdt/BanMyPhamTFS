@@ -63,7 +63,7 @@
                             <p><i class="fas fa-star" style="color: #000000;"></i> @product.TONGDANHGIA/5</p>
                             </p>
                             <div class="d-grid mx-auto mb-20">
-                                <button type="button" class="btn btn-outline-success rounded-pill">Xem chi tiết</button>
+                                <a href="@Url.Action("ChiTietSanPham", "SP", new {id = product.MASP})"><button type="button" class="btn btn-outline-success rounded-pill">Xem chi tiết</button></a>
                             </div>
                         </div>
                     </div>

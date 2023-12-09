@@ -16,9 +16,23 @@ namespace TheFaceShop.Models
     public class Cart
     {
         List<CartItem> items = new List<CartItem>();
+
+        public string sMaSP { get; set; }
+        public string sMaGH { get; set; }
+        public int iSoLuong { get; set; }
+
         public IEnumerable<CartItem> Items
         {
             get { return items; }
+        }
+        public Cart()
+        {
+
+        }
+
+        public Cart(string id)
+        {
+
         }
         public void Add(SANPHAM _pro, int _quantity = 1)
         {

@@ -1,9 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity.Core.Objects;
+using System.Data.Entity.Migrations;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Razor.Text;
 using TheFaceShop.Models;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace TheFaceShop.Areas.Admin.Controllers
 {
@@ -25,7 +29,32 @@ namespace TheFaceShop.Areas.Admin.Controllers
         public ActionResult AddtoCart(string id)
         {
             var pro = db.SANPHAMs.SingleOrDefault(s => s.MASP == id);
-            if (pro != null)
+            if (Session["user"] != null)
+            {
+                var kh = Session["user"] as KHACHHANG;
+                if (pro != null)
+                {
+                    GetCart().Add(pro);
+                }
+                string maKH = kh.MAKH;
+                var gh = db.GIOHANGs.FirstOrDefault(t => t.MAKH == maKH);
+                string maGH = gh.MAGH;
+
+                var ctgh = db.CHITIETGIOHANGs.FirstOrDefault(t => t.MASP == pro.MASP && t.MAGH == maGH);
+                int soLuong = 1;
+                CHITIETGIOHANG gioHang = new CHITIETGIOHANG()
+                {
+
+                    MAGH = maGH,
+                    MASP = pro.MASP,
+                    SOLUONG = soLuong
+                };
+
+                db.CHITIETGIOHANGs.Add(gioHang);
+                db.SaveChanges();
+                return RedirectToAction("ShowToCart", "ShoppingCart");
+            }
+            else
             {
                 GetCart().Add(pro);
             }
@@ -42,18 +71,68 @@ namespace TheFaceShop.Areas.Admin.Controllers
         }
         public ActionResult Update_Quantity_Cart(FormCollection form)
         {
-            Cart cart = Session["Cart"] as Cart;
-            string id_pro = form["id_Pro"];
-            int quantity = int.Parse(form["Quantity"]);
-            cart.Update_Quantity_Shopping(id_pro, quantity);
-            return RedirectToAction("ShowToCart", "ShoppingCart");
+            if (Session["user"] != null)
+            {
+                Cart cart = Session["Cart"] as Cart;
+                string id_pro = form["id_Pro"];
+                int quantity = int.Parse(form["Quantity"]);
+                cart.Update_Quantity_Shopping(id_pro, quantity);
+                //uPDATE DB
+                var kh = Session["user"] as KHACHHANG;
+                string maKH = kh.MAKH;
+                var gh = db.GIOHANGs.FirstOrDefault(t => t.MAKH == maKH);
+                string maGH = gh.MAGH;
+                var ctgh = db.CHITIETGIOHANGs.FirstOrDefault(t => t.MASP == id_pro && t.MAGH == maGH);
+                int soLuong = quantity;
+                CHITIETGIOHANG gioHang = new CHITIETGIOHANG()
+                {
+                    MAGH = maGH,
+                    MASP = id_pro,
+                    SOLUONG = soLuong
+                };
+
+                db.CHITIETGIOHANGs.AddOrUpdate(gioHang);
+                db.SaveChanges();
+
+                return RedirectToAction("ShowToCart", "ShoppingCart");
+            }
+            else
+            {
+                Cart cart = Session["Cart"] as Cart;
+                string id_pro = form["id_Pro"];
+                int quantity = int.Parse(form["Quantity"]);
+                cart.Update_Quantity_Shopping(id_pro, quantity);
+
+                return RedirectToAction("ShowToCart", "ShoppingCart");
+            }
+
         }
         public ActionResult RemoveCart(string id)
         {
-            Cart cart = Session["Cart"] as Cart;
-            cart.Remove_CartItem(id);
-            return RedirectToAction("ShowToCart", "ShoppingCart");
+            if (Session["user"] != null)
+            {
+                Cart cart = Session["Cart"] as Cart;
+                cart.Remove_CartItem(id);
+                //Xoa trong db
+
+                var kh = Session["user"] as KHACHHANG;
+                string maKH = kh.MAKH;
+                var gh = db.GIOHANGs.FirstOrDefault(t => t.MAKH == maKH);
+                string maGH = gh.MAGH;
+                var ctgh = db.CHITIETGIOHANGs.FirstOrDefault(t => t.MASP == id && t.MAGH == maGH);
+
+                db.CHITIETGIOHANGs.Remove(ctgh);
+                db.SaveChanges();
+                return RedirectToAction("ShowToCart", "ShoppingCart");
+            }
+            else
+            {
+                Cart cart = Session["Cart"] as Cart;
+                cart.Remove_CartItem(id);
+                return RedirectToAction("ShowToCart", "ShoppingCart");
+            }
         }
+
 
         public PartialViewResult BagCart()
         {
@@ -67,32 +146,49 @@ namespace TheFaceShop.Areas.Admin.Controllers
             return PartialView("BagCart");
         }
 
+        private float TinhTongTien(List<CHITIETGIOHANG> g)
+        {
+            float kq = 0;
+            foreach (var i in g)
+            {
+                SANPHAM s = db.SANPHAMs.Where(row => string.Compare(row.MASP, i.MASP) == 0).FirstOrDefault();
+                kq += ((int)i.SOLUONG * (float)s.GIABAN);
+            }
+            return kq;
+        }
+
+
         [Authorize(Roles = "KhachHang")]
+
+        [HttpPost]
         public ActionResult CheckOut(FormCollection form)
         {
             try
             {
-                //Chưa lấy được iduser từ session
-                //Chưa xử lý dược _order_Detail
+             
                 Cart cart = Session["Cart"] as Cart;
+                var kh = Session["user"] as KHACHHANG;
+                var gh = db.GIOHANGs.FirstOrDefault(t => t.MAKH == kh.MAKH);
+                string maGH = gh.MAGH;
+                List<CHITIETGIOHANG> g = db.CHITIETGIOHANGs.Where(row => string.Compare(row.MAGH, maGH) == 0).ToList();
                 DONGIAO _order = new DONGIAO();
-                _order.MAKH = form["iduser"];
-                _order.NGUOINHAN = form["hovaten"];
-                _order.SDT = form["sdt"];
+
+                //var maDG = db.DONGIAOs.Max(T => T.MADG);
+                _order.MADG = "DG001";
+                var obj = new ObjectParameter("id", typeof(string));
+                db.pc_TimMaTiepTheo("DONGIAO", obj);
+                _order.NGAYLAP = DateTime.Now;
+                _order.MAKH = kh.MAKH;
+                _order.NGUOINHAN = kh.TENKH;
+                _order.SDT = kh.SDT;
                 _order.SONHA = form["sonha"];
                 _order.PHUONGXA = form["phuongxa"];
-               
+                _order.TRIGIA = TinhTongTien(g);
                 _order.NGAYLAP = DateTime.Now;
+                _order.TRANGTHAI = "Đang chuẩn bị";
                 db.DONGIAOs.Add(_order);
-                foreach (var item in cart.Items)
-                {
-                    CHITIETGIOHANG _order_Detail = new CHITIETGIOHANG();
-                    _order_Detail.MAGH = _order.MADG;
-                    _order_Detail.MASP = item._shopping_product.MASP;
-                
-                    _order_Detail.SOLUONG = item._shopping_quantity;
-                    db.CHITIETGIOHANGs.Add(_order_Detail);
-                }
+
+               
                 db.SaveChanges();
                 cart.ClearCart();
                 return RedirectToAction("Shopping_Success", "ShoppingCart");
