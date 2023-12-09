@@ -1,0 +1,75 @@
+﻿@model IEnumerable<TheFaceShop.Models.CTDG>
+
+@{
+    ViewBag.Title = "ChiTietDonHang";
+    Layout = "~/Views/Shared/AccountLayoutPage.cshtml";
+}
+
+
+
+<a href="~/DonHang/DonHang" class="d-inline-block"><i class="far fa-list-alt" style="color: black; margin-left: 180px; margin-top: 20px"></i></a>
+<div class="row-md-1 bg-white rounded" style="width:1000px; margin-left: 180px">
+    <div class="row">
+        <div class="col-md-2">@Html.DisplayNameFor(model => model.DONGIAO.KHACHHANG.TENKH)</div>
+        <div class="col-md-10">@ViewBag.DonHang.KHACHHANG.TENKH</div>
+    </div>
+    <div class="row">
+        <div class="col-md-2">@Html.DisplayNameFor(model => model.DONGIAO.KHACHHANG.SDT)</div>
+        <div class="col-md-10">@ViewBag.DonHang.KHACHHANG.SDT</div>
+    </div>
+    <div class="row">
+        <div class="col-md-2"><label>Địa chỉ</label></div>
+        <div class="col-md-10">@ViewBag.DonHang.SONHA, @ViewBag.DonHang.PHUONGXA</div>
+    </div>
+    <div class="row">
+        <div class="col-md-2">@Html.DisplayNameFor(model => model.DONGIAO.TRANGTHAI)</div>
+        <div class="col-md-10">@ViewBag.DonHang.TRANGTHAI</div>
+    </div>
+    <div class="col overflow-scroll" style="max-height: 75vh">
+        <table class="table text-left align-middle table-fixed">
+            <thead style="position: sticky; top: 0; text-align: center; z-index: 1;">
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.SANPHAM.TENSP)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.SOLUONG)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.THANHTIEN)
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            <div class="d-flex">
+                                <img src="~/HinhAnhSP/@item.SANPHAM.ANHDAIDIEN"
+                                     alt=""
+                                     style="width: 50px; height: 50px"
+                                     class="rounded-circle" />
+                                <div class="ms-3">
+                                    @Html.DisplayFor(modelItem => item.SANPHAM.TENSP, new { @class = "text-start" })
+                                    @*<p class="text-muted mb-0">john.doe@gmail.com</p>*@
+                                </div>
+                            </div>
+                        </td>
+                        <td style="text-align:center">
+                            @Html.DisplayFor(modelItem => item.SOLUONG)
+                        </td>
+                        <td style="text-align:right">
+                            @Html.DisplayFor(modelItem => item.THANHTIEN)
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <div class="p-3 d-flex justify-content-end">
+            <label class="control-label col-sm-2 h5">Tổng tiền: </label>
+            <div class="col-sm-3 h5"><label>@ViewBag.DonHang.TRIGIA</label></div>
+        </div>
+    </div>
+</div>
+

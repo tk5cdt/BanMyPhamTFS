@@ -1,0 +1,57 @@
+﻿@model IEnumerable<TheFaceShop.Models.DONGIAO>
+
+@{
+    ViewBag.Title = "ShowProduct";
+    Layout = "~/Views/Shared/AccountLayoutPage.cshtml";
+}
+
+<div class="row-md-1 bg-white rounded">
+    <div class="col overflow-scroll" style="max-height: 75vh">
+        <table class="table text-left align-middle table-fixed table-bordered">
+            <thead style="position: sticky; top: 0; text-align: center; z-index: 1;">
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.KHACHHANG.TENKH)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.NGAYLAP)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.TRIGIA)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.TRANGTHAI)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    if (item.KHACHHANG.MAKH == (Session["user"] as TheFaceShop.Models.KHACHHANG).MAKH)
+                    {
+                        <tr>
+                            @Html.HiddenFor(modelItem => item.KHACHHANG.MAKH)
+                            <td>
+                                @Html.DisplayFor(modelItem => item.KHACHHANG.TENKH)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.NGAYLAP)
+                            </td>
+                            <td style="text-align: right">
+                                @Html.DisplayFor(modelItem => item.TRIGIA)
+                            </td>
+                            <td style="text-align: center">
+                                @Html.DisplayFor(modelItem => item.TRANGTHAI)
+                            </td>
+                            <td style="text-align: center">
+                                <a href="@Url.Action("ChiTietDonHang", "DonHang", new {MADG=item.MADG})"><i class="far fa-info-circle" style="color: black"></i></a>
+                            </td>
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
