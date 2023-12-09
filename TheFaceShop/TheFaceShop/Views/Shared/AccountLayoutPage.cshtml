@@ -8,7 +8,7 @@
 <head>
     @RenderSection("style", required: false)
     <meta name="viewport" content="width=device-width" />
-    <title>LayoutPage</title>
+    <title>The Face Shop</title>
     <link rel="stylesheet" href="~/Content/css/view.css" />
     <link rel="stylesheet" href="~/Content/css/viewLayoutPage.css" />
     <link rel="stylesheet" href="~/Content/css/SlideShow.css" />
@@ -52,24 +52,25 @@
                                             </a>
                                         </div>
                                         <div class="header-right d-flex align-items-center">
-                                            <div class="d-desktop input-wrapper">
-                                                <div class="sc-fcb373ec-4 bQKRra ant-dropdown-trigger d-flex">
-                                                    <span class="ant-input-affix-wrapper sc-fcb373ec-0 eWONFM" style="width: 1500px; left: -150px;">
-                                                        <span class="ant-input-prefix">
-                                                            <i class="fal fa-search" style="color: #858585;"></i>
+                                            <form method="get" action="/Partial/Search">
+                                                <div class="d-desktop input-wrapper">
+                                                    <div class="sc-fcb373ec-4 bQKRra ant-dropdown-trigger d-flex">
+                                                        <span class="ant-input-affix-wrapper sc-fcb373ec-0 eWONFM" style="width: 1500px; left: -150px;">
+                                                            <span class="ant-input-prefix">
+                                                                <i class="fal fa-search" style="color: #858585;"></i>
+                                                            </span>
+                                                            <input class="ant-input" id="searchInput" name="searchTerm" placeholder="Mặt nạ, kem chống nắng, kem dưỡng, son thỏi, sữa rửa mặt,..." type="text" value="" style="border: solid 1px gray; height: 35px; padding-left: 10px; padding-right: 10px; top: -5px;">
+                                                            <span class=" ant-input-suffix">
+                                                                <div class="sc-17e56e44-0 cRZrSE search-image-btn ">
+                                                                    <button type="button" class="ant-btn ant-btn-text btn-image btn-text-hover" id="searchButton">
+                                                                        <img src="https://thefaceshop.com.vn/images/scan-image.gif" alt="scan" width="30px" height="30px" loading="lazy" class="search-image-btn__lottie">
+                                                                    </button>
+                                                                </div>
+                                                            </span>
                                                         </span>
-                                                        <input class="ant-input" placeholder="Mặt nạ, kem chống nắng, kem dưỡng, son thỏi, sữa rửa mặt,..." type="text" value="" style="border: solid 1px gray; height: 35px; padding-left: 10px; padding-right: 10px; top: -5px;">
-                                                        <span class=" ant-input-suffix">
-                                                            <div class="sc-17e56e44-0 cRZrSE search-image-btn ">
-                                                                <button type="button" class="ant-btn ant-btn-text btn-image btn-text-hover">
-                                                                    <img src="https://thefaceshop.com.vn/images/scan-image.gif" alt="scan" width="30px" height="30px" loading="lazy" class="search-image-btn__lottie">
-                                                                </button>
-                                                            </div>
-                                                        </span>
-                                                    </span>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                            @*@Html.Action("Search", "Partial")*@
+                                            </form>
                                             <div class="menu-section menu-section-first left-menu">
                                                 @*<a role="presentation" href="/stores" style="color: initial; text-decoration: none;">
                                                     <button type="button" class="ant-btn ant-btn-default btn-text-hover">
@@ -620,3 +621,19 @@
     @RenderSection("script", required: false)
 </body>
 </html>
+
+<script>
+    document.getElementById("searchInput").addEventListener("keypress", function(event) {
+        if (event.key === "Enter") {
+            search();
+        }
+    });
+
+    document.getElementById("searchButton").addEventListener("click", function() {
+        search();
+    });
+
+    function search() {
+        this.form.submit();
+    }
+</script>
