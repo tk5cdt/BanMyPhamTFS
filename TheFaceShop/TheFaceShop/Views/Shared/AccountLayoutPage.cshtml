@@ -126,7 +126,7 @@
                                                 <button type="button" class="ant-btn ant-btn-default cart-btn" href="#">
                                                     <span class="ant-badge">
                                                         <a href="@Url.Action("ShowToCart", "ShoppingCart")"><i class="fal fa-shopping-cart " style="color: #000000;"></i></a>
-                                                        
+
                                                         <sup data-show="true" class="ant-scroll-number ant-badge-count" title="1" style="background-color: rgb(0, 0, 0);">
                                                             <span class="ant-scroll-number-only" style="transition: none 0s ease 0s;">
                                                                 <span class="ant-scroll-number-only-unit current position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">1</span>
@@ -191,7 +191,7 @@
                                                         </ul>
                                                     </li>
                                                     <li>
-                                                        <a class="dropdown-item text-capitalize text-dark" href=""@Url.Action("DanhMuc", "LoaiSanPham", new { categoryId = "L001", subcategoryId= "CTL004",  subCateProId = ""})">phụ kiện trang điểm</a>
+                                                        <a class="dropdown-item text-capitalize text-dark" href="" @Url.Action("DanhMuc", "LoaiSanPham", new { categoryId = "L001", subcategoryId = "CTL004", subCateProId = "" }) ">phụ kiện trang điểm</a>
                                                         <ul class="dropdown-menu dropdown-submenu">
                                                             <li><a class="dropdown-item text-capitalize" href="@Url.Action("DanhMuc", "LoaiSanPham", new { categoryId = "L001", subcategoryId= "CTL004", subCateProId = "CTLSP017"})">Cọ trang điểm</a></li>
                                                             <li><a class="dropdown-item text-capitalize" href="@Url.Action("DanhMuc", "LoaiSanPham", new { categoryId = "L001", subcategoryId= "CTL004", subCateProId = "CTLSP018"})">Bống mút trang điểm</a></li>
@@ -580,7 +580,38 @@
             </div>
         </div>
     </div>
+    <!-- Messenger Plugin chat Code -->
+    <div id="fb-root"></div>
 
+    <!-- Your Plugin chat code -->
+    <div id="fb-customer-chat" class="fb-customerchat">
+    </div>
+
+    <script>
+        var chatbox = document.getElementById('fb-customer-chat');
+        chatbox.setAttribute("page_id", "189528830910946");
+        chatbox.setAttribute("attribution", "biz_inbox");
+    </script>
+
+    <!-- Your SDK code -->
+    <script>
+        window.fbAsyncInit = function () {
+            FB.init({
+                xfbml: true,
+                version: 'v18.0'
+            });
+        };
+
+        (function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s); js.id = id;
+            js.src = 'https://connect.facebook.net/vi_VN/sdk/xfbml.customerchat.js';
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+    </script>
+    @*<script src="https://static.elfsight.com/platform/platform.js" data-use-service-core defer></script>
+        <div class="elfsight-app-dd94cf6c-b13f-4428-8405-661b315850b1" data-elfsight-app-lazy></div>*@
     <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
     <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
     <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
