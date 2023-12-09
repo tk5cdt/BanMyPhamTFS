@@ -62,7 +62,10 @@ namespace TheFaceShop.Controllers
         public ActionResult FilterProductsByPrice(string priceRange)
         {
             string[] parts = priceRange.Split(new string[] { ", " }, StringSplitOptions.None);
-
+            if(parts[1] == string.Empty || parts[1] == null)
+            {
+                parts[1] = "100000000";
+            }    
             var products = db.LocSanPhamTheoGia(int.Parse(parts[0]), int.Parse(parts[1]));
 
             var sanPhams = new List<SANPHAM>();

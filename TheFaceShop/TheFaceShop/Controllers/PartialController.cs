@@ -49,9 +49,12 @@ namespace TheFaceShop.Controllers
             return View(sanPhams);
         }
 
-        public ActionResult ShowSanPham()
+        public ActionResult ShowSanPham(int pageNumber = 1, int pageSize = 10)
         {
-            var sanPhams = db.SANPHAMs.ToList();
+            ViewBag.PageNumber = pageNumber;
+            ViewBag.PageSize = pageSize;
+            ViewBag.TotalPages = Math.Ceiling((double)db.SANPHAMs.Count() / pageSize);
+            var sanPhams = db.SANPHAMs.ToList().Skip((pageNumber - 1) * pageSize).Take(pageSize);
             return View(sanPhams);
         }
 

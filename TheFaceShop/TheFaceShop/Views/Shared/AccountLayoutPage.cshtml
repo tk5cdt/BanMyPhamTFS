@@ -8,7 +8,7 @@
 <head>
     @RenderSection("style", required: false)
     <meta name="viewport" content="width=device-width" />
-    <title>LayoutPage</title>
+    <title>@ViewBag.Title</title>
     <link rel="stylesheet" href="~/Content/css/view.css" />
     <link rel="stylesheet" href="~/Content/css/viewLayoutPage.css" />
     <link rel="stylesheet" href="~/Content/css/SlideShow.css" />
@@ -152,7 +152,7 @@
                                                 </ul>
                                             </li>
                                             <li class="nav-item">
-                                                <a class="nav-link text-dark" href="@Url.Action("ShowSanPham", "Partial")">Tất cả sản phẩm</a>
+                                                <a class="nav-link text-dark" href="@Url.Action("ShowSanPham", "Partial", new {pageNumber = 1, pageSize = 10})">Tất cả sản phẩm</a>
                                             </li>
                                             <li class="nav-item dropdown">
                                                 <a class="nav-link dropdown-toggle text-dark" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
