@@ -45,7 +45,7 @@ namespace TheFaceShop.Areas.Admin.Controllers
                 if (ctgh == null)
                 {
                     int soLuong = 1;
-                  
+
 
                     CHITIETGIOHANG gioHang = new CHITIETGIOHANG()
                     {
@@ -81,14 +81,61 @@ namespace TheFaceShop.Areas.Admin.Controllers
             }
             return RedirectToAction("ShowToCart", "ShoppingCart");
         }
+
+        public List<CHITIETGIOHANG> GetCartByMaKH(string maKH)
+        {
+            // Lấy danh sách các chi tiết giỏ hàng của khách hàng theo mã khách hàng
+
+            var gh = db.GIOHANGs.FirstOrDefault(t => t.MAKH == maKH);
+            string maGH = gh.MAGH;
+            var chitietGioHangs = db.CHITIETGIOHANGs.Where(c => c.MAGH == maGH).ToList();
+
+            // Trả về danh sách chi tiết giỏ hàng
+            return chitietGioHangs;
+        }
         public ActionResult ShowToCart()
         {
-            if (Session["Cart"] == null)
+            if (Session["user"] != null)
             {
-                return View("EmptyCart");
+                var kh = Session["user"] as KHACHHANG;
+                string maKH = kh.MAKH;
+                List<CHITIETGIOHANG> chitietGioHangs = GetCartByMaKH(maKH);
+
+                // Tạo một cart mới
+                Cart cart = new Cart();
+
+                // Thêm các sản phẩm vào cart
+                foreach (var chitietGioHang in chitietGioHangs)
+                {
+                    // Lấy sản phẩm từ database
+                    SANPHAM sanPham = db.SANPHAMs.SingleOrDefault(s => s.MASP == chitietGioHang.MASP);
+                    // Thêm sản phẩm vào cart
+                    cart.Add(sanPham, (int)chitietGioHang.SOLUONG);
+                }
+                Session["Cart"] = cart;
+
+                if (Session["Cart"] == null)
+                {
+                    return View("EmptyCart");
+                }
+                else
+                {
+                    return View(cart);
+                }
             }
-            Cart cart = Session["Cart"] as Cart;
-            return View(cart);
+            else
+            {
+                if (Session["Cart"] == null)
+                {
+                    return View("EmptyCart");
+                }
+                else
+                {
+                    Cart cart = Session["Cart"] as Cart;
+                    return View(cart);
+                }
+            }
+
         }
         public ActionResult Update_Quantity_Cart(FormCollection form)
         {
@@ -140,7 +187,7 @@ namespace TheFaceShop.Areas.Admin.Controllers
                 string maKH = kh.MAKH;
                 var gh = db.GIOHANGs.FirstOrDefault(t => t.MAKH == maKH);
                 string maGH = gh.MAGH;
-                var ctgh = db.CHITIETGIOHANGs.FirstOrDefault(t => t.MASP == id && t.MAGH == maGH);
+                CHITIETGIOHANG ctgh = db.CHITIETGIOHANGs.FirstOrDefault(t => t.MASP == id && t.MAGH == maGH);
 
                 db.CHITIETGIOHANGs.Remove(ctgh);
                 db.SaveChanges();
