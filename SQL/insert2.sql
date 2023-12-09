@@ -18,7 +18,8 @@ go
 --insert QUYEN
 insert into QUYEN
 values ('KhachHang', N'Khách hàng'),
-	   ('QuanTri', N'Quản trị')
+	   ('QuanTri', N'Quản trị'),
+	   ('QuanLi', N'Quản lí')
 go
 --insert QUYENKHACHHANG
 insert into QUYENKHACHHANG
@@ -63,6 +64,7 @@ go
 insert into QUYENNHANVIEN
 values ('NV001', 'QuanTri'),
 	   ('NV002', 'QuanTri'),
+	   ('NV002', 'QuanLi'),
 	   ('NV003', 'QuanTri'),
 	   ('NV004', 'QuanTri')
 go

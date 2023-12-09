@@ -8,6 +8,7 @@ using TheFaceShop.Models;
 
 namespace TheFaceShop.Areas.Admin.Controllers
 {
+    [Authorize(Roles = "QuanLi")]
     public class NhanVienController : Controller
     {
         // GET: Admin/NhanVien
@@ -45,6 +46,7 @@ namespace TheFaceShop.Areas.Admin.Controllers
         
         public ActionResult CapNhatNhanVien(string ma)
         {
+            ViewBag.Quyen = db.QUYENs;
             NHANVIEN nv = db.NHANVIENs.Single(d => d.MANV == ma);
             if (nv == null)
             {
@@ -54,7 +56,7 @@ namespace TheFaceShop.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        public ActionResult CapNhatNhanVien(NHANVIEN nv)
+        public ActionResult CapNhatNhanVien(NHANVIEN nv, FormCollection f)
         {
             if (ModelState.IsValid)
             {
@@ -76,8 +78,25 @@ namespace TheFaceShop.Areas.Admin.Controllers
                 nhanVien.GIOITINH = nv.GIOITINH;
                 nhanVien.SDT = nv.SDT;
                 nhanVien.MATKHAU = nv.MATKHAU;
-
-                db.NHANVIENs.Add(nhanVien);
+                var quyen = f["Quyen"];
+                string[] quyens = quyen.Split(',');
+                foreach(var item in quyens)
+                {
+                    foreach(var i in nhanVien.QUYENs)
+                    {
+                        if(i.MAQUYEN == item)
+                        {
+                            break;
+                        }
+                        else
+                        {
+                            var q = db.QUYENs.Single(d => d.MAQUYEN == item);
+                            nhanVien.QUYENs.Add(q);
+                            break;
+                        }
+                    }
+                }
+                //db.NHANVIENs.Add(nhanVien);
                 db.SaveChanges();
                 return RedirectToAction("DanhSachNhanVien");
             }
