@@ -91,7 +91,7 @@ RETURN
 (
 	SELECT SUM(TONGTIEN) as Chi
 	FROM DONNHAP
-	WHERE NGAYLAP >= @NgayBatDau and NGAYLAP <= @NgayKetThuc and TrangThai = N'Đã nhận'
+	WHERE NGAYLAP >= @NgayBatDau and NGAYLAP <= @NgayKetThuc and TrangThai = N'Đã nhận hàng'
 	GROUP BY NGAYLAP
 )
 go
@@ -103,7 +103,7 @@ BEGIN
     DECLARE @DoanhThu FLOAT;
     SELECT @DoanhThu = SUM(TongTien)
     FROM DONNHAP
-    WHERE YEAR(NGAYLAP) = YEAR(GETDATE()) and TrangThai = N'Đã nhận';
+    WHERE YEAR(NGAYLAP) = YEAR(GETDATE()) and TrangThai = N'Đã nhận hàng';
     RETURN @DoanhThu;
 END;
 go
@@ -115,7 +115,7 @@ BEGIN
     DECLARE @Chi FLOAT;
     SELECT @Chi = SUM(TongTien)
     FROM DONNHAP
-    WHERE MONTH(NgayLap) = @Thang and YEAR(NgayLap) = YEAR(GETDATE()) and TrangThai = N'Đã nhận';
+    WHERE MONTH(NgayLap) = @Thang and YEAR(NgayLap) = YEAR(GETDATE()) and TrangThai = N'Đã nhận hàng';
     RETURN @Chi;
 END;
 go
