@@ -21,7 +21,20 @@ namespace TheFaceShop.Areas.Admin.Controllers
         {
             return View(db.SANPHAMs.ToList());
         }
-       
+
+        public ActionResult TrangThaiSP(string MASP, string TrangThai)
+        {
+            SANPHAM sp = db.SANPHAMs.SingleOrDefault(n => n.MASP == MASP);
+            if (sp == null)
+            {
+                Response.StatusCode = 404;
+                return null;
+            }
+            sp.TRANGTHAI = TrangThai;
+            db.SaveChanges();
+            return RedirectToAction("ShowProduct");
+        }
+
         public ActionResult XemChiTietSP(string ma)
         {
             SANPHAM sp = db.SANPHAMs.Single(s => s.MASP == ma);
@@ -149,6 +162,7 @@ namespace TheFaceShop.Areas.Admin.Controllers
                 sanPham.MADBC = sp.MADBC;
                 sanPham.CONGDUNG = sp.CONGDUNG;
                 sanPham.NOIDUNG = sp.NOIDUNG;
+                sanPham.DUNGTICH=sp.DUNGTICH;
                 if (f != null && f.ContentLength > 0)
                 {
                     string fname = Path.GetFileName(f.FileName);
