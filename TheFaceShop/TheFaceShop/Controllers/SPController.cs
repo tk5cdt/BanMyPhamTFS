@@ -11,11 +11,22 @@ namespace TheFaceShop.Controllers
     {
         QL_THEFACESHOPEntities db = new QL_THEFACESHOPEntities();
         // GET: SanPham
-        public ActionResult ChiTietSanPham(string id)
+        public ActionResult ChiTietSanPham(string id = "SP001")
         {
-            var sp = db.SANPHAMs.SingleOrDefault(s => s.MASP == id);
-            ViewBag.SPLQ = db.SANPHAMs.Where(n => n.MACTL_SP == sp.MACTL_SP);
-            return View(sp);
+            try
+            {
+                var sp = db.SANPHAMs.SingleOrDefault(s => s.MASP == id);
+                if (sp == null)
+                {
+                       return HttpNotFound();
+                }
+                ViewBag.SPLQ = db.SANPHAMs.Where(n => n.MACTL_SP == sp.MACTL_SP);
+                return View(sp);
+            }    
+            catch
+            {
+                return HttpNotFound();
+            }
         }
         protected override void HandleUnknownAction(string actionName)
         {
