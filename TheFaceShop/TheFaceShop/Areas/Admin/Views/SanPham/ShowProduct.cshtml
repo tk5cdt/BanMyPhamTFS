@@ -26,7 +26,7 @@
                     <th class="col-1">
                         @Html.DisplayNameFor(model => model.TONKHO)
                     </th>
-                    <th class="col-2">
+                    <th class="col-2" colspan="2">
                         @Html.DisplayNameFor(model => model.TRANGTHAI)
                     </th>
                     <th class="col-1">Tác vụ</th>
@@ -61,8 +61,20 @@
                         <td class="text-center">
                             @Html.DisplayFor(modelItem => item.TONKHO)
                         </td>
-                        <td class="text-center">
+                        <td>
                             @Html.DisplayFor(modelItem => item.TRANGTHAI)
+                        </td>
+                        <td class="text-center">
+                            @if (item.TRANGTHAI == "Đang bán")
+                            {
+                                <form action="/Admin/SanPham/TrangThaiSP" method="post">
+                                    <input type="hidden" name="MASP" value="@item.MASP" />
+                                    <select class="form-control form-control-sm" onchange="this.form.submit()" name="TRANGTHAI">
+                                        <option>Trạng thái đơn hàng</option>
+                                        <option value="Hết hàng">Hết hàng</option>
+                                    </select>
+                                </form>
+                            }
                         </td>
                         <td class="text-center">
                             <a href="@Url.Action("UpdateProduct", "SanPham", new { ma = item.MASP })"><i class="far fa-edit" style="color: black"></i></a> |
