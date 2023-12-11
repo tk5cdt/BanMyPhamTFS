@@ -37,7 +37,7 @@ namespace TheFaceShop.Areas.Admin.Controllers
                 {
                     item.Chi = 0;
                 }
-                b[item.Thang - 1] -= item.Chi.Value;
+                b[item.Thang - 1] = item.Chi.Value;
             }
             ViewBag.Thang = a;
             ViewBag.Chi = b;

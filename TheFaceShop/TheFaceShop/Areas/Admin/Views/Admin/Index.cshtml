@@ -128,7 +128,16 @@
                     },
                     enableMouseTracking: false
                 }
-        },
+            },
+            csv: {
+                columnHeaderFormatter: function (item, key) {
+                    if (!item || item instanceof Highcharts.Axis) {
+                        return 'Tháng'
+                    } else {
+                        return item.name;
+                    }
+                }
+            },
         series: [{
             name: 'Doanh thu',
             data: data
