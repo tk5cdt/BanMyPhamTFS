@@ -1315,6 +1315,7 @@
     <Content Include="Views\DonHang\ChuaDangNhap.cshtml" />
     <Content Include="Views\DonHang\ChiTietDonHang.cshtml" />
     <Content Include="Views\Partial\Search.cshtml" />
+    <Content Include="Views\ShoppingCart\ThanhToan.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

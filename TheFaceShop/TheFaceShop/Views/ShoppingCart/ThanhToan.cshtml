@@ -1,0 +1,35 @@
+﻿@model TheFaceShop.Models.PHUONGXA
+
+@{
+    ViewBag.Title = "ThanhToan";
+    Layout = "~/Views/Shared/AccountLayoutPage.cshtml";
+}
+
+
+@using (Html.BeginForm("ThanhToan"))
+{
+<div class="container mt-3">
+    <h2>Thông tin địa chỉ giao hàng</h2>
+    <div class="form-group">
+
+        <div class="mb-3 mt-3">
+            <label for="sonha">Số Nhà:</label>
+            <input type="text" class="form-control" placeholder="Số Nhà / Tên Đường" name="sonha">
+        </div>
+
+        <div class="mb-3 mt-3">
+            <label for="phuong">Phường/Xã:</label>
+            @Html.DropDownListFor(model => model.code, null, "", new { @class = "form-control", id = "phuong" })
+            @Html.ValidationMessageFor(model => model.code, "", new { @class = "text-danger" })
+           
+        </div>
+
+    </div>
+    <input type="submit" value="Đặt Hàng" class="btn btn-success" />
+
+</div>
+}
+
+
+
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
