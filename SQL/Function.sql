@@ -155,11 +155,11 @@ BEGIN
 END
 go
 
-CREATE FUNCTION dbo.ChiThuCacQuy()
+CREATE FUNCTION dbo.ChiCacQuy()
 RETURNS TABLE
 AS
 RETURN (
-    SELECT Quy, dbo.TongDoanhThuTrongQuy(Quy) AS Chi
+    SELECT Quy, dbo.TongChiTrongQuy(Quy) AS Chi
     FROM (
         VALUES (1), (2), (3), (4)
     ) AS Quy(Quy)

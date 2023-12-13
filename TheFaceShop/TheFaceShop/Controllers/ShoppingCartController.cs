@@ -54,7 +54,7 @@ namespace TheFaceShop.Areas.Admin.Controllers
                         MASP = pro.MASP,
                         SOLUONG = soLuong
                     };
-                    db.CHITIETGIOHANGs.Add(gioHang);
+                    gh.CHITIETGIOHANGs.Add(gioHang);
                     db.SaveChanges();
                 }
                 else
@@ -266,6 +266,15 @@ namespace TheFaceShop.Areas.Admin.Controllers
                     _order.TRANGTHAI = "Đang chuẩn bị";
                     db.DONGIAOs.Add(_order);
                     db.SaveChanges();
+                    var dg = db.DONGIAOs.FirstOrDefault(t => t.MADG == obj.Value.ToString());
+                    foreach (var item in g)
+                    {
+                        CTDG cTDG = new CTDG();
+                        cTDG.MADG = obj.Value.ToString();
+                        cTDG.MASP = item.MASP;
+                        cTDG.SOLUONG = item.SOLUONG;
+                        dg.CTDGs.Add(cTDG);
+                    }    
 
 
                     // Xóa ctgh
@@ -276,28 +285,13 @@ namespace TheFaceShop.Areas.Admin.Controllers
                     }
                     db.SaveChanges();
 
-                    //add chi tiet don giao
-                    //dang bị lỗi khóa ngoại của MADG
-                    CTDG _orderDetail = new CTDG();
-                    for (int i = 0; i < g.Count; i++)
-                    {
-                        _orderDetail.MADG =_order.MADG;
-                        _orderDetail.MASP = g[i].MASP;
-                        _orderDetail.SOLUONG = g[i].SOLUONG;
-                        _orderDetail.THANHTIEN = _order.TRIGIA;
-                        _orderDetail.MUCDODG = .0;
-                        _orderDetail.NGAYBL = DateTime.Now;
-                        _orderDetail.BINHLUAN = " ";
-                        db.CTDGs.Add(_orderDetail);
-                    }
-                    db.SaveChanges();
-
                     cart.ClearCart();
                     return RedirectToAction("Shopping_Success", "ShoppingCart");
                 }
                 catch
                 {
-                    return RedirectToAction("Shopping_Success", "ShoppingCart");
+                    
+                    return HttpNotFound();
                 }
             }
             else

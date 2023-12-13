@@ -98,6 +98,7 @@ namespace TheFaceShop.Controllers
             FormsAuthentication.SignOut();
             Session["user"] = null;
             Session["TENKH"] = null;
+            Session["Cart"] = null;
             return RedirectToAction("TrangChu");
         }
     }

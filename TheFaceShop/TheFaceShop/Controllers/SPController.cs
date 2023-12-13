@@ -38,6 +38,7 @@ namespace TheFaceShop.Controllers
 
             if (dg.Count() > 0)
             {
+                int flag = 0;
                 foreach (var item in dg)
                 {
                     var ctdg = item.CTDGs.FirstOrDefault(n => n.MASP == masp);
@@ -45,12 +46,21 @@ namespace TheFaceShop.Controllers
                     {
                         ctdg.BINHLUAN = bl;
                         ctdg.MUCDODG = mddg;
-                        db.SaveChanges();
+                        ctdg.NGAYBL = DateTime.Now;
+                        flag = 1;
                         ViewBag.TB = "Đánh giá thành công!";
-                        return View("ChiTietSanPham", sp);
+                        
                     }
                 }
-                ViewBag.TB = "Bạn đã đánh giá sản phẩm này rồi!";
+                if (flag == 0)
+                {
+                    ViewBag.TB = "Bạn đã đánh giá sản phẩm này rồi!";
+                }
+                else
+                {
+                    db.SaveChanges();
+                    return View("ChiTietSanPham", sp);
+                }
             }
             else
             {
