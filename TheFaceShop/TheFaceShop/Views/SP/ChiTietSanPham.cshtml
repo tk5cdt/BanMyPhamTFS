@@ -115,7 +115,7 @@
                 <h1>Bình luận</h1>
                 @foreach (var item in Model.CTDGs)
                 {
-                    if (item.BINHLUAN != null)
+                    if (item.BINHLUAN != null || item.MUCDODG != null)
                     {
                         <div class="comment mt-4 text-justify float-left">
                             <h4>@item.DONGIAO.KHACHHANG.TENKH</h4>
@@ -135,20 +135,32 @@
                 }
             </div>
             <div class="col-lg-4 col-md-5 col-sm-4 offset-md-1 offset-sm-1 col-12 mt-4">
-                <form id="algin-form">
+                <form action="/SP/BinhLuan" method="post" id="algin-form">
                     @if (Session["user"] != null)
                     {
+                        <input type="text" name="masp" value="@Model.MASP" hidden />
                         <div class="form-group">
                             <h4>Để lại bình luận</h4>
                             <label for="message">Bình luận</label>
-                            <textarea name="msg" id="" msg cols="30" rows="5" class="form-control"></textarea>
-
-                            <label for="quantity">Mức độ đánh giá (từ 1 đến 5):</label>
-                            <input type="number" id="quantity" name="quantity" min="1" max="5"><br>
+                            <textarea name="bl" id="" msg cols="30" rows="5" class="form-control"></textarea>
+                            <br />
+                            <h4>Mức độ đánh giá</h4>
+                            <div class="d-flex rating">
+                                <input type="number" id="mddg" name="mddg" value="0" hidden />
+                                <div onclick="Rate(1)"><i id="s1" onclick="Rate(1)" class="fal fa-star"></i></div>
+                                <div onclick="Rate(2)"><i id="s2" onclick="Rate(2)" class="fal fa-star"></i></div>
+                                <div onclick="Rate(3)"><i id="s3" onclick="Rate(3)" class="fal fa-star"></i></div>
+                                <div onclick="Rate(4)"><i id="s4" onclick="Rate(4)" class="fal fa-star"></i></div>
+                                <div onclick="Rate(5)"><i id="s5" onclick="Rate(5)" class="fal fa-star"></i></div>
+                            </div>
                         </div>
                         <div class="form-group">
-                            <button type="button" id="post" class="btn">Bình luận</button>
+                            <p class="text-danger">@ViewBag.TB</p>
                         </div>
+                        <div class="form-group">
+                            <button type="button" id="post" onclick="Checkmddg()" class="btn btn-success mb-2">Bình luận</button>
+                        </div>
+
                     }
                     else
                     {
@@ -161,6 +173,13 @@
     </div>
 </section>
 @section script{
+    @if (ViewBag.TB != null) {
+        <script>
+            window.onload = function () {
+                swal("Nhắc nhở","@Html.Raw(ViewBag.TB)");
+            };
+        </script>
+    }
     <script>
         function change_image(image) {
             var container = document.getElementById("main-image");
@@ -198,6 +217,31 @@
                     }
                 }
             };
+        }
+    </script>
+    <script>
+        function Rate(r) {
+            for (var i = 1; i <= r; i++) {
+                document.getElementById("s" + i).classList.add("fas");
+                document.getElementById("s" + i).classList.remove("fal");
+            }
+            for (var i = r + 1; i <= 5; i++) {
+                document.getElementById("s" + i).classList.add("fal");
+                document.getElementById("s" + i).classList.remove("fas");
+            }
+            document.getElementById("mddg").value = r;
+        }
+    </script>
+    <script>
+        function Checkmddg() {
+            var mddg = document.getElementById("mddg").value;
+            if (mddg == 0) {
+                alert("Bạn chưa đánh giá");
+                e.preventDefault();
+            }
+            else {
+                document.getElementById("algin-form").submit();
+            }
         }
     </script>
 }
