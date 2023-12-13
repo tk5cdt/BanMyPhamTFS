@@ -12,7 +12,7 @@ namespace TheFaceShop.Models
 {
     using System;
     using System.Collections.Generic;
-
+    
     public partial class NHANVIEN
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -21,7 +21,7 @@ namespace TheFaceShop.Models
             this.DONNHAPs = new HashSet<DONNHAP>();
             this.QUYENs = new HashSet<QUYEN>();
         }
-
+    
         public string MANV { get; set; }
         [Display(Name = "Tên nhân viên")]
         public string TENNV { get; set; }
@@ -37,7 +37,7 @@ namespace TheFaceShop.Models
         [DataType(DataType.Password)]
         [Display(Name = "Mật khẩu")]
         public string MATKHAU { get; set; }
-
+    
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<DONNHAP> DONNHAPs { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

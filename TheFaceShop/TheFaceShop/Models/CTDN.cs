@@ -12,7 +12,7 @@ namespace TheFaceShop.Models
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
-
+    
     public partial class CTDN
     {
         public string MADN { get; set; }
@@ -21,7 +21,7 @@ namespace TheFaceShop.Models
         public Nullable<int> SOLUONG { get; set; }
         [Display(Name = "Thành tiền")]
         public Nullable<double> THANHTIEN { get; set; }
-
+    
         public virtual DONNHAP DONNHAP { get; set; }
         public virtual SANPHAM SANPHAM { get; set; }
     }

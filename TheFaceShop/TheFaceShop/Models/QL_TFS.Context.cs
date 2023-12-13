@@ -63,12 +63,6 @@ namespace TheFaceShop.Models
             return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<Nullable<double>>("[QL_THEFACESHOPEntities].[ChiNgay](@NgayBatDau, @NgayKetThuc)", ngayBatDauParameter, ngayKetThucParameter);
         }
     
-        [DbFunction("QL_THEFACESHOPEntities", "ChiThuCacQuy")]
-        public virtual IQueryable<ChiThuCacQuy_Result1> ChiThuCacQuy()
-        {
-            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<ChiThuCacQuy_Result1>("[QL_THEFACESHOPEntities].[ChiThuCacQuy]()");
-        }
-    
         [DbFunction("QL_THEFACESHOPEntities", "ChiTrongQuy")]
         public virtual IQueryable<Nullable<double>> ChiTrongQuy(Nullable<int> quy)
         {
@@ -385,6 +379,12 @@ namespace TheFaceShop.Models
                 new ObjectParameter("mk", typeof(string));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_InsertNhanVien", tenParameter, gioitinhParameter, sdtParameter, mkParameter);
+        }
+    
+        [DbFunction("QL_THEFACESHOPEntities", "ChiCacQuy")]
+        public virtual IQueryable<ChiCacQuy_Result> ChiCacQuy()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<ChiCacQuy_Result>("[QL_THEFACESHOPEntities].[ChiCacQuy]()");
         }
     }
 }

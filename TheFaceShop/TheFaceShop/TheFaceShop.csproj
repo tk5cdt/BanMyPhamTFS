@@ -1134,6 +1134,9 @@
       <DependentUpon>QL_TFS.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Cart.cs" />
+    <Compile Include="Models\ChiCacQuy_Result.cs">
+      <DependentUpon>QL_TFS.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\ChiThuCacQuy_Result.cs">
       <DependentUpon>QL_TFS.tt</DependentUpon>
     </Compile>

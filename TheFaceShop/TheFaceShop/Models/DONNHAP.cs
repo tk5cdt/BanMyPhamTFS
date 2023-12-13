@@ -12,7 +12,7 @@ namespace TheFaceShop.Models
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
-
+    
     public partial class DONNHAP
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -20,7 +20,7 @@ namespace TheFaceShop.Models
         {
             this.CTDNs = new HashSet<CTDN>();
         }
-
+    
         [Display(Name = "Mã đơn nhập")]
         public string MADN { get; set; }
         [Display(Name = "Tên nhân viên")]
@@ -31,7 +31,7 @@ namespace TheFaceShop.Models
         public Nullable<double> TONGTIEN { get; set; }
         [Display(Name = "Trạng thái")]
         public string TRANGTHAI { get; set; }
-
+    
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CTDN> CTDNs { get; set; }
         public virtual NHANVIEN NHANVIEN { get; set; }
