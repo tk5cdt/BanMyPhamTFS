@@ -1,4 +1,4 @@
-﻿@model TheFaceShop.Models.PHUONGXA
+﻿@model TheFaceShop.Models.TINHTHANH
 
 @{
     ViewBag.Title = "ThanhToan";
@@ -12,16 +12,44 @@
     <h2>Thông tin địa chỉ giao hàng</h2>
     <div class="form-group">
 
-        <div class="mb-3 mt-3">
-            <label for="sonha">Số Nhà:</label>
-            <input type="text" class="form-control" placeholder="Số Nhà / Tên Đường" name="sonha">
+        <div class="row mb-3 mt-3">
+
+            <div class="col-6">
+                <label for="ht">Người nhận: (*)</label>
+                <input type="text" class="form-control" required pattern="(?i)\b[a-zA-Záàảãạăắằẳẵặâấầẩẫậéèẻẽẹêếềểễệóòỏõọôốồổỗộơớờởỡợíìỉĩịúùủũụưứừửữựýỳỷỹỵđ]+\b" placeholder="Họ tên người nhận (*)" name="ht" oninvalid="this.setCustomValidity('Vui nhập tên hợp lệ')">
+            </div>
+
+            <div class="col-6">
+                <label for="sdt">Số điện thoại người nhận:</label>
+                <input type="tel" class="form-control" required placeholder="Số điện thoại người nhận (*)" name="sdt" pattern="^(0|\+84)([0-9]{9}|[0-9]{3}\-[0-9]{3}\-[0-9]{3})$" oninvalid="this.setCustomValidity('Vui nhập sđt hợp lệ')">
+            </div>
         </div>
 
         <div class="mb-3 mt-3">
-            <label for="phuong">Phường/Xã:</label>
-            @Html.DropDownListFor(model => model.code, null, "", new { @class = "form-control", id = "phuong" })
-            @Html.ValidationMessageFor(model => model.code, "", new { @class = "text-danger" })
-           
+            <label for="sonha">Số Nhà: (*)</label>
+            <input type="text" class="form-control" placeholder="Số Nhà / Tên Đường (*)" name="sonha">
+        </div>
+
+        <div class="row mb-3 mt-3">
+            <div class="col-4">
+                <label for="tt">Tỉnh thành: (*)</label>
+                @Html.DropDownListFor(model => model.code, (SelectList)ViewBag.TinhThanh, "Chọn tỉnh thành", new { @class = "form-select", id = "tt" })
+                @Html.ValidationMessageFor(model => model.code, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="col-4">
+                <label for="qh">Quận huyện: (*)</label>
+                <select class="form-select" name="qh" id="qh" required oninvalid="this.setCustomValidity('Vui lòng chọn')">
+                    <option>Chọn Quận huyện</option>
+                </select>
+            </div>
+
+            <div class="col-4">
+                <label for="px">Phường xã: (*)</label>
+                <select class="form-select" name="px" id="px" required oninvalid="this.setCustomValidity('Vui lòng chọn')">
+                    <option>Chọn phường xã</option>
+                </select>
+            </div>
         </div>
 
     </div>
@@ -31,5 +59,47 @@
 }
 
 
-
-<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+@section script{
+    <script>
+        let select1 = document.getElementById("tt");
+        let select2 = document.getElementById("qh");
+        let select3 = document.getElementById("px");
+        select1.onchange = function () {
+            var code = select1.value;
+            $.ajax({
+                url: "/ShoppingCart/GetQuanHuyen",
+                type: "POST",
+                data: { code: code },
+                success: function (response) {
+                    select2.innerHTML = '<option>Chọn Quận huyện</option>';
+                    select3.innerHTML = '<option>Chọn phường xã</option>';
+                    response = JSON.parse(response);
+                    $.each(response, function (index, item) {
+                        var option = document.createElement("option");
+                        option.value = item.code;
+                        option.text = item.name;
+                        select2.appendChild(option);
+                    });
+                }
+            });
+        }
+        select2.onchange = function () {
+            var code = select2.value;
+            $.ajax({
+                url: "/ShoppingCart/GetPhuongXa",
+                type: "POST",
+                data: { code: code },
+                success: function (response) {
+                    select3.innerHTML = '';
+                    response = JSON.parse(response);
+                    $.each(response, function (index, item) {
+                        var option = document.createElement("option");
+                        option.value = item.code;
+                        option.text = item.name;
+                        select3.appendChild(option);
+                    });
+                }
+            });
+        }
+    </script>
+    }

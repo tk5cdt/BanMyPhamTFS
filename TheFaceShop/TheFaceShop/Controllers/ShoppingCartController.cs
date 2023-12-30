@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Data.Entity.Core.Objects;
 using System.Data.Entity.Migrations;
@@ -228,7 +229,7 @@ namespace TheFaceShop.Areas.Admin.Controllers
         public ActionResult ThanhToan()
         {
             QL_THEFACESHOPEntities db = new QL_THEFACESHOPEntities();
-            ViewBag.code = new SelectList(db.PHUONGXAs, "code", "full_name");
+            ViewBag.TinhThanh = new SelectList(db.TINHTHANHs.OrderBy(n => n.full_name), "code", "full_name");
             return View();
         }
 
@@ -237,7 +238,7 @@ namespace TheFaceShop.Areas.Admin.Controllers
         [Authorize(Roles = "KhachHang")]
 
         [HttpPost]
-        public ActionResult ThanhToan(FormCollection form, PHUONGXA model)
+        public ActionResult ThanhToan(FormCollection form)
         {
 
             if (Session["user"] != null)
@@ -256,10 +257,10 @@ namespace TheFaceShop.Areas.Admin.Controllers
                     db.pc_TimMaTiepTheo("DONGIAO", obj).ToString();
                     _order.NGAYLAP = DateTime.Now;
                     _order.MAKH = kh.MAKH;
-                    _order.NGUOINHAN = kh.TENKH;
-                    _order.SDT = kh.SDT;
+                    _order.NGUOINHAN = form["ht"].ToString();
+                    _order.SDT = form["sdt"].ToString();
                     _order.SONHA = form["sonha"].ToString();
-                    var codePhuong = model.code;
+                    var codePhuong = form["px"].ToString();
                     _order.PHUONGXA = codePhuong.ToString();
                     _order.TRIGIA = TinhTongTien(g);
                     _order.NGAYLAP = DateTime.Now;
@@ -302,6 +303,26 @@ namespace TheFaceShop.Areas.Admin.Controllers
         public ActionResult Shopping_Success()
         {
             return View();
+        }
+
+        [HttpPost]
+        public ActionResult GetQuanHuyen(string code)
+        {
+            QL_THEFACESHOPEntities db = new QL_THEFACESHOPEntities();
+            var quanHuyen = db.QUANHUYENs.Select(n => new { code = n.code, name = n.full_name, province_code = n.province_code}).Where(n => n.province_code == code).OrderBy(n => n.name).ToList();
+            //ajax return
+            var result = JsonConvert.SerializeObject(quanHuyen);
+            return Json(result, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpPost]
+        public ActionResult GetPhuongXa(string code)
+        {
+            QL_THEFACESHOPEntities db = new QL_THEFACESHOPEntities();
+            var phuongXa = db.PHUONGXAs.Select(n => new { code = n.code, name = n.full_name, district_code = n.district_code }).Where(n => n.district_code == code).OrderBy(n => n.name).ToList();
+            //ajax return
+            var result = JsonConvert.SerializeObject(phuongXa);
+            return Json(result, JsonRequestBehavior.AllowGet);
         }
     }
 }
