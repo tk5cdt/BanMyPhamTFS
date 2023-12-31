@@ -1122,6 +1122,7 @@
     <Compile Include="Areas\Admin\Controllers\SanPhamController.cs" />
     <Compile Include="Controllers\LoiController.cs" />
     <Compile Include="Controllers\DonHangController.cs" />
+    <Compile Include="Controllers\MuaNgayController.cs" />
     <Compile Include="Controllers\SPController.cs" />
     <Compile Include="Controllers\ShoppingCartController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -1319,6 +1320,8 @@
     <Content Include="Views\DonHang\ChiTietDonHang.cshtml" />
     <Content Include="Views\Partial\Search.cshtml" />
     <Content Include="Views\ShoppingCart\ThanhToan.cshtml" />
+    <Content Include="Views\MuaNgay\ChuaDangNhap.cshtml" />
+    <Content Include="Views\MuaNgay\ThanhToan.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

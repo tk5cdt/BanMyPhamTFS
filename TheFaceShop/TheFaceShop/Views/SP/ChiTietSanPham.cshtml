@@ -51,12 +51,22 @@
                             Công dụng: @Model.CONGDUNG
                         </p>
                         <div class="soluong mt-5 mx-2">
-                            <div class="cart my-2 align-items-center">
-                                <form action="/ShoppingCart/AddtoCart/@Model.MASP" method="POST">
-                                    <button class="btn btn-success text-uppercase my-2" type="submit">
-                                        Thêm vào giỏ hàng
-                                    </button>
-                                </form>
+                            <div class="cart my-2 align-items-center row">
+                                <div class="col-md-4">
+                                    <form action="/MuaNgay/ThanhToan/@Model.MASP" method="GET">
+                                        <button class="btn btn-danger text-uppercase my-2" type="submit">
+                                            Mua ngay
+                                        </button>
+                                    </form>
+
+                                </div>
+                                <div class="col-md-6" style="margin-left: -30px">
+                                    <form action="/ShoppingCart/AddtoCart/@Model.MASP" method="POST">
+                                        <button class="btn btn-success text-uppercase my-2" type="submit">
+                                            Thêm vào giỏ hàng
+                                        </button>
+                                    </form>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -173,7 +183,8 @@
     </div>
 </section>
 @section script{
-    @if (ViewBag.TB != null) {
+    @if (ViewBag.TB != null)
+    {
         <script>
             window.onload = function () {
                 swal("Nhắc nhở","@Html.Raw(ViewBag.TB)");

@@ -33,6 +33,9 @@
                         @Html.DisplayNameFor(model => model.SANPHAM.TENSP)
                     </th>
                     <th>
+                        @Html.DisplayNameFor(model => model.SANPHAM.GIABAN)
+                    </th>
+                    <th>
                         @Html.DisplayNameFor(model => model.SOLUONG)
                     </th>
                     <th>
@@ -55,6 +58,9 @@
                                     @*<p class="text-muted mb-0">john.doe@gmail.com</p>*@
                                 </div>
                             </div>
+                        </td>
+                        <td style="text-end">
+                            @Html.DisplayFor(modelItem => item.SANPHAM.GIABAN)
                         </td>
                         <td style="text-align:center">
                             @Html.DisplayFor(modelItem => item.SOLUONG)

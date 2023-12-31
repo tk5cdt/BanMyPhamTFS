@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Data.Entity.Core.Objects;
 using System.Data.Entity.Migrations;
+using System.Data.Entity.Validation;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -74,6 +75,7 @@ namespace TheFaceShop.Areas.Admin.Controllers
                     db.SaveChanges();
                 }
 
+                ViewBag.ThongBao = "Thêm vào giỏ hàng thành công";
                 return RedirectToAction("ShowToCart", "ShoppingCart");
             }
             else
@@ -81,7 +83,7 @@ namespace TheFaceShop.Areas.Admin.Controllers
                 GetCart().Add(pro);
             }
             return RedirectToAction("ShowToCart", "ShoppingCart");
-        }
+        }       
 
         public List<CHITIETGIOHANG> GetCartByMaKH(string maKH)
         {
@@ -136,8 +138,8 @@ namespace TheFaceShop.Areas.Admin.Controllers
                     return View(cart);
                 }
             }
+        }        
 
-        }
         public ActionResult Update_Quantity_Cart(FormCollection form)
         {
             if (Session["user"] != null)
@@ -289,10 +291,19 @@ namespace TheFaceShop.Areas.Admin.Controllers
                     cart.ClearCart();
                     return RedirectToAction("Shopping_Success", "ShoppingCart");
                 }
-                catch
+                catch (DbEntityValidationException e)
                 {
-                    
-                    return HttpNotFound();
+                    foreach (var eve in e.EntityValidationErrors)
+                    {
+                        Console.WriteLine("Entity of type \"{0}\" in state \"{1}\" has the following validation errors:",
+                            eve.Entry.Entity.GetType().Name, eve.Entry.State);
+                        foreach (var ve in eve.ValidationErrors)
+                        {
+                            Console.WriteLine("- Property: \"{0}\", Error: \"{1}\"",
+                                ve.PropertyName, ve.ErrorMessage);
+                        }
+                    }
+                    throw;
                 }
             }
             else

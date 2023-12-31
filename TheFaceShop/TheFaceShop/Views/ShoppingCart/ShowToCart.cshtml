@@ -7,17 +7,17 @@
 <link href="~/Content/GioHang.css" rel="stylesheet" />
 @if (Model != null)
 {
-    <div class="container mt-3">
+    <div class="container mt-3 row-md-1">
         <h2 style="text-align: center">Giỏ hàng của bạn</h2>
         <table class="table table-striped">
-            <thead>
+            <thead style="text-align: center">
                 <tr>
-                    <th>Tên sản phẩm</th>
-                    <th>Ảnh Sản Phẩm</th>
-                    <th>Giá</th>
-                    <th>Số lượng</th>
-                    <th>Thành tiền</th>
-                    <th>Xoá</th>
+                    <th class="col-5">Sản phẩm</th>
+                    @*<th class="col-">Ảnh Sản Phẩm</th>*@
+                    <th class="col-2 text-end">Giá</th>
+                    <th class="col-2">Số lượng</th>
+                    <th class="col-2 text-end">Thành tiền</th>
+                    <th class="col-1"></th>
                 </tr>
             </thead>
             <tbody>
@@ -27,28 +27,38 @@
                     double total = Convert.ToDouble(item._shopping_product.GIABAN.Value * item._shopping_quantity);
                     <tr>
                         <td>
+                            <div class="d-flex">
+                                <img src="~/HinhAnhSP/@item._shopping_product.ANHDAIDIEN"
+                                     alt=""
+                                     style="width: 70px; height: 70px" />
+                                <div class="ms-3">
+                                    @Html.DisplayFor(model => item._shopping_product.TENSP, new { @class = "text-start" })
+                                </div>
+                            </div>
+                        </td>
+                        @*<td>
                             @Html.DisplayFor(model => item._shopping_product.TENSP)
                         </td>
                         <td>
                             <img src="~/HinhAnhSP/@item._shopping_product.ANHDAIDIEN" style=" width:150px; height: 150px" />
-                        </td>
-                        <td>
-                            @Html.DisplayFor(model => item._shopping_product.GIABAN) VND
+                        </td>*@
+                        <td class="text-end">
+                            @Html.DisplayFor(model => item._shopping_product.GIABAN)
                         </td>
                         <td>
                             @using (Html.BeginForm("Update_Quantity_Cart", "ShoppingCart"))
                             {
                                 <input type="hidden" value="@item._shopping_product.MASP" name="id_Pro" />
                                 <input type="number" value="@item._shopping_quantity" name="Quantity" />
-                                <button type="submit" value="Update_Quantity"><i class="far fa-pen"></i></button>
+                                <button type="submit" value="Update_Quantity"><i class="far fa-pen"></i></button>                                             
                             }
                         </td>
 
-                        <td>
-                            Thành tiền: @total
+                        <td class="text-end">
+                            @total @*Thành tiền*@
                         </td>
-                        <td>
-                            <a href="/ShoppingCart/RemoveCart/@item._shopping_product.MASP">xoá</a>
+                        <td class="text-end">
+                            <a href="/ShoppingCart/RemoveCart/@item._shopping_product.MASP"><i class="fas fa-trash-alt" style="color: black"></i></a>
                         </td>
                     </tr>
                 }

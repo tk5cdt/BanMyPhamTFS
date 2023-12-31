@@ -827,10 +827,17 @@ BEGIN
     AND C.MASP = inserted.MASP
     AND C.MASP = S.MASP
 
+	DECLARE @tt FLOAT
+	SELECT @tt = inserted.SOLUONG * GIABAN
+	FROM CTDG C, SANPHAM S, inserted
+    WHERE C.MADG = inserted.MADG
+    AND C.MASP = inserted.MASP
+    AND C.MASP = S.MASP
+
     UPDATE DONGIAO
-    SET TRIGIA = TRIGIA + inserted.SOLUONG * GIABAN
-    FROM DONGIAO P, inserted, SANPHAM s
-    WHERE P.MADG = inserted.MADG and inserted.MASP = s.MASP
+    SET TRIGIA = TRIGIA + @tt
+    FROM DONGIAO P, inserted
+    WHERE P.MADG = inserted.MADG
 
     UPDATE SANPHAM 
     SET TONKHO = TONKHO - C.SOLUONG

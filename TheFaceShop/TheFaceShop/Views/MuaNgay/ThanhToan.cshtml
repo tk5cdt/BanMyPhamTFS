@@ -1,0 +1,168 @@
+﻿@model TheFaceShop.Models.SANPHAM
+
+@{
+    ViewBag.Title = "ThanhToan";
+    Layout = "~/Views/Shared/AccountLayoutPage.cshtml";
+}
+
+@using (Html.BeginForm("ThanhToan", "MuaNgay", FormMethod.Post))
+{
+    <div class="container mt-3 row-md-1">
+        <table class="table table-striped">
+            <thead style="text-align: center">
+                <tr>
+                    <th class="col-5">Sản phẩm</th>
+                    @*<th class="col-">Ảnh Sản Phẩm</th>*@
+                    <th class="col-2 text-end">Giá</th>
+                    <th class="col-2">Số lượng</th>
+                    <th class="col-2 text-end">Thành tiền</th>
+                </tr>
+            </thead>
+            <tbody>
+                @{
+                    double productPrice = Convert.ToDouble(Model.GIABAN);
+                    int quantity = Convert.ToInt32(Request["Quantity"] ?? "1");
+                    double total = Convert.ToDouble(productPrice * quantity);
+                }
+                <tr>
+                    <td>
+                        <div class="d-flex">
+                            <img src="~/HinhAnhSP/@Model.ANHDAIDIEN"
+                                 alt=""
+                                 style="width: 70px; height: 70px" />
+                            <div class="ms-3">
+                                @Model.TENSP
+                                @*@Html.DisplayFor(model => item._shopping_product.TENSP, new { @class = "text-start" })*@
+                            </div>
+                        </div>
+                    </td>
+                    <td class="text-end">
+                        @Model.GIABAN
+                    </td>
+
+                    <td>
+                        <input type="hidden" value="@Model.MASP" name="id_Pro" />
+                        <input type="number" value="1" min="1" name="Quantity" />
+                    </td>
+
+                    <td class="text-end">
+                        <p id="totalPrice">@total</p>
+                        @*Thành tiền*@
+                    </td>
+                </tr>
+
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="5" style="text-align:right"> <p id="total">Tổng tiền: @total</p></td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+
+    <div class="container mt-3">
+        <h2>Thông tin địa chỉ giao hàng</h2>
+        <div class="form-group">
+
+            <div class="row mb-3 mt-3">
+
+                <div class="col-6">
+                    <label for="ht">Người nhận: (*)</label>
+                    <input type="text" class="form-control" required placeholder="Họ tên người nhận (*)" name="ht" oninvalid="this.setCustomValidity('Vui nhập tên hợp lệ')">
+                </div>
+
+                <div class="col-6">
+                    <label for="sdt">Số điện thoại người nhận:</label>
+                    <input type="tel" class="form-control" required placeholder="Số điện thoại người nhận (*)" name="sdt" pattern="^(0|\+84)([0-9]{9}|[0-9]{3}\-[0-9]{3}\-[0-9]{3})$" oninvalid="this.setCustomValidity('Vui nhập sđt hợp lệ')">
+                </div>
+            </div>
+
+            <div class="mb-3 mt-3">
+                <label for="sonha">Số Nhà: (*)</label>
+                <input type="text" class="form-control" placeholder="Số Nhà / Tên Đường (*)" name="sonha">
+            </div>
+
+            <div class="row mb-3 mt-3">
+                <div class="col-4">
+                    <label for="tt">Tỉnh thành: (*)</label>
+                    @Html.DropDownList("tt", (SelectList)ViewBag.TinhThanh, "Chọn tỉnh thành", new { @class = "form-select", id = "tt", name = "tt" })
+                    @*@Html.ValidationMessageFor(model => model.code, "", new { @class = "text-danger" })*@
+                </div>
+
+                <div class="col-4">
+                    <label for="qh">Quận huyện: (*)</label>
+                    <select class="form-select" name="qh" id="qh" required oninvalid="this.setCustomValidity('Vui lòng chọn')">
+                        <option>Chọn Quận huyện</option>
+                    </select>
+                </div>
+
+                <div class="col-4">
+                    <label for="px">Phường xã: (*)</label>
+                    <select class="form-select" name="px" id="px" required oninvalid="this.setCustomValidity('Vui lòng chọn')">
+                        <option>Chọn phường xã</option>
+                    </select>
+                </div>
+            </div>
+
+        </div>
+        <input type="submit" value="Đặt Hàng" class="btn btn-success" style="margin-bottom: 10px" />
+    </div>
+}
+
+@section script{
+    <script>
+        let select1 = document.getElementById("tt");
+        let select2 = document.getElementById("qh");
+        let select3 = document.getElementById("px");
+        select1.onchange = function () {
+            var code = select1.value;
+            $.ajax({
+                url: "/ShoppingCart/GetQuanHuyen",
+                type: "POST",
+                data: { code: code },
+                success: function (response) {
+                    select2.innerHTML = '<option>Chọn Quận huyện</option>';
+                    select3.innerHTML = '<option>Chọn phường xã</option>';
+                    response = JSON.parse(response);
+                    $.each(response, function (index, item) {
+                        var option = document.createElement("option");
+                        option.value = item.code;
+                        option.text = item.name;
+                        select2.appendChild(option);
+                    });
+                }
+            });
+        }
+        select2.onchange = function () {
+            var code = select2.value;
+            $.ajax({
+                url: "/ShoppingCart/GetPhuongXa",
+                type: "POST",
+                data: { code: code },
+                success: function (response) {
+                    select3.innerHTML = '';
+                    response = JSON.parse(response);
+                    $.each(response, function (index, item) {
+                        var option = document.createElement("option");
+                        option.value = item.code;
+                        option.text = item.name;
+                        select3.appendChild(option);
+                    });
+                }
+            });
+        }
+    </script>
+
+    <script>
+    $(document).ready(function () {
+        // Xử lý sự kiện khi số lượng thay đổi
+        $('input[name="Quantity"]').change(function () {
+            var productPrice = parseFloat('@Model.GIABAN');
+            var quantity = parseInt($(this).val());
+            var total = productPrice * quantity;
+            $('#totalPrice').text(total);
+            $('#total').text(total);
+        });
+    });
+    </script>
+}
